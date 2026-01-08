@@ -1,7 +1,7 @@
 site_name: VIEWE Technical Wiki
-site_url: https://display-wiki.com/
-repo_name: VIEWESMART/wiki
-repo_url: https://github.com/VIEWESMART/wiki
+site_url: https://www.displaywiki.tech/
+repo_name: GITHUB
+repo_url: https://github.com/VIEWESMART/
 
 # 国际化与主题
 plugins:
