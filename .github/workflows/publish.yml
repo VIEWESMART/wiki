@@ -123,3 +123,13 @@ jobs:
       - name: Build
         working-directory: ./wiki
         run: mkdocs build
+
+      # 5. 上传到 SiteGround
+      - name: FTP Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./wiki/site/
+          server-dir: /public_html/ # 根据你的 SiteGround 设置调整
