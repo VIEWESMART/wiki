@@ -3,6 +3,7 @@ site_url: https://display-wiki.com/
 repo_name: VIEWESMART/wiki
 repo_url: https://github.com/VIEWESMART/wiki
 
+# 国际化与主题
 plugins:
   - search
   - minify:
@@ -27,7 +28,7 @@ theme:
   palette: 
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: indigo  # VIEWE 科技蓝
       accent: blue
       toggle:
         icon: material/weather-night
@@ -64,6 +65,7 @@ markdown_extensions:
 extra_css:
   - assets/stylesheets/extra.css
 
+# 导航 (映射未来的文件)
 nav:
   - Home: index.md
   - Hardware:
