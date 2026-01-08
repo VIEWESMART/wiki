@@ -1,0 +1,107 @@
+name: Deploy VIEWE Wiki
+
+on:
+  push:
+    branches: [ main ]
+  repository_dispatch:
+    types: [update-docs] # 允许外部触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取 Wiki 主仓库
+      - name: Checkout Wiki
+        uses: actions/checkout@v4
+        with: { path: wiki }
+
+      # 2. 拉取 5 个外部仓库 (使用 sparse-checkout 优化速度，仅拉取必要文件，可选)
+      # 这里使用全量拉取，配置简单
+      - name: Checkout 5inch
+        uses: actions/checkout@v4
+        with: { repository: VIEWESMART/UEDX80480050ESP32-5inch-Touch-Display, path: repo-5inch }
+
+      - name: Checkout 7inch
+        uses: actions/checkout@v4
+        with: { repository: VIEWESMART/7-1024X600-ESP32-P4-C6-TOUCH-DISPLAY, path: repo-7inch }
+
+      - name: Checkout Knob
+        uses: actions/checkout@v4
+        with: { repository: VIEWESMART/UEDX24240013-MD50ESP32_1.3inch-Knob, path: repo-knob }
+
+      - name: Checkout Tutorial
+        uses: actions/checkout@v4
+        with: { repository: VIEWESMART/VIEWE-Tutorial, path: repo-tutorial }
+
+      - name: Checkout FAQ
+        uses: actions/checkout@v4
+        with: { repository: VIEWESMART/VIEWE-FAQ, path: repo-faq }
+
+      # 3. 组装文件 (搬运工模式)
+      - name: Assemble Content
+        run: |
+          # 定义函数：搬运并修复图片路径
+          # 参数 $1: 源目录, $2: 目标MD文件名, $3: 目标图片子目录名
+          process_repo() {
+            src_dir=$1
+            target_md=$2
+            img_subdir=$3
+            
+            # 建立图片存放目录
+            mkdir -p wiki/docs/assets/images/products/$img_subdir
+            
+            # 1. 复制英文 README
+            cp $src_dir/README.md wiki/docs/en/products/$target_md
+            
+            # 2. 复制中文 README (如果存在)
+            if [ -f $src_dir/README_zh.md ]; then
+              cp $src_dir/README_zh.md wiki/docs/zh/products/$target_md
+            fi
+            
+            # 3. 复制 assets 图片文件夹 (如果存在)
+            if [ -d $src_dir/assets ]; then
+              cp -r $src_dir/assets/* wiki/docs/assets/images/products/$img_subdir/
+            fi
+            
+            # 4. 修复 Markdown 中的图片路径 (把 assets/ 替换为 ../../assets/...)
+            # 针对英文版
+            sed -i "s|assets/|../../assets/images/products/$img_subdir/|g" wiki/docs/en/products/$target_md
+            # 针对中文版
+            if [ -f wiki/docs/zh/products/$target_md ]; then
+              sed -i "s|assets/|../../assets/images/products/$img_subdir/|g" wiki/docs/zh/products/$target_md
+            fi
+          }
+
+          # --- 执行组装 ---
+          process_repo "repo-5inch" "esp32-s3-5inch.md" "5inch"
+          process_repo "repo-7inch" "esp32-p4-7inch.md" "7inch-p4"
+          process_repo "repo-knob" "esp32-1.3-knob.md" "knob"
+          
+          # --- 单独处理 Tutorial ---
+          mkdir -p wiki/docs/assets/images/tutorial
+          cp repo-tutorial/README.md wiki/docs/en/software/tutorials.md
+          if [ -d repo-tutorial/images ]; then
+             cp -r repo-tutorial/images/* wiki/docs/assets/images/tutorial/
+             sed -i "s|images/|../../assets/images/tutorial/|g" wiki/docs/en/software/tutorials.md
+          fi
+
+          # --- 单独处理 FAQ ---
+          cp repo-faq/README.md wiki/docs/en/support/faq.md
+
+      # 4. 构建 MkDocs
+      - uses: actions/setup-python@v4
+        with: { python-version: 3.x }
+      - run: pip install mkdocs-material mkdocs-static-i18n
+      - name: Build
+        working-directory: ./wiki
+        run: mkdocs build
+
+      # 5. 上传到 SiteGround
+      - name: FTP Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./wiki/site/
+          server-dir: /public_html/ # 根据你的 SiteGround 设置调整
