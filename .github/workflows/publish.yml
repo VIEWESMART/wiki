@@ -91,7 +91,8 @@ jobs:
       # 4. 构建 MkDocs
       - uses: actions/setup-python@v4
         with: { python-version: 3.x }
-      - run: pip install mkdocs-material mkdocs-static-i18n
+      #- run: pip install mkdocs-material mkdocs-static-i18n
+      - run: pip install mkdocs-material "mkdocs-static-i18n>=1.2.0"
       - name: Build
         working-directory: ./wiki
         run: mkdocs build
