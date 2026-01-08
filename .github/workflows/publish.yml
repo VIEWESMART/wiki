@@ -124,6 +124,15 @@ jobs:
         working-directory: ./wiki
         run: mkdocs build
 
+      - name: Debug Secrets
+        run: |
+          echo "检查 Secrets 是否载入..."
+          if [ -z "${{ secrets.FTP_SERVER }}" ]; then
+            echo "❌ 错误: FTP_SERVER 是空的！GitHub 没读到！"
+          else
+            echo "✅ 成功: FTP_SERVER 已读到 (出于安全已隐藏)"
+          fi
+
       # 5. 上传到 SiteGround
       - name: FTP Upload
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
