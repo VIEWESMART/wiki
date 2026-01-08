@@ -94,13 +94,22 @@ jobs:
       #- run: pip install mkdocs-material mkdocs-static-i18n
       #- run: pip install mkdocs-material "mkdocs-static-i18n>=1.2.0"
       
-      # 替换原来的 pip install 步骤
-      - name: Install Dependencies
+     - name: Install Dependencies (Clean & Fix)
         run: |
+          # 1. 升级 pip
           pip install --upgrade pip
-          pip install mkdocs-material "mkdocs-static-i18n>=1.2.3" mkdocs-minify-plugin --force-reinstall --no-cache-dir
-          # (可选) 打印版本号，方便调试查看
+          
+          # 2. 【关键】先强制卸载可能存在的冲突插件 (mkdocs-i18n 是旧版捣乱者)
+          pip uninstall -y mkdocs-i18n || true
+          
+          # 3. 强制安装正确的新版插件
+          # 使用 --ignore-installed 确保不复用任何旧缓存
+          pip install mkdocs-material "mkdocs-static-i18n>=1.2.3" mkdocs-minify-plugin --ignore-installed
+          
+          # 4. 【调试】打印版本号 (如果再报错，点开日志看这一步，能证明到底装了谁)
+          echo "=== Debugging Installed Versions ==="
           pip show mkdocs-static-i18n
+          pip list | grep i18n
     
       - name: Build
         working-directory: ./wiki
