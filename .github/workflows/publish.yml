@@ -138,8 +138,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: sgp98.siteground.asia
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: viewe@displaywiki.tech
+          password: viewewikiftp
           local-dir: ./wiki/site/
           server-dir: /public_html/ # 根据你的 SiteGround 设置调整
 
