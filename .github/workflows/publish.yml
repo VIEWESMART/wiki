@@ -92,7 +92,14 @@ jobs:
       - uses: actions/setup-python@v4
         with: { python-version: 3.x }
       #- run: pip install mkdocs-material mkdocs-static-i18n
-      - run: pip install mkdocs-material "mkdocs-static-i18n>=1.2.0"
+      #- run: pip install mkdocs-material "mkdocs-static-i18n>=1.2.0"
+      # 替换原来的 pip install 步骤
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs-material "mkdocs-static-i18n>=1.2.3" mkdocs-minify-plugin --force-reinstall --no-cache-dir
+          # (可选) 打印版本号，方便调试查看
+          pip show mkdocs-static-i18n
       - name: Build
         working-directory: ./wiki
         run: mkdocs build
