@@ -1,4 +1,4 @@
-```markdown
+
 ---
 hide:
   - navigation # 首页全屏展示，隐藏左侧目录
@@ -46,4 +46,4 @@ We provide open-source friendly display modules optimized for:
 
 [Visit Official Store](https://viewedisplay.com/){ .md-button .md-button--primary }
 
-```
+
