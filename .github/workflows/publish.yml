@@ -133,7 +133,6 @@ jobs:
             echo "✅ 成功: FTP_SERVER 已读到 (出于安全已隐藏)"
           fi
 
-      # 5. 上传到 SiteGround
       # - name: FTP Upload
       #   uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       #   with:
@@ -159,5 +158,5 @@ jobs:
           
           # 4. 防止证书报错的配置
           protocol: ftps
-          strict: false
+          # strict: false
 
