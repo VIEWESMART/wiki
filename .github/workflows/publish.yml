@@ -159,5 +159,5 @@ jobs:
           
           # 4. 防止证书报错的配置
           protocol: ftps
-          strict: false
+          # strict: false
 
