@@ -2,9 +2,10 @@ name: Deploy VIEWE Wiki
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   repository_dispatch:
-    types: [update-docs] # 允许外部触发
+    types: [update-docs]
 
 jobs:
   deploy:
@@ -13,35 +14,44 @@ jobs:
       # 1. 拉取 Wiki 主仓库
       - name: Checkout Wiki
         uses: actions/checkout@v4
-        with: { path: wiki }
+        with:
+          path: wiki
 
-      # 2. 拉取 5 个外部仓库 (使用 sparse-checkout 优化速度，仅拉取必要文件，可选)
-      # 这里使用全量拉取，配置简单
+      # 2. 拉取 5 个外部产品仓库
       - name: Checkout 5inch
         uses: actions/checkout@v4
-        with: { repository: VIEWESMART/UEDX80480050ESP32-5inch-Touch-Display, path: repo-5inch }
+        with:
+          repository: VIEWESMART/UEDX80480050ESP32-5inch-Touch-Display
+          path: repo-5inch
 
       - name: Checkout 7inch
         uses: actions/checkout@v4
-        with: { repository: VIEWESMART/7-1024X600-ESP32-P4-C6-TOUCH-DISPLAY, path: repo-7inch }
+        with:
+          repository: VIEWESMART/7-1024X600-ESP32-P4-C6-TOUCH-DISPLAY
+          path: repo-7inch
 
       - name: Checkout Knob
         uses: actions/checkout@v4
-        with: { repository: VIEWESMART/UEDX24240013-MD50ESP32_1.3inch-Knob, path: repo-knob }
+        with:
+          repository: VIEWESMART/UEDX24240013-MD50ESP32_1.3inch-Knob
+          path: repo-knob
 
       - name: Checkout Tutorial
         uses: actions/checkout@v4
-        with: { repository: VIEWESMART/VIEWE-Tutorial, path: repo-tutorial }
+        with:
+          repository: VIEWESMART/VIEWE-Tutorial
+          path: repo-tutorial
 
       - name: Checkout FAQ
         uses: actions/checkout@v4
-        with: { repository: VIEWESMART/VIEWE-FAQ, path: repo-faq }
+        with:
+          repository: VIEWESMART/VIEWE-FAQ
+          path: repo-faq
 
       # 3. 组装文件 (搬运工模式)
       - name: Assemble Content
         run: |
           # 定义函数：搬运并修复图片路径
-          # 参数 $1: 源目录, $2: 目标MD文件名, $3: 目标图片子目录名
           process_repo() {
             src_dir=$1
             target_md=$2
@@ -50,34 +60,32 @@ jobs:
             # 建立图片存放目录
             mkdir -p wiki/docs/assets/images/products/$img_subdir
             
-            # 1. 复制英文 README
+            # 复制英文 README
             cp $src_dir/README.md wiki/docs/en/products/$target_md
             
-            # 2. 复制中文 README (如果存在)
+            # 复制中文 README (如果存在)
             if [ -f $src_dir/README_zh.md ]; then
               cp $src_dir/README_zh.md wiki/docs/zh/products/$target_md
             fi
             
-            # 3. 复制 assets 图片文件夹 (如果存在)
+            # 复制 assets 图片文件夹 (如果存在)
             if [ -d $src_dir/assets ]; then
               cp -r $src_dir/assets/* wiki/docs/assets/images/products/$img_subdir/
             fi
             
-            # 4. 修复 Markdown 中的图片路径 (把 assets/ 替换为 ../../assets/...)
-            # 针对英文版
+            # 修复 Markdown 中的图片路径
             sed -i "s|assets/|../../assets/images/products/$img_subdir/|g" wiki/docs/en/products/$target_md
-            # 针对中文版
             if [ -f wiki/docs/zh/products/$target_md ]; then
               sed -i "s|assets/|../../assets/images/products/$img_subdir/|g" wiki/docs/zh/products/$target_md
             fi
           }
 
-          # --- 执行组装 ---
+          # 执行组装
           process_repo "repo-5inch" "esp32-s3-5inch.md" "5inch"
           process_repo "repo-7inch" "esp32-p4-7inch.md" "7inch-p4"
           process_repo "repo-knob" "esp32-1.3-knob.md" "knob"
           
-          # --- 单独处理 Tutorial ---
+          # 单独处理 Tutorial
           mkdir -p wiki/docs/assets/images/tutorial
           cp repo-tutorial/README.md wiki/docs/en/software/tutorials.md
           if [ -d repo-tutorial/images ]; then
@@ -85,34 +93,18 @@ jobs:
              sed -i "s|images/|../../assets/images/tutorial/|g" wiki/docs/en/software/tutorials.md
           fi
 
-          # --- 单独处理 FAQ ---
+          # 单独处理 FAQ
           cp repo-faq/README.md wiki/docs/en/support/faq.md
 
-      # 4. 构建 MkDocs
-      - uses: actions/setup-python@v4
-        with: { python-version: 3.x }
-      #- run: pip install mkdocs-material mkdocs-static-i18n
-      #- run: pip install mkdocs-material "mkdocs-static-i18n>=1.2.0"
-      
-     - name: Install Dependencies (Clean & Fix)
+      # 4. 安装依赖 (修复了插件冲突问题)
+      - name: Install Dependencies
         run: |
-          # 1. 升级 pip
           pip install --upgrade pip
-          
-          # 2. 【关键】先强制卸载可能存在的冲突插件 (mkdocs-i18n 是旧版捣乱者)
           pip uninstall -y mkdocs-i18n || true
-          
-          # 3. 强制安装正确的新版插件
-          # 使用 --ignore-installed 确保不复用任何旧缓存
           pip install mkdocs-material "mkdocs-static-i18n>=1.2.3" mkdocs-minify-plugin --ignore-installed
-          
-          # 4. 【调试】打印版本号 (如果再报错，点开日志看这一步，能证明到底装了谁)
-          echo "=== Debugging Installed Versions ==="
           pip show mkdocs-static-i18n
-          pip list | grep i18n
-    
-      - name: Build
+
+      # 5. 构建 MkDocs
+      - name: Build Site
         working-directory: ./wiki
         run: mkdocs build
-
-
