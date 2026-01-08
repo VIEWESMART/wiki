@@ -3,16 +3,22 @@ site_url: https://display-wiki.com/
 repo_name: VIEWESMART/wiki
 repo_url: https://github.com/VIEWESMART/wiki
 
-# 国际化与主题
 plugins:
   - search
- # - minify: { minify_html: true }
+  - minify:
+      minify_html: true
   - i18n:
       default_language: en
       docs_structure: folder
       languages:
-        en: { name: English, build: true }
-        zh: { name: 简体中文, build: true, link: /zh/ }
+        - locale: en
+          name: English
+          build: true
+
+        - locale: zh
+          name: 简体中文
+          build: true
+          link: /zh/
 
 theme:
   name: material
@@ -21,14 +27,18 @@ theme:
   palette: 
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo # VIEWE 科技蓝
+      primary: indigo
       accent: blue
-      toggle: { icon: material/weather-night, name: Dark mode }
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: indigo
-      toggle: { icon: material/weather-sunny, name: Light mode }
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -36,28 +46,32 @@ theme:
 
 extra:
   alternate:
-    - { name: English, link: /, lang: en }
-    - { name: 简体中文, link: /zh/, lang: zh }
+    - name: English
+      link: /
+      lang: en
+    - name: 简体中文
+      link: /zh/
+      lang: zh
 
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
   - pymdownx.superfences
-  - pymdownx.tabbed: { alternate_style: true }
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - assets/stylesheets/extra.css
 
-# 导航 (映射未来的文件)
 nav:
   - Home: index.md
   - Hardware:
-    - Overview: products/index.md # 建议在本地 docs/en/products/ 下建一个 index.md 写总览
-    - ESP32-S3 5.0" Display: products/esp32-s3-5inch.md
-    - ESP32-P4 7.0" Display: products/esp32-p4-7inch.md
-    - ESP32 1.3" Knob: products/esp32-1.3-knob.md
+      - Overview: products/index.md
+      - ESP32-S3 5.0" Display: products/esp32-s3-5inch.md
+      - ESP32-P4 7.0" Display: products/esp32-p4-7inch.md
+      - ESP32 1.3" Knob: products/esp32-1.3-knob.md
   - Software:
-    - Tutorials: software/tutorials.md
+      - Tutorials: software/tutorials.md
   - Support:
-    - FAQ: support/faq.md
+      - FAQ: support/faq.md
