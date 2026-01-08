@@ -6,7 +6,7 @@ repo_url: https://github.com/VIEWESMART/wiki
 # 国际化与主题
 plugins:
   - search
-  - minify: { minify_html: true }
+ # - minify: { minify_html: true }
   - i18n:
       default_language: en
       docs_structure: folder
