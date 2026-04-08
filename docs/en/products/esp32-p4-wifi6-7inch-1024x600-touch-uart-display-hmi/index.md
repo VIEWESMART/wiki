@@ -1,4 +1,4 @@
-# 7" 1024x600 ESP32-P4 WiFi6 Touch Display
+# 7" 1024x600 ESP32-P4 WiFi6 Touch Display  TESTETSTET
 
 
 <div class="grid cards" markdown>
