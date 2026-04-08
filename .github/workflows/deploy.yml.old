@@ -1,0 +1,53 @@
+name: Deploy Wiki to SiteGround
+
+# 触发条件：当推送到 main 分支时触发
+# 注意：如果您的主分支叫 master，请把下面的 main 改为 master
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. 安装 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      # 3. 安装 MkDocs 和主题
+      - name: Install Dependencies
+        run: |
+          pip install mkdocs-material
+          # 如果您用了其他插件（如 git-revision-date），请在这里加一行 pip install ...
+
+      # 4. 生成静态网站 (Build)
+      - name: Build Site
+        run: mkdocs build
+
+      # 5. 通过 FTP 同步到 SiteGround
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps              # SiteGround 支持加密传输，更安全
+          local-dir: ./site/          # 刚才 build 生成的文件夹
+          server-dir: ./public_html/  # 服务器上的目标目录 (根目录)
+          
+          # ⚠️ 关键配置：防止误删大文件
+          # 告诉脚本：同步时不要删除服务器上现有的 downloads 文件夹
+          exclude: |
+            **/.git*
+            **/.github*
+            downloads/**
+            images/**

@@ -1,0 +1,114 @@
+---
+title: FAQ & Troubleshooting
+hide:
+  - toc
+---
+
+# :material-frequently-asked-questions: FAQ & Troubleshooting
+
+Find quick answers to common questions about Hardware, Software, and Ordering.
+
+!!! tip "Can't find your answer?"
+    Use the **Search Bar** at the top of the page, or check our [GitHub Issues](https://github.com/VIEWESMART/VIEWE-FAQ/issues) for community solutions.
+
+<br>
+
+## 🔥 Top 5 Frequent Issues
+
+??? question "1. The screen is black but the backlight is on."
+    This is usually a software configuration issue, not hardware damage.
+    
+    1.  **Check PSRAM**: For ESP32-S3 RGB screens (4.3" - 7.0"), **PSRAM must be enabled** in Arduino IDE (`Tools` -> `PSRAM` -> `OPI PSRAM`).
+    2.  **Check Library**: Ensure you are using the [Arduino_GFX](https://github.com/moononournation/Arduino_GFX) library, not standard Adafruit libraries.
+    3.  **Check Resolution**: Verify the resolution in your code matches the physical screen (e.g., 800x480 vs 480x272).
+
+??? question "2. The touch function is not working or mirrored."
+    1.  **I2C Address**: The GT911 touch chip usually uses `0x5D` or `0x14`. Try scanning the I2C bus.
+    2.  **Cable Connection**: If using a separate touch cable, ensure the 6-pin FPC is inserted fully (contacts facing down).
+    3.  **Mirrored Touch**: If X/Y axis are swapped, use the `touch.setRotation()` function in your code or swap the coordinates mapping in LVGL `indev_drv`.
+
+??? question "3. Compilation Error: `esp_lcd_panel_io.h` not found."
+    This means your **ESP32 Board Package** is too old.
+    
+    * **Solution**: Open Arduino IDE Boards Manager and update `esp32` by Espressif Systems to version **2.0.14** or **3.0.x**. The `esp_lcd` API was introduced in newer versions.
+
+??? question "4. HDMI Display shows 'No Signal' on Raspberry Pi."
+    1.  **Config.txt**: You must force the HDMI resolution. [See HDMI Configuration Guide](../products/hdmi/index.md#configuration-guide).
+    2.  **Cable**: Try a different HDMI cable.
+    3.  **Power**: For 7-inch+ screens, the Raspberry Pi USB port might not supply enough current. Please connect an external 5V/2A power supply to the screen's "Power Only" USB port.
+
+??? question "5. How to export UI from SquareLine Studio to VIEWE Display?"
+    1.  Select **"Arduino"** as the export protocol.
+    2.  Choose the correct resolution (e.g., 800x480).
+    3.  In the exported code, locate `ui.h` and `ui.c`.
+    4.  Copy the `ui` folder into your Arduino project's `libraries` folder or project root.
+    5.  Call `ui_init()` in your `setup()` function.
+
+<br>
+
+---
+
+## 🛠️ Hardware & Wiring
+
+??? question "What is the difference between IPS and TN panels?"
+    * **IPS (In-Plane Switching)**: Better viewing angles (178°), accurate colors, and usually higher brightness. Recommended for almost all modern HMI projects.
+    * **TN (Twisted Nematic)**: Limited viewing angles (colors invert when viewed from the side), cheaper. Good for budget-sensitive projects.
+    * *VIEWE mostly provides IPS panels.*
+
+??? question "Can I power the screen with 3.3V?"
+    **No.** Most VIEWE modules require **5.0V** for the backlight driver.
+    * The logic levels (TX/RX/SDA/SCL) are usually **3.3V** compatible (ESP32 standard).
+    * **Warning**: Connecting 5V to the logic pins (RX/TX) may damage the ESP32 chip.
+
+??? question "Why does the screen flicker?"
+    1.  **Power Supply**: The USB port might be providing insufficient current (< 500mA). Try a powered USB hub.
+    2.  **FPC Cable**: The flex cable might be loose. Re-seat the connector.
+    3.  **Backlight PWM**: If you are using PWM to control brightness, ensure the frequency is above 1000Hz to avoid visible flickering.
+
+<br>
+
+---
+
+## 💻 Software Development (ESP32)
+
+??? question "Which library should I use: LVGL or Arduino_GFX?"
+    * **Arduino_GFX**: Best for simple drawing (circles, lines, text) and raw driver performance. It is the underlying driver for LVGL.
+    * **LVGL**: Best for complex UI (Buttons, Sliders, Charts, Animations). We recommend using **LVGL** for professional products.
+
+??? question "Do you support MicroPython or CircuitPython?"
+    Yes, the hardware supports it, but our official tutorials focus on **C++ (Arduino/ESP-IDF)**.
+    Community members have successfully ported MicroPython drivers for ST7701/ST7789 screens used in our modules.
+
+??? question "How to use the onboard SD Card?"
+    The SD card slot typically uses the **SPI** or **SDMMC** interface.
+    * For ESP32-S3, we recommend **SDMMC** (1-bit or 4-bit) for faster speed.
+    * Refer to the [SD Card Tutorial](../software/tutorials/topics/sd-card.md) for pin definitions and sample code.
+
+<br>
+
+---
+
+## 💼 Orders & Customization
+
+??? question "Do you offer Customization Services?"
+    **Yes.** We provide ODM/OEM services including:
+    * **PCB Redesign**: Changing board shape, adding interfaces (RS485, CAN).
+    * **Screen Customization**: High brightness (1000 nits+), Touch cover lens customization.
+    * **Minimum Order Quantity (MOQ)**: Usually 100-500 units depending on complexity. [Contact Sales](mailto:sales@viewedisplay.com) for a quote.
+
+??? question "Where can I download the datasheet?"
+    All datasheets, schematics, and mechanical drawings are available in our [Resource Center](../support/resource.md).
+
+??? question "What is the warranty policy?"
+    We provide a **1-year warranty** for all standard products. This covers manufacturing defects but excludes physical damage (cracked glass, broken FPC) caused by misuse.
+
+<br>
+
+---
+
+## :material-lifebuoy: Still need help?
+
+If you couldn't find your answer above, please reach out to our technical support team.
+
+[ :material-github: Submit GitHub Issue](https://github.com/VIEWESMART/VIEWE-FAQ/issues){ .md-button }
+[ :material-email: Contact Support](mailto:support@viewedisplay.com){ .md-button }

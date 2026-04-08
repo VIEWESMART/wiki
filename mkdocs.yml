@@ -1,0 +1,148 @@
+site_name: VIEWE Technical Wiki
+site_url: https://www.displaywiki.com/
+#兼容挂靠站点 www.displaywiki.tech
+repo_name: GITHUB
+repo_url: https://github.com/VIEWESMART/
+
+# 国际化与主题
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - i18n:
+    #  default_language: en
+      docs_structure: folder
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+
+        - locale: zh
+          name: 简体中文
+          build: true
+          link: /zh/
+# 👇 关键：为中文版单独指定导航
+          nav:
+            - 首页: index.md
+            - 产品中心:
+                - 智能屏系列:
+                    - ESP32 智能屏: products/esp32/index.md
+                    - 嵌入式系统: products/embedded/index.md
+                - 接口类显示屏:
+                    - HDMI 显示屏: products/hdmi/index.md
+                    - MIPI DSI 显示屏: products/mipi/index.md
+                - 通用显示模组:
+                    - TFT 液晶屏: products/tft/index.md
+                    - AMOLED 显示屏: products/amoled/index.md
+                    - 半反半透屏: products/transflective/index.md
+            - 支持中心:
+                - 资源中心: support/resource.md
+                - 教程指南: support/tutorials.md
+                - 常见问题: support/faq.md
+
+theme:
+  name: material
+  logo: assets/images/logo.png
+  favicon: assets/images/favicon.ico
+  palette: 
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo  # VIEWE 科技蓝
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+  features:
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    # - content.code.copy
+    - navigation.tabs        # ✅ 开启顶部选项卡 (一级菜单在顶栏)
+    # - navigation.tabs.sticky # (可选) 顶栏吸顶，滚动时保持可见
+    - navigation.sections    # ✅ 开启区块导航 (二级菜单变左侧标题)
+    - navigation.expand      # (可选) 默认展开左侧所有菜单
+    - navigation.top         # (可选) 返回顶部按钮
+    #- toc.integrate          # <--- 关键！添加这一行 合并右侧页面toc到左侧
+
+extra:
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: 简体中文
+      link: /zh/
+      lang: zh
+
+#markdown_extensions:
+#  - admonition
+#  - attr_list
+#  - md_in_html
+#  - pymdownx.superfences
+#  - pymdownx.tabbed:
+#      alternate_style: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  # 👇 下面这几行是修复图标显示的关键！
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji      # ✅ 新写法
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg   # ✅ 新写法
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+# 导航 (映射未来的文件)
+# nav:
+#   - Home: index.md
+#   - Hardware:
+#       - Overview: products/index.md
+#       - ESP32-S3 5.0" Display: products/esp32-s3-5inch.md
+#       - ESP32-P4 7.0" Display: products/esp32-p4-7inch.md
+#       - ESP32 1.3" Knob: products/esp32-1.3-knob.md
+#   - Software:
+#       - Tutorials: software/tutorials.md
+#   - Support:
+#       - FAQ: support/faq.md
+
+# 导航 (映射未来的文件)
+nav:
+  - Home: index.md
+  - Product Center:
+      # 👇 关键修改：第一项指向首页的锚点！
+      - 🔍 Product Overview: .#product-list
+      - Smart Series:
+          - ESP32 Display: products/esp32/index.md
+          - Embedded Systems: products/embedded/index.md
+      - Interface Display:
+          - HDMI Display: products/hdmi/index.md
+          - MIPI DSI Display: products/mipi/index.md
+      - Display Module:
+          - TFT LCD: products/tft/index.md
+          - AMOLED: products/amoled/index.md
+          - Transflective: products/transflective/index.md
+  - Support Center:
+      - Resource Center: support/resource.md
+      - Tutorial & Guide: support/tutorials.md
+      - FAQ: support/faq.md
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css # 表格样式
+
+extra_javascript:
+  - https://code.jquery.com/jquery-3.7.0.min.js # 必须先引 jQuery
+  - https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js # DataTables 核心
+  - assets/javascripts/tables.js # 我们自己写的初始化脚本
