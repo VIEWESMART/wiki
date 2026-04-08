@@ -1,1 +1,1 @@
-# display_wiki
+# DisplayWiki
