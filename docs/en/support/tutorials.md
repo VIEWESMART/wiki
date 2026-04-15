@@ -104,44 +104,51 @@ Explore specific features and peripherals of your Smart Display.
 
 ## :material-video: Video Tutorials
 
-Watch step-by-step guides directly from our engineers.
+[ :simple-youtube: More Video](https://youtube.com/playlist?list=PLM2TqiCfQM467LPRFVgJkHRajdR-wuVb8&si=fVDSm13eE9w-JkoH){ .md-button }
+[ :material-earth: VIEWE Tutorial](https://viewedisplay.com/category/tutorial/){ .md-button }
+
+**Watch step-by-step guides directly from our engineers.**
 
 <div class="grid cards" markdown>
 
--   **1. Getting Started with ESP32-S3**
+-   **1. How to drive touch and display with ESP32-S3 board in Arduino IDE?**
     ---
     
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/SD2pItGLeGk?si=iFAXDXYXmvnt8Zxz"  allowfullscreen></iframe>
     </div>
-    
-    How to setup Arduino IDE and install GFX library.
-
--   **2. LVGL UI Design Guide**
+-   **2.  How to use LVGL to Build a Smart Display GUI with Arduino IDE?**
     ---
     
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/do9dNKBkUSQ?si=eDvDOIyog_5rClBn" allowfullscreen></iframe>
     </div>
     
     Design professional interfaces using SquareLine Studio.
 
--   **3. ESP-IDF Development**
+-   **3. How to Drive ESP32-S3 Display with GFX Library?**
     ---
     
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/KR_eoGvRKqM?si=YHH5o-dd4ASKV4nI" allowfullscreen></iframe>
     </div>
     
     Deep dive into the official Espressif IoT Development Framework.
 
--   **4. Smart Knob & Encoder**
+-   **4. How to Drive ESP32 Smart Rotary Knob Display?**
     ---
     
     <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/_3Hx9lhOMsg?si=v9AH-pB7BP6Rt6pN" allowfullscreen></iframe>
     </div>
     
     How to handle rotary encoder events and motor feedback.
+  
 
 </div>
+
+<!-- ## :material-lifebuoy: Learn More
+
+[ :material-github: More Vedio](https://youtube.com/playlist?list=PLM2TqiCfQM467LPRFVgJkHRajdR-wuVb8&si=fVDSm13eE9w-JkoH){ .md-button }
+[ :material-file-download: Offical Tutorial](https://viewedisplay.com/category/tutorial/){ .md-button }
+[ :material-email: Contact Support](mailto:support@viewedisplay.com){ .md-button }    -->

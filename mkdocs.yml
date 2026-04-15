@@ -6,9 +6,6 @@ repo_url: https://github.com/VIEWESMART/
 
 # 国际化与主题
 plugins:
-  - search
-  - minify:
-      minify_html: true
   - i18n:
     #  default_language: en
       docs_structure: folder
@@ -28,6 +25,7 @@ plugins:
             - 产品中心:
                 - 智能屏系列:
                     - ESP32 智能屏: products/esp32/index.md
+                   # - 智能旋钮屏: products/esp32/index.md#__tabbed_1_4
                     - 嵌入式系统: products/embedded/index.md
                 - 接口类显示屏:
                     - HDMI 显示屏: products/hdmi/index.md
@@ -39,7 +37,22 @@ plugins:
             - 支持中心:
                 - 资源中心: support/resource.md
                 - 教程指南: support/tutorials.md
+                - 知识库:   knowledge/tags.md
                 - 常见问题: support/faq.md
+
+  # - awesome-pages  # 👈 核心插件：放在 i18n 之后,暂不使用
+  # - blog:   #测试不成功，不适用                  
+  #     blog_dir: knowledge      
+  #     post_dir: knowledge/posts
+  #     post_readtime: true      
+  - tags:
+      tags_file: knowledge/tags.md
+  
+  - search
+
+  - minify:
+      minify_html: true
+
 
 theme:
   name: material
@@ -105,19 +118,6 @@ extra_css:
   - assets/stylesheets/extra.css
 
 # 导航 (映射未来的文件)
-# nav:
-#   - Home: index.md
-#   - Hardware:
-#       - Overview: products/index.md
-#       - ESP32-S3 5.0" Display: products/esp32-s3-5inch.md
-#       - ESP32-P4 7.0" Display: products/esp32-p4-7inch.md
-#       - ESP32 1.3" Knob: products/esp32-1.3-knob.md
-#   - Software:
-#       - Tutorials: software/tutorials.md
-#   - Support:
-#       - FAQ: support/faq.md
-
-# 导航 (映射未来的文件)
 nav:
   - Home: index.md
   - Product Center:
@@ -125,7 +125,9 @@ nav:
       - 🔍 Product Overview: .#product-list
       - Smart Series:
           - ESP32 Display: products/esp32/index.md
+         # - Knob Display: products/esp32/index.md#__tabbed_1_4
           - Embedded Systems: products/embedded/index.md
+          
       - Interface Display:
           - HDMI Display: products/hdmi/index.md
           - MIPI DSI Display: products/mipi/index.md
@@ -136,6 +138,8 @@ nav:
   - Support Center:
       - Resource Center: support/resource.md
       - Tutorial & Guide: support/tutorials.md
+      #- Knowledge Base: knowledge/    # 👈 插件会自动接管该文件夹下的目录树
+      - Knowledge Base: knowledge/tags.md
       - FAQ: support/faq.md
 
 extra_css:

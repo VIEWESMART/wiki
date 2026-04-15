@@ -50,14 +50,14 @@ hide:
 
 <br>
 
-## :material-lifebuoy: Developer Support
+<!-- ## :material-lifebuoy: Developer Support
 
 <div class="grid cards" markdown>
 
 -   :material-folder-download: **Resource Center**
     ---
     Your **Digital Warehouse**.
-    Download datasheets, schematics, firmware, and 3D models.
+    Download datasheets, schematics, firmware, and Tools.
     [:arrow_right: Go to Downloads](support/resource.md)
 
 -   :material-school: **Tutorial Center**
@@ -68,12 +68,42 @@ hide:
 
 -   :material-message-question: **FAQ**
     ---
-    Black screen? Inverted touch?
+    Black screen? Inverted touch? Software or Hardware issue?
     Find quick troubleshooting guides here.
     [:arrow_right: Troubleshooting](support/faq.md)
 
-</div>
+-   :material-book-open-page-variant: **Knowledge Base**
+    ---
+    A comprehensive full-stack knowledge ecosystem spanning 
+    from hardware to OS and software.
+    [:octicons-arrow-right-24: Explore More](knowledge/tags.md)
 
+</div> -->
+## :material-lifebuoy: Developer Support
+
+<div class="grid cards" markdown>
+
+-   :material-folder-download: **Resource Center**
+    ---
+    Your **Digital Warehouse**. Download datasheets, schematics, official firmware, and essential development tools.
+    [:octicons-arrow-right-24: Go to Downloads](support/resource.md)
+
+-   :material-school: **Tutorial Center**
+    ---
+    From "Hello World" to complex UI. Master **LVGL**, **SquareLine Studio**, **ESP-IDF**, and **Arduino** frameworks.
+    [:octicons-arrow-right-24: Start Learning](support/tutorials.md)
+
+-   :material-message-question: **FAQ & Troubleshooting**
+    ---
+    Black screen? Inverted touch? Find quick solutions for common software and hardware issues in our guide.
+    [:octicons-arrow-right-24: Find Solutions](support/faq.md)
+
+-   :material-book-open-page-variant: **Knowledge Base**
+    ---
+    A full-stack knowledge ecosystem spanning from low-level hardware and OS to high-level software applications.
+    [:octicons-arrow-right-24: Explore More](knowledge/tags.md)
+
+</div>
 
 ---
 ## Why Choose VIEWE?
@@ -90,7 +120,7 @@ hide:
 -   :material-tools: **Software Ready**
     ---
     Don't start from scratch.
-    Our modules come with native support for **LVGL**, **SquareLine Studio**, and **ESP-IDF**, saving you weeks of driver debugging.
+    Our modules come with native support for **LVGL**, **SquareLine Studio**, **Arduino** and **ESP-IDF**, saving you weeks of driver debugging.
 
 -   :material-handshake: **ODM / OEM Expert**
     ---

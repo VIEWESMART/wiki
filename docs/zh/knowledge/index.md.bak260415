@@ -1,0 +1,54 @@
+# 📚 VIEWE 技术知识库
+
+欢迎来到我们的硬核技术文库。请选择您感兴趣的领域进行探索：
+
+<div class="grid cards" markdown>
+
+-   :material-book-open-page-variant: **[显示原理与技术解析](display-fundamentals/index.md)**
+    
+    ---
+    TFT,AMOLED，Transflective TFT等显示技术和触摸屏的原理与应用全面介绍，让您洞察技术、深入应用。
+
+-   :material-chip: **[智能显示和嵌入式相关知识](hardware-integration/index.md)**
+    
+    ---
+    涵盖 ESP32、HDMI,DSI等嵌入式相关知识。
+
+-   :material-layers: **[GUI 框架开发实战](ui-frameworks/index.md)**
+    
+    ---
+    LVGL 界面设计、移植教程及高级性能优化技巧。
+
+-   :material-wrench: **[常见问题与排障方案](troubleshooting/index.md)**
+    
+    ---
+    遇到白屏、背光不亮、触控失灵？在这里寻找标准解决方案。
+
+</div>
+
+💡 **没有找到想要的？** 尝试直接在右上角搜索，或者按 [标签体系检索全站内容](../../tags.md)。
+
+
+<!-- # 📚 Knowledge Base
+
+Welcome to the VIEWE Technical Knowledge Base. Explore our in-depth guides and technical comparisons below.
+
+<div class="grid cards" markdown>
+
+-   :material-monitor: **[IPS vs TN Displays: What's the difference?](posts/ips-vs-tn.md)**
+
+    ---
+
+    Understand the core differences between TFT, TN, and IPS panels and how to choose the right one for your embedded display project. 
+    
+    *⏱️ 5 min read*
+
+-   :material-memory: **[ESP32 Smart Display Guide](../products/esp32/index.md)**
+
+    ---
+
+    A complete step-by-step guide on initializing your ESP32-S3 display with LVGL framework.
+    
+    *⏱️ 10 min read*
+
+</div> -->
