@@ -10,19 +10,16 @@ Welcome to the VIEWE Technical Resource Hub. Here you can download datasheets, s
 
 <div class="grid cards" markdown>
 
--   :material-file-document-multiple: **Datasheets**
-    ---
-    PDF specifications for Display Modules, Driver ICs, and SoCs.
+-   :material-file-document-multiple: **Datasheets**    
+    PDF specifications for Display Modules, Driver ICs, and SoCs.     
     [:arrow_down: Go to Section](#datasheets)
 
--   :material-github: **Software & SDK**
-    ---
-    Arduino Libraries, ESP-IDF Components, and Factory Firmware.
+-   :material-github: **Software & SDK**     
+    Arduino Libraries, ESP-IDF Components, and Factory Firmware.     
     [:arrow_down: Go to Section](#software-sdk)
 
--   :material-tools: **Tools & Drivers**
-    ---
-    Image Converters, USB-UART Drivers, and Flashing Tools.
+-   :material-tools: **Tools & Drivers**     
+    Image Converters, USB-UART Drivers, and Flashing Tools.     
     [:arrow_down: Go to Section](#development-tools)
 
 </div>

@@ -11,39 +11,32 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-chip: **ESP32 Smart Display**
-    ---
-    The preferred IoT HMI solution integrating Wi-Fi & BLE.
+-   :material-chip: **ESP32 Smart Display**    
+    The preferred IoT HMI solution integrating Wi-Fi & BLE.      
     [:arrow_right: S3 / C3 / P4 Series](products/esp32/index.md)
 
--   :material-cpu-64-bit: **Embedded System**
-    ---
-    High-performance industrial tablets based on Linux & Android.
+-   :material-cpu-64-bit: **Embedded System**    
+    High-performance industrial embedded solutions based on Linux & RTOS.    
     [:arrow_right: View Systems](products/embedded/index.md)
 
--   :material-video-input-hdmi: **HDMI Display**
-    ---
-    Driver-free, Plug & Play. Compatible with Raspberry Pi, PC, and Jetson.
+-   :material-video-input-hdmi: **HDMI Display**    
+    Driver-free, Plug & Play. Compatible with Raspberry Pi, PC and Jetson.    
     [:arrow_right: View HDMI](products/hdmi/index.md)
 
--   :material-cable-data: **MIPI DSI Display**
-    ---
-    High bandwidth and refresh rates. Native support for high-performance dev boards.
+-   :material-cable-data: **MIPI DSI Display**    
+    High bandwidth and refresh rates. Work with RaspberryPI and ESP32-P4-PI.      
     [:arrow_right: View MIPI](products/mipi/index.md)
 
--   :material-blur: **AMOLED Display**
-    ---
-    Self-emissive with pure blacks and vivid colors. Ideal for high-end wearables.
+-   :material-blur: **AMOLED Display**     
+    Self-emissive with pure blacks and vivid colors. Ideal for high-end scenary.     
     [:arrow_right: View AMOLED](products/amoled/index.md)
 
--   :material-brightness-7: **Transflective TFT**
-    ---
-    **Sunlight Readable**. Specialized technology for outdoor meters and cycling computers.
+-   :material-brightness-7: **Transflective TFT**    
+    Sunlight Readable and low power for outdoor and portable application    
     [:arrow_right: View Outdoor](products/transflective/index.md)
 
--   :material-monitor: **Standard TFT**
-    ---
-    Cost-effective, general-purpose LCD modules (SPI / RGB / 8080).
+-   :material-monitor: **Standard TFT**    
+    General-purpose TFT modules with standard interface and structure.   
     [:arrow_right: View TFT](products/tft/index.md)
 
 </div>
@@ -84,23 +77,23 @@ hide:
 <div class="grid cards" markdown>
 
 -   :material-folder-download: **Resource Center**
-    ---
-    Your **Digital Warehouse**. Download datasheets, schematics, official firmware, and essential development tools.
+    ---       
+    Your **Digital Warehouse**. Download datasheets, schematics, official firmware, and development tools.      
     [:octicons-arrow-right-24: Go to Downloads](support/resource.md)
 
 -   :material-school: **Tutorial Center**
-    ---
-    From "Hello World" to complex UI. Master **LVGL**, **SquareLine Studio**, **ESP-IDF**, and **Arduino** frameworks.
+    ---       
+    From "Hello World" to complex UI. Master **LVGL**, **SquareLine Studio**, **ESP-IDF**, and **Arduino** .       
     [:octicons-arrow-right-24: Start Learning](support/tutorials.md)
 
 -   :material-message-question: **FAQ & Troubleshooting**
-    ---
-    Black screen? Inverted touch? Find quick solutions for common software and hardware issues in our guide.
+    ---       
+    Black screen? Inverted touch? Find quick solutions for common software and hardware issues in our guide.        
     [:octicons-arrow-right-24: Find Solutions](support/faq.md)
 
 -   :material-book-open-page-variant: **Knowledge Base**
-    ---
-    A full-stack knowledge ecosystem spanning from low-level hardware and OS to high-level software applications.
+    ---      
+    A full-stack knowledge ecosystem spanning from hardware to operate system to software applications.       
     [:octicons-arrow-right-24: Explore More](knowledge/tags.md)
 
 </div>
@@ -112,20 +105,17 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-github: **Open Source DNA**
-    ---
-    We believe in community power.
+-   :material-github: **Open Source DNA**    
+    We believe in community power.     
     We provide **full source code** (Arduino/IDF) and maintain active GitHub repositories for every product series.
 
--   :material-tools: **Software Ready**
-    ---
-    Don't start from scratch.
-    Our modules come with native support for **LVGL**, **SquareLine Studio**, **Arduino** and **ESP-IDF**, saving you weeks of driver debugging.
+-   :material-tools: **Software Ready**    
+    Don't start from scratch.     
+    Our modules come with native support for **LVGL**, **SquareLine Studio**, **Arduino** and **ESP-IDF**, accelerating your time-to-market.
 
--   :material-handshake: **ODM / OEM Expert**
-    ---
-    Need a custom shape?
-    From **Optical Bonding** to **PCBA Redesign**, we offer flexible customization services with low MOQ requirements.
+-   :material-handshake: **ODM / OEM Expert**    
+    Need a custom shape and function?     
+    One-stop display, touch and embedded expertise meets rigorous factory quality control---delivering excellence for your products.
 
 </div>
 

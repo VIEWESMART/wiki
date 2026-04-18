@@ -20,18 +20,18 @@ Welcome to the VIEWE Developer Hub. Whether you are a hobbyist using **Arduino**
 
     -   :material-play-circle: **Getting Started**
         ---
-        How to install the `Arduino_GFX` library and setup the board environment.
-        [:arrow_right: Start Here](arduino/getting-started.md)
+        How to install the **Arduino IDE**  and configure IDE for VIEWE products.      
+        [:arrow_right: Start Here](./tutorial/Arduino/How_To_Configure_Arduino.md)
 
-    -   :material-monitor-screenshot: **Draw Graphics (GFX)**
+    -   :material-monitor-screenshot: **Run Arduino**
         ---
-        Learn to draw basic shapes, text, and images using the lightweight GFX library.
-        [:arrow_right: GFX Tutorial](arduino/gfx-guide.md)
+        Fully tutorial includes environment, configuration and examples for Arduino .     
+        [:arrow_right: Arduino Tutorial](./tutorial/Arduino/How-to-Use-Arduino.md)
 
     -   :material-layers: **Porting LVGL**
         ---
-        How to run the powerful **LVGL** graphics engine on VIEWE displays with Arduino.
-        [:arrow_right: LVGL Guide](arduino/lvgl-porting.md)
+        How to run the powerful **LVGL** graphics engine on VIEWE displays with Arduino.    
+        [:arrow_right: LVGL Guide](./tutorial/Arduino/LVGL-Configuration-and-SquareLine-Project-Porting.md)
 
     </div>
 
@@ -43,31 +43,32 @@ Welcome to the VIEWE Developer Hub. Whether you are a hobbyist using **Arduino**
 
     -   :material-console: **Environment Setup**
         ---
-        Setting up VS Code, ESP-IDF extension, and compiling your first "Hello World".
-        [:arrow_right: Setup Guide](idf/setup.md)
+        Setting up VS Code, ESP-IDF extension, and compiling your first project.     
+        [:arrow_right: Get Started](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/index.html)
 
     -   :material-chip: **Driver Integration**
         ---
-        How to use the `esp_lcd` component to drive RGB/MIPI/SPI screens directly.
-        [:arrow_right: Driver Guide](idf/driver-guide.md)
+        How to use the `esp_lcd` component to drive RGB/MIPI/SPI screens directly.    
+        [:arrow_right: Drive Display](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/api-reference/peripherals/lcd/index.html#)
 
     </div>
 
-=== "🎨 SquareLine Studio (UI Tool)"
-    **No-Code UI Design.**
-    Drag-and-drop UI editor for LVGL. Design your interface visually and export code for ESP32.
+=== "🎨 LVGL GUI"
+    **Seamlessly UI Design.**
+    Lightweight and powerful embedded graphics library.  Design your interface visually and export code for ESP32 and more.
 
     <div class="grid cards" markdown>
 
-    -   :material-brush: **UI Design Basics**
+    -   :material-brush: **GUI LVGL Basics**
         ---
-        Creating screens, adding widgets (Buttons, Labels, Charts) and events.
-        [:arrow_right: Design Guide](squareline/basics.md)
+        Creating screens, adding widgets (Buttons, Labels, Charts) and events.     
+        [:arrow_right: Design Guide](https://docs.lvgl.io/master/index.html)
 
-    -   :material-export: **Export to ESP32**
+    -   :material-export: **UI Editor**
         ---
-        How to generate code from SquareLine and flash it to VIEWE modules.
-        [:arrow_right: Export Guide](squareline/export.md)
+        How to design cool and seamlessly UI by UI Editor fastly (SquareLine/LVGL Pro) with [VIEWE](https://viewedisplay.com/) modules?    
+        [:arrow_right: Squareline](https://docs.squareline.io/docs/tutorials/example)
+        [:arrow_right: LVGL Pro](https://docs.lvgl.io/master/xml/index.html)
 
     </div>
 
@@ -81,20 +82,17 @@ Explore specific features and peripherals of your Smart Display.
 
 <div class="grid cards" markdown>
 
--   :material-wifi: **Wireless (ESP-NOW)**
-    ---
-    Realize wireless communication between two displays using the ESP-NOW protocol.
-    [:arrow_right: View Tutorial](topics/esp-now.md)
+-   :material-wifi: **Wireless (ESP-NOW)**     
+    Realize wireless communication between two displays using the ESP-NOW protocol.    
+    [:arrow_right: View Tutorial](#video-wirless-espnow)
 
--   :material-sd: **SD Card Filesystem**
-    ---
-    How to mount the onboard SD card, read images, and log data.
-    [:arrow_right: View Tutorial](topics/sd-card.md)
+-   :material-sd: **SD Card Filesystem**    
+    How to mount the onboard SD card, read images, and log data.     
+    [:arrow_right: View Tutorial](#video-sdcard-use)
 
--   :material-knob: **Smart Knob Control**
-    ---
-    Driving the rotary encoder and handling knob press/turn events.
-    [:arrow_right: View Tutorial](topics/smart-knob.md)
+-   :material-knob: **Smart Knob Control**     
+    Driving the rotary encoder and handling knob press/turn events.    
+    [:arrow_right: View Tutorial](#video-drive-knob)
 
 </div>
 
@@ -120,7 +118,7 @@ Explore specific features and peripherals of your Smart Display.
 -   **2.  How to use LVGL to Build a Smart Display GUI with Arduino IDE?**
     ---
     
-    <div class="video-wrapper">
+    <div class="video-wrapper"> <a id="video-lvgl-gui"></a>
         <iframe src="https://www.youtube.com/embed/do9dNKBkUSQ?si=eDvDOIyog_5rClBn" allowfullscreen></iframe>
     </div>
     
@@ -135,7 +133,7 @@ Explore specific features and peripherals of your Smart Display.
     
     Deep dive into the official Espressif IoT Development Framework.
 
--   **4. How to Drive ESP32 Smart Rotary Knob Display?**
+-   **4. How to Drive ESP32 Smart Rotary Knob Display?** <a id="video-drive-knob"></a>
     ---
     
     <div class="video-wrapper">
@@ -143,7 +141,25 @@ Explore specific features and peripherals of your Smart Display.
     </div>
     
     How to handle rotary encoder events and motor feedback.
-  
+
+-   **5. How to Realize wireless communication between two displays using the ESP-NOW protocol** <a id="video-wirless-espnow"></a>
+    ---
+    
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/1siwBBuNR2A?si=qyAfiO0QCx5MM04M"  allowfullscreen></iframe>
+    </div>
+    
+    Wifi and Bluetooth commnication by ESP-NOW.    
+
+-   **5. How to use SD card with esp32** <a id="video-sdcard-use"></a>
+    ---
+    
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Dk0MKfdLvGM?si=d12qvDywSE-odCBY" allowfullscreen></iframe>
+    </div>
+    
+    How to mount the onboard SD card, read images, and log data    
+    
 
 </div>
 
@@ -152,3 +168,4 @@ Explore specific features and peripherals of your Smart Display.
 [ :material-github: More Vedio](https://youtube.com/playlist?list=PLM2TqiCfQM467LPRFVgJkHRajdR-wuVb8&si=fVDSm13eE9w-JkoH){ .md-button }
 [ :material-file-download: Offical Tutorial](https://viewedisplay.com/category/tutorial/){ .md-button }
 [ :material-email: Contact Support](mailto:support@viewedisplay.com){ .md-button }    -->
+

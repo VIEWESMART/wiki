@@ -17,19 +17,16 @@ Find quick answers to common questions about Hardware, Software, and Ordering.
 
 <div class="grid cards" borderless markdown>
 
--   :material-code-braces: __Software Development FAQ__
-    ---
-    FAQ for Arduino, ESP-IDF, PlatformIO and LVGL framework.
+-   :material-code-braces: __Software Development FAQ__     
+    FAQ for Arduino, ESP-IDF, PlatformIO and LVGL...        
     [:octicons-arrow-right-24: View FAQ](#software-development)
 
--   :material-chip: __Hardware & Wiring FAQ__
-    ---
-    Display types, pinouts, power requirements, and touch.
+-   :material-chip: __Hardware & Wiring FAQ__      
+    Display types, pinouts, power requirements, and touch.      
     [:octicons-arrow-right-24: View FAQ](#hardware-wiring)
 
--   :material-cart-check: __Orders & Customization FAQ__
-    ---
-    Bulk ordering, custom PCB/Screen, and warranty.
+-   :material-cart-check: __Orders & Customization FAQ__      
+    Bulk ordering, custom PCB/Screen, and warranty.       
     [:octicons-arrow-right-24: View Policy](#orders-customization)
 
 </div>

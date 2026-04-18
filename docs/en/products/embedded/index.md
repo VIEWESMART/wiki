@@ -113,7 +113,8 @@ Reference design platforms for developers, featuring rich interfaces and high pe
 We provide not just screens, but integrated **Display + Computing** solutions.
 
 !!! quote "Why VIEWE Customization?"
-    With **10+ years** of display driver experience, we solve the toughest **Screen Porting** and **System Stability** challenges for you. From MIPI round screens to high-frame-rate LVGL on ESP32-P4.
+    With **10+ Years** of display and embedded experience, we solve the toughest **Display Solution** and **System Stability** challenges for you. Our comprehensive capabilities in display, touch, and embedded solutions, combined with a robust RnD and quality control system, ensure superior performance for your products.       
+    [:material-arrow-right: Explore More](https://viewedisplay.com/customization/)
 
 ### Service Matrix
 
