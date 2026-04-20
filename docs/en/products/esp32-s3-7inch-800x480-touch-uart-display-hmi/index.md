@@ -212,7 +212,7 @@ Examples are available in the [GitHub Repository](https://github.com/VIEWESMART/
 ### 📄 Documents
 | Document Title | Type | Description |
 | :--- | :--- | :--- |
-| **[Product Specification](../../../assets/datasheet/UEDX80480070E-WB-A V2.0 SPEC.pdf)** | PDF | UEDX80480070E Datasheet |
+| **[Product Specification](../../../assets/datasheet/UEDX80480070E-WB-A.pdf)** | PDF | UEDX80480070E Datasheet |
 | **[Schematic Diagram](../../../assets/schematic/UEDX80480070E-WB-A%20V1.1%20sch.png)** | PNG | Circuit Design & Connections |
 | **[Display Datasheet](../../../assets/datasheet/display/ALL-UE070WV-RB40-A092A.pdf)** | PDF | Display Module Specification |
 | **[Touch Driver](../../../assets/datasheet/touch/GT911_EN_Datasheet.pdf)** | PDF | Goodix GT911 Touch Controller Spec |

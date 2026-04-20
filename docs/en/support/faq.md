@@ -79,19 +79,19 @@ Choose your preferred development framework. Each section below leads to a compr
     ---
     Perfect for rapid prototyping.
 
-    [:octicons-link-external-16: **Arduino FAQ**](FAQ-Arduino-ESP32.md)
+    [:octicons-link-external-16: **Arduino FAQ**](./FAQ-Arduino-ESP32.md)
 
 -   :simple-espressif: __ESP-IDF__
     ---
     Professional native environment.
 
-    [:octicons-link-external-16: **ESP-IDF FAQ**](../software/esp-idf/index.md)
+    [:octicons-link-external-16: **ESP-IDF FAQ**](./faq-esp-idf.md)
 
 -   :simple-platformio: __PlatformIO__
     ---
     Modern IDE for team collaboration.
  
-    [:octicons-link-external-16: **PlatformIO FAQ**](../software/platformio/index.md)
+    [:octicons-link-external-16: **PlatformIO FAQ**](./faq-platformio.md)
 
 </div>
 

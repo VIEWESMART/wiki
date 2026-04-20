@@ -1,3 +1,8 @@
+---
+title: 7" 1024x600 ESP32-P4 WiFi6 Touch Display UEP4S070H1024V600C-WBA
+description: UEP4S070H1024V600C-WBA is 7" 1024x600 ESP32-P4 WiFi6 Touch Smart Display 
+---
+
 # 7" 1024x600 ESP32-P4 WiFi6 Touch Display
 
 
@@ -5,7 +10,7 @@
 
 -   **UEP4S070H1024V600C-WBA**
     ---
-    The **Ultimate Flagship** development board powered by **ESP32-P4** + **ESP32-C6**.
+    The **Ultimate Flagship** ESP32 Smart Display powered by **ESP32-P4** + **ESP32-C6**.
     Featuring a 7-inch **1024x600** IPS Display, Wi-Fi 6, H.264 Encoding, and rich industrial interfaces.
 
     [:material-arrow-left: Back to Series](../esp32/){ .md-button }
@@ -169,7 +174,7 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
 
 ## 4. Related Documents & Resources
 
-### 📄 Board Documents
+### 📄 Product Documents
 | Document Title | Type | Description |
 | :--- | :--- | :--- |
 | **[Smart Display Specification](../../../assets/datasheet/ESP32-P4-SmartDisplay_V1.1_SPEC.pdf)** | PDF | Product Specification  |
@@ -188,17 +193,17 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
 | **ESP32-C6** | [Datasheet](../../../assets/datasheet/chip/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf) | English |
 | **ESP32-C6** | [Datasheet](../../../assets/datasheet/chip/esp32-c6-wroom-1_wroom-1u_datasheet_cn.pdf) | Chinese |
 
-### 🛠️ Tools
+<!-- ### 🛠️ Tools
 * **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)**: Utility for flashing firmware manually.
 
 > [!IMPORTANT]
-> For more resources, please explore the [**Resource Center**](../../support/resource.md).
+> For more resources, please explore the [**Resource Center**](../../support/resource.md). -->
 
 ---
 
-## :material-face-agent: Technical Support
+<!-- ## :material-face-agent: Technical Support -->
 
-<div class="grid cards" markdown>
+<!-- <div class="grid cards" markdown>
 
 -   [**:material-github: GitHub Issues**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/issues)
     ---
@@ -213,5 +218,12 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
     Explore more relative products.    
 
 
-</div>
+</div> -->
+
+!!! info "Can't find what you need?"    
+    If you need more Products or Resource or Support, please contact our team: 
+
+    [**:material-magnify: Resouce Center**](../../support/resource.md){ .md-button .md-button--primary } 
+    [**:material-magnify: More Products**](../embedded/index.md){ .md-button  }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button .md-button--primary }
 

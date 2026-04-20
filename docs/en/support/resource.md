@@ -148,10 +148,12 @@ Essential utilities for HMI development.
 | :--- | :--- | :--- | :--- |
 | **SquareLine Studio** | Win / Mac | Visual UI Editor for LVGL ( Recommended). | [:material-link: Website](https://squareline.io/) |
 | **LVGL Pro** | Win / Mac | Official UI Editor by LVGL (Highly Recommended). | [:material-link: Website](https://pro.lvgl.io/) |
+| **Image Converter** | Win / Mac | Online image to C array by LVGL. | [:material-link: Website](https://lvgl.io/tools/imageconverter) |
 | **Image2LCD** | Windows | Tool to convert images into C arrays. | [:material-download: ZIP](../../assets/software/Image2Lcd.zip) |
 | **PCtoLCD2002** | Windows | Font generation tool for microcontrollers. | [:material-download: ZIP](../../assets/software/PCtoLCD2002.zip) |
 | **CH34x Driver** | Win / Mac | USB-UART Driver for flashing firmware. | [:material-download: ZIP](../../assets/software/USB-SERIAL%20CH340.rar) |
 | **Sscom Tools** | Windows | Classic and lightweight Serial port debugger. | [:material-download: ZIP](../../assets/software/Sscom5.13.1.zip) |
+| **Flash Download Tool** | Windows | Utility for flashing firmware manually. | [:material-download: ZIP](../../assets/software/flash_download_tool.zip) |
 
 <br>
 

@@ -50,7 +50,7 @@ When encountering screen drift issues, follow these steps to resolve them:
 
 1.  **Refer to Documentation**: Understand the issue description in detail via [this document](https://docs.espressif.com/projects/esp-faq/en/latest/software-framework/peripherals/lcd.html#why-do-i-get-drift-overall-drift-of-the-display-when-esp32-s3-is-driving-an-rgb-lcd-screen).
 2.  **Enable `Bounce Buffer + XIP on PSRAM`**:
-      * **Step 1**: Download the "high\_perf" version of the SDK from [arduino-esp32-sdk](https://github.com/esp-arduino-libs/arduino-esp32-sdk) and replace it in the [installation directory](https://www.google.com/search?q=%23where-are-the-installation-directory-for-arduino-esp32-and-the-sdk-located).
+      * **Step 1**: Download the "high\_perf" version of the SDK from [arduino-esp32-sdk](https://github.com/esp-arduino-libs/arduino-esp32-sdk) and replace it in installation directory.
       * **Step 2**: For supported development boards, `ESP_PANEL_LCD_RGB_BOUNCE_BUF_SIZE` is set to `(ESP_PANEL_LCD_WIDTH * 10)` by default. If issues persist, increase the size.
       * **Step 3**: For custom boards, confirm in `ESP_Panel_Board_Custom.h` if `ESP_PANEL_LCD_RGB_BOUNCE_BUF_SIZE` is non-zero.
       * **Step 4**: For independent drivers, manually set the size.
@@ -153,3 +153,9 @@ LVGL features and parameters are adjusted via the `lv_conf.h` file.
     #define LV_DEMO_MUSIC_AUTO_PLAY 0
 #endif
 ```
+
+!!! info "Can't find what you need?"    
+    If you need more support, please contact our engineering team: 
+            
+    [ESP-IDF FAQ](./faq-esp-idf.md){ .md-button .md-button--primary }
+    [Contact Support](mailto:support@viewedisplay.com){ .md-button }

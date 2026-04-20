@@ -20,8 +20,8 @@ For installation of the esp32 in the Arduino IDE, refer to [How_To_Configure_Ard
 
 For installation of the ESP32_Display_Panel library, refer to [How to Install ESP32_Display_Panel in Arduino IDE](../../FAQ-Arduino-ESP32.md/#how-to-install-esp32_display_panel-in-arduino-ide).
 
-## Configuration of tools options
-For configuration of `tools` options, refer to [recommended configurations in the Arduino IDE](./Board_Instructions.md#recommended-configurations-in-the-arduino-ide).
+<!-- ## Configuration of tools options
+For configuration of `tools` options, refer to [recommended configurations in the Arduino IDE](./Board_Instructions.md#recommended-configurations-in-the-arduino-ide). -->
 
 
 ## Configuration Instructions
@@ -192,21 +192,21 @@ You can access them in the Arduino IDE by navigating to `File` > `Examples` > `E
 
 The following example demonstrates how to develop touch screens of different interfaces and models using standalone drivers and test them by printing touch point coordinates:
 
-* [I2C](https://github.com/VIEWESMART)
-* [SPI](https://github.com/VIEWESMART)
+* [I2C](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/drivers/touch/touch_i2c)
+* [SPI](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/drivers/touch/touch_spi)
 
-### Panel
+<!-- ### Panel
 
 The following example demonstrates how to develop built-in or custom development boards using the `ESP_Panel` driver:
 
-* [Panel Test](../examples/Panel/PanelTest/): This example tests by displaying color bars and printing touch point coordinates.
+* [Panel Test](../examples/Panel/PanelTest/): This example tests by displaying color bars and printing touch point coordinates. -->
 
 ### LVGL v8
 
 For configuring LVGL (v8.3.x), please refer to [here](#configuring-lvgl) for more detailed information.
 
-* [Porting](../examples/LVGL/v8/Porting/): This example demonstrates how to port LVGL (v8.3.x). And for RGB LCD, it can enable the avoid tearing function.
-* [Rotation](../examples/LVGL/v8/Rotation/): This example demonstrates how to use LVGL to rotate the display.
+* [Porting](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/gui/lvgl_v8/simple_port/): This example demonstrates how to port LVGL (v8.3.x). And for RGB LCD, it can enable the avoid tearing function.
+* [Rotation](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/gui/lvgl_v8/simple_rotation/): This example demonstrates how to use LVGL to rotate the display.
 
 !!! warning
 
@@ -214,14 +214,12 @@ For configuring LVGL (v8.3.x), please refer to [here](#configuring-lvgl) for mor
 
 ### SquareLine
 
-To port the SquareLine project (v1.3.x), please refer to [here](#porting-squareline-project) for more detailed information.
-
-- [Porting](../examples/SquareLine/v8/Porting/): This example demonstrates how to port the SquareLine project.
-- [WiFiClock](../examples/SquareLine/v8/WiFiClock/): This example implements a simple Wi-Fi clock and can display weather information.
+- [Porting](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/gui/lvgl_v8/squareline_port/): This example demonstrates how to port the SquareLine project.
+- [WiFiClock](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/arduino/gui/lvgl_v8/squareline_wifi_clock/): This example implements a simple Wi-Fi clock and can display weather information.
 
 ## PlatformIO
 
-- [PlatformIO](../examples/PlatformIO/): This example demonstrates how to use ESP32_Display_Panel in PlatformIO. By default, it is suitable for the **ESP32-S3-LCD-EV-Board** and **ESP32-S3-LCD-EV-Board-2** development boards. Users need to modify the [boards/ESP-LCD.json](../examples/PlatformIO/boards/ESP-LCD.json) file according to the actual situation.
+- [PlatformIO](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/platformio/lvgl_v8_port/): This example demonstrates how to use ESP32_Display_Panel in PlatformIO. By default, it is suitable for the **ESP32-S3-LCD-EV-Board** and **ESP32-S3-LCD-EV-Board-2** development boards. Users need to modify the [boards/ESP-LCD.json](https://github.com/esp-arduino-libs/ESP32_Display_Panel/blob/master/examples/platformio/lvgl_v8_port/boards/BOARD_CUSTOM.json) file according to the actual situation.
 
 
 !!! info "Can't find what you need?"

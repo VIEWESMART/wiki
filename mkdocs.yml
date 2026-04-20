@@ -3,6 +3,8 @@ site_url: https://www.displaywiki.com/
 #兼容挂靠站点 www.displaywiki.tech
 repo_name: GITHUB
 repo_url: https://github.com/VIEWESMART/
+# copyright: "Copyright © [VIEWE](https://viewedisplay.com/). All rights reserved."
+copyright: 'Copyright: <a href="https://viewedisplay.com/" target="_blank" style="color: var(--md-typeset-a-color); font-weight: 700;"> ©VIEWE</a>  All rights reserved.'
 
 # 国际化与主题
 plugins:
@@ -85,6 +87,7 @@ theme:
     #- toc.integrate          # <--- 关键！添加这一行 合并右侧页面toc到左侧
 
 extra:
+  generator: false  # 👈 设置为 false 即可去掉 "Made with Material for MkDocs"
   alternate:
     - name: English
       link: /

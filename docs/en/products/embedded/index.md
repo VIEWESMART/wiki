@@ -77,16 +77,16 @@ Reference design platforms for developers, featuring rich interfaces and high pe
 
 -   **ESP32-P4-Pi (Flagship)**
     ---
-    ![P4-Pi](assets/p4_pi_thumb.png)
-    **The Ultimate RISC-V MPU Board**
+    <!-- ![P4-Pi](assets/p4_pi_thumb.png) -->
+    **The Ultimate RISC-V MPU Board with “Pi” form factor**
     * **Chip**: P4 (400MHz Dual-Core) + C6 (WiFi 6)
     * **Memory**: 32MB PSRAM + 16MB Flash
     * **Media**: H.264 Encoding, HDMI / MIPI-DSI, Ethernet
-    [:material-arrow-right: View Details](https://viewedisplay.com/product/esp32-p4-pi-dev-board-wifi6/)
+    [:material-arrow-right: View Details](../esp32-p4-pi/Index.md)
 
 -   **ESP32-P4C6-Core (SOM)**
     ---
-    ![P4-Core](assets/p4_core_thumb.png)
+    <!-- ![P4-Core](assets/p4_core_thumb.png) -->
     **High-Performance Mini Module (27x27mm)**
     * **Core**: ESP32-P4 + ESP32-C6 (Dual-Chip)
     * **Power**: 400MHz RISC-V + Wi-Fi 6 & BLE 5
@@ -95,7 +95,7 @@ Reference design platforms for developers, featuring rich interfaces and high pe
 
 -   **ESP32-S3 Round Board**
     ---
-    ![S3-Round](assets/s3_round_thumb.png)
+    <!-- ![S3-Round](assets/s3_round_thumb.png) -->
     **1.85" Smart Round Display Kit**
     * **Display**: 1.85" IPS TFT (360x360) + Touch
     * **Audio**: Onboard Mic & Speaker for Voice AI
