@@ -82,7 +82,7 @@ Reference design platforms for developers, featuring rich interfaces and high pe
     * **Chip**: P4 (400MHz Dual-Core) + C6 (WiFi 6)
     * **Memory**: 32MB PSRAM + 16MB Flash
     * **Media**: H.264 Encoding, HDMI / MIPI-DSI, Ethernet
-    [:material-arrow-right: View Details](../esp32-p4-pi/Index.md)
+    [:material-arrow-right: View Details](../esp32-p4-pi/)
 
 -   **ESP32-P4C6-Core (SOM)**
     ---

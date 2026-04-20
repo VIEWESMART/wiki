@@ -1,5 +1,5 @@
 ---
-title: ESP32-P4-Pi-viewe
+title: ESP32-P4-PI-VIEWE Dev Board
 description: ESP32-P4-Pi-VIEWE development board based on VIEWE ESP32-P4-Core module (ESP32P4 and ESP32-C6 chips) with “Raspberry Pi” form factor 
 ---
 
@@ -339,7 +339,7 @@ Examples are available in the [GitHub Repository](examples).
     ---
     Report bugs or request new features. Track development progress.
 
--   [**:material-email: Email Support**](mailto:smartrd1@viewedisplay.com)
+@ -343,18 +210,4 @@ Examples are available in the [GitHub Repository](examples).
     ---
     For direct technical support and business inquiries.
 
@@ -350,7 +350,8 @@ Examples are available in the [GitHub Repository](examples).
 
 </div> -->
 
----
+<!-- --- -->
+## 9. More Resource
 
 !!! info "Can't find what you need?"    
     If you need more Support or Products or Resource, please contact our team: 
