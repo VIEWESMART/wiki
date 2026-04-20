@@ -208,5 +208,10 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
     ---
     For direct technical support and business inquiries.
 
+-   [**:material-magnify: More Products**](../esp32/index.md)
+    ---
+    Explore more relative products.    
+
 
 </div>
+
