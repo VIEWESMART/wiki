@@ -1,5 +1,5 @@
 ---
-title: 7" 1024x600 ESP32-P4 WiFi6 Touch Display UEP4S070H1024V600C-WBA
+title: 7" 1024x600 ESP32-P4 WiFi6 Touch Display
 description: UEP4S070H1024V600C-WBA is 7" 1024x600 ESP32-P4 WiFi6 Touch Smart Display 
 ---
 
@@ -223,7 +223,7 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
 !!! info "Can't find what you need?"    
     If you need more Products or Resource or Support, please contact our team: 
 
-    [**:material-magnify: Resouce Center**](../../support/resource.md){ .md-button .md-button--primary } 
-    [**:material-magnify: More Products**](../embedded/index.md){ .md-button  }
-    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button .md-button--primary }
+    [**:material-archive-arrow-down: Resource Center**](../../support/resource.md){ .md-button .md-button--primary } 
+    [**:material-magnify: More Products**](../esp32/index.md){ .md-button  }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }
 

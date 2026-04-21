@@ -1,3 +1,8 @@
+---
+title: 7" 800X480 ESP32-S3 WiFi Touch Uart Display
+description: UEDX80480070E-WB-A is 7" 800X480 ESP32-S3 WiFi6 Touch Smart Display 
+---
+
 # 7" 800x480 ESP32-S3 Uart Smart Touch Display
 
 <div class="grid cards" markdown>
@@ -224,7 +229,7 @@ Examples are available in the [GitHub Repository](https://github.com/VIEWESMART/
 > [!IMPORTANT]
 > For more resources, please explore the [**Resource Center**](../../support/resource.md).
 
----
+<!-- ---
 
 ## :material-face-agent: Technical Support
 
@@ -238,4 +243,11 @@ Examples are available in the [GitHub Repository](https://github.com/VIEWESMART/
     ---
     For direct technical support and business inquiries.
 
-</div>
+</div> -->
+
+!!! info "Can't find what you need?"    
+    If you need more Products or Resource or Support, please contact our team: 
+
+    [**:material-archive-arrow-down: Resource Center**](../../support/resource.md){ .md-button .md-button--primary } 
+    [**:material-magnify: More Products**](../esp32/index.md){ .md-button  }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

@@ -356,6 +356,7 @@ Examples are available in the [GitHub Repository](examples).
 !!! info "Can't find what you need?"    
     If you need more Support or Products or Resource, please contact our team: 
 
-    [**:material-magnify: Resource Center**](../../support/resource.md){ .md-button .md-button--primary } 
+    [**:material-archive-arrow-down: Resource Center**](../../support/resource.md){ .md-button .md-button--primary } 
     [**:material-magnify: More Products**](../embedded/index.md){ .md-button  }
-    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button .md-button--primary }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }
+    <!-- [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button .md-button--primary }     -->
