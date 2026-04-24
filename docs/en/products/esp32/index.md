@@ -104,7 +104,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Res**: 466x466 
         * **Brightness**: 700-1000 nits
         <div style="margin-top: 8px;">
-            [:arrow_right: 1.75"](../esp32-s3-1.75inch/)
+            [:arrow_right: 1.75"](../esp32-s3-1.75inch/)    
             &nbsp;
             [:arrow_right: 1.5"](../esp32-UEDX46466015-MD50ET/index.md)
         </div>
@@ -115,7 +115,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Res**: 466x466
         * **Input**: Knob + Touch
         <div style="margin-top: 8px;">
-            [:arrow_right: Knob Details](../esp32-s3-1.5-knob/)
+            [:arrow_right: Knob Details](../esp32-UEDX46466015-MD50ET/index.md)
         </div>
 
     </div>
@@ -166,7 +166,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 | **Aurai Smart Ring 1P8** | 1.8" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | USB | Cap | **700 nit** |
 | **EchoEar Plus** | 1.8" | 360x360 | IPS | S3 (240M) | 16M/8M | USB | Cap | 300 nit |
 | [**UEDX46466018E-WB-A**](../esp32-s3-1.75inch/) | 1.75"| 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | Cap | **700 nit** |
-| [**UEDX46460015-MD50E**](../esp32-s3-1.5-knob/) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | **Knob+Touch**| **1000 nit**|
+| [**UEDX46460015-MD50E**](../esp32-UEDX46466015-MD50ET/index.md) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | **Knob+Touch**| **1000 nit**|
 | [**UEDX46466015E-WB-A**](../esp32-UEDX46466015-MD50ET/index.md) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | Cap | 450 nit |
 | [**UEDX24240013-MD50E**](../esp32-c3-1.3-knob/) | 1.28"| 240x240 | IPS | **C3** (160M)| 4M/400K | UART | **Knob** | 300 nit |
 
