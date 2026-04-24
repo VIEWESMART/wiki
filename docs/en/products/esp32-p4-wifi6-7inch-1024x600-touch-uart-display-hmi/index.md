@@ -1,5 +1,5 @@
 ---
-title: 7" 1024x600 ESP32-P4 WiFi6 Touch Display
+title: 7" 1024x600 ESP32-P4 WiFi6 Touch Uart Display
 description: UEP4S070H1024V600C-WBA is 7" 1024x600 ESP32-P4 WiFi6 Touch Smart Display 
 ---
 
