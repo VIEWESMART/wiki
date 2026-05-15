@@ -13,7 +13,7 @@ description: ESP32-S3 based 1.5-inch touch knob display with 466x466 resolution,
     Featuring a 1.5-inch **466x466** AMOLED Display (QSPI), capacitive touch, rotary encoder and button.  
     Ideal for IoT control panels, smart home devices and industrial HMI.
 
-    [:material-arrow-left: Back to Series](../embedded/index.md){ .md-button }
+    [:material-arrow-left: Back to Series](../esp32/){ .md-button }
     [:material-cart: Official Store](https://viewedisplay.com/product/esp32-1-5-inch-466x466-round-amoled-knob-display-touch-screen-arduino-lvgl/){ .md-button .md-button--primary }
     [:material-github: GitHub Repo](https://github.com/VIEWESMART/UEDX46460015-MD50ESP32-1.5inch-Touch-Knob-Display){ .md-button }
 
