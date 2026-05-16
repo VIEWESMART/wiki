@@ -291,13 +291,6 @@ If you need to flash a pre‑compiled binary manually:
 | **Button Datasheet** | PDF | [6×6 Silent Switch.pdf](../../../assets/datasheet/peripheral/6x6Silent%20switch.pdf) |
 | **Encoder Datasheet** | PDF | [EC28A1520401 Encoder](../../../assets/datasheet/peripheral/EC110101R6D-HA1-011%20YBGW080.pdf) |
 
-### 📚 Dependent Libraries
-
-* [ESP32_Display_Panel (≥ 0.2.1)](https://github.com/esp-arduino-libs/ESP32_Display_Panel) – *Latest version may not be released yet; use the provided local copy if needed.*
-* [ESP32_IO_Expander](https://github.com/esp-arduino-libs/ESP32_IO_Expander)
-* [ESP32_Button](https://github.com/esp-arduino-libs/ESP32_Button)
-* [ESP32_Knob](https://github.com/esp-arduino-libs/ESP32_Knob)
-* [LVGL 8.4.0](https://lvgl.io)
 
 ### 🛠️ Tools
 
