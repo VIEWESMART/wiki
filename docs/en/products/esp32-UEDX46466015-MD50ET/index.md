@@ -1,6 +1,6 @@
 ---
-title: ESP32 1.5 Inch AMOLED Touch Knob Display
-description: ESP32-S3 based 1.5-inch touch knob display with 466x466 resolution, AMOLED screen, CST820 touch, rotary encoder and button.
+title: VIEWE ESP32 1.5 Inch AMOLED Touch Knob Display
+description: ESP32-S3 based 1.5-inch touch knob display with 466x466 resolution, AMOLED screen, capactive touch, rotary encoder and button.
 ---
 
 # ESP32 1.5 Inch AMOLED Touch Knob Display
@@ -10,8 +10,7 @@ description: ESP32-S3 based 1.5-inch touch knob display with 466x466 resolution,
 -   **UEDX46460015-MD50ET**
     ---
     The **Smart Knob Display** powered by **ESP32-S3**.  
-    Featuring a 1.5-inch **466x466** AMOLED Display (QSPI), capacitive touch, rotary encoder and button.  
-    Ideal for IoT control panels, smart home devices and industrial HMI.
+    Featuring a 1.5-inch **466x466** AMOLED Display (QSPI), capacitive touch, rotary encoder and button. Ideal for IoT control panels, smart home devices and industrial HMI.
 
     [:material-arrow-left: Back to Series](../esp32/){ .md-button }
     [:material-cart: Official Store](https://viewedisplay.com/product/esp32-1-5-inch-466x466-round-amoled-knob-display-touch-screen-arduino-lvgl/){ .md-button .md-button--primary }
@@ -27,10 +26,7 @@ description: ESP32-S3 based 1.5-inch touch knob display with 466x466 resolution,
 
 ## 1. Introduction
 
-The **UEDX46460015-MD50ET** is a compact smart display module designed for knob‑style HMI applications.  
-It combines a 1.5‑inch AMOLED display (466×466 pixels) with a capacitive touch panel, a rotary encoder and a hardware button.
-
-Powered by the **ESP32‑S3‑R8** (16 MB Flash, 8 MB Octal PSRAM), it provides Wi‑Fi and Bluetooth 5 (LE) connectivity, and supports development with **Arduino**, **ESP‑IDF** and **PlatformIO**.
+The **UEDX46460015-MD50ET** is a compact smart display module designed for knob‑style HMI applications. It combines a 1.5‑inch AMOLED display (466×466 pixels) with a capacitive touch panel, a rotary encoder and a hardware button. Powered by the **ESP32‑S3‑R8** (16 MB Flash, 8 MB Octal PSRAM), it provides Wi‑Fi and Bluetooth 5 (LE) connectivity, and supports development with **Arduino**, **ESP‑IDF** and **PlatformIO**.
 
 ### 1.1 Product Features
 
@@ -304,5 +300,5 @@ If you need to flash a pre‑compiled binary manually:
     If you need more products, resources or support, please contact our team:  
 
     [**:material-archive-arrow-down: Resource Center**](../../support/resource.md){ .md-button .md-button--primary } 
-    [**:material-magnify: More Products**](../embedded/index.md){ .md-button }
+    [**:material-magnify: More Products**](../esp32/index.md){ .md-button }
     [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }
