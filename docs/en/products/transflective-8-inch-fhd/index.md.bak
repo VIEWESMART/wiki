@@ -1,0 +1,92 @@
+# 8" 1200x1920 Transflective TFT Touch Display
+
+<!-- 顶部黄金动作条：快速返回系列、直达商城与规格书请求 -->
+<div class="viewe-action-bar" style="margin-bottom: 20px; display: flex; gap: 12px;">
+    <a href="../" class="md-button md-button--primary" style="margin: 0;">← Back to Series</a>
+    <a href="https://viewedisplay.com/product/8-inch-1200x1920-transflective-tft-sunlight-readable-and-low-power-high-resolution-touch-display/" target="_blank" class="md-button" style="margin: 0; border-color: var(--md-primary-fg-color);">🌐 Official Store</a>
+    <a href="#support-center" class="md-button" style="margin: 0;">📄 Request Datasheet</a>
+</div>
+
+!!! info "Product Overview"
+    **VIEWE 8-inch Transflective TFT Display** is a high-resolution (1200*1920 FHD) portrait screen engineered for demanding outdoor environments. By utilizing **Transflective technology**, it natively reflects ambient sunlight to provide superior readability without relying heavily on the backlight, achieving **extreme low-power consumption** under direct sunlight. Equipped with a responsive capacitive touch panel, it is the ideal choice for outdoor handheld terminals, rugged industrial tablets, and marine navigation equipment.
+
+---
+
+## 1. Key Features
+
+Here are the main technical specifications for the 8-inch high-resolution display:
+
+*   **Display Technology**: Transflective TFT-LCD (Excellent sunlight readability & power saving).
+*   **Screen Size**: 8.0 inch (Diagonal).
+*   **High Resolution**: 1200 x 1920 Pixels (Portrait orientation).
+*   **Interface Type**: MIPI DSI (High-speed differential signaling).
+*   **Touch Panel**: Capacitive Touch Screen (Multi-touch support via I2C interface).
+*   **Optical Performance**: 
+    *   *Transmissive Mode*: Active backlight for indoor/dark environments.
+    *   *Reflective Mode*: Uses ambient light outdoors, reducing backlight power up to 80%.
+
+---
+
+## 2. Pinout Definition
+
+The module connects via a high-density FPC connector. Below is the hardware pinout description for the display and touch panel interfaces:
+
+### Main MIPI & Power Interface
+
+| Pin No. | Symbol | I/O | Description |
+| :---: | :--- | :---: | :--- |
+| 1 | **VCI** | P | Analog Power Supply (3.3V) |
+| 2 | **VDDI** | P | Interface I/O Digital Power Supply (1.8V) |
+| 3 | **GND** | G | System Ground |
+| 4 | **MIPI_D0_P** | I/O | MIPI DSI Data Lane 0 (Positive) |
+| 5 | **MIPI_D0_N** | I/O | MIPI DSI Data Lane 0 (Negative) |
+| 6 | **GND** | G | System Ground |
+| 7 | **MIPI_CLK_P** | I | MIPI DSI Clock Lane (Positive) |
+| 8 | **MIPI_CLK_N** | I | MIPI DSI Clock Lane (Negative) |
+| 9 | **RESET** | I | Global Hardware Reset Pin (Active Low) |
+| 10 | **LEDK** | P | LED Backlight Cathode (Negative) |
+| 11 | **LEDA** | P | LED Backlight Anode (Positive) |
+
+### Capacitive Touch Panel (CTP) Interface
+
+| Pin No. | Symbol | I/O | Description |
+| :---: | :--- | :---: | :--- |
+| 1 | **CTP_VDD** | P | Touch Panel Power Supply (3.3V) |
+| 2 | **CTP_SCL** | I | I2C Clock Line (Requires External Pull-up) |
+| 3 | **CTP_SDA** | I/O | I2C Data Line (Requires External Pull-up) |
+| 4 | **CTP_INT** | O | Interrupt Output Pin to Host MCU/CPU |
+| 5 | **CTP_RST** | I | Touch Panel Reset Pin (Active Low) |
+
+---
+
+## 3. Reference Initialization Code
+
+Since this high-resolution screen uses a **MIPI DSI** interface, it is typically driven by an ARM Cortex-A Linux/Android SoC (e.g., Rockchip, NXP i.MX, or Raspberry Pi Compute Module). Below is a reference initialization sequences for the display panel IC register setup:
+
+```c
+// VIEWE 8" 1200x1920 Transflective TFT Driver Initial Code
+void VIEWE_8inch_MIPI_Init(void) 
+{
+    // 1. Hardware Reset Sequence
+    LCD_RESET_HIGH();
+    delay_ms(10);
+    LCD_RESET_LOW();
+    delay_ms(20);
+    LCD_RESET_HIGH();
+    delay_ms(50);
+
+    // 2. Exit Sleep Mode
+    MIPI_DSI_Write_Cmd(0x11); 
+    delay_ms(120);
+
+    // 3. Power Control & Panel Timing Settings (Optimized for Transflective)
+    MIPI_DSI_Write_Reg(0xB1, 0x01, 0x1C, 0x1C); 
+    MIPI_DSI_Write_Reg(0xC0, 0xA2, 0x02, 0x84); 
+    
+    // 4. Resolution & Lane Configuration (1200x1920 Portrait)
+    MIPI_DSI_Write_Reg(0xD6, 0x01); // Set 4-Lane MIPI Mode
+    
+    // 5. Display On
+    MIPI_DSI_Write_Cmd(0x29); 
+    delay_ms(20);
+}
