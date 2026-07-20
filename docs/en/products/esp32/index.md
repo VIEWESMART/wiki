@@ -127,14 +127,14 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 
     -   **2.1" Round Knob**
         <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
-        * **Model**: UEDX48480021-MD80E
+        * **Model**: UEDX48480021-MD80ET
         * **Res**: 480x480 IPS
         * **Input**: Knob (Optional Touch)
         <div style="margin-top: 8px;">
-            [:arrow_right: View Details](../esp32-s3-2.1-knob/)
+            [:arrow_right: View Details](../esp32-s3-2.1-touch-knob/)
         </div>
 
-    -   **1.28" C3 Knob**
+    -   **1.3" C3 Knob**
         <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
         * **Model**: UEDX24240013-MD50E
         * **Chip**: ESP32-C3
@@ -161,7 +161,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 | [**UEDX24320035E-WB-A**](../esp32-s3-3.5inch-240x320/) | 3.5" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 340 nit |
 | [**UEDX24320028E-WB-A**](../esp32-s3-2.8inch-240x320/) | 2.8" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 340 nit |
 | [**UEDX24320024E-WB-A**](../esp32-s3-2.4inch-240x320/) | 2.4" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 300 nit |
-| [**UEDX48480021-MD80ET**](../esp32-s3-2.1-knob/) | 2.1" | 480x480 | IPS | S3 (240M) | 16M/8M | UART | **Knob+Touch**| 300 nit |
+| [**UEDX48480021-MD80ET**](../esp32-s3-2.1-touch-knob/) | 2.1" | 480x480 | IPS | S3 (240M) | 16M/8M | UART | **Knob+Touch**| 300 nit |
 | [**UEDX17320019E-WB-A**](../esp32-s3-1.9inch-170x320/) | 1.9" | 170x320 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 500 nit |
 | **Aurai Smart Ring 1P8** | 1.8" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | USB | Cap | **700 nit** |
 | **EchoEar Plus** | 1.8" | 360x360 | IPS | S3 (240M) | 16M/8M | USB | Cap | 300 nit |
