@@ -188,8 +188,8 @@ Modify macros in `esp_panel_board_supported_conf.h`:
 
 ## ❓ FAQ
 
-??? question "After reading the tutorials, I still don't know how to build the programming environment."
-    Refer to the [VIEWE-FAQ]() document for detailed environment setup instructions.
+??? question "After reading the tutorials, I still don't know how to build the programming environment?"
+    Refer to the [VIEWE-FAQ](../../support/faq.md) document for detailed environment setup instructions.
 
 ??? question "Why does Arduino IDE prompt me to update library files? Should I update?"
     **Do not update.** Different versions of library files may not be mutually compatible. Stick to the recommended versions.
@@ -221,7 +221,7 @@ Modify macros in `esp_panel_board_supported_conf.h`:
 | ESP32-S3-WROOM-1 (CN) | [Datasheet Chinese](information/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf) |
 
 
-### 🛠️ Tools
+## 🛠️ Tools
 
 * **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)** – Utility for manual firmware flashing.
 * **[LVGL Image Converter](https://lvgl.io/tools/imageconverter)** – Convert images to C arrays for LVGL.
