@@ -18,7 +18,7 @@ description: ESP32-C3 based 1.3-inch knob display with 240X240 resolution, IPS T
 </div>
 
 <div align="center">
-    <img src="../../../assets/images/UEDX24240013-MD50E/Main.png" alt="1.3-inch tft Knob Display" style="max-width: 90%; height: auto;">
+    <img src="../../../assets/images/UEDX24240013-MD50E/1.3-inch tft Knob Display.png" alt="1.3-inch tft Knob Display" style="max-width: 90%; height: auto;">
 </div>
 
 ## 📖 Introduction
@@ -301,6 +301,25 @@ Burn files are located in the project root directory under `[firmware](./firmwar
 
 ---
 
+## 📎 Resource & Datasheets
+
+| Document | Link |
+| :------- | :--- |
+| Product Specification | [UEDX24240013-MD50E.PDF](../../../assets/datasheet/UEDX24240013-MD50E.pdf) |
+| 2D Drawing(DWG) | [UEDX24240013-MD50E-2D.DWG](../../../assets/dimension/UEDX24240013-MD50E-2D.dwg) |
+| ESP32-C3 (EN) | [Datasheet English](../../../assets/datasheet/chip/esp32-c3_datasheet_en.pdf) |
+| ESP32-C3 (CN) | [Datasheet Chinese](../../../assets/datasheet/chip/esp32-c3_datasheet_cn.pdf) | 
+| Schematic Diagram| [SCH-UEDX24240013-MD50E.pdf](../../../assets/schematic/SCH-UEDX24240013-MD50E.pdf) |   
+
+
+## 🛠️ Tools
+
+* **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)** – Utility for manual firmware flashing.
+* **[LVGL Image Converter](https://lvgl.io/tools/imageconverter)** – Convert images to C arrays for LVGL.
+
+> [!IMPORTANT]
+> For more resources, please explore the [**Resource Center**](../../support/resource.md).
+
 ## ❓ FAQ
 
 ??? question "After reading the above tutorials, I still don't know how to build a programming environment. What should I do?"
@@ -319,29 +338,6 @@ Burn files are located in the project root directory under `[firmware](./firmwar
     Please hold down the **BOOT** button and try downloading the program again.
 
 ---
-
-## 📐 Schematic
-
-*(Refer to the Schematic directory in the repository)*
-
----
-
-## 📎 Resource & Datasheets
-
-- [Product Specification](information/UEDX24240013-MD50E%20V3.3%20SPEC.pdf)
-- [Display Datasheet](information/UE013QV-RH13-A003B.pdf)
-- [Button Datasheet](information/6x6Silent%20switch.pdf)
-- [Encoder Datasheet](information/EC110101R6D-HA1-011%20YBGW080.pdf)
-- [ESP32-C3 Datasheet (English)](information/esp32-c3_datasheet_en.pdf)
-- [ESP32-C3 Datasheet (Chinese)](information/esp32-c3_datasheet_cn.pdf)
-
-## 🛠️ Tools
-
-* **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)** – Utility for manual firmware flashing.
-* **[LVGL Image Converter](https://lvgl.io/tools/imageconverter)** – Convert images to C arrays for LVGL.
-
-> [!IMPORTANT]
-> For more resources, please explore the [**Resource Center**](../../support/resource.md).
 
 !!! info "Can't find what you need?"    
     If you need more products, resources or support, please contact our team:  

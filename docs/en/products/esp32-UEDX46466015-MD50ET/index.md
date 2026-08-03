@@ -247,8 +247,8 @@ If you need to flash a pre‑compiled binary manually:
     *If flashing fails, hold down the **BOOT** button while powering on, then retry.*
 
 <div align="center">
-    <img src="../../../assets/images/UEDX46460015-MD50ET/10.png" alt="Flash Tool – Chip Selection" width="45%">
-    <img src="../../../assets/images/UEDX46460015-MD50ET/11.png" alt="Flash Tool – Download Settings" width="45%">
+    <img src="../../../assets/images/UEDX46460015-MD50ET/10.png" alt="Flash Tool – Chip Selection" width="50%">
+    <img src="../../../assets/images/UEDX46460015-MD50ET/11.png" alt="Flash Tool – Download Settings" width="85%">
 </div>
 
 ---
@@ -257,7 +257,7 @@ If you need to flash a pre‑compiled binary manually:
 
 ### Q: After reading the tutorials, I still can’t set up the programming environment. What should I do?
 
-**A:** Please refer to the [VIEWE‑FAQ]() document (link to be provided) for step‑by‑step environment setup instructions.
+**A:** Please refer to the [VIEWE‑FAQ](../../support/faq.md) document (link to be provided) for step‑by‑step environment setup instructions.
 
 ### Q: Why does Arduino IDE prompt me to update library files? Should I update?
 
@@ -284,8 +284,6 @@ If you need to flash a pre‑compiled binary manually:
 | **Product Specification** | PDF | [UEDX46460015‑MD50ET Datasheet](../../../assets/datasheet/product/UEDX46460015-MD50ET.pdf) |
 | **Display Datasheet** | PDF | [ALL-UE015WV-RB24-A021A.pdf](../../../assets/datasheet/display/ALL-UE015WV-RB24-A021A%20V1.0%20SPEC.pdf) |
 |**Touch IC Datasheet**|PDF|[CST820_DataSheet.pdf](../../../assets/datasheet/touch/CST820_DataSheet-En_V1.0.pdf)|
-| **Button Datasheet** | PDF | [6×6 Silent Switch.pdf](../../../assets/datasheet/peripheral/6x6Silent%20switch.pdf) |
-| **Encoder Datasheet** | PDF | [EC28A1520401 Encoder](../../../assets/datasheet/peripheral/EC110101R6D-HA1-011%20YBGW080.pdf) |
 
 
 ### 🛠️ Tools

@@ -10,7 +10,7 @@ description: UEDX80480070E-WB-A is 7" 800X480 ESP32-S3 WiFi6 Touch Smart Display
 -   **UEDX80480070E-WB-A**
     ---
     The **Mainstream AIoT** Smart Display powered by **ESP32-S3**.
-    Featuring a 7-inch **800x480** TFT Display (RGB), Wi-Fi & BLE 5, and rich expansion interfaces.
+    Featuring a 7-inch **800x480** TFT Display (TN/IPS) with Capacitive Touch Screen, Wi-Fi & BLE 5, and rich expansion interfaces.
 
     [:material-arrow-left: Back to Series](../esp32/){ .md-button }
     [:material-cart: Official Store](https://viewedisplay.com/product/esp32-7-inch-800x480-rgb-ips-tft-display-touch-screen-arduino-lvgl-uart/){ .md-button .md-button--primary }

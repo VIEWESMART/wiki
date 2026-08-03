@@ -18,7 +18,7 @@ description: ESP32-S3 based 2.1-inch touch knob display with 480x480 resolution,
 </div>
 
 <div align="center">
-    <img src="../../../assets/images/UEDX48480021-MD80ET/Main.png" alt="2.1-inch Touch Knob Display" style="max-width: 90%; height: auto;">
+    <img src="../../../assets/images/UEDX48480021-MD80ET/2.1 Touch Knob Display.jpg" alt="2.1-inch Touch Knob Display" style="max-width: 90%; height: auto;">
 </div>
 
 
@@ -182,9 +182,33 @@ Modify macros in `esp_panel_board_supported_conf.h`:
 4. If burning fails, hold the **BOOT-0** button and retry.
 
 <p align="center" width="100%">
-  <img src="image/10.png" alt="Burning Step 1" style="max-width:45%; display:inline-block;">
-  <img src="image/11.png" alt="Burning Step 2" style="max-width:45%; display:inline-block;">
+  <img src="../../../assets/images/Espressif/esp32-s3-firmware-download-1.png" alt="Firmware Download Step 1">
+  <img src="../../../assets/images/Espressif/esp32-s3-firmware-download-2.png" alt="Firmware Download Step 2">
 </p>
+
+## 📐 Schematic
+
+<div align="center"> 
+  <img src="../../../assets/schematic/SCH-UEDX48480021-MD80ET.png" width="100%" alt="2.1 knob display Schematic">
+  <!-- <img src="../../../assets/images/UEP4S070H1024V600C/70E-1.png" width="45%" alt="Back View"> -->
+</div>
+
+## 📎 Information & Datasheets
+
+| Document | Link |
+| :------- | :--- |
+| Product Specification | [UEDX48480021-MD80ET.PDF](../../../assets/datasheet/UEDX48480021-MD80ET.pdf) |
+| ESP32-S3-WROOM-1 (EN) | [Datasheet English](../../../assets/datasheet/chip/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf) |
+| ESP32-S3-WROOM-1 (CN) | [Datasheet Chinese](../../../assets/datasheet/chip/esp32-s3-wroom-1_wroom-1u_datasheet_cn.pdf) |
+
+
+## 🛠️ Tools
+
+* **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)** – Utility for manual firmware flashing.
+* **[LVGL Image Converter](https://lvgl.io/tools/imageconverter)** – Convert images to C arrays for LVGL.
+
+> [!IMPORTANT]
+> For more resources, please explore the [**Resource Center**](../../support/resource.md).
 
 ## ❓ FAQ
 
@@ -203,31 +227,6 @@ Modify macros in `esp_panel_board_supported_conf.h`:
 ??? question "Why does the board continuously fail to download the program?"
     Hold down the **BOOT** button while clicking the upload/download button, then release after the connection is established.
 
-## 📐 Schematic
-
-<p align="center" width="100%">
-  <img src="Schematic/MD80ET-V1.0%20SCH_00.png" alt="Schematic">
-</p>
-
-## 📎 Information & Datasheets
-
-| Document | Link |
-| :------- | :--- |
-| Product Specification | [UEDX48480021-MD80ET V1.1 SPEC](information/UEDX48480021-MD80ET%20V1.1%20SPEC.pdf) |
-| Display Datasheet | [ALL-UE021WV-RB40-A009A V1.0 SPEC](information/ALL-UE021WV-RB40-A009A%20V1.0%20SPEC.pdf) |
-| Button Datasheet | [6x6 Silent Switch](information/6x6Silent%20switch.pdf) |
-| Encoder Datasheet | [EC28A1520401 Specification](information/C219783_%E6%97%8B%E8%BD%AC%E7%BC%96%E7%A0%81%E5%99%A8_EC28A1520401_%E8%A7%84%E6%A0%BC%E4%B9%A6_WJ239718.PDF) |
-| ESP32-S3-WROOM-1 (EN) | [Datasheet English](information/esp32-s3-wroom-1_wroom-1u_datasheet_cn.pdf) |
-| ESP32-S3-WROOM-1 (CN) | [Datasheet Chinese](information/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf) |
-
-
-## 🛠️ Tools
-
-* **[Flash Download Tool](../../../assets/software/flash_download_tool.zip)** – Utility for manual firmware flashing.
-* **[LVGL Image Converter](https://lvgl.io/tools/imageconverter)** – Convert images to C arrays for LVGL.
-
-> [!IMPORTANT]
-> For more resources, please explore the [**Resource Center**](../../support/resource.md).
 
 !!! info "Can't find what you need?"    
     If you need more products, resources or support, please contact our team:  

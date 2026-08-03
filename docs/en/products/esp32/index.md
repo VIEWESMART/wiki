@@ -59,8 +59,10 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Res**: 800x480 / 480x480
         * **Chip**: ESP32-S3 (8MB / 16MB)
         <div style="margin-top: 8px;">
-            [:arrow_right: 4.3" Details](../esp32-s3-4.3inch/)
+            [:arrow_right: 4.3" 800x480](../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/)
             &nbsp;
+            [:arrow_right: 4.3" 480x272](../esp32-s3-4.3inch-480x272-touch-uart-display-hmi/)
+            &nbsp;            
             [:arrow_right: 4.0" Details](../esp32-s3-4.0inch/)
         </div>
 
@@ -154,7 +156,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 | [**UEP4S070H1024V600C**](../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/) | 7.0" | 1024x600 | IPS | **P4** (400M) | 16M/32M | RS485/UART | Cap | 350 nit |
 | [**UEDX80480070E-WB-A**](../esp32-s3-7inch-800x480-touch-uart-display-hmi/) | 7.0" | 800x480 | TN | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
 | [**UEDX80480050E-WB-A**](../esp32-s3-5inch-800x480-touch-uart-display-hmi/) | 5.0" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
-| [**UEDX80480043E-WB-A**](../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/) | 4.3" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
+| [**UEDX80480043E-WB-B**](../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/) | 4.3" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
 | [**UEDX48270043E-WB-A**](../esp32-s3-4.3inch-480x272-touch-uart-display-hmi/) | 4.3" | 480x272 | TN | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
 | [**UEDX48480040E-WB-A**](../esp32-s3-4inch-480x480-touch-uart-display-hmi/) | 4.0" | 480x480 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 350 nit |
 | [**UEDX32480035E-WB-A**](../esp32-s3-3.5inch-320x480-touch-uart-display-hmi/) | 3.5" | 320x480 | IPS | S3 (240M) | 16M/8M | UART/USB | Cap | 250 nit |

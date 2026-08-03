@@ -10,7 +10,7 @@ description: UEDX24320028E-WB-A is 2.8" 240X320 ESP32-S3 Smart Touch Display Uar
 
 -   **UEDX24320028E-WB-A**
     ---
-    VIEWE 2.8-inch ESP32-S3 Smart Display is an HMI module engineered for IoT and industrial automation. Featuring a vibrant 240x320 IPS capacitive touchscreen, it is powered by a robust 240MHz ESP32-S3 processor with built-in Wi-Fi and BLE 5. Supporting Arduino and LVGL, it offers rich UART interfaces for rapid GUI development.
+    The Mainstream AIoT Smart Display powered by ESP32-S3. Featuring a 2.8-inch 240x320 IPS TFT Display with Capacitive Touch Screen, Wi-Fi & BLE 5, and rich expansion interfaces.
 
     [:material-arrow-left: Back to Series](../esp32/){ .md-button }
     [:material-cart: Official Store](https://viewedisplay.com/product/esp32-2-8-inch-240x320-mcu-ips-tft-display-touch-screen-arduino-lvgl-wifi-ble-uart-smart-module/){ .md-button .md-button--primary }
@@ -272,13 +272,11 @@ Examples are available in the [GitHub Repository](examples).
 
 ## 4. Related Documents & Resources
 
-- [Products Specification](information/UEDX24320028E-WB-A%20V1.0%20SPEC.pdf)
-- [Display Datasheet](information/UE024QV-RB40-A038A.pdf)
-- [Touch IC](information/DS_CHSC6540_V1.0%20Datasheet.pdf)
-- [5050RGB-LED](information/C2843785_RGB%2BLED(Built-in%20IC)_XL-5050RGBC-WS2812B_specification_WJ1123912.PDF)
-- [Buzzer](information/C7544813_Buzzer_HYG-8503A_specification_WJ436381.PDF)
-- [CH340C](information/C84681_USB%20Conversion%20chip_CH340C_specification_WJ1187874.PDF)
-- [Schematic](Schematic/UEDX24320028E-WB-A%20V1.1%20sch.png)
+| Document | Link |
+| :--- | :--- |
+| Product Specification | [UEDX24320028E-WB-A.pdf](../../../assets/datasheet/UEDX24320028E-WB-A.pdf) |
+| Schematic Diagram | [SCH-UEDX24320028E-WB-A.png](../../../assets/schematic/SCH-UEDX24320028E-WB-A.png) |
+| 2D Drawing (DWG) | [UEDX32480028E-WB-A-2D.dwg](../../../assets/dimension/) |
 
 ## 5. Firmware Download
 
