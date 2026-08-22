@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VIEWE 显示时序与配置生成器</title>
+  <style>
+    :root{--bg:#f4f7fa;--panel:#fff;--text:#172434;--muted:#68788b;--line:#d9e1e8;--brand:#0877a9;--brand2:#075985;--soft:#e8f4fa;--good:#16794b;--goodbg:#e8f7ef;--warn:#9a6200;--warnbg:#fff5d9;--bad:#b42318;--badbg:#ffebe9;--code:#102433;--codeText:#d7eef8;--shadow:0 12px 30px rgba(23,52,75,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,"Microsoft YaHei",sans-serif}
+    header{background:linear-gradient(120deg,#15334c,#0877a9);color:#fff;padding:24px max(22px,calc((100% - 1240px)/2))}
+    header h1{margin:0 0 5px;font-size:25px}header p{margin:0;color:#d8edf7}
+    main{max-width:1240px;margin:22px auto;padding:0 20px 36px}
+    .toolbar,.grid,.metrics,.two{display:grid;gap:14px}.toolbar{grid-template-columns:1.5fr 1fr 1fr 1.5fr;margin-bottom:14px}.grid{grid-template-columns:minmax(390px,.95fr) minmax(520px,1.25fr)}.two{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:repeat(4,1fr)}
+    .panel,.metric{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.panel{padding:18px}.metric{padding:14px}
+    h2{font-size:17px;margin:0 0 14px}h3{font-size:14px;margin:18px 0 10px;color:var(--brand2)}
+    label{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.field{margin-bottom:11px}
+    input,select,button{font:inherit}input,select{width:100%;border:1px solid #bdc9d3;border-radius:8px;background:#fff;padding:9px 10px;color:var(--text)}input:focus,select:focus{outline:3px solid rgba(8,119,169,.16);border-color:var(--brand)}
+    .tabs{display:flex;gap:6px}.tabs button,.action{border:1px solid var(--line);border-radius:8px;padding:9px 13px;background:#fff;color:var(--text);cursor:pointer}.tabs button.active,.action.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.action:hover{filter:brightness(.97)}
+    .metric span{display:block;color:var(--muted);font-size:12px}.metric strong{display:block;margin-top:4px;font-size:20px;color:var(--brand2)}.metric small{color:var(--muted)}
+    .status{padding:11px 13px;border-radius:9px;margin-top:14px}.status.good{background:var(--goodbg);color:var(--good)}.status.warn{background:var(--warnbg);color:var(--warn)}.status.bad{background:var(--badbg);color:var(--bad)}
+    .breakdown{margin-top:16px}.bar{height:12px;background:#e6edf2;border-radius:99px;overflow:hidden;display:flex}.bar .payload{background:#0877a9}.bar .blank{background:#efb44b}.legend{display:flex;gap:16px;margin-top:7px;color:var(--muted);font-size:12px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px}.dot.a{background:#0877a9}.dot.b{background:#efb44b}
+    pre{margin:0;background:var(--code);color:var(--codeText);border-radius:9px;padding:14px;overflow:auto;min-height:260px;white-space:pre;font:12px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace}
+    table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:9px 7px}th{color:var(--muted);font-size:12px;font-weight:600}td:nth-child(2),th:nth-child(2){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}.formula{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px}
+    .timing-figure{margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}.timing-figure svg{display:block;width:100%;height:auto;background:#f7f9fb;border:1px solid var(--line);border-radius:9px}.timing-figure text{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;fill:#263747}.timing-figure .small{font-size:12px}.timing-figure .value{font-size:13px;font-weight:600;fill:#075985}.timing-figure .guide{stroke:#9baab6;stroke-dasharray:5 4}.timing-figure .wave{stroke:#233746;stroke-width:2;fill:none}.timing-figure .active{fill:#fff;stroke:#456}.timing-figure .blanking{fill:#d8dde1;stroke:#7e8d99}.timing-figure .arrow{stroke:#344a5a;stroke-width:1.5;marker-start:url(#arrow);marker-end:url(#arrow)}
+    .hidden{display:none!important}.note{color:var(--muted);font-size:12px;margin-top:8px}.unit{position:relative}.unit input{padding-right:54px}.unit b{position:absolute;right:10px;bottom:10px;color:var(--muted);font-size:11px;font-weight:500}
+    @media(max-width:900px){.grid,.toolbar{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}}
+    @media(max-width:520px){main{padding:0 12px}.panel{padding:14px}.metrics{grid-template-columns:1fr}.tabs{display:grid;grid-template-columns:repeat(2,1fr)}.tabs button{padding:9px 5px}}
+  </style>
+</head>
+<body>
+  <header><h1>显示时序与配置生成器</h1><p>RGB · MIPI-DSI　面向 RTOS、Linux 与 Android 平台生成时序、链路预算和平台配置</p></header>
+  <main>
+    <section class="toolbar panel">
+      <div><label>显示接口类型</label><div class="tabs"><button type="button" data-mode="rgb" class="active">RGB</button><button type="button" data-mode="mipi">MIPI-DSI</button></div></div>
+      <div><label for="preset">常用预设</label><select id="preset"><option value="320,240,30,16">320×240 · 30 · RGB565</option><option value="320,480,60,18">320×480 · 60 · RGB666</option><option value="480,480,60,16">480×480 · 60 · RGB565</option><option value="800,480,60,16" selected>800×480 · 60 · RGB565</option><option value="1024,600,60,16">1024×600 · 60 · RGB565</option><option value="1280,720,60,24">1280×720 · 60 · RGB888</option><option value="1080,1920,60,24">1080×1920 · 60 · RGB888</option></select></div>
+      <div><label for="system">目标系统</label><select id="system"><option value="rtos" selected>RTOS / MCU</option><option value="linux">Linux</option><option value="android">Android</option></select></div>
+      <div><label for="platform">目标平台 / 主控</label><select id="platform"></select></div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>输入参数</h2>
+        <div class="two">
+          <div class="field unit"><label for="width">水平有效像素</label><input id="width" type="number" min="1" value="800"><b>px</b></div>
+          <div class="field unit"><label for="height">垂直有效像素</label><input id="height" type="number" min="1" value="480"><b>px</b></div>
+          <div class="field unit"><label for="fps">目标刷新率</label><input id="fps" type="number" min="1" step="1" value="60"><b>FPS</b></div>
+          <div class="field"><label for="bpp">像素格式</label><select id="bpp"><option value="16" selected>RGB565 · 16 bit</option><option value="18">RGB666 · 18 bit</option><option value="24">RGB888 · 24 bit</option><option value="32">ARGB8888 · 32 bit</option></select></div>
+        </div>
+
+        <div id="rgbFields">
+          <h3>视频时序</h3>
+          <div class="two">
+            <div class="field"><label for="hfp">H Front Porch</label><input id="hfp" type="number" min="0" value="40"></div><div class="field"><label for="hbp">H Back Porch</label><input id="hbp" type="number" min="0" value="40"></div>
+            <div class="field"><label for="hsync">H Sync Width</label><input id="hsync" type="number" min="1" value="48"></div><div class="field"><label for="rgbBus">RGB数据位宽</label><select id="rgbBus"><option value="16" selected>16 bit</option><option value="18">18 bit</option><option value="24">24 bit</option></select></div>
+            <div class="field"><label for="vfp">V Front Porch</label><input id="vfp" type="number" min="0" value="13"></div><div class="field"><label for="vbp">V Back Porch</label><input id="vbp" type="number" min="0" value="29"></div>
+            <div class="field"><label for="vsync">V Sync Width</label><input id="vsync" type="number" min="1" value="3"></div><div class="field"><label for="pclkPol">PCLK边沿</label><select id="pclkPol"><option value="false">上升沿采样</option><option value="true">下降沿采样</option></select></div>
+          </div>
+        </div>
+
+        <div id="mipiFields" class="hidden">
+          <h3>MIPI-DSI 链路</h3>
+          <div class="two">
+            <div class="field"><label for="lanes">Data Lanes</label><select id="lanes"><option value="1">1 lane</option><option value="2" selected>2 lanes</option><option value="4">4 lanes</option></select></div>
+            <div class="field"><label for="mipiMode">传输模式</label><select id="mipiMode"><option value="video" selected>Video mode</option><option value="command">Command mode</option></select></div>
+            <div class="field"><label for="protoPct">DSI封包与控制占用</label><input id="protoPct" type="number" min="0" max="100" value="5"></div>
+            <div class="field unit"><label for="laneLimit">单 Lane 能力上限</label><input id="laneLimit" type="number" min="80" value="1500"><b>Mbps</b></div>
+            <div class="field"><label for="mipiFormat">DPI格式</label><select id="mipiFormat"><option value="RGB565" selected>RGB565</option><option value="RGB666">RGB666</option><option value="RGB888">RGB888</option></select></div>
+          </div>
+        </div>
+
+        <div class="timing-figure">
+          <h3>视频时序示意</h3>
+          <svg viewBox="0 0 620 430" role="img" aria-label="水平与垂直显示时序示意图">
+            <defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6" fill="none" stroke="#344a5a"/></marker></defs>
+            <path class="wave" id="hWave" d="M135 74 V48 H205 V74 H575"/>
+            <line class="arrow" id="ha0" y1="94" y2="94"/><line class="arrow" id="ha1" y1="94" y2="94"/><line class="arrow" id="ha2" y1="94" y2="94"/><line class="arrow" id="ha3" y1="94" y2="94"/>
+            <text y="27" text-anchor="middle" class="value" id="dHsync">HSYNC 48</text><text y="27" text-anchor="middle" class="value" id="dHbp">HBP 40</text><text y="27" text-anchor="middle" class="value" id="dHactive">HAdr 800</text><text y="27" text-anchor="middle" class="value" id="dHfp">HFP 40</text>
+            <text y="113" text-anchor="middle" class="small" id="hl0">HSync</text><text y="113" text-anchor="middle" class="small" id="hl1">HBP</text><text y="113" text-anchor="middle" class="small" id="hl2">HActive</text><text y="113" text-anchor="middle" class="small" id="hl3">HFP</text>
+            <rect x="135" y="135" width="440" height="260" class="blanking"/><rect id="activeRect" class="active"/>
+            <path class="wave" id="vWave" d="M72 135 H92 V175 H72 V395"/>
+            <line id="gy0" x1="135" x2="575" class="guide"/><line id="gy1" x1="135" x2="575" class="guide"/><line id="gy2" x1="135" x2="575" class="guide"/><line id="gx1" y1="135" y2="395" class="guide"/><line id="gx2" y1="135" y2="395" class="guide"/>
+            <line class="arrow" id="va0" x1="105" x2="105"/><line class="arrow" id="va1" x1="105" x2="105"/><line class="arrow" id="va2" x1="105" x2="105"/><line class="arrow" id="va3" x1="105" x2="105"/>
+            <text x="6" class="value" id="dVsync">VSYNC 3</text><text x="16" class="value" id="dVbp">VBP 29</text><text x="6" class="value" id="dVactive">VAdr 480</text><text x="16" class="value" id="dVfp">VFP 13</text>
+            <text x="327" y="282" class="small">Active Display Area</text><text x="245" y="418" class="small">示意图不按数值比例缩放</text>
+          </svg>
+          <div class="note">H/V Active是有效显示区；Front Porch、Sync Width和Back Porch构成消隐区，并共同决定总周期及像素时钟。</div>
+        </div>
+
+      </section>
+
+      <section>
+        <div class="metrics" aria-live="polite">
+          <div class="metric"><span id="k1label">像素时钟</span><strong id="k1">—</strong><small id="k1unit">MHz</small></div>
+          <div class="metric"><span id="k2label">净像素带宽</span><strong id="k2">—</strong><small id="k2unit">MB/s</small></div>
+          <div class="metric"><span id="k3label">总周期</span><strong id="k3">—</strong><small id="k3unit">pixel/frame</small></div>
+          <div class="metric"><span>单帧显存</span><strong id="frame">—</strong><small>MiB</small></div>
+        </div>
+        <div class="panel" style="margin-top:14px">
+          <h2>计算结果</h2>
+          <div class="breakdown"><div class="bar"><span class="payload" id="payloadBar"></span><span class="blank" id="blankBar"></span></div><div class="legend"><span><i class="dot a"></i>有效显示数据</span><span><i class="dot b"></i><span id="timingLegend">非显示时序占用</span></span></div></div>
+          <div id="status" class="status good" role="status">参数处于推荐范围</div>
+          <table><colgroup><col style="width:25%"><col style="width:30%"><col style="width:45%"></colgroup><thead><tr><th>结果</th><th class="text-center">数值</th><th>计算公式</th></tr></thead><tbody id="details"></tbody></table>
+        </div>
+        <div class="panel" style="margin-top:14px">
+          <h2 id="codeTitle">平台配置片段</h2>
+          <pre><code id="code"></code></pre>
+          <div class="actions"><button class="action primary" id="copy" type="button">复制配置</button><button class="action" id="download" type="button">下载 .h 文件</button></div>
+          <div class="note">生成值用于方案设计和初始点屏；量产前必须以屏幕规格书、电气时序和实测结果校准。</div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="app.js"></script><script type="text/plain" id="legacy-script">
+    (()=>{
+      const $=id=>document.getElementById(id); let mode='rgb';
+      const ids=['width','height','fps','bpp','mcu','margin','hfp','hbp','hsync','vfp','vbp','vsync','rgbBus','pclkPol','lanes','mipiMode','blankPct','protoPct','laneLimit','mipiFormat','spiLines','spiClock','efficiency','refreshPct','cmdBits','dmaBytes'];
+      const n=id=>Math.max(0,Number($(id).value)||0), fmt=(v,d=2)=>Number.isFinite(v)?v.toLocaleString('zh-CN',{maximumFractionDigits:d,minimumFractionDigits:d}):'—';
+      const row=(a,b)=>`<tr><th>${a}</th><td>${b}</td></tr>`;
+      const setMetric=(i,label,value,unit)=>{$(`k${i}label`).textContent=label;$(`k${i}`).textContent=value;$(`k${i}unit`).textContent=unit};
+      function common(){const w=n('width'),h=n('height'),fps=n('fps'),bpp=n('bpp');return {w,h,fps,bpp,pixels:w*h,frame:w*h*bpp/8,margin:n('margin')}}
+      function recommendation(c,load){const m=$('mcu').value;let limit=Infinity,reason='';if(m==='ESP32-S3'){limit=160;reason='S3 RGB/PSRAM带宽需保守评估'}else if(m==='ESP32-S31'){limit=300;reason='S31适合中高分辨率HMI'}else if(m==='ESP32-P4'){limit=600;reason='P4适合RGB/MIPI及复杂图形'}return {level:load<=limit*.75?'good':load<=limit?'warn':'bad',text:load<=limit*.75?`${m} 余量较充足 · ${reason}`:load<=limit?`${m} 接近建议边界，需实测最差UI场景`:`${m} 估算负载超出保守范围，建议降低FPS/位深或升级平台`}}
+      function renderRGB(c){
+        const ht=c.w+n('hfp')+n('hbp')+n('hsync'),vt=c.h+n('vfp')+n('vbp')+n('vsync'),total=ht*vt,pclk=total*c.fps/1e6,payload=c.frame*c.fps/1e6,wire=pclk*n('rgbBus')/8,over=total/c.pixels-1,mem=payload*4*c.margin;
+        setMetric(1,'像素时钟',fmt(pclk),'MHz');setMetric(2,'净像素带宽',fmt(payload),'MB/s');setMetric(3,'总周期',fmt(total,0),'pixel/frame');
+        const rec=recommendation(c,mem); showStatus(rec); bars(1/(1+over));
+        $('details').innerHTML=row('水平总周期',`${fmt(ht,0)} pixel`)+row('垂直总周期',`${fmt(vt,0)} line`)+row('消隐开销',`${fmt(over*100,1)}%`)+row('RGB总线数据流',`${fmt(wire)} MB/s`)+row('建议内存有效带宽',`${fmt(mem)} MB/s`)+row('帧周期',`${fmt(1000/c.fps)} ms`);
+        $('code').textContent=`// RGB panel timing generated by VIEWE tool\nstatic const esp_lcd_rgb_panel_config_t panel_config = {\n    .data_width = ${n('rgbBus')},\n    .bits_per_pixel = ${c.bpp},\n    .num_fbs = 2,\n    .timings = {\n        .pclk_hz = ${Math.round(pclk*1e6)},\n        .h_res = ${c.w}, .v_res = ${c.h},\n        .hsync_front_porch = ${n('hfp')},\n        .hsync_back_porch = ${n('hbp')},\n        .hsync_pulse_width = ${n('hsync')},\n        .vsync_front_porch = ${n('vfp')},\n        .vsync_back_porch = ${n('vbp')},\n        .vsync_pulse_width = ${n('vsync')},\n        .flags.pclk_active_neg = ${$('pclkPol').value},\n    },\n    .flags.fb_in_psram = true,\n};`;
+      }
+      function renderMIPI(c){
+        const lanes=n('lanes'),blank=n('blankPct')/100,proto=n('protoPct')/100,raw=c.pixels*c.fps*c.bpp/1e6,aggregate=raw*(1+blank)*(1+proto),lane=aggregate/lanes,target=lane*c.margin,byteClk=target/8,maxFps=c.fps*n('laneLimit')/target,util=target/n('laneLimit');
+        setMetric(1,'单 Lane 目标速率',fmt(target),'Mbps');setMetric(2,'聚合链路速率',fmt(aggregate),'Mbps');setMetric(3,'PHY Byte Clock',fmt(byteClk),'MHz');
+        const level=util<.7?'good':util<=1?'warn':'bad';showStatus({level,text:util<.7?`${lanes}-lane DSI 链路余量充足`:util<=1?`链路利用率较高，建议核对面板D-PHY范围`:`超过设定的单Lane能力上限，请增加Lane或降低FPS/位深`});bars(1/((1+blank)*(1+proto)));
+        $('details').innerHTML=row('有效像素数据率',`${fmt(raw)} Mbps`)+row('消隐＋协议开销',`${fmt((aggregate/raw-1)*100,1)}%`)+row('单Lane实际需求',`${fmt(lane)} Mbps`)+row('含余量目标速率',`${fmt(target)} Mbps/lane`)+row('Lane利用率',`${fmt(util*100,1)}%`)+row('理论安全FPS',`${fmt(maxFps,1)} FPS`);
+        const fmtMap={RGB565:'MIPI_DSI_DPI_COLOR_FMT_RGB565',RGB666:'MIPI_DSI_DPI_COLOR_FMT_RGB666',RGB888:'MIPI_DSI_DPI_COLOR_FMT_RGB888'};
+        $('code').textContent=`// MIPI-DSI bus + DPI configuration\nconst esp_lcd_dsi_bus_config_t bus_config = {\n    .bus_id = 0,\n    .num_data_lanes = ${lanes},\n    .phy_clk_src = MIPI_DSI_PHY_CLK_SRC_DEFAULT,\n    .lane_bit_rate_mbps = ${Math.ceil(target)},\n};\n\nconst esp_lcd_dpi_panel_config_t dpi_config = {\n    .dpi_clk_src = MIPI_DSI_DPI_CLK_SRC_DEFAULT,\n    .dpi_clock_freq_mhz = ${Math.ceil(byteClk)},\n    .virtual_channel = 0,\n    .pixel_format = ${fmtMap[$('mipiFormat').value]},\n    .num_fbs = 2,\n    .video_timing = { .h_size = ${c.w}, .v_size = ${c.h} },\n};`;
+      }
+      function renderSPI(c){
+        const lines=n('spiLines'),clock=n('spiClock'),eff=n('efficiency')/100,area=n('refreshPct')/100,cmd=n('cmdBits'),bits=c.pixels*c.bpp*area+cmd,capacity=clock*lines*eff,required=bits*c.fps/1e6*c.margin,maxFps=capacity*1e6/bits,frameMs=bits/(capacity*1e6)*1000,util=required/capacity;
+        setMetric(1,'所需总线时钟',fmt(required/(lines*eff)),'MHz');setMetric(2,'有效链路能力',fmt(capacity),'Mbps');setMetric(3,'理论最大帧率',fmt(maxFps,1),'FPS');
+        const level=util<.7?'good':util<=1?'warn':'bad';showStatus({level,text:util<.7?'SPI/QSPI链路余量充足':util<=1?'链路接近上限，DMA和传输效率会决定实际帧率':'目标FPS超过当前链路能力，请局部刷新、提高线数或降低负载'});bars(Math.min(1,1/(1+cmd/(c.pixels*c.bpp*area))));
+        $('details').innerHTML=row('每帧重绘面积',`${fmt(area*100,0)}%`)+row('每帧传输量',`${fmt(bits/8/1024,1)} KiB`)+row('含余量所需数据率',`${fmt(required)} Mbps`)+row('当前链路利用率',`${fmt(util*100,1)}%`)+row('单帧传输时间',`${fmt(frameMs)} ms`)+row('DMA块大小',`${fmt(n('dmaBytes')/1024,0)} KiB`);
+        $('code').textContent=`// SPI/QSPI panel IO configuration\nconst esp_lcd_panel_io_spi_config_t io_config = {\n    .dc_gpio_num = LCD_DC_GPIO,\n    .cs_gpio_num = LCD_CS_GPIO,\n    .pclk_hz = ${Math.round(clock*1e6)},\n    .lcd_cmd_bits = 8,\n    .lcd_param_bits = 8,\n    .spi_mode = 0,\n    .trans_queue_depth = 10,\n};\n\n#define LCD_H_RES ${c.w}\n#define LCD_V_RES ${c.h}\n#define LCD_BITS_PER_PIXEL ${c.bpp}\n#define LCD_DATA_LINES ${lines}\n#define LCD_DMA_CHUNK_BYTES ${n('dmaBytes')}\n#define LVGL_DRAW_BUF_LINES ${Math.max(10,Math.min(c.h,Math.round(n('dmaBytes')/(c.w*c.bpp/8))))}`;
+      }
+      function bars(payload){payload=Math.max(.05,Math.min(.98,payload));$('payloadBar').style.width=`${payload*100}%`;$('blankBar').style.width=`${(1-payload)*100}%`}
+      function showStatus(x){$('status').className=`status ${x.level}`;$('status').textContent=x.text}
+      function render(){const c=common();$('frame').textContent=fmt(c.frame/1048576);if(!c.w||!c.h||!c.fps){showStatus({level:'bad',text:'请输入大于0的分辨率和刷新率'});return}mode==='rgb'?renderRGB(c):mode==='mipi'?renderMIPI(c):renderSPI(c)}
+      document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));$('rgbFields').classList.toggle('hidden',mode!=='rgb');$('mipiFields').classList.toggle('hidden',mode!=='mipi');$('spiFields').classList.toggle('hidden',mode!=='spi');render()}));
+      ids.forEach(id=>$(id).addEventListener('input',render));
+      $('preset').addEventListener('change',e=>{const [w,h,f,b]=e.target.value.split(',');$('width').value=w;$('height').value=h;$('fps').value=f;$('bpp').value=b;render()});
+      $('copy').addEventListener('click',async()=>{await navigator.clipboard.writeText($('code').textContent);$('copy').textContent='已复制';setTimeout(()=>$('copy').textContent='复制配置',1200)});
+      $('download').addEventListener('click',()=>{const blob=new Blob([$('code').textContent],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`viewe_${mode}_display_config.h`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)});
+      render();
+    })();
+  </script>
+</body>
+</html>

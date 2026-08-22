@@ -146,6 +146,7 @@ Essential utilities for HMI development.
 
 | Tool Name | Platform | Description | Download |
 | :--- | :--- | :--- | :--- |
+| **Display Timing & Configuration Generator** | Web | Calculate RGB/MIPI-DSI timing and generate RTOS, Linux, and Android configuration templates. | [:material-open-in-new: Open Tool](../display-timing-generator/) |
 | **SquareLine Studio** | Win / Mac | Visual UI Editor for LVGL ( Recommended). | [:material-link: Website](https://squareline.io/) |
 | **LVGL Pro** | Win / Mac | Official UI Editor by LVGL (Highly Recommended). | [:material-link: Website](https://pro.lvgl.io/) |
 | **Image Converter** | Win / Mac | Online image to C array by LVGL. | [:material-link: Website](https://lvgl.io/tools/imageconverter) |
