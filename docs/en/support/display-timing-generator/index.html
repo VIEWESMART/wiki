@@ -29,12 +29,12 @@
   </style>
 </head>
 <body>
-  <header><h1>显示时序与配置生成器</h1><p>RGB · MIPI-DSI　面向 RTOS、Linux 与 Android 平台生成时序、链路预算和平台配置</p></header>
+  <header><h1>显示时序与配置生成器</h1><p>RGB · LVDS · MIPI-DSI　面向 RTOS、Linux 与 Android 平台生成时序、链路预算和平台配置</p></header>
   <main>
     <section class="toolbar panel">
-      <div><label>显示接口类型</label><div class="tabs"><button type="button" data-mode="rgb" class="active">RGB</button><button type="button" data-mode="mipi">MIPI-DSI</button></div></div>
-      <div><label for="preset">常用预设</label><select id="preset"><option value="320,240,30,16">320×240 · 30 · RGB565</option><option value="320,480,60,18">320×480 · 60 · RGB666</option><option value="480,480,60,16">480×480 · 60 · RGB565</option><option value="800,480,60,16" selected>800×480 · 60 · RGB565</option><option value="1024,600,60,16">1024×600 · 60 · RGB565</option><option value="1280,720,60,24">1280×720 · 60 · RGB888</option><option value="1080,1920,60,24">1080×1920 · 60 · RGB888</option></select></div>
-      <div><label for="system">目标系统</label><select id="system"><option value="rtos" selected>RTOS / MCU</option><option value="linux">Linux</option><option value="android">Android</option></select></div>
+      <div><label>显示接口类型</label><div class="tabs"><button type="button" data-mode="rgb" class="active">RGB</button><button type="button" data-mode="lvds">LVDS</button><button type="button" data-mode="mipi">MIPI-DSI</button></div></div>
+      <div><label for="preset">常用预设</label><select id="preset"><option value="240,320,30,16">240×320 · RGB565</option><option value="320,480,30,18">320×480 · RGB666</option><option value="480,480,60,18">480×480 · RGB666</option><option value="480,800,60,24" selected>480×800 · RGB888</option><option value="1024,600,60,24">1024×600 · RGB888</option><option value="720,1280,60,24">720×1280 · RGB888</option><option value="1080,1920,60,24">1080×1920 · RGB888</option></select></div>
+      <div><label for="system">目标系统</label><select id="system"><option value="rtos">RTOS / MCU</option><option value="linux" selected>Linux</option><option value="android">Android</option></select></div>
       <div><label for="platform">目标平台 / 主控</label><select id="platform"></select></div>
     </section>
 
@@ -42,19 +42,19 @@
       <section class="panel">
         <h2>输入参数</h2>
         <div class="two">
-          <div class="field unit"><label for="width">水平有效像素</label><input id="width" type="number" min="1" value="800"><b>px</b></div>
-          <div class="field unit"><label for="height">垂直有效像素</label><input id="height" type="number" min="1" value="480"><b>px</b></div>
+          <div class="field unit"><label for="width">水平有效像素 (HAdr)</label><input id="width" type="number" min="1" value="480"><b>px</b></div>
+          <div class="field unit"><label for="height">垂直有效像素 (VAdr)</label><input id="height" type="number" min="1" value="800"><b>px</b></div>
           <div class="field unit"><label for="fps">目标刷新率</label><input id="fps" type="number" min="1" step="1" value="60"><b>FPS</b></div>
-          <div class="field"><label for="bpp">像素格式</label><select id="bpp"><option value="16" selected>RGB565 · 16 bit</option><option value="18">RGB666 · 18 bit</option><option value="24">RGB888 · 24 bit</option><option value="32">ARGB8888 · 32 bit</option></select></div>
+          <div class="field"><label for="bpp">像素格式</label><select id="bpp"><option value="16">RGB565 · 16 bit</option><option value="18">RGB666 · 18 bit</option><option value="24" selected>RGB888 · 24 bit</option><option value="32">ARGB8888 · 32 bit</option></select></div>
         </div>
 
         <div id="rgbFields">
           <h3>视频时序</h3>
           <div class="two">
-            <div class="field"><label for="hfp">H Front Porch</label><input id="hfp" type="number" min="0" value="40"></div><div class="field"><label for="hbp">H Back Porch</label><input id="hbp" type="number" min="0" value="40"></div>
-            <div class="field"><label for="hsync">H Sync Width</label><input id="hsync" type="number" min="1" value="48"></div><div class="field"><label for="rgbBus">RGB数据位宽</label><select id="rgbBus"><option value="16" selected>16 bit</option><option value="18">18 bit</option><option value="24">24 bit</option></select></div>
-            <div class="field"><label for="vfp">V Front Porch</label><input id="vfp" type="number" min="0" value="13"></div><div class="field"><label for="vbp">V Back Porch</label><input id="vbp" type="number" min="0" value="29"></div>
-            <div class="field"><label for="vsync">V Sync Width</label><input id="vsync" type="number" min="1" value="3"></div><div class="field"><label for="pclkPol">PCLK边沿</label><select id="pclkPol"><option value="false">上升沿采样</option><option value="true">下降沿采样</option></select></div>
+            <div class="field"><label for="hfp">H Front Porch (HFP)</label><input id="hfp" type="number" min="0" value="40"></div><div class="field"><label for="hbp">H Back Porch (HBP)</label><input id="hbp" type="number" min="0" value="40"></div>
+            <div class="field"><label for="hsync">H Sync Width (HSYNC)</label><input id="hsync" type="number" min="1" value="48"></div><div class="field"><label for="rgbBus">RGB数据位宽</label><select id="rgbBus"><option value="16">16 bit</option><option value="18">18 bit</option><option value="24" selected>24 bit</option></select></div>
+            <div class="field"><label for="vfp">V Front Porch (VFP)</label><input id="vfp" type="number" min="0" value="13"></div><div class="field"><label for="vbp">V Back Porch (VBP)</label><input id="vbp" type="number" min="0" value="29"></div>
+            <div class="field"><label for="vsync">V Sync Width (VSYNC)</label><input id="vsync" type="number" min="1" value="3"></div><div class="field"><label for="pclkPol">PCLK边沿</label><select id="pclkPol"><option value="false">上升沿采样</option><option value="true">下降沿采样</option></select></div>
           </div>
         </div>
 
@@ -63,10 +63,19 @@
           <div class="two">
             <div class="field"><label for="lanes">Data Lanes</label><select id="lanes"><option value="1">1 lane</option><option value="2" selected>2 lanes</option><option value="4">4 lanes</option></select></div>
             <div class="field"><label for="mipiMode">传输模式</label><select id="mipiMode"><option value="video" selected>Video mode</option><option value="command">Command mode</option></select></div>
-            <div class="field"><label for="protoPct">DSI封包与控制占用</label><input id="protoPct" type="number" min="0" max="100" value="5"></div>
+            <div class="field unit"><label for="protoPct">DSI封包与控制占用</label><input id="protoPct" type="number" min="0" max="100" value="5"><b>%</b></div>
             <div class="field unit"><label for="laneLimit">单 Lane 能力上限</label><input id="laneLimit" type="number" min="80" value="1500"><b>Mbps</b></div>
-            <div class="field"><label for="mipiFormat">DPI格式</label><select id="mipiFormat"><option value="RGB565" selected>RGB565</option><option value="RGB666">RGB666</option><option value="RGB888">RGB888</option></select></div>
+            <div class="field"><label for="mipiFormat">DPI格式</label><select id="mipiFormat"><option value="RGB565">RGB565</option><option value="RGB666">RGB666</option><option value="RGB888" selected>RGB888</option></select></div>
           </div>
+        </div>
+
+        <div id="lvdsFields" class="hidden">
+          <h3>LVDS 链路</h3>
+          <div class="two">
+            <div class="field"><label for="lvdsLinks">Link 数量</label><select id="lvdsLinks"><option value="1" selected>Single Link</option><option value="2">Dual Link</option></select></div>
+            <div class="field"><label for="lvdsMapping">数据映射</label><select id="lvdsMapping"><option value="vesa" selected>VESA</option><option value="jeida">JEIDA</option></select></div>
+          </div>
+          <div class="note">RGB666 通常使用每 Link 3 对数据线；RGB888 通常使用每 Link 4 对数据线，另加 1 对时钟线。</div>
         </div>
 
         <div class="timing-figure">
