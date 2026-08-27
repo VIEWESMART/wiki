@@ -70,7 +70,7 @@ Use the **Search Box** in the top right of the table to find your **Model SKU** 
     | Model SKU | Type | Resolution | Datasheet | 3D Step |
     | :--- | :--- | :--- | :--- | :--- |
     | **UEDX48480021-MD80E** | 2.1" ESP32 Touch Knob | 480x480 | [:material-download: PDF](../../assets/datasheet/UEDX48480021-MD80ET.pdf) | [:material-cube: STEP](../assets/3d/2.1_knob.step) |
-    | **UEDX46460015-MD50E** | 1.5" ESP32 AMOLED Touch Knob| 466x466 | [:material-download: PDF](../../assets/datasheet/UEDX46460015-MD50E.pdf) | [:material-cube: STEP](../assets/3d/1.5_amoled.step) |
+    | **UEDX46460015-MD50E** | 1.5" ESP32 AMOLED Touch Knob| 466x466 | [:material-download: PDF](../../assets/datasheet/UEDX46460015-MD50ET.pdf) | [:material-cube: STEP](../assets/3d/1.5_amoled.step) |
     | **UEDX24240013-MD50E** | 1.3" ESP32 Knob | 240x240 | [:material-download: PDF](../../assets/datasheet/UEDX24240013-MD50E.pdf) | [:material-cube: STEP](../assets/3d/1.5_amoled.step) |
     | **UEDX106000101-HMD** | 10.1" HDMI | 1024x600 | [:material-download: PDF](../assets/ds/10.1_hdmi.pdf) | [:material-cube: STEP](../assets/3d/10.1_hdmi.step) |    
     
@@ -111,7 +111,7 @@ Use the **Search Box** in the top right of the table to find your **Model SKU** 
     | Part Number | Interface | Manufacturer | Datasheet |
     | :--- | :--- | :--- | :--- |
     | **GT911** | I2C | Goodix | [:material-download: PDF](../../assets/datasheet/touch/GT911_EN_Datasheet.pdf) |
-    | **FT6336** | I2C | FocalTech | [:material-download: PDF](../assets/datasheet/touch/ft6336.pdf) |
+    | **FT6336** | I2C | FocalTech | [:material-download: PDF](../../assets/datasheet/touch/ft6336.pdf) |
 <br>
 
 ---
@@ -152,7 +152,7 @@ Essential utilities for HMI development.
 | **Image Converter** | Win / Mac | Online image to C array by LVGL. | [:material-link: Website](https://lvgl.io/tools/imageconverter) |
 | **Image2LCD** | Windows | Tool to convert images into C arrays. | [:material-download: ZIP](../../assets/software/Image2Lcd.zip) |
 | **PCtoLCD2002** | Windows | Font generation tool for microcontrollers. | [:material-download: ZIP](../../assets/software/PCtoLCD2002.zip) |
-| **CH34x Driver** | Win / Mac | USB-UART Driver for flashing firmware. | [:material-download: ZIP](../../assets/software/USB-SERIAL%20CH340.rar) |
+| **CH34x Driver** | Win / Mac | USB-UART Driver for flashing firmware. | [:material-download: RAR](../../assets/software/USB-SERIAL%20CH340.rar) |
 | **Sscom Tools** | Windows | Classic and lightweight Serial port debugger. | [:material-download: ZIP](../../assets/software/Sscom5.13.1.zip) |
 | **Flash Download Tool** | Windows | Utility for flashing firmware manually. | [:material-download: ZIP](../../assets/software/flash_download_tool.zip) |
 
