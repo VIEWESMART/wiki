@@ -1,12 +1,11 @@
 ---
 title: "Display Technology Glossary"
-description: "Learn display technology terms, key trade-offs, applications, and engineering selection criteria."
+description: "A practical glossary of LCD, TFT, OLED, touch, optical, interface, mechanical, and embedded-display terminology for engineers and buyers."
 date: 2026-09-01
 categories:
   - Glossary
 tags:
   - Display Technology
-  - Glossary
 authors:
   - viewe_expert
 ---
@@ -14,13 +13,14 @@ authors:
 # Display Technology Glossary
 
 !!! abstract "Quick answer"
-    This guide explains display technology terms, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    This glossary defines common display terms in engineering context so specifications, quotations, and design reviews use consistent language. Follow the linked guides when a term requires deeper selection guidance.
 
 ## Key Takeaways
 
-- Learn display technology terms, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Distinguish technology families, such as LCD and OLED, from subtypes and driving methods such as TFT, IPS, and passive matrix.
+- Read optical values together with their units, test conditions, and typical or guaranteed status.
+- Use consistent interface, touch, bonding, and mechanical terminology across drawings and supplier communication.
+
 
 COG
 
@@ -109,3 +109,27 @@ This light mode uses both reflecting and transmitting properties, making it the 
 Transmissive
 
 This light mode depends on the power of a high brightness backlight. These displays are good for low-lighting viewing, but not for direct light conditions.
+
+## Frequently Asked Questions
+
+??? question "What is the difference between LCD and TFT?"
+    LCD is the broader display technology; TFT is an active-matrix method used to control individual pixels in many LCD panels.
+
+??? question "Are brightness and sunlight readability the same?"
+    No. Brightness is emitted luminance, while sunlight readability also depends on reflection, contrast, cover treatment, bonding, and viewing conditions.
+
+??? question "Why do display specifications use typical values?"
+    Optical and electrical properties vary with production, temperature, drive conditions, and measurement method. Confirm which limits are guaranteed for your application.
+
+??? question "How should an ambiguous display term be handled in a specification?"
+    Define the intended meaning, unit, measurement method, and acceptance limit instead of relying on an informal label.
+
+??? question "Where can I find selection guidance beyond a glossary definition?"
+    Use the related technical guides for comparisons, design constraints, and validation guidance tied to each term.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

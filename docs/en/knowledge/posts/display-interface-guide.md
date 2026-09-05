@@ -1,14 +1,13 @@
 ---
 title: "Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More"
-description: "Learn choose a display interface, key trade-offs, applications, and engineering selection criteria."
+description: "Compare MCU, SPI, RGB, LVDS, MIPI DSI, eDP, HDMI, USB, UART, RS-232, RS-485, and CAN interfaces for display-system design."
 date: 2026-09-01
 categories:
   - Interfaces and Electronics
 tags:
   - Display Interface
   - MIPI DSI
-  - LVDS
-  - Engineering Selection
+  - Serial Communication
 authors:
   - viewe_expert
 ---
@@ -16,23 +15,24 @@ authors:
 # Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More
 
 !!! abstract "Quick answer"
-    This guide explains choose a display interface, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    A display interface should be selected from bandwidth, pin count, cable length, electromagnetic compatibility, software support, latency, and system architecture. Panel interfaces and external communication interfaces serve different layers and should not be compared as direct substitutes.
 
 ## Key Takeaways
 
-- Learn choose a display interface, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Calculate pixel bandwidth from resolution, refresh rate, color depth, and blanking before selecting a video interface.
+- Use distance, noise environment, connector, grounding, and EMC requirements when comparing single-ended and differential links.
+- Confirm controller, operating-system, driver, and panel support before freezing the schematic.
 
-Interface Introductions
 
-VIEWE provides many display modules, including TFT LCD, OLED, and etc. And there are many types of interfaces to deliver image data to the display module. Customers may question which one is the best or can meet the requirement. This article will discuss an issue regarding the data transfer of display interfaces.
+## Interface Categories and Selection Context
 
-Display and Touch
+Display systems use different interfaces at different points in the signal chain. A host may send commands to a smart display over UART, while a display controller drives the panel through RGB, LVDS, MIPI DSI, or another panel-level link. The correct choice depends on where the interface is used, the required bandwidth, transmission distance, electromagnetic environment, and available hardware and software support.
 
-1.Parallel
+## Direct Panel and Touch Interfaces
 
-1-1 MCU interface 8080/6800
+### Parallel Panel Interfaces
+
+### MCU 8080 and 6800 Parallel Interfaces
 
 <figure markdown="span" class="displaywiki-figure">
   [![1-1 MCU interface 8080/6800](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ width="760" loading="lazy" }](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ .displaywiki-image-link title="Open full-size image" }
@@ -45,9 +45,9 @@ Features:
 
 MCU interface include two types, 6800 and 8080. 8080 is the much more popular than 6800. Generally, MCU interface consist of 4/8/9/16bits data (like DB0, DB1, , , DB7; Note: 8bits is the most popular bits width), CS (chip select), RS (data register or instruction register select), RD (read enable), WR (write enable).
 
-PROs: Simple
+**Advantages:** Simple controller-side operation for suitable resolutions and update rates.
 
-CONs: Need RAM, Speed is limited.
+**Limitations:** Requires host-side memory and is constrained by bus width, clock rate, and transaction overhead.
 
 Used in Mono character, graphic, small TFT (smaller than 3.5”)
 
@@ -58,7 +58,7 @@ Used in Mono character, graphic, small TFT (smaller than 3.5”)
 
 Fig. 1 MCU/Parallel Interface
 
-1.2 Parallel RGB 16/18/24 bits
+### Parallel RGB Interfaces
 
 The RGB interface is to transmit the drive timing to the display driver IC through the data input/output in a parallel manner, including R/G/B data, vertical synchronization signal (V-SYNC, Vertical synchronizing signal), horizontal synchronization signal (H-SYNC), horizontal synchronizing signal), data enable (DE, Data Enable) signal, and clock signal PCLK (Pixel Clock). The display interface of RGB666 is as follows:
 
@@ -95,9 +95,9 @@ Fig. 5 RGB Interface
 
 Fig. 6 Examples of 24 Bit and 18 Bit RGB Interface
 
-2.Serial
+## Serialized Panel Interfaces
 
-2.1 SPI (Serial Peripheral Interface)
+### SPI
 
 SPI is a master-slave-based interface, usually with a Master (master device) and one or multi slave (slave devices). There are 4 pins on the interface. The connection method and hardware structure are as follows:
 
@@ -116,7 +116,7 @@ CS: Chip Select. This signal is unique to each slave. When active the selected 
 
 Display data transferred in sequential. Display interface communication bandwidth i.e., QVGA 320 * 240 (pixels) * 16 bit (color depth) * 30 fps = 36.864 MHz.
 
-2.2 IIC (Inter-Integrated Circuit) or alternatively known as I²C):
+### I²C
 
 Different from the point-to-point (or point-to-multipoint) base of SPI, I²C is interfaced in the form of a data bus, which allows multiple master devices and multiple slave devices to be connected in series. The interface method and hardware structure are as follows:
 
@@ -135,7 +135,7 @@ Full speed mode = 400K bit/s.
 Fast mode = 1M bit/s.
 High speed mode = 3.2M bit/s.
 
-2.3 Serial RGB 6/8 bits
+### Serial RGB
 
 <figure markdown="span" class="displaywiki-figure">
   [![2.3 Serial RGB 6/8 bits](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ width="760" loading="lazy" }](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ .displaywiki-image-link title="Open full-size image" }
@@ -144,11 +144,11 @@ High speed mode = 3.2M bit/s.
 
 Display data transferred in RGB sequential. Display interface communication bandwidth i.e., QVGA 320 * 240 (pixels) * 3 dot * 30 fps = 6912000 Hz (DCLK).
 
-2.4 LVDS: Low voltage differential signal. It should name FPD-Link for the display interface.
+### LVDS and FPD-Link
 
 <figure markdown="span" class="displaywiki-figure">
-  [![2.4 LVDS: Low voltage differential signal. It should name FPD-Link for the display interface](display-interface-guide-2-4-lvds-low-voltage-differential-signal-it-should-name-fpd-link-for-t.jpeg){ width="760" loading="lazy" }](display-interface-guide-2-4-lvds-low-voltage-differential-signal-it-should-name-fpd-link-for-t.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>2.4 LVDS: Low voltage differential signal. It should name FPD-Link for the display interface</figcaption>
+  [![2.4 LVDS: Low voltage differential signal. FPD-Link is the display-oriented implementation commonly referred to here for the display interface](display-interface-guide-2-4-lvds-low-voltage-differential-signal-it-should-name-fpd-link-for-t.jpeg){ width="760" loading="lazy" }](display-interface-guide-2-4-lvds-low-voltage-differential-signal-it-should-name-fpd-link-for-t.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>2.4 LVDS: Low voltage differential signal. FPD-Link is the display-oriented implementation commonly referred to here for the display interface</figcaption>
 </figure>
 
 LVDS is a technical standard introduced in 1994 that specifies electrical characteristics of a differential, serial signaling standard, but it is not a protocol. LVDS is a physical layer specification only; many data communication standards and applications use it and add a data link layer as defined in the OSI model on top of it. LVDS operates at low power and can run at very high speeds using inexpensive twisted-pair copper cables.
@@ -173,7 +173,7 @@ Most used in big panels (>7”)
 
 Fig. 7 Example of LVDS Interface
 
-2.5 MIPI CSI/DSI: Mobile Industry Processor Interface.
+### MIPI CSI-2 and DSI
 
 <figure markdown="span" class="displaywiki-figure">
   ![[Display view of DSI.]](display-interface-guide-display-view-of-dsi.jpeg){ width="760" loading="lazy" }
@@ -222,7 +222,7 @@ We can see a few defect points below when shortening ENABLE time as 9.84uS (the 
   <figcaption>[Chanel1 –E pin@9.84uS, Chanel2 – CS pin]</figcaption>
 </figure>
 
-2.6 eDP interface
+### Embedded DisplayPort (eDP)
 
 DisplayPort (DP) is a digital display interface developed by a consortium of PC and chip manufacturers and standardized by the Video Electronics Standards Association (VESA). The interface is primarily used to connect a video source to a display device such as a computer monitor, and it can also carry audio, USB, and other forms of data.
 
@@ -240,9 +240,9 @@ DisplayPort was designed to replace VGA, DVI, and FPD-Link. The interface is bac
 
 Fig. 9 eDP Interface
 
-A comparison on display interface:
+## Panel Interface Comparison
 
-Which interface is the best? There is no absolute answer to this question. The users should choose the suitable interface for their applications, not the best. Let’s see the following comparison of the pros and cons of these interfaces.
+Which interface is the best? There is no absolute answer to this question. Engineers should choose the interface that fits the application rather than searching for a universally best option. Let’s see the following comparison of the pros and cons of these interfaces.
 
 | Display Interface | Resolution | Speed | Pin Count. | Noise | Power | Connect Distance | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -255,20 +255,20 @@ Which interface is the best? There is no absolute answer to this question. The u
 | MIPI | Large | Fastest | Less | Best | Low | Short | Average |
 | eDP | Large | Fastest | Less | Best | Low | Long | High |
 
-Smart Display
+## Smart-Display Host Interfaces
 
-UART Interface
+### UART
 
 A universal asynchronous receiver/transmitter (UART) is a block of circuitry responsible for implementing serial communication. Essentially, the UART acts as an intermediary between parallel and serial interfaces. On one end of the UART is a bus of eight-or-so data lines (plus some control pins), on the other is the two serial wires – RX and TX.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![URAT Interface](display-interface-guide-urat-interface.png){ width="760" loading="lazy" }](display-interface-guide-urat-interface.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>URAT Interface</figcaption>
+  [![UART Interface](display-interface-guide-urat-interface.png){ width="760" loading="lazy" }](display-interface-guide-urat-interface.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>UART Interface</figcaption>
 </figure>
 
-Fig. 10 URAT Interface
+Fig. 10 UART Interface
 
-USB Interface
+### USB
 
 A Universal Serial Bus (USB) is a common interface that enables communication between devices and a host controller such as a personal computer (PC). It connects peripheral devices such as digital cameras, mice, keyboards, printers, scanners, media devices, external hard drives and flash drives. There have been four generations of USB specifications: USB 1.x, USB 2.0, USB 3.x and USB4.
 
@@ -281,11 +281,11 @@ It is widely used in capacitive touch panel connections.
 
 Fig. 11 USB Interface
 
-HDMI Interface
+### HDMI
 
 HDMI (High-Definition Multimedia Interface) is a proprietary audio/video interface for transmitting uncompressed video data and compressed or uncompressed digital audio data from an HDMI-compliant source device, such as a display controller, to a compatible computer monitor, video projector, digital television, or digital audio device. HDMI is a digital replacement for analog video standards.
 
-With more and more popular of color TFT LCD, HDMI is getting popular in display industry.
+As color TFT LCDs have become more common, HDMI has become a widely used external video interface.
 
 <figure markdown="span" class="displaywiki-figure">
   [![With more and more popular of color TFT LCD, HDMI is getting popular in display industry](display-interface-guide-with-more-and-more-popular-of-color-tft-lcd-hdmi-is-getting-popular-in.png){ width="760" loading="lazy" }](display-interface-guide-with-more-and-more-popular-of-color-tft-lcd-hdmi-is-getting-popular-in.png){ .displaywiki-image-link title="Open full-size image" }
@@ -299,7 +299,7 @@ With more and more popular of color TFT LCD, HDMI is getting popular in display 
 
 Fig. 12 HDMI Interface
 
-RS232 Interface
+### RS-232
 
 RS232 is a standard protocol used for serial communication, it is used for connecting computer and its peripheral devices to allow serial data exchange between them. As it obtains the voltage for the path used for the data exchange between the devices.
 
@@ -320,7 +320,7 @@ Fig. 13 RS232 Interface
 
 RS-232, when compared to later interfaces such as RS-422, RS-485 and Ethernet, has lower transmission speed, short maximum cable length, large voltage swing, large standard connectors, no multipoint capability and limited multidrop capability. In modern personal computers, USB has displaced RS-232 from most of its peripheral interface roles. Few computers come equipped with RS-232 ports today, so one must use either an external USB-to-RS-232 converter or an internal expansion card with one or more serial ports to connect to RS-232 peripherals. Nevertheless, thanks to their simplicity and past ubiquity, RS-232 interfaces are still used—particularly in industrial machines, networking equipment, and scientific instruments where a short-range, point-to-point, low-speed wired data connection is fully adequate.
 
-CAN Bus Interface
+### CAN
 
 CAN (Controller Area Network) is a feature-rich automotive bus standard. It is designed to allow ECUs (Electronic Control Unit) on the network to communicate with each other without the need for a host, unlike the RS485 interface, it’s basically must have a host (Master) as the control end; but the CAN provides better and flexible communication applications, which does not require host control.
 
@@ -340,7 +340,7 @@ CAN is a Broadcast Communication Mechanism based on the message-oriented protoco
 
 Therefore, CAN has good flexible adjustment capabilities, and can add nodes to the existing network without making adjustments in software and hardware. In addition, the transmission of messages is not based on special types of nodes, which increases the convenience of upgrading the network.
 
-The applications of CAN bus can satisfy the reliability and real-time request of data communication completely. That’s the reason why CAN bus application expended to industrial, medical and other applications.
+The applications of CAN bus can satisfy the reliability and real-time requirements of data communication completely. That’s the reason why CAN bus application expanded into industrial, medical and other applications.
 
 Topology figure (Sub-Block):
 
@@ -444,13 +444,13 @@ In J1939, there are 8-bit device address which equal to 255 node ID in maximum. 
 
 Communication bandwidth is low and high speed against to transmission distance.
 
-RS485 Interface
+### RS-485
 
 RS485/Modbus is a popular communication interface in the industry, and various RS485 devices at reasonable prices are easily available on the market. The line structure is simple, as long as two wires (RS485_A/RS485_B) can communicate, and the communication interface is usually presented in the form of "Serial Port" on an operating system, and each platform has a corresponding development function library. In addition, the Modbus protocol is quite easy to understand, so we put it as an example as following for experiments and explanations.
 
 ….
 
-Ethernet Interface
+### Ethernet
 
 HDMI
 
@@ -464,21 +464,21 @@ TYPE C
 
 …
 
-Communicate Protocol
+## Application Protocols
 
-Modbus
+### Modbus
 
-■Modbus Protocol
+### Modbus Protocol Model
 
 The Modbus protocol is actually a data format. It basically defines the communication content of a master-slave architecture. Since it is only the definition of the data structure, it can communicate through various physical interface, such as RS232, RS422, RS485, and even the network.
 
 Since there are already many teaching and explanatory documents on the Internet, Modbus will not be described in detail here. In fact, as long as you know some concepts, you can use Modbus freely.
 
-■Conceptual model
+### Register Model
 
 Modbus regards data transmission as "Register" access. Each device must define its own register type and address for external reference. The so-called transmission of data to the device is to write to the specified register, and to read the data is to read the specified register, which is simple and clear. In addition, the value stored in each address register is 16-bits.
 
-■Function code
+### Function Codes
 
 According to the characteristics of the data, Modbus defines several methods of reading and writing, which are specified by the function code in the message.
 
@@ -489,15 +489,15 @@ According to the characteristics of the data, Modbus defines several methods of 
 
 For Smart Display control programs, the most commonly used are 06: Write single register (write a 16-bits value) and Read holding registers (read the value of multiple registers).
 
-■CRC
+### Error Checking
 
 The last 2 bytes seems the most mysterious part is actually not difficult. It’s just a CRC (Cyclic Redundancy Check) to insure the communication data. We don't necessarily have to study its principle in depth (but in fact, it is just a table lookup and bit operation, and finally a 16-bit check code is obtained), as long as we understand how to use it.
 
-VI. Control Smart Display objects
+### Mapping Smart-Display Objects to Registers
 
 As mentioned earlier, each Modbus needs to define the type and address of the register, and now we will discuss this topic.
 
-■Register classification
+### Register Categories
 
 Smart Display registers can be roughly divided into three categories:
 
@@ -517,3 +517,27 @@ The following is an organized list of these registers:
 - [PCB Construction and Manufacturing Process](pcb-construction-process.md)
 - [PCB Types and Material Selection](pcb-types-materials.md)
 - [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md)
+
+## Frequently Asked Questions
+
+??? question "Is SPI suitable for a high-resolution display?"
+    Usually only at modest refresh rates or for partial updates. Calculate the required pixel throughput and protocol overhead against the achievable SPI clock.
+
+??? question "What is the difference between RGB, LVDS, and MIPI DSI?"
+    RGB exposes parallel pixel timing, LVDS serializes display data over differential pairs, and MIPI DSI uses a packet-based high-speed link with low-power control states.
+
+??? question "When should UART, RS-485, or CAN be used with a display?"
+    They are useful when the display module includes its own controller and application protocol. They normally carry commands and data rather than raw full-frame pixels.
+
+??? question "How do I estimate the required pixel-interface bandwidth?"
+    Start with active pixels, refresh rate, and bits per pixel, then include horizontal and vertical blanking plus protocol overhead and implementation margin.
+
+??? question "Can a communication interface replace a panel interface?"
+    Not directly. A smart display may accept UART, RS-485, CAN, USB, or Ethernet commands, but an internal controller still drives the panel through a supported display interface.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

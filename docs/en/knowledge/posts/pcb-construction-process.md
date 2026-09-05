@@ -1,6 +1,6 @@
 ---
 title: "PCB Construction and Manufacturing Process"
-description: "Learn PCB construction and manufacturing, key trade-offs, applications, and engineering selection criteria."
+description: "Follow the multilayer PCB manufacturing flow from material and imaging through lamination, drilling, plating, solder mask, finish, routing, and inspection."
 date: 2026-09-01
 categories:
   - Interfaces and Electronics
@@ -14,19 +14,20 @@ authors:
 # PCB Construction and Manufacturing Process
 
 !!! abstract "Quick answer"
-    This guide explains PCB construction and manufacturing, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    PCB manufacturing builds patterned copper layers, laminates them into a controlled stack, forms plated interconnections, applies protective finishes, and verifies the result. Each process step constrains the original design.
 
 ## Key Takeaways
 
-- Learn PCB construction and manufacturing, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Set stack-up, copper weight, impedance, via construction, materials, tolerances, and finish with the fabricator before release.
+- Design rules must reflect imaging, registration, drilling, plating, lamination, solder-mask, and routing capability.
+- Electrical test, inspection, coupons, traceability, and acceptance criteria should match product risk.
 
-## PCB (Printed Circuit Board)
+
+## PCB Construction Overview
 
 Printed Circuit Boards (PCB), are used in almost all kinds of electronic equipment. They are the supporter of electrical connections for electronic components. There are no parts on the standard PCB bare board, which is often called Printed Wiring Board (PWB). The appearance of PCB greatly reduces frequent failures at wire junctions and short circuits when the wire insulation layer begins to age and crack. Typical PCBs are green, but now other colors are also available such as blue, red, etc. PCB can be classified according to the number of layers, frequency, substrate material, etc. The current circuit board is mainly composed of the circuit pattern, substrate, holes/VIAs, solder mask, silkscreen, and surface finish.
 
-### Construction of PCB
+### PCB Layer Construction
 
 <figure markdown="span" class="displaywiki-figure">
   [![A standard Printed Circuit Board](pcb-construction-process-a-standard-printed-circuit-board.jpeg){ width="760" loading="lazy" }](pcb-construction-process-a-standard-printed-circuit-board.jpeg){ .displaywiki-image-link title="Open full-size image" }
@@ -186,3 +187,27 @@ Check the appearance, size, hole diameter, thickness, marking, etc. of the board
 - [PCB Types and Material Selection](pcb-types-materials.md)
 - [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md)
 - [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
+
+## Frequently Asked Questions
+
+??? question "Why is the PCB stack-up important?"
+    It controls thickness, impedance, return paths, manufacturability, warpage, thermal behavior, and the spacing available for routing.
+
+??? question "What is the purpose of plated through-holes?"
+    Copper plating on the hole wall connects conductive layers and can also provide a solderable or mechanical feature.
+
+??? question "Which inspections are commonly used?"
+    Depending on risk, inspection can include automated optical inspection, X-ray, electrical test, microsections, impedance coupons, dimensional checks, and final visual inspection.
+
+??? question "Why are microsections used in PCB qualification?"
+    A cross-section allows inspection of plating thickness, hole-wall quality, layer registration, dielectric thickness, and other internal features.
+
+??? question "What is the role of a fabrication drawing?"
+    It communicates stack-up, dimensions, tolerances, holes, finish, materials, markings, testing, coupons, and acceptance requirements not fully defined by Gerber data.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

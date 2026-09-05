@@ -1,12 +1,12 @@
 ---
 title: "Display Cover Lens Materials, Thickness, and Treatments"
-description: "Learn display cover lens selection, key trade-offs, applications, and engineering selection criteria."
+description: "Select display cover-lens material, thickness, strengthening, printing, and surface treatment for optical, mechanical, and environmental requirements."
 date: 2026-09-01
 categories:
   - Cover Lens and Surface Treatments
 tags:
   - Cover Lens
-  - Display Technology
+  - Surface Treatment
 authors:
   - viewe_expert
 ---
@@ -14,15 +14,16 @@ authors:
 # Display Cover Lens Materials, Thickness, and Treatments
 
 !!! abstract "Quick answer"
-    This guide explains display cover lens selection, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    Cover-lens selection balances impact resistance, scratch resistance, weight, optical quality, touch sensitivity, manufacturing limits, and cost. Material and thickness should be chosen together with coatings and bonding.
 
 ## Key Takeaways
 
-- Learn display cover lens selection, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Use glass when scratch resistance, optical stability, and premium appearance dominate; consider polymers when weight or impact behavior dominates.
+- Increasing thickness can improve stiffness but may affect weight, touch sensitivity, edge processing, and cost.
+- Specify strengthening, coatings, printing, adhesive, and environmental tests as part of the finished assembly.
 
-## COVER LENS
+
+## Cover-Lens Design Factors
 
 Modules with projected capacitive touch panels have a top layer, called a cover. This part of the module is the most often customized component of the product. It’s the part that allows the display to completely change its appearance. To perfectly blend with the rest of your product design.
 
@@ -43,7 +44,7 @@ It’s especially important when we have thin CG like 0.7 or 1.1mm, if we have 0
 
 If your project requires thicker glass, feel free to contact us. We use touch controllers (Hycon, Ilitek, EETI, PenMount), which can support cover glass up to 15 mm of thickness.
 
-### The safety aspect of the glass
+### Glass Safety Considerations
 
 The second aspect of the designing process is the safety of the glass. The two most popular options are:
 
@@ -55,7 +56,7 @@ Both options have increased strength as the result of a post-production process 
 
 When chemically strengthened glass gets broken, it shatters in long splinters, unlike regular glass. The appearance of the structure after breaking of the thermally tempered glass is different – it crumbles into smaller, granular chunks.
 
-### True colors
+### Optical Clarity and Color Accuracy
 
 As you know, our displays always give out clear and vibrant images. Colors remain sharp and true. We achieve this effect by choosing an ultra-clear cover glass solution for the display.
 
@@ -63,7 +64,7 @@ This means, that the component is absolutely discolored.
 
 The design of custom artwork is quite simple. We just need a drawing of your artwork with indication of used colors in Pantone or RAL. Then we provide samples of the cover lens made in a silk printing process within a dozen working days.
 
-### Treatments for Cover Lenses
+### Cover-Lens Surface Treatments
 
 Anti-reflection (AR) – reducing the reflection on the surface of the display by applying a coating of a specific thickness to the surface of a cover lens.
 
@@ -71,7 +72,7 @@ Anti-glare (AG) – removing a bright glare from the display surface by creating
 
 Anti-finger (AF) – preventing fingerprints and smudges on the display surface by applying a type of treatment that reduces the ability of the cover lens retaining oils
 
-### Special materials for the Cover Lens
+### Specialized Cover-Lens Materials
 
 We also offer special materials for cover lenses:
 
@@ -90,3 +91,27 @@ Poly(methyl methacrylate) (PMMA), also known as acrylic, acrylic glass, or plexi
 - [Anti-Reflective vs Anti-Glare Display Treatments](anti-reflective-vs-anti-glare.md)
 - [Anti-Fingerprint and Antibacterial Cover-Lens Treatments](anti-fingerprint-antibacterial.md)
 - [Cover Lens Customization for Display Products](cover-lens-customization.md)
+
+## Frequently Asked Questions
+
+??? question "Is thicker cover glass always stronger?"
+    Not always. Glass type, strengthening, edge quality, hole geometry, mounting stress, and impact location can matter as much as nominal thickness.
+
+??? question "Can plastic replace glass in a display cover lens?"
+    Yes for some products, especially when weight and impact behavior are important, but scratch resistance, chemical resistance, optical distortion, and aging must be evaluated.
+
+??? question "When should surface treatments be specified?"
+    Specify them before final sampling because AR, AG, AF, hardness, printing, and bonding processes can affect one another.
+
+??? question "How does cover thickness affect capacitive touch?"
+    A thicker dielectric generally weakens the finger signal, so sensor design and controller tuning must support the selected stack.
+
+??? question "What should be included in a cover-lens drawing?"
+    Include material, thickness, outline, datums, openings, edge finish, printing layers, colors, coatings, tolerances, cosmetic zones, and inspection requirements.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

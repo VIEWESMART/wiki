@@ -1,12 +1,11 @@
 ---
 title: "Display Manufacturing Quality: 5S, ISO 9001, IATF 16949, ISO 14000, and Six Sigma"
-description: "Learn display manufacturing quality control, key trade-offs, applications, and engineering selection criteria."
+description: "Overview of 5S, ISO 9001, IATF 16949, ISO 14001, and Six Sigma concepts relevant to display manufacturing and supplier quality."
 date: 2026-09-01
 categories:
   - Manufacturing and Quality
 tags:
   - Manufacturing
-  - Quality Control
 authors:
   - viewe_expert
 ---
@@ -14,13 +13,14 @@ authors:
 # Display Manufacturing Quality: 5S, ISO 9001, IATF 16949, ISO 14000, and Six Sigma
 
 !!! abstract "Quick answer"
-    This guide explains display manufacturing quality control, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    Quality systems organize responsibilities, process control, records, corrective action, risk management, and improvement. Standards and methods are useful only when connected to measurable controls and evidence for the actual display-production process.
 
 ## Key Takeaways
 
-- Learn display manufacturing quality control, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Use 5S to support disciplined workplaces, ISO 9001 for quality-system controls, IATF 16949 for automotive-sector requirements, and ISO 14001 for environmental management.
+- Apply measurement, capability analysis, root-cause investigation, corrective action, and control plans to real manufacturing risks.
+- Verify certificate scope, issuing body, validity, applicable sites, and current standard revision rather than relying on a logo or general claim.
+
 
 ## 5S Introduction
 
@@ -205,7 +205,7 @@ Some people consider safety an outcome of performing the other five S’s approp
 
 Neither approach to safety is right or wrong. But however, a business wants to approach safety, it should be aware that paying attention to safety is important.
 
-## ISO9001 Introduction
+## ISO 9001 Quality Management
 
 The ISO 9000 family of quality management systems (QMS) is a set of standards that helps organizations ensure they meet customers and other stakeholder needs within statutory and regulatory requirements related to a product or service. ISO 9000 deals with the fundamentals of quality management systems, including the seven quality management principles that underlie the family of standards. ISO 9001 deals with the requirements that organizations wishing to meet the standard must fulfil.
 
@@ -314,7 +314,7 @@ Organizations work in a more efficient way as all their processes are aligned an
 
 - Fig. 1 Example of ISO9001 Certification
 
-## Ts16949 Introduction
+## IATF 16949 and Its ISO/TS 16949 Predecessor
 
 ISO TS 16949 is an ISO technical specification aimed at the development of a quality management system that provides for continual improvement, emphasizing defect prevention and the reduction of variation and waste in the automotive industry supply chain and production. It is based on the ISO 9001 standard.
 
@@ -373,7 +373,7 @@ The ISO/TS 16949 can be applied throughout the supply chain in the automotive i
 
 Fig. 1 ISO/TS16949 Certificate
 
-## ISO 14000 Introduction
+## ISO 14001 Environmental Management
 
 ISO 14000 is a family of standards related to environmental management that exists to help organizations (a) minimize how their operations (processes, etc.) negatively affect the environment (i.e. cause adverse changes to air, water, or land); (b) comply with applicable laws, regulations, and other environmentally oriented requirements; and (c) continually improve in the above.
 
@@ -690,3 +690,27 @@ Axiomatic design
 Business Process Mapping/Check sheet
 
 Cause & effects diagram (also known as fishbone or Ishikawa diagram)
+
+## Frequently Asked Questions
+
+??? question "Does ISO certify companies directly?"
+    No. Independent certification bodies audit organizations and issue certificates; the certificate scope and accreditation should be verified.
+
+??? question "What is the difference between ISO 9001 and IATF 16949?"
+    ISO 9001 is a general quality-management-system standard. IATF 16949 adds automotive supply-chain requirements and is used together with applicable customer-specific requirements.
+
+??? question "How does Six Sigma relate to a quality-management system?"
+    Six Sigma provides data-driven improvement methods, while a management system defines broader responsibilities, controls, audits, records, and continual-improvement processes.
+
+??? question "How can a customer verify a management-system certificate?"
+    Check the certificate number, standard, scope, legal entity, covered sites, certification body, accreditation, issue date, expiry, and current status.
+
+??? question "Does certification guarantee that every product is defect-free?"
+    No. Certification indicates that a management system has been assessed within a defined scope; product conformity still depends on specifications, controls, inspection, testing, and corrective action.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

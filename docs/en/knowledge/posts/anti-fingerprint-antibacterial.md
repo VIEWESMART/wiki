@@ -1,6 +1,6 @@
 ---
 title: "Anti-Fingerprint and Antibacterial Cover-Lens Treatments"
-description: "Learn anti-fingerprint and antibacterial glass, key trade-offs, applications, and engineering selection criteria."
+description: "Compare anti-fingerprint and antibacterial cover-lens treatments, including their functions, processes, durability limits, and validation requirements."
 date: 2026-09-01
 categories:
   - Cover Lens and Surface Treatments
@@ -14,13 +14,14 @@ authors:
 # Anti-Fingerprint and Antibacterial Cover-Lens Treatments
 
 !!! abstract "Quick answer"
-    This guide explains anti-fingerprint and antibacterial glass, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    Anti-fingerprint coatings reduce visible oils and improve cleanability, while antibacterial treatments are designed to inhibit specified microorganisms. They solve different problems and must be validated with the intended glass, cleaning process, and use environment.
 
 ## Key Takeaways
 
-- Learn anti-fingerprint and antibacterial glass, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Specify anti-fingerprint performance through contact angle, abrasion durability, and cleaning-agent compatibility.
+- Treat antibacterial percentages as test-specific results tied to a named method, organism, exposure time, and laboratory report.
+- A combined treatment must be tested after printing, bonding, curing, and expected field cleaning.
+
 
 ## AF: Anti-Fingerprint
 
@@ -80,11 +81,11 @@ Quality Control: Use optical microscopy, contact angle measurement, and other me
 
 Final Inspection and Packaging: Conduct a thorough inspection to ensure there are no defects. The treated glass is then carefully packaged to prevent damage during transportation and storage.
 
-## Conclusion
+### AF Selection Summary
 
 The application of AF (Anti-Fingerprint) technology in cover glass significantly reduces fingerprint and smudge residue, enhancing the appearance and user experience of devices. Through various processes and techniques such as sol-gel, vacuum deposition, spray coating, and UV curing, high-quality anti-fingerprint coatings are achieved. This not only boosts the market competitiveness of devices but also offers multiple advantages, including reduced maintenance costs and extended device lifespan. In the future, as technology continues to advance, the performance and application fields of AF coatings will further expand, providing superior user experiences for more display devices.
 
-## AB: Anti-Bacteria
+## AB: Antibacterial Treatment
 
 The Role of Anti-Bacteria Cover Glass
 
@@ -184,3 +185,27 @@ Anti-Bacteria cover glass plays a crucial role in enhancing the hygiene and safe
 - [Display Cover Lens Materials, Thickness, and Treatments](cover-lens-materials-treatments.md)
 - [Anti-Reflective vs Anti-Glare Display Treatments](anti-reflective-vs-anti-glare.md)
 - [Cover Lens Customization for Display Products](cover-lens-customization.md)
+
+## Frequently Asked Questions
+
+??? question "Are anti-fingerprint and antibacterial coatings the same?"
+    No. Anti-fingerprint coatings change surface energy to reduce smudges, while antibacterial treatments use a different mechanism to inhibit microbial growth.
+
+??? question "How should antibacterial performance be specified?"
+    Reference the test standard, organism, contact time, test laboratory, sample construction, and measured reduction rather than using an unsupported general percentage.
+
+??? question "Will frequent cleaning damage the treatment?"
+    It can. Durability depends on the coating, cleaner chemistry, wiping material, abrasion cycles, and curing process, so compatibility testing is required.
+
+??? question "Can one coating provide both AF and antibacterial functions?"
+    Combined solutions exist, but both functions and their durability must be verified after the complete manufacturing process.
+
+??? question "What information should accompany a 99% antibacterial claim?"
+    The claim should identify the test standard, organism, exposure time, test conditions, sample construction, measured result, and report source.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

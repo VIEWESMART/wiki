@@ -1,12 +1,12 @@
 ---
 title: "PCB Types and Material Selection"
-description: "Learn choose PCB types and materials, key trade-offs, applications, and engineering selection criteria."
+description: "Compare rigid, flex, rigid-flex, metal-core, RF, and high-temperature PCB constructions and choose materials from electrical and mechanical needs."
 date: 2026-09-01
 categories:
   - Interfaces and Electronics
 tags:
   - PCB
-  - Engineering Selection
+  - Manufacturing
 authors:
   - viewe_expert
 ---
@@ -14,13 +14,14 @@ authors:
 # PCB Types and Material Selection
 
 !!! abstract "Quick answer"
-    This guide explains choose PCB types and materials, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    PCB type and material should be selected from electrical loss, impedance, temperature, thermal conductivity, mechanical movement, thickness, reliability, volume, and fabrication capability—not board shape alone.
 
 ## Key Takeaways
 
-- Learn choose PCB types and materials, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Use rigid boards for general assemblies, flex or rigid-flex for constrained moving interconnects, and metal-core structures when heat spreading dominates.
+- Specify laminate properties such as glass-transition temperature, dielectric behavior, moisture absorption, and thermal expansion where relevant.
+- Confirm material availability, approved alternatives, stack-up, processing limits, and long-term supply with the fabricator.
+
 
 ## PCB Types
 
@@ -123,7 +124,7 @@ High-frequency PCB substrate should also have a low water absorption characteris
 
 Figure 9: High-Frequency PCB
 
-## Choose Materials For PCB
+## How to Select PCB Materials
 
 When designing a PCB board, designers must define the required board material materials for PCB construction. Therefore, designers predominantly consider two fundamental thermal and electrical properties, followed by mechanical properties.
 
@@ -187,3 +188,27 @@ Flexural strength also called bend strength or transverse rupture strength, is d
 - [PCB Construction and Manufacturing Process](pcb-construction-process.md)
 - [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md)
 - [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
+
+## Frequently Asked Questions
+
+??? question "What is the difference between flex and rigid-flex PCB?"
+    A flex PCB is primarily flexible circuitry; rigid-flex combines rigid board sections and integrated flexible interconnections in one manufactured assembly.
+
+??? question "When should a metal-core PCB be considered?"
+    It is useful when spreading heat from LEDs or power devices is a primary requirement, but electrical isolation and multilayer routing options must be reviewed.
+
+??? question "Is a higher Tg laminate always better?"
+    Not automatically. It may improve thermal margin, but cost, processing, electrical performance, availability, and the actual assembly profile also matter.
+
+??? question "When is controlled impedance required?"
+    It is generally required for interfaces whose edge rate, length, topology, or transceiver specification makes transmission-line behavior significant.
+
+??? question "What should be approved when a laminate substitution is proposed?"
+    Review dielectric properties, loss, Tg, thermal expansion, moisture behavior, thickness, copper profile, process compatibility, reliability, and qualification impact.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

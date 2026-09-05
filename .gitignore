@@ -1,5 +1,6 @@
 # MkDocs 构建输出
 site/
+scripts/
 
 # 临时备份文件
 *.bak

@@ -1,13 +1,12 @@
 ---
 title: "TFT LCD Basics: Structure, Operation, and Benefits"
-description: "Learn what a TFT LCD is, key trade-offs, applications, and engineering selection criteria."
+description: "Learn how TFT LCD pixels, transistors, storage capacitors, liquid crystals, color filters, polarizers, and backlights form an image."
 date: 2026-09-01
 categories:
   - Display Fundamentals
 tags:
   - TFT
   - LCD
-  - Display Technology
 authors:
   - viewe_expert
 ---
@@ -15,15 +14,16 @@ authors:
 # TFT LCD Basics: Structure, Operation, and Benefits
 
 !!! abstract "Quick answer"
-    This guide explains what a TFT LCD is, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    A TFT LCD uses a transistor at each subpixel to charge and hold a pixel voltage while the liquid-crystal cell controls light transmission. This active-matrix structure enables stable, high-resolution color images.
 
 ## Key Takeaways
 
-- Learn what a TFT LCD is, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Gate and source drivers address TFT pixels while storage capacitors help maintain the selected voltage between refreshes.
+- The LCD cell modulates light; the backlight, polarizers, and color filters determine much of the visible result.
+- Panel mode, timing, interface, backlight, viewing conditions, and thermal design must be evaluated together.
 
-## TFT LCD
+
+## TFT LCD Structure and Operation
 
 TFT Display Technology: How Does it Work?
 
@@ -136,3 +136,27 @@ Classify by lighting method: Transmissive/Transflective/Reflective
 - [LCD Basics: How Liquid Crystal Displays Work](lcd-basics.md)
 - [TFT LCD Module Components and Construction](tft-lcd-module.md)
 - [How to Read Display Specifications](display-specifications.md)
+
+## Frequently Asked Questions
+
+??? question "What does TFT mean in TFT LCD?"
+    Thin-film transistor. Each pixel or subpixel uses a transistor as an electronic switch in the active matrix.
+
+??? question "Why does a TFT LCD need continuous refresh?"
+    Pixel voltages must be periodically rewritten to maintain the intended image and compensate for leakage and addressing behavior.
+
+??? question "Does TFT describe image quality?"
+    Not by itself. Image quality also depends on panel mode, materials, backlight, color filters, driving, optics, calibration, and viewing conditions.
+
+??? question "What is a storage capacitor used for?"
+    It helps maintain the subpixel voltage between addressing cycles so the optical state remains stable until the next refresh.
+
+??? question "Why are source and gate drivers required?"
+    Gate drivers select pixel rows, while source drivers apply the analog data voltages that set the subpixel transmission levels.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

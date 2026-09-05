@@ -1,13 +1,12 @@
 ---
 title: "Display Customization, MOQ, Lead Time, and Ordering FAQ"
-description: "Learn custom display ordering FAQ, key trade-offs, applications, and engineering selection criteria."
+description: "Answers to common questions about custom display feasibility, MOQ, tooling, lead time, smart-display use, shipping, payment, supply continuity, and ordering."
 date: 2026-09-01
 categories:
   - Product and Sales FAQ
 tags:
-  - FAQ
   - Customization
-  - Engineering Selection
+  - Display Integration
 authors:
   - viewe_expert
 ---
@@ -15,13 +14,14 @@ authors:
 # Display Customization, MOQ, Lead Time, and Ordering FAQ
 
 !!! abstract "Quick answer"
-    This guide explains custom display ordering FAQ, the relevant design trade-offs, and the points engineers should verify when selecting a display solution.
+    Display customization can range from cable, backlight, touch, and cover-lens changes to a fully custom module. MOQ, cost, and lead time depend on how much of the optical, electrical, and mechanical stack changes.
 
 ## Key Takeaways
 
-- Learn custom display ordering FAQ, key trade-offs, applications, and engineering selection criteria.
-- Use the guidance below to compare the relevant technologies and design trade-offs.
-- Validate optical, electrical, mechanical, environmental, and production requirements before final selection.
+- Prepare target size, resolution, interface, brightness, touch, environment, annual volume, and schedule before requesting a quotation.
+- Semi-custom changes usually require less tooling and risk than a fully custom LCD or OLED panel.
+- Treat MOQ, lead time, certification, and continuity as project-specific commercial requirements that must be confirmed in writing.
+
 
 ## Q1: Is it difficult to customize LCD?
 
@@ -51,7 +51,7 @@ A6: We will calculate the shipping cost based on the address you provide and the
 
 A7: For bulk order, payment via TT. For sample/small order, you can pay via Paypal/Credit card.
 
-## Q8: Never End of Supply, Our Long-term Continuity Supply Warranty
+## Q8: How is long-term supply continuity managed?
 
 A8: We understand you probably worry whether we still offer the display after your long development time. We promise the long terms continuity supply and would never end supply.
 
@@ -60,3 +60,27 @@ Some controller IC may stop the production, we'll try our efforts to find the co
 ## Q9: How to order?
 
 A9: Please send email/left your contact method or chat with us via WHATSAPP, and let us know your Requirements on order details. We will reply you with proforma invoice  or payment link based on your order request. Kindly check the payment information, and if everything is OK, the goods will be delivered to you asap after we got your payment.
+
+## Frequently Asked Questions
+
+??? question "What information is needed for a display quotation?"
+    Provide the target size, resolution, interface, outline, brightness, viewing environment, touch requirements, expected volume, compliance needs, and project schedule.
+
+??? question "What usually determines the MOQ?"
+    MOQ depends on panel availability, custom tooling, material batch sizes, printing, touch and bonding processes, and whether the design is standard, semi-custom, or fully custom.
+
+??? question "How can customization lead time be reduced?"
+    Start from an existing platform, freeze requirements early, provide complete drawings and artwork, and agree on validation criteria before the first sample build.
+
+??? question "Can an existing display be used as the starting point?"
+    Yes. A semi-custom platform can reduce tooling, lead time, qualification effort, and supply risk when its core panel meets the application.
+
+??? question "When should specifications be frozen?"
+    Freeze requirements after feasibility and sample review but before production tooling and qualification. Later changes can affect cost, schedule, and validation.
+
+!!! info "Can't find what you need?"
+    If you need more products, resources or support, please contact our team:
+
+    [**:material-archive-arrow-down: Knowledge Base**](../../knowledge/tags.md){ .md-button .md-button--primary }
+    [**:material-magnify: Products & Solutions**](https://viewedisplay.com/){ .md-button }
+    [**:material-email: Contact Support**](mailto:support@viewedisplay.com){ .md-button }

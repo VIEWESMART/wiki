@@ -5,6 +5,12 @@
     --md-primary-fg-color: #2563eb; /* VIEWE Blue */
 }
 
+/* 深色模式下恢复主色调为 VIEWE 蓝（对冲 yml 中 slate+primary:black 产生的近黑色，
+   否则首页/产品页/文章页等所有引用该变量的主标题在深色模式下不可见） */
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #2563eb;
+}
+
 /* 让顶部导航栏半透明模糊 (毛玻璃效果) */
 .md-header {
     background-color: rgba(37, 99, 235, 0.9);
@@ -102,15 +108,15 @@
     line-height: 1.4; /* 优化行高 */
 }
 
-/* 3. 鼠标悬停高亮 (保留您的设置，这很好) */
+/* 3. 鼠标悬停高亮 (半透明蓝，深浅色主题自动适配) */
 .dataTables_wrapper table tbody tr:hover {
-    background-color: #e8f0fe !important; 
+    background-color: rgba(37, 99, 235, 0.15) !important;
     transition: background-color 0.2s;
 }
 
-/* 4. 斑马纹 (保留您的设置，颜色微调更自然) */
+/* 4. 斑马纹 (半透明灰，深浅色主题自动适配) */
 .dataTables_wrapper table tbody tr:nth-of-type(even) {
-    background-color: #f9f9f9; 
+    background-color: rgba(127, 127, 127, 0.08);
 }
 
 
@@ -182,25 +188,6 @@ a.product-card:hover {
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* 3. 图片缩放安全域 */
-/* .product-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 190px;  //图片容器空间大小
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    overflow: hidden;
-} */
-
-/* .product-image-wrapper img {
-    max-width: 98%;   //图片与容器的关系
-    max-height: 98%;   //图片与容器的关系
-    object-fit: contain;
-    transition: transform 0.3s ease;
-} */
-
 /* 图片外层容器 */
 .product-image-wrapper {
     position: relative;
@@ -249,16 +236,6 @@ a.product-card:hover .product-image-wrapper img {
     gap: 6px;
 }
 
-/* .spec-tags .tag {
-    font-size: 11px;
-    background-color: #f6f8fa;
-    color: #586069;
-    padding: 2px 8px;
-    border-radius: 12px;
-    border: 1px solid #e1e4e8;
-    white-space: nowrap;
-} */
-
 .spec-tags .tag {
     font-size: 11px;
     font-family: var(--md-text-font-family); /* 强制使用主题字体 */
@@ -298,7 +275,8 @@ a.product-card:hover .product-image-wrapper img {
   border-radius: 0.625rem;
   color: inherit;
   line-height: 0;
-  cursor: zoom-in;
+  cursor: default;
+  pointer-events: none; 
   text-decoration: none;
   outline-offset: 4px;
 }
@@ -313,24 +291,10 @@ a.product-card:hover .product-image-wrapper img {
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 0.625rem;
   background: var(--md-default-bg-color);
-  box-shadow: 0 0.35rem 1.1rem rgba(0, 0, 0, 0.09);
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Hover and keyboard-focus feedback */
-.md-typeset .displaywiki-figure .displaywiki-image-link:hover img,
-.md-typeset .displaywiki-figure .displaywiki-image-link:focus-visible img {
-  transform: translateY(-2px);
-  border-color: var(--md-primary-fg-color);
-  box-shadow: 0 0.7rem 1.55rem rgba(0, 0, 0, 0.14);
-}
-
-.md-typeset .displaywiki-figure .displaywiki-image-link:focus-visible {
-  outline: 2px solid var(--md-primary-fg-color);
-}
+/* Technical figure container styles: static, non-clickable (see pointer-events above) */
 
 /* Figure caption */
 .md-typeset .displaywiki-figure figcaption {
@@ -351,14 +315,14 @@ a.product-card:hover .product-image-wrapper img {
   border: 1px solid rgba(127, 127, 127, 0.2);
   border-radius: 0.625rem;
   background: var(--md-default-bg-color);
-  box-shadow: 0 0.35rem 1.1rem rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Dark-mode shadow tuning */
 [data-md-color-scheme="slate"] .md-typeset .displaywiki-figure .displaywiki-image-link img,
 [data-md-color-scheme="slate"] .md-typeset .displaywiki-figure > img {
   border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 /* Mobile layout */
@@ -380,14 +344,106 @@ a.product-card:hover .product-image-wrapper img {
   }
 }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .md-typeset .displaywiki-figure .displaywiki-image-link img {
-    transition: none;
-  }
+/* ==========================================================================
+   L1 主题域卡片 (tags.md 专用) — 自定义 HTML 结构，Scope 限定 .md-typeset .l1-*
+   不影响其他页面 grid cards / product cards / DataTables / 主题色。
+   每个卡片一个 accent 色变量 --acc，深色模式同样清晰。
+   ========================================================================== */
+.md-typeset .l1-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  margin: 1.4rem 0 2.2rem;
+}
 
-  .md-typeset .displaywiki-figure .displaywiki-image-link:hover img,
-  .md-typeset .displaywiki-figure .displaywiki-image-link:focus-visible img {
-    transform: none;
-  }
+.md-typeset .l1-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.35rem 1.2rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background-color: var(--md-default-bg-color);
+  overflow: hidden;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+
+/* 顶部 accent 色条 */
+.md-typeset .l1-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--acc);
+}
+
+.md-typeset .l1-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--acc);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+
+/* 图标圆角块 */
+.md-typeset .l1-ico {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  background-color: var(--acc-bg);
+}
+
+.md-typeset .l1-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  line-height: 1.3;
+}
+
+.md-typeset .l1-desc {
+  font-size: 0.82rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.55;
+}
+
+/* 计数徽章 */
+.md-typeset .l1-count {
+  align-self: flex-start;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: #ffffff;
+  background-color: var(--acc);
+  white-space: nowrap;
+}
+
+/* 查看链接 */
+.md-typeset .l1-go {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--acc);
+}
+
+/* 五个主题域 accent 配色 */
+.md-typeset .accent-blue   { --acc: #2563eb; --acc-bg: rgba(37, 99, 235, 0.14); }
+.md-typeset .accent-green  { --acc: #16a34a; --acc-bg: rgba(22, 163, 74, 0.14); }
+.md-typeset .accent-amber  { --acc: #d97706; --acc-bg: rgba(217, 119, 6, 0.15); }
+.md-typeset .accent-violet { --acc: #7c3aed; --acc-bg: rgba(124, 58, 237, 0.15); }
+.md-typeset .accent-rose   { --acc: #e11d48; --acc-bg: rgba(225, 29, 72, 0.14); }
+
+/* 深色模式下微调虚线/描边对比 */
+[data-md-color-scheme="slate"] .md-typeset .l1-card {
+  border-color: rgba(255, 255, 255, 0.12);
 }
