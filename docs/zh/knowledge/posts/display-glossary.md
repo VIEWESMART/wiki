@@ -8,7 +8,17 @@ tags:
   - 显示技术
 authors:
   - viewe_expert
+keywords:
+  - 显示技术
+  - 显示技术术语表
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/display-glossary
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 显示技术术语表
 
@@ -45,7 +55,7 @@ I2C 接口
 
 (I-平方-C) 这种界面适合于简单性和低制造成本比速度更重要的外围设备。由于只有两个I/O 引脚和软件的微控制器能够控制设备芯片，您将节省开发时间和 I/O线路。标准液晶显示器不需要额外的板块或逻辑
 
-液晶仪器
+液晶显示器
 
 (液晶显示器) 这些是活跃或被动矩阵显示器，可以以文字或像素对像素形式显示信息。我们提供的整理是：TFT,COG，图形和字符LCD.
 
@@ -53,7 +63,7 @@ I2C 接口
 
 (光排放二极管) LED是半导体的光源，
 
-医疗卫生部
+医疗设备
 
 (微控制器单元) 应用程序的MCU基本上是主要计算机，它将所有命令发送到各种电子组件，
 
@@ -69,7 +79,7 @@ I2C 接口
 
 这种接口需要更多的针头，因为每一个传输的比特都会进入一个配对接收比特。
 
-电池板
+面板
 
 (打印电路板) 一个机械支撑和电气连接电子元件的印制板。
 
@@ -109,6 +119,12 @@ TFT
 
 这种照明模式取决于高亮度背光的功率。这些显示器适合低照明观看，但不适用于直接照明条件。
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [高可靠性显示解决方案](../high-reliability-displays.md)
+    2. [科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？](../ips-vs-tn.md)
+    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

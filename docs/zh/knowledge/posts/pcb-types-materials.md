@@ -9,12 +9,23 @@ tags:
   - PCB
 authors:
   - viewe_expert
+keywords:
+  - PCB
+  - 工程应用
+  - 类型与材料选择
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/pcb-types-materials
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # PCB 类型与材料选择
 
 !!! abstract "快速结论"
-    PCB 可以从**层数 / 基板刚性 / 速率与频率 / 应用领域**四个维度分类：单 / 双 / 多层板、刚性 / 柔性 / 刚挠结合板、普通 / 高速 / 射频板、LED 金属基板 / 功率陶瓷基板等。选材核心看三类性能——**热（Tg / Td / CTE / 导热系数）、电气（Dk / Df / 损耗角正切）、机械（杨氏模量 / 弯曲强度）**，三组参数必须与速率、功耗、热环境强相关才能反推工程取舍。
+    PCB 可以从**层数 / 基板刚性 / 速率与频率 / 应用领域**四个维度分类：单 / 双 / 多层板、刚性 / 柔性 / 刚挠结合板、普通 / 高速 / 射频板、LED 金属基板 / 功率陶瓷基板等。选材核心看三类性能—热分解温度**热（Tg / Td / CTE / 导热系数）、电气（Dk / Df / 损耗角正切）、机械（杨氏模量 / 弯曲强度）**，三组参数必须与速率、功耗、热环境强相关才能反推工程取舍。
 
 ## 核心要点
 
@@ -64,9 +75,9 @@ authors:
   <figcaption>图 2-3 双面板 PTH 镀通孔</figcaption>
 </figure>
 
-**优点**：布线可在两面分布，密度提升明显；通孔 + 表贴结合使元件布局更灵活。
+**优点**：布线可在两面分布，密度提升明显；过孔 + 表贴结合使元件布局更灵活。
 
-**应用**：电源监测、放大器、工业控制、消费类电源、消费电子主控板。
+**应用**：电源监测、放大器、工控、消费类电源、消费电子主控板。
 
 ### 2.3 多层板（Multi-Layer PCB）
 
@@ -83,11 +94,11 @@ authors:
 - **服务器 / 交换机**：10–20 层 + HDI。
 - **核心路由 / AI 加速**：20+ 层 + 多阶 HDI。
 
-不同层之间的互通用**通孔（PTH）、盲孔（Blind Via）、埋孔（Buried Via）** 三种 Via 完成（"管道 / 埋伏管 / 道"是早期机翻口径，工程师之间请统一用 Via）：见 [PCB 结构与制造流程](pcb-construction-process.md) 与 [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)。
+不同层之间的互通用**过孔（PTH）、盲孔（Blind Via）、埋孔（Buried Via）** 三种 Via 完成（"管道 / 埋伏管 / 道"是早期机翻口径，工程师之间请统一用 Via）：见 [PCB 结构与制造流程](pcb-construction-process.md) 与 [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)。
 
 <figure markdown="span" class="displaywiki-figure">
   [![Via 示意](pcb-types-materials-the-vias.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-vias.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-5 通孔、盲孔与埋孔</figcaption>
+  <figcaption>图 2-5 过孔、盲孔与埋孔</figcaption>
 </figure>
 
 ## 3. 按基板刚性分类
@@ -221,7 +232,7 @@ Dk 一般 4.2–4.5，Df 0.02 左右，FR-4 即可满足。
 
 材料的热导率定义为单位厚度下，单位温差能传导的热功率。导热系数高的材料更利于散热：
 
-```
+```text
 Q = k · A · ΔT / d
 ```
 
@@ -251,7 +262,7 @@ Q = k · A · ΔT / d
 
 胡克定律适用范围内，应力与应变之比：
 
-```
+```text
 E = σ / ε = (F / A) / [(L - L₀) / L₀]
 ```
 
@@ -291,6 +302,9 @@ E 越大材料越不易形变。多层板的"软硬匹配"会影响叠层翘曲�
 
 ??? question "Q5：柔性 PCB 是否可以完全替代刚性 PCB？"
     不行。FPC 成本高、焊接可靠性低、不能承载大电流与大尺寸元件、长期振动后铜皮易疲劳。**FPC 用于连接 / 走线 / 信号互连，刚性板用于元件承载**，刚挠结合板才是兼顾方案。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 ??? question "Q6：高 Dk 和低 Dk 材料的应用差异？"
     低 Dk 让信号传播更快，常用于高速；高 Dk 让铜线做得更窄即可达到相同阻抗（参考 Rogers RO4003 是低 Dk，RO4350B 略高），适合微型化或天线。
@@ -299,8 +313,14 @@ E 越大材料越不易形变。多层板的"软硬匹配"会影响叠层翘曲�
 
 - [PCB 结构与制造流程](pcb-construction-process.md)
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
-- [显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [PCB 结构与制造流程](../pcb-construction-process.md)
+    2. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
+    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

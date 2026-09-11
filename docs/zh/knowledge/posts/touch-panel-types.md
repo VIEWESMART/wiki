@@ -8,7 +8,17 @@ tags:
   - 触摸贴合
 authors:
   - viewe_expert
+keywords:
+  - 电容式与电阻式触摸屏对比
+  - 触摸贴合
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/touch-panel-types
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 电容式与电阻式触摸屏对比
 
@@ -23,7 +33,7 @@ authors:
 
 市场上有多种触摸屏技术，最常见的包括电阻式触摸屏 (RTP)，表面电容式触摸屏，投射式电容触摸屏 (PCAP或CTP)，表面声波 (SAW) 触 触摸屏，红外 (IR) 触摸屏。不同触摸屏的响应特性取决于其底层技术。在本文中，我们将讨论两种最广泛使用的整理，并比较电阻式与电容式触摸屏。
 
-## 电容式触摸屏
+## 电容触摸屏
 
 <figure markdown="span" class="displaywiki-figure">
   [![电容式触摸面板](touch-panel-types-capacitive-touch-panel.jpeg){ width="760" loading="lazy" }](touch-panel-types-capacitive-touch-panel.jpeg){ .displaywiki-image-link title="查看原图" }
@@ -54,6 +64,9 @@ authors:
 图2.P-CAP中的金属桥
 
  当一个手指用X和Y电极的模式触摸传感器时，人类手指与电极之间发生电容连接，从而改变X和Y电极之间的静电电容，触控芯片（Touch IC）检测到电静场变化和位置。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 <figure markdown="span" class="displaywiki-figure">
   [![投射式电容式触摸传感器](touch-panel-types-projected-capacitive-touch-sensor.png){ width="760" loading="lazy" }](touch-panel-types-projected-capacitive-touch-sensor.png){ .displaywiki-image-link title="查看原图" }
@@ -72,7 +85,7 @@ authors:
 
 随着新的发展，预测的电容式触摸面板可以支持手套触摸和带水触摸。
 
-## 电阻式触摸屏
+## 电阻触摸屏
 
 在2007年之前，电阻触摸屏很受欢迎。从名称来看，我们知道该技术依赖于电阻。电阻触摸屏由玻璃基板作为下层和薄膜基板 (通常是透明的聚碳酸盐或PET) 为上层制成，每个层都被一个透明的导体层 (ITO:Indium Tin Oxide) 覆盖，当用户用手指或笔触摸屏幕的一部分时，导体ITO薄层接触。它改变电阻，RTP控制器检测到变化并计算触觉位置。
 
@@ -118,6 +131,12 @@ authors:
 - [显示屏框贴与全贴合对比](air-vs-optical-bonding.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [显示屏框贴与全贴合对比](../air-vs-optical-bonding.md)
+    2. [GF、GFF、GG 与 PG 电容触摸结构](../capacitive-touch-structures.md)
+    3. [手套触控、防水触控与抗干扰设计](../glove-waterproof-touch.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

@@ -10,7 +10,22 @@ tags:
   - 工程应用
 authors:
   - viewe_expert
+keywords:
+  - LCD
+  - OLED
+  - 工作原理及与
+  - 工程应用
+  - 显示技术
+  - 显示结构
+  - 的对比
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/oled-display-basics
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # OLED 显示结构、工作原理及与 LCD 的对比
 
@@ -183,7 +198,21 @@ OLED 烧屏是指某些像素长时间高亮工作后，发光效率下降，在
 
 - [IPS、TN、VA 与 FFS TFT 面板技术对比](tft-panel-technologies.md)
 - [a-Si、LTPS 与 IGZO TFT 背板技术对比](tft-backplane-technologies.md)
-- [透射式、反射式与半反半透式 LCD 对比](transmissive-reflective-transflective.md)
+- [透射型、反射式与半反半透式 LCD 对比](transmissive-reflective-transflective.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
+    2. [高可靠性显示解决方案](../high-reliability-displays.md)
+    3. [科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？](../ips-vs-tn.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [OLED 寿命与残影（burn-in）讨论](https://www.oled-info.com/oled-lifetime-and-burn-in-faq)
+- [AMOLED 驱动 IC 设计指南（Omdia 摘要）](https://www.oled-a.org/)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

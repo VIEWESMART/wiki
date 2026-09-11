@@ -10,7 +10,19 @@ tags:
   - TFT
 authors:
   - viewe_expert
+keywords:
+  - LCD
+  - TFT
+  - 如何读懂显示屏规格参数
+  - 工程应用
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/display-specifications
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 如何读懂显示屏规格参数
 
@@ -280,7 +292,7 @@ IEC 61966-2-1：多媒体系统和设备的颜色测量和管理标准，包括�
 
 亮度均性是显示性能的关键指标。通过测量和计算屏幕上的不同点的亮度，可以评估整个显示器的亮点均度。高亮度均性确保了更好的用户体验和视觉质量，这对于专业应用尤为重要。
 
-### CR：对比比例
+### CR：对比度
 
 对比比率是显示屏的关键规格，表明屏幕可以产生最明亮的白色和最黑暗的黑色之间的区别。它是决定显示屏质量的重要因素，影响了清晰度，深度和整体视觉体验。
 
@@ -299,7 +311,7 @@ IEC 61966-2-1：多媒体系统和设备的颜色测量和管理标准，包括�
 
 图像质量：较高的对比率表明图片中最明亮和最黑暗的部分之间的差异更大，从而产生了更生动，更清晰，更真实的图像。
 
-颜色深度：高对比率有助于更好的颜色 深度和更丰富的细节，特别是在黑暗场景。
+色深：高对比率有助于更好的颜色 深度和更丰富的细节，特别是在黑暗场景。
 
 眼睛舒适：具有更好的对比率的显示屏可以减少眼睛的疲劳，因为它们能够更清楚地区分不同的视觉元素。
 
@@ -361,7 +373,7 @@ NTSC 颜色范围指1953年国家电视系统委员会为模拟电视广播定�
 
 sRGB：适合互联网和一般消费电子设备。
 
-Adobe RGB：用于专业摄影和打印，覆盖更多的绿色和蓝色。
+Adobe RGB 并行：用于专业摄影和打印，覆盖更多的绿色和蓝色。
 
 DCI-P3：用于电影和高动态射程 (HDR) 内容，覆盖更多的红色和绿色。
 
@@ -423,6 +435,20 @@ DCI-P3：用于电影和高动态射程 (HDR) 内容，覆盖更多的红色和�
 - [LCD 基础知识：液晶显示器的工作原理](lcd-basics.md)
 - [TFT LCD 基础知识：结构、原理与优势](tft-lcd-basics.md)
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
+    2. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
+    3. [户外显示选型：高亮 TFT 与半反半透 TFT 对比](../outdoor-tft-selection.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [VESA DisplayPort 标准（含 eDP）](https://vesa.org/vesa-standards/)
+- [TFT LCD 通用规格书示例（BOE NV125FHM-N62）](https://www.mouser.com/datasheet/2/813/NV125FHM-N62-2919650.pdf)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

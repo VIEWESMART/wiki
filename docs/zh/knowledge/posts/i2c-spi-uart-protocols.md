@@ -12,7 +12,22 @@ tags:
   - 嵌入式
 authors:
   - viewe_expert
+keywords:
+  - I2C
+  - SPI
+  - UART
+  - 图解
+  - 嵌入式
+  - 接口协议
+  - 的通信过程与选型对比
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/i2c-spi-uart-protocols
+lastmod: 2026-09-06
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 图解 I2C、SPI、UART 的通信过程与选型对比
 
@@ -128,6 +143,20 @@ UART（通用异步接收器/发送器）是一种串行通信协议，因其**�
 **SPI** 具有高速和全双工模式，非常适合在空间不是主要问题的系统中进行快速高效的数据传输。
 
 **UART** 功能强大，在长距离通信和速度要求较低的配置中表现出色。
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+    2. [ESP32-P4 在多媒体与 HMI 显示应用中的使用](../esp32-p4-display.md)
+    3. [ESP32-S3 智能气象站仪表盘教程](../ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [SPI 协议解析（Motorola 原始标准）](https://www.ee.nmt.edu/sonnyfin/courses/S20/351/papers/Motorola_SPI.pdf)
+- [NXP UART 应用笔记（AN11538）](https://www.nxp.com/docs/en/application-note/AN11538.pdf)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

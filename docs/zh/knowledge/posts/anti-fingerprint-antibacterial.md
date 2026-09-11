@@ -8,7 +8,17 @@ tags:
   - 盖板相关
 authors:
   - viewe_expert
+keywords:
+  - 盖板相关
+  - 盖板防指纹与抗菌表面处理
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/anti-fingerprint-antibacterial
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 盖板防指纹与抗菌表面处理
 
@@ -25,7 +35,7 @@ authors:
 
 防指纹技术的作用
 
-反指纹 (AF) 技术旨在尽量减少对盖板玻璃表面的指纹，污染物和其他污染物的存在，确保设备在使用过程中保持清洁和视觉吸引力。AF技术的主要作用包括：
+防指纹 (AF) 技术旨在尽量减少对盖板玻璃表面的指纹，污染物和其他污染物的存在，确保设备在使用过程中保持清洁和视觉吸引力。AF技术的主要作用包括：
 
 减少指纹残留量：AF涂层有效降低玻璃表面的指纹粘合性，保持屏幕清洁，保持原始外观。
 
@@ -51,8 +61,8 @@ authors:
 提高用户满意度：清洁，无指纹的屏幕表面提供更好的视觉质量和更愉快的用户体验，从而增加对设备的整体满意性。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![实施AF (反指纹) 技术的过程和技术](anti-fingerprint-antibacterial-processes-and-techniques-for-implementing-af-anti-fingerprint-technolo.png){ width="760" loading="lazy" }](anti-fingerprint-antibacterial-processes-and-techniques-for-implementing-af-anti-fingerprint-technolo.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>实施AF (反指纹) 技术的过程和技术</figcaption>
+  [![实施AF (防指纹) 技术的过程和技术](anti-fingerprint-antibacterial-processes-and-techniques-for-implementing-af-anti-fingerprint-technolo.png){ width="760" loading="lazy" }](anti-fingerprint-antibacterial-processes-and-techniques-for-implementing-af-anti-fingerprint-technolo.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>实施AF (防指纹) 技术的过程和技术</figcaption>
 </figure>
 
 实施AF涂层涉及各种工艺和技术，主要包括：
@@ -81,7 +91,7 @@ authors:
 
 ## 结论
 
-在盖板玻璃中应用AF (反指纹) 技术显著减少了指纹和污垢残留物，从而提高了设备的外观和用户体验。通过各种工艺和技术，如凝，真空沉积，喷涂涂料和紫外线固化，实现了高质量的防指纹涂料。这不仅提高了设备的市场竞争力，而且还提供了多种优势，包括降低维护成本和延长设备使用寿命。未来，随着技术的不断进步，AF涂料的性能和应用领域将进一步扩大，为更多显示设备提供优质的用户体验。
+在盖板玻璃中应用AF (防指纹) 技术显著减少了指纹和污垢残留物，从而提高了设备的外观和用户体验。通过各种工艺和技术，如凝，真空沉积，喷涂涂料和紫外线固化，实现了高质量的防指纹涂料。这不仅提高了设备的市场竞争力，而且还提供了多种优势，包括降低维护成本和延长设备使用寿命。未来，随着技术的不断进步，AF涂料的性能和应用领域将进一步扩大，为更多显示设备提供优质的用户体验。
 
 ## 抗菌处理
 
@@ -160,6 +170,9 @@ VIEWE推出相关抗菌系列产品，在长期使用后将保持抗菌效果。
 </figure>
 
 它通过使用高温离子交换方法来交换和结合银离子与玻璃中的其他离子。如图所示，抗菌玻璃的抗菌效果非常好。同时，它的光学特性和表面痕耐性都具有出色性能。对于产品组合，设计考虑因素可以与盖板玻璃相结合。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 <figure markdown="span" class="displaywiki-figure">
   [![在广泛的细菌中死亡率 > 99% (JISZ和ISO测试)](anti-fingerprint-antibacterial-99-kill-rate-at-broad-range-of-bacteria-jisz-and-iso-test.jpeg){ width="760" loading="lazy" }](anti-fingerprint-antibacterial-99-kill-rate-at-broad-range-of-bacteria-jisz-and-iso-test.jpeg){ .displaywiki-image-link title="查看原图" }
@@ -183,6 +196,20 @@ VIEWE推出相关抗菌系列产品，在长期使用后将保持抗菌效果。
 - [显示屏盖板材料、厚度与表面处理](cover-lens-materials-treatments.md)
 - [显示屏减反射与防眩光处理对比](anti-reflective-vs-anti-glare.md)
 - [显示产品盖板定制指南](cover-lens-customization.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [显示屏减反射与防眩光处理对比](../anti-reflective-vs-anti-glare.md)
+    2. [显示产品盖板定制指南](../cover-lens-customization.md)
+    3. [显示屏盖板材料、厚度与表面处理](../cover-lens-materials-treatments.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [康宁 Gorilla Glass 产品手册](https://www.corning.com/microsite/csm/gorillaglass/PI_Glass/)
+- [肖特 AS 87 防指纹玻璃规范](https://www.schott.com/-/media/project/schott/shared/imported/af3200af.pdf)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

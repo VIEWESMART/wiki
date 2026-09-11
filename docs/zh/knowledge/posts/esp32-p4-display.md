@@ -9,18 +9,32 @@ tags:
   - ESP32
 authors:
   - viewe_expert
+keywords:
+  - ESP32
+  - ESP32-P4
+  - HMI
+  - 在多媒体与
+  - 嵌入式
+  - 显示应用中的使用
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/esp32-p4-display
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # ESP32-P4 在多媒体与 HMI 显示应用中的使用
 
 !!! abstract "快速结论"
-    ESP32-P4 是乐鑫面向"高端 HMI / 多媒体 IoT"推出的双核 RISC-V（HP）+ 单核 RISC-V（LP）异构 SoC，主频 400 MHz。它把 JPEG / H.264 / ISP / PPA、24 位 LCD、MIPI DSI/CSI、3 路 I2S 集成在单芯片上，特别适合智能家居、工业控制、医疗设备、消费类带屏产品的多媒体与显示方案。
+    ESP32-P4 是乐鑫面向"高端 HMI / 多媒体 IoT"推出的双核 RISC-V（HP）+ 单核 RISC-V（LP）异构 SoC，主频 400 MHz。它把 JPEG / H.264 / ISP / PPA、24 位 LCD、MIPI DSI/CSI、3 路 I2S 集成在单芯片上，特别适合智能家居、工控、医疗设备、消费类带屏产品的多媒体与显示方案。
 
 ## 核心要点
 
 - **双核异构**：HP 系统 = 双核 RISC-V @ 400 MHz；LP 系统 = 单核 RISC-V @ 40 MHz，负责低功耗。
 - **多媒体核芯**：JPEG 编解码器、H.264 编码器（1080p@30fps）、ISP、PPA、Camera-LCD 控制器。
-- **显示能力**：24 位并行 RGB LCD（兼容 RGB / MOTO6800 / i8080）+ MIPI DSI（2 lane × 1.5 Gbps）。
+- **显示能力**：24 位并行 RGB 并行 LCD（兼容 RGB 并行 / MOTO6800 / i8080）+ MIPI DSI（2 lane × 1.5 Gbps）。
 - **摄像头能力**：MIPI CSI（2 lane × 1.5 Gbps）+ DVP + DW-GDMA。
 - **音频能力**：3 个标准 I2S（主 / 从、全双 / 半双）+ 1 个 LP I2S + 独立音频 PLL（6–125 MHz）。
 - **接口外设**：5 × UART（最高 5 Mbps）、多路 SPI（含 QSPI / Octal）、2 × I2C、I3C、USB 2.0 OTG、Ethernet MAC（IEEE 1588）、TWAI（CAN）、SD/MMC 等。
@@ -84,7 +98,7 @@ ESP32-P4 是乐鑫专门面向物联网设备的高性能微控制器。它由�
 
 ### 3.4 Camera-LCD 控制器
 
-- 支持 8/16/24 位并行输出（LCD 模式）：RGB、MOTO6800、i8080。
+- 支持 8/16/24 位并行输出（LCD 模式）：RGB 并行、MOTO6800、i8080。
 - 支持 8/16 位并行输入（DVP 图像传感器）。
 - 支持同时连接 LCD 与摄像头。
 
@@ -157,7 +171,7 @@ ESP32-P4 在显示、摄像、语音三类入口上都有硬件 IP，可覆盖�
 
 ### 6.1 显示屏
 
-- **24 位并行 LCD**：兼容 RGB、MOTO6800、i8080，输出位数 8 / 16 / 24。
+- **24 位并行 LCD**：兼容 RGB 并行、MOTO6800、i8080，输出位数 8 / 16 / 24。
 - **MIPI DSI**：2 lane × 1.5 Gbps，覆盖 720p – 1080p 高分辨率。
 - 输出格式：RGB888 / RGB666 / RGB565。
 - 可同时接 LCD 与摄像头（Camera-LCD 控制器支持）。
@@ -253,13 +267,31 @@ ESP32-P4 是一颗**高性能 + 低功耗 + 多媒体**兼顾的 MCU。HP / LP �
 
 ??? question "Q6：如何评估 ESP32-P4 是否符合车规 / 工规？"
     ESP32-P4 是工业级（-40 °C – 125 °C 结温范围），但**AEC-Q100 / Q104 认证并不强制**。要在产品侧做车规振动 + 高低温循环 + 长期老化测试。TWAI、CAN 性能满足车载通信需求。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 ## 相关阅读
 
 - [I2C、SPI、UART 通信协议详解](i2c-spi-uart-protocols.md)
 - [MIPI 接口基础](mipi-interface-basics.md)
-- [显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 - [ESP32-S3 智能天气仪表盘（实践示例）](ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [ESP32-S3 智能气象站仪表盘教程](../ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
+    2. [图解 I2C、SPI、UART 的通信过程与选型对比](../i2c-spi-uart-protocols.md)
+    3. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [ESP-IDF 编程指南（Espressif）](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/)
+- [FreeRTOS 官方参考手册](https://www.freertos.org/Documentation/RTOS_book.html)
+- [ESP32-S3 技术参考手册](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_cn.pdf)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

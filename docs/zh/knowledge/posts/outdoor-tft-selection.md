@@ -6,12 +6,28 @@ categories:
   - 显示解决方案
 tags:
   - 工程应用
-  - 阳光可读
+  - **阳光下可视**
   - TFT
   - 半透半反
 authors:
   - viewe_expert
+keywords:
+  - **阳光下可视**
+  - TFT
+  - 与半反半透
+  - 半透半反
+  - 对比
+  - 工程应用
+  - 户外显示选型
+  - 高亮
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/outdoor-tft-selection
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 户外显示选型：高亮 TFT 与半反半透 TFT 对比
 
@@ -209,6 +225,19 @@ GIS/GNSS
 - [定制与阳光下可读显示解决方案](custom-sunlight-readable-displays.md)
 - [高可靠性显示解决方案](high-reliability-displays.md)
 - [UART 智能显示屏解决方案](uart-smart-display.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
+    2. [如何读懂显示屏规格参数](../display-specifications.md)
+    3. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [半透半反 TFT 选型指南](https://www.displaywiki.com/)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

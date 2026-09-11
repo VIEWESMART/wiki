@@ -9,7 +9,18 @@ tags:
   - PCB
 authors:
   - viewe_expert
+keywords:
+  - PCB
+  - 工程应用
+  - 结构与制造流程
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/pcb-construction-process
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # PCB 结构与制造流程
 
@@ -22,11 +33,11 @@ authors:
 - 主要功能层：基板、铜箔、半固化片（Prepreg）、阻焊层（Solder Mask）、丝印（Silkscreen）、焊盘（Pad）、过孔（Via）、金手指（Gold Finger）。
 - 标准 19 步制造流程以"内层图形 → 层压 → 钻孔沉铜 → 外层图形 → 阻焊 / 丝印 → 表面处理 → 成型与电气测试"为主线。
 - **基板选择**（FR-4 / 高频 / 高速 / 铝基 / 陶瓷 / 柔性）是 PCB 设计的第一决策，直接影响成本、性能、可靠性。
-- **表面处理**（HASL / ENIG / OSP / 沉银 / 沉锡 / 硬金）决定可焊性、信号完整性、寿命与成本。
+- **表面处理**（HASL / ENIG / OSP / 化学沉银 / 化学沉锡 / 硬金）决定可焊性、信号完整性、寿命与成本。
 
 ## 1. 印刷电路板概述
 
-印刷电路板（Printed Circuit Board，PCB）几乎应用于所有类型的电子设备，承担"为电子元器件提供电气连接和机械支撑"的核心作用。PCB 裸板上没有器件，故此通常也被称为**印制线路板（Printed Wiring Board，PWB）**。
+印制电路板（Printed Circuit Board，PCB）几乎应用于所有类型的电子设备，承担"为电子元器件提供电气连接和机械支撑"的核心作用。PCB 裸板上没有器件，故此通常也被称为**印制线路板（Printed Wiring Board，PWB）**。
 
 在 PCB 普及之前，电子系统的连接靠手工布线与绝缘电缆完成。一旦线缆绝缘层老化破裂，就会引起开路或短路。PCB 通过"把导线做成铜箔图形并固化在绝缘基板上"把这两类故障的发生概率极大降低。
 
@@ -71,6 +82,9 @@ Prepreg 是用树脂浸渍过的玻璃纤维织物，处于"半固化"状态—�
 ### 2.4 阻焊层（Solder Mask）
 
 阻焊层是覆盖在铜层之上的绝缘保护层，常见颜色是绿色。它防止铜线氧化、避免在焊接时桥接短路，焊盘位置开窗露出以供焊接。颜色可用绿、黑、蓝、红、白等。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 ### 2.5 丝印（Silkscreen / Legend）
 
@@ -140,7 +154,7 @@ Prepreg 是用树脂浸渍过的玻璃纤维织物，处于"半固化"状态—�
 
 用强碱液剥除已硬化的干膜，露出全部电路铜面。
 
-### 步骤 7：内层 AOI（Automated Optical Inspection）
+### 步骤 7：芯板 AOI（Automated Optical Inspection）
 
 AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对，检查短路、开路、缺口等缺陷。
 
@@ -152,7 +166,7 @@ AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对�
 
 按图纸把多个芯板与 Prepreg 叠合（铜箔在最外），在高温高压下使 Prepreg 完全固化，冷却后形成整体多层板。
 
-设计阶段必须关注：**铜分布均匀性、叠层对称性、盲孔与埋孔的布局**——这些都是层压后无法再改的物理边界。
+设计阶段必须关注：**铜分布均匀性、叠层对称性、盲孔与埋孔的布局**热分解温度—这些都是层压后无法再改的物理边界。
 
 ### 步骤 10：钻孔（Drilling）
 
@@ -187,11 +201,11 @@ AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对�
 | HASL（锡铅 / 无铅） | Hot Air Solder Leveling | 成本低、可焊性好，但不适用于小封装、BGA 与 HDI |
 | ENIG | Electroless Nickel Immersion Gold | 镀镍 + 薄金层，平面好、寿命长，适合 BGA / 高频 |
 | OSP | Organic Solderability Preservatives | 有机保护膜，环保低成本，但易划伤、多次回流受限 |
-| 沉银 | Immersion Silver | 信号完整性好，但易硫化变色 |
-| 沉锡 | Immersion Tin | 适合压接 / 多次回流，但易产生锡须 |
+| 化学沉银 | Immersion Silver | 信号完整性好，但易硫化变色 |
+| 化学沉锡 | Immersion Tin | 适合压接 / 多次回流，但易产生锡须 |
 | 硬金 | Hard Gold（电镀厚金） | 用于金手指、按键触点，耐磨抗氧化 |
 
-### 步骤 17：成型（Profiling / Routing）
+### 步骤 17：外形加工（Profiling / Routing）
 
 按客户要求的成品外形，把板从工作板上锣（铣）出来或 V-cut 切出来。
 
@@ -224,16 +238,16 @@ AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对�
 
 - 一次性消费 / 手工焊接：HASL 即可。
 - BGA / QFN / 高频 / 长寿命：ENIG。
-- 多次回流焊 / 压接：沉锡。
+- 多次回流焊 / 压接：化学沉锡。
 - 金手指 / 高频触点：硬金。
-- 强信号完整性 / 散热敏感：**沉银**（注意硫化问题）。
+- 强信号完整性 / 散热敏感：**化学沉银**（注意硫化问题）。
 
 ## 5. FAQ
 
 ??? question "Q1：PCB 颜色为什么多数是绿色？"
     颜色来自阻焊层（通常是油墨或干膜感光层），绿色来自酞菁绿染料，对人眼敏感度低，工厂观感舒适，并不影响电气性能。蓝、黑、红、白、紫色都是阻焊染料配方问题，工厂侧都能批量供应。
 
-??? question "Q2：通孔、盲孔、埋孔到底怎么选？"
+??? question "Q2：过孔、盲孔、埋孔到底怎么选？"
     通孔最便宜、最可靠，但密度低；盲孔占表层走线空间少；埋孔可完全藏在内部且不占用表层空间，但需要压合前先做完、成本最高。**HDI 板常用 1 阶 / 2 阶盲埋组合**，关键还是看密度与成本。
 
 ??? question "Q3：ENIG 与 HASL 哪个更适合 BGA？"
@@ -249,7 +263,22 @@ AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对�
 
 - [PCB 类型与材料选择](pcb-types-materials.md)
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
-- [显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
+    2. [PCB 类型与材料选择](../pcb-types-materials.md)
+    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [IPC-6012 印制板性能规范](https://shop.ipc.org/ipc-6012)
+- [高 Tg FR-4 材料数据手册（松下 R-1766 摘要）](https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1042.pdf)
+- [高频基板数据手册（RO4000 系列）](https://www.rogerscorp.com/ems/english/products/ro4000-series-laminates)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

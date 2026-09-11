@@ -9,7 +9,25 @@ tags:
   - 质量管理
 authors:
   - viewe_expert
+keywords:
+  - 14000
+  - 16949
+  - 5S
+  - 9001
+  - IATF
+  - ISO
+  - 与六西格玛
+  - 工程应用
+  - 显示制造质量管理
+  - 质量管理
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/quality-management
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 显示制造质量管理：5S、ISO 9001、IATF 16949、ISO 14000 与六西格玛
 
@@ -34,7 +52,7 @@ authors:
 
 | 日语术语 | 英文术语 | 定义 |
 | --- | --- | --- |
-| 整理（Seiri） | 整理 | 分类材料，只保留完成任务所需的基本项目。 (此操作包括通过工作空间的所有内容来确定哪些是需要的和哪些可以删除的。所有不用于完成工作过程的东西都应该离开工作区域.) |
+| 类型（Seiri） | 类型 | 分类材料，只保留完成任务所需的基本项目。 (此操作包括通过工作空间的所有内容来确定哪些是需要的和哪些可以删除的。所有不用于完成工作过程的东西都应该离开工作区域.) |
 | 整顿（Seiton） | 整顿 | 确保所有物品都有组织性，每个物品都有指定的位置。以逻辑的方式整理工作场所留下的所有物件，使工人更容易完成任务。这通常涉及将物品放置在无需曲或做额外运动到达的地方。 |
 | 清扫（Seiso） | 清扫 | 积极努力保持工作场所的干净和有序，以确保有目的的工作。这意味着清洁和维护新组织的工作空间。它可能涉及清洗，粉尘等常规任务或对机器，工具和其他设备进行维护。 |
 | 清洁（Seiketsu） | 标准化 | 为组织和过程制定一套标准。本质上，这就是你首先采取的三个S，并制定这些任务如何和何时执行的规则。这些标准可能涉及时间表，图表，列表等。 |
@@ -77,7 +95,7 @@ authors:
 
 让我们仔细看看5S的各个部分。
 
-整理
+类型
 
 5S分类的第一个步骤包括在工作场所中检查所有工具，家具，材料，设备等，以确定需要存在什么以及可以移除什么。在此阶段提出的一些问题包括：
 
@@ -690,6 +708,20 @@ DMADV项目方法称为DFSS ( Six Sigma) 五个阶段：
 商业过程映射/检查表
 
 原因与影响图 (也称为鱼骨或石川图)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
+    2. [显示屏定制、MOQ、交期与订购常见问题](../display-customization-faq.md)
+    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [ISO 9001:2015 质量管理体系](https://www.iso.org/standard/62085.html)
+- [AEC-Q100 IC 应力测试](https://www.aecouncil.com/Documents/AEC_Q100_Rev_J.pdf)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

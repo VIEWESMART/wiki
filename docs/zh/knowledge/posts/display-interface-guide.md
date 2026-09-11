@@ -1,6 +1,6 @@
 ---
-title: "显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等"
-description: "一篇面向嵌入式工程师的显示接口选型指南，逐项拆解 MCU 8080/6800、并行 RGB、LVDS、MIPI DSI、eDP、SPI、I2C、UART、USB、HDMI、RS232、CAN、RS485 等接口的总线特征、带宽、典型应用与选型取舍，附带接口横向对比表。"
+title: "显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等"
+description: "一篇面向嵌入式工程师的显示接口选型指南，逐项拆解 MCU 8080/6800、并行 RGB 并行、LVDS、MIPI DSI、eDP、SPI、I2C、UART、USB、HDMI、RS232、CAN、RS485 等接口的总线特征、带宽、典型应用与选型取舍，附带接口横向对比表。"
 date: 2026-09-01
 categories:
   - 接口和电子
@@ -11,16 +11,34 @@ tags:
   - 工程应用
 authors:
   - viewe_expert
+keywords:
+  - LVDS
+  - MCU
+  - MIPI
+  - MIPI DSI
+  - RGB
+  - SPI
+  - UART
+  - 工程应用
+  - 并行
+  - 接口协议
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/display-interface-guide
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
 
-# 显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等
+
+# 显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等
 
 !!! abstract "快速结论"
     显示接口的选型与分辨率、传输距离、抗干扰、连接器成本、芯片资源强相关。本文按"并行 / 串行 / 通讯总线"三类逐项拆解主流接口，并给出一张横向对比表，帮助工程师用一张图完成初版选型。
 
 ## 核心要点
 
-- **并行接口**适合中小尺寸 TFT：MCU 8080/6800 用于低分辨率小屏，并行 RGB 用于 3.5"–8" 中等分辨率。
+- **并行接口**适合中小尺寸 TFT：MCU 8080/6800 用于低分辨率小屏，并行 RGB 并行 用于 3.5"–8" 中等分辨率。
 - **高速串行接口**适合高分辨率大屏：LVDS 与 MIPI DSI 已成主流，eDP 正在笔记本与一体机快速渗透。
 - **低速串行与总线接口**用于参数与触摸：I2C、SPI、UART、USB、HDMI、RS232、CAN、RS485 各自定位不同，需结合场景搭配。
 - **选型不是找最强，而是找最匹配**：分辨率、传输距离、抗干扰、芯片资源、连接器成本共同决定接口选择。
@@ -32,15 +50,15 @@ authors:
 ### 1.1 MCU 8080/6800
 
 <figure markdown="span" class="displaywiki-figure">
-  [![1-1 MCU 接口 8080/6800](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ width="760" loading="lazy" }](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 1-1 MCU 接口 8080/6800</figcaption>
+  [![1-1 MCU 并行 8080/6800](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ width="760" loading="lazy" }](display-interface-guide-1-1-mcu-interface-8080-6800.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 1-1 MCU 并行 8080/6800</figcaption>
 </figure>
 
 MCU 接口由 8080 与 6800 两种时序组成，其中 8080 更为主流。数据线常见 4/8/9/16 位宽度（8 位最常用），控制信号包括 CS（片选）、RS（数据 / 寄存器选择）、RD（读使能）、WR（写使能）。
 
-显示器根据控制总线信号直接接收总线原始数据，通信带宽取决于驱动 IC 的运行速度。以 QVGA 320 × 240 为例，ENABLE 信号有效时所需通信带宽约为：
+显示器根据控制总线信号直接接收总线原始数据，通信带宽取决于驱动 IC 的运行速度。以 QVGA 320 × 240 为例，数据使能 信号有效时所需通信带宽约为：
 
-```
+```text
 320 × 240 / 8-bit（数据宽度）× 60 fps ≈ 576 kHz
 ```
 
@@ -55,54 +73,54 @@ MCU 接口由 8080 与 6800 两种时序组成，其中 8080 更为主流。数�
   <figcaption>图 1-2 MCU 并行接口示意</figcaption>
 </figure>
 
-### 1.2 并行 RGB 16/18/24 位
+### 1.2 并行 RGB 并行 16/18/24 位
 
-RGB 接口按并行方式把像素数据送入显示驱动 IC，常见位宽为 16、18、24 位。信号集合包括：
+RGB 并行 接口按并行方式把像素数据送入显示驱动 IC，常见位宽为 16、18、24 位。信号集合包括：
 
 - **R/G/B 数据线**（6 / 16 / 18 / 24 位，分别对应 RGB666、RGB565、RGB666、RGB888）
 - **VSYNC**：垂直同步信号
 - **HSYNC**：水平同步信号
-- **DE**：数据使能（Data Enable）
+- **数据使能**：数据使能（Data Enable）
 - **PCLK**：像素时钟
 
 <figure markdown="span" class="displaywiki-figure">
-  [![RGB 接口](display-interface-guide-rgb-interface.png){ width="760" loading="lazy" }](display-interface-guide-rgb-interface.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 1-3 RGB 接口结构示意</figcaption>
+  [![RGB 并行 并行](display-interface-guide-rgb-interface.png){ width="760" loading="lazy" }](display-interface-guide-rgb-interface.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 1-3 RGB 并行 接口结构示意</figcaption>
 </figure>
 
 以 WVGA 800 × 480 @ 60 fps 为例：
 
-```
+```text
 800 × 480 × 60 fps ≈ 23.04 MHz（像素时钟）
 ```
 
 **优点**：R/G/B 数据直接写入 LCD，无需 GRAM，刷新速率高，协议简单。
 
-**缺点**：控制信号多于 MCU 接口，布线更密；走线长度与阻抗匹配要小心。
+**缺点**：控制信号多于 MCU 并行，布线更密；走线长度与阻抗匹配要小心。
 
 **应用**：中等尺寸 TFT（3.5"–8"）。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![24 位和 18 位 RGB 接口的例子](display-interface-guide-examples-of-24-bit-and-18-bit-rgb-interface.png){ width="760" loading="lazy" }](display-interface-guide-examples-of-24-bit-and-18-bit-rgb-interface.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 1-4 24 位与 18 位 RGB 接口对比</figcaption>
+  [![24 位和 18 位 RGB 并行 接口的例子](display-interface-guide-examples-of-24-bit-and-18-bit-rgb-interface.png){ width="760" loading="lazy" }](display-interface-guide-examples-of-24-bit-and-18-bit-rgb-interface.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 1-4 24 位与 18 位 RGB 并行 接口对比</figcaption>
 </figure>
 
-### 1.3 串行 RGB 6/8 位
+### 1.3 串行 RGB 并行 6/8 位
 
-为减少 RGB 接口的信号线数量，可将多比特数据按周期拆分串行传输：
+为减少 RGB 并行 接口的信号线数量，可将多比特数据按周期拆分串行传输：
 
 <figure markdown="span" class="displaywiki-figure">
-  [![2.3 串行 RGB 6/8 位](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ width="760" loading="lazy" }](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 1-5 串行 RGB 6/8 位结构</figcaption>
+  [![2.3 串行 RGB 并行 6/8 位](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ width="760" loading="lazy" }](display-interface-guide-2-3-serial-rgb-6-8-bits.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 1-5 串行 RGB 并行 6/8 位结构</figcaption>
 </figure>
 
 以 QVGA 320 × 240 + 16 位色深 + 30 fps 为例：
 
-```
+```text
 320 × 240 × 3（三通道）× 30 fps ≈ 6.912 MHz（DCLK）
 ```
 
-串行 RGB 在保留 RGB 接口优势的同时，把引脚数压到 8 条以内，是中等尺寸 TFT 在低成本 MCU 上常用的折衷。
+串行 RGB 并行 在保留 RGB 并行 接口优势的同时，把引脚数压到 8 条以内，是中等尺寸 TFT 在低成本 MCU 上常用的折衷。
 
 ## 2. 高速串行接口
 
@@ -124,7 +142,7 @@ SPI 是主从结构，典型拓扑是 1 个主机 + 1 个或多个从机。共 4
 
 显示器场景下，SPI 适合传输配置命令与小尺寸低分辨率图像。以 QVGA 320 × 240 + 16 位色深 + 30 fps 为例：
 
-```
+```text
 320 × 240 × 16 bit × 30 fps ≈ 36.864 MHz
 ```
 
@@ -242,7 +260,7 @@ HDMI（High-Definition Multimedia Interface）是面向"未压缩视频 + 数字
   <figcaption>图 3-3 HDMI 接口</figcaption>
 </figure>
 
-随着彩色 TFT LCD 普及，HDMI 在显示行业的渗透迅速，但实际嵌入式场景仍以 RGB / LVDS / MIPI 为主，HDMI 多用于外接显示器或视频传输。
+随着彩色 TFT LCD 普及，HDMI 在显示行业的渗透迅速，但实际嵌入式场景仍以 RGB 并行 / LVDS / MIPI 为主，HDMI 多用于外接显示器或视频传输。
 
 ### 3.4 RS232 接口
 
@@ -354,10 +372,10 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
 | 显示接口 | 分辨率范围 | 速率 | 引脚数 | 抗扰 | 功耗 | 传输距离 | 成本 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | MCU 8080/6800 | 中等偏低 | 低 | 多 | 中 | 低 | 短 | 低 |
-| 并行 RGB 16/18/24 | 中等 | 高 | 多 | 较差 | 高 | 短 | 低 |
+| 并行 RGB 并行 16/18/24 | 中等 | 高 | 多 | 较差 | 高 | 短 | 低 |
 | SPI | 小 | 低 | 少（4） | 中 | 低 | 短 | 低 |
 | I2C | 小 | 低 | 少（2） | 中 | 低 | 短 | 低 |
-| 串行 RGB 6/8 位 | 中等 | 中 | 少 | 较差 | 中 | 短 | 低 |
+| 串行 RGB 并行 6/8 位 | 中等 | 中 | 少 | 较差 | 中 | 短 | 低 |
 | LVDS | 大 | 高 | 中 | 好 | 低 | 长 | 中 |
 | MIPI DSI | 大 | 高 | 少 | 好 | 低 | 短 | 中 |
 | eDP | 大 | 高 | 少 | 好 | 低 | 长 | 中 |
@@ -370,7 +388,7 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
 
 ## 5. 选型流程
 
-1. **先定分辨率与尺寸**：3.5" 以下优先 MCU / SPI / I2C；3.5"–8" 走并行 RGB；8" 以上考虑 LVDS / MIPI DSI / eDP。
+1. **先定分辨率与尺寸**：3.5" 以下优先 MCU / SPI / I2C；3.5"–8" 走并行 RGB 并行；8" 以上考虑 LVDS / MIPI DSI / eDP。
 2. **再看传输距离与抗扰**：差分接口（LVDS / MIPI / eDP / CAN / RS485）在长距离与电磁噪声环境下明显占优。
 3. **评估芯片资源**：MCU 资源有限时可优先选 MCU 8080；带 GPU / DSP / 视频专用 IP 时优先 LVDS / MIPI / eDP。
 4. **考虑生态与开发成本**：UART / RS485 / Modbus 在工业协议栈成熟，I2C / SPI 在屏参与触摸最常见。
@@ -385,7 +403,7 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
     两者定位不同：**SPI** 适合低分辨率小尺寸（< 2"）或触摸上报，引脚极省；**MCU 8080** 是单色字符 / 图形 / 3.5" 以下小 TFT 的事实标准。需不需要更新画面、刷新速率高不高、用不用 GRAM，是核心判断点。
 
 ??? question "Q3：为什么 MIPI 在手机上这么普及？"
-    MIPI DSI 把并行 RGB 用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求"轻薄 + 高 PPI + 长续航"的折衷结果。
+    MIPI DSI 把并行 RGB 并行 用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求"轻薄 + 高 PPI + 长续航"的折衷结果。
 
 ??? question "Q4：UART 串口屏主要用在什么场景？"
     用于**工业 HMI 改造与快速原型**：上位机通过串口下发 UI 与控件命令，屏端 MCU 解析后渲染，省去在外置 MCU 上移植 GUI 库的成本。优奕视界 串口屏即基于此。
@@ -409,6 +427,21 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
 - [MIPI 接口基础](mipi-interface-basics.md)
 - [LCD 面板时序参数详解](lcd-panel-timing-parameters.md)
+
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
+    2. [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](../mipi-interface-basics.md)
+    3. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
+## 参考数据来源
+
+本文涉及的标准、规格、应用笔记与官方资料：
+
+- [I2C 总线规范（UM10204, NXP）](https://www.nxp.com/docs/en/user-guide/UM10204.pdf)
+- [MIPI DSI-2 规范](https://www.mipi.org/specifications/dsi-2)
+- [TIA/EIA-644 LVDS 标准](https://standards.globalspec.com/std/1419681/TIA-EIA-644)
+
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

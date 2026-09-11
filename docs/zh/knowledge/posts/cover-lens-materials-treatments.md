@@ -8,7 +8,18 @@ tags:
   - 盖板相关
 authors:
   - viewe_expert
+keywords:
+  - 厚度与表面处理
+  - 显示屏盖板材料
+  - 盖板相关
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/cover-lens-materials-treatments
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 显示屏盖板材料、厚度与表面处理
 
@@ -21,7 +32,7 @@ authors:
 - 根据下文比较相关技术、应用条件和设计取舍。
 - 最终选型前，应确认光学、电气、结构、环境与量产要求。
 
-## 盖板
+## 盖板玻璃
 
 具有投影电容式触摸屏的模块有一个顶层，称为盖面。该部分是产品中最常用的定制组件。它是让显示屏完全改变外观的部分。以完美地与其他的产品设计相结合。
 
@@ -64,9 +75,9 @@ authors:
 
 ### 遮蔽镜头的治疗方法
 
-减反射 (AR) 通过将特定厚度的涂层应用于盖镜头表面，减少显示器表面上的反射。
+防眩光 (AR) 通过将特定厚度的涂层应用于盖镜头表面，减少显示器表面上的反射。
 
-反光 (AG) 通过在盖镜头上创造粗的表面，从显示面上移除一个明亮的光。
+防眩光 (AG) 通过在盖镜头上创造粗的表面，从显示面上移除一个明亮的光。
 
 防指纹 (AF) 通过使用一种减少盖镜头保留油脂的能力的处理方法来防止显示表面上的指纹和污染
 
@@ -80,7 +91,7 @@ authors:
 
 这种整理的玻璃由化学增强的酸制成。由于生产过程中经历的离子交换过程，玻璃具有其强度。
 
-PMMA 盖板
+PMMA 盖板玻璃
 
 聚甲基烯酸 (PMMA)，也称为烯酸，烯基玻璃或普克西格لاس通常被用于盖面玻璃选项。这种盖面镜头的一种优势是，当受到外部力量的影响时，它不会破碎。另外一个优点是，它很容易做孔，切割不同的形状。
 
@@ -90,6 +101,12 @@ PMMA 盖板
 - [盖板防指纹与抗菌表面处理](anti-fingerprint-antibacterial.md)
 - [显示产品盖板定制指南](cover-lens-customization.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [盖板防指纹与抗菌表面处理](../anti-fingerprint-antibacterial.md)
+    2. [显示屏减反射与防眩光处理对比](../anti-reflective-vs-anti-glare.md)
+    3. [显示产品盖板定制指南](../cover-lens-customization.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

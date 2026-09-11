@@ -8,7 +8,23 @@ tags:
   - 显示技术
 authors:
   - viewe_expert
+keywords:
+  - IPS
+  - TFT
+  - 屏幕到底有什么区别？项目选型该怎么挑？
+  - 显示技术
+  - 科普
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/ips-vs-tn
+lastmod: 2025-11-11
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
+
 
 # 科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？
 
@@ -148,6 +164,12 @@ IPS 技术革命性地改变了液晶分子的运动方式。它的液晶分子�
 
 TFT 与 IPS 不是并列关系，IPS 是 TFT 的子集。日常说"TFT 屏"通常指 TN 面板的 TFT-LCD；IPS 是 TFT-LCD 中的一种液晶分子排列方式。把概念理顺，再看 datasheet 就不混淆了。选型本质上是"看什么场景、什么视角、什么交互"：多角度观看 / 触控 / 色彩选 IPS；极低成本 / 固定视角 / 高速显示可选 TN。
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [OLED 显示结构、工作原理及与 LCD 的对比](../oled-display-basics.md)
+    2. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
+    3. [IPS、TN、VA 与 FFS TFT 面板技术对比](../tft-panel-technologies.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

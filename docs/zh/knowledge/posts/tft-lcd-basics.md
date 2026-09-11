@@ -10,7 +10,21 @@ tags:
   - LCD
 authors:
   - viewe_expert
+keywords:
+  - LCD
+  - TFT
+  - 原理与优势
+  - 基础知识
+  - 显示技术
+  - 结构
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/tft-lcd-basics
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # TFT LCD 基础知识：结构、原理与优势
 
@@ -32,7 +46,7 @@ TFT显示技术：它如何工作？
   <figcaption>TFT显示技术：它如何工作？</figcaption>
 </figure>
 
-TFT LCD显示器 (Thin-Film-Transistor Liquid Crystal Display) 技术具有两块玻璃板之间填充的液晶材料。两种极化器过器，颜色过仪 (RGB，红/绿/蓝) 和两个对齐层确切确定允许传递的光量以及产生哪些颜色。
+TFT LCD显示器 (Thin-Film-Transistor Liquid Crystal Display) 技术具有两块玻璃板之间填充的液晶材料。两种极化器过器，颜色过仪 (RGB 并行，红/绿/蓝) 和两个对齐层确切确定允许传递的光量以及产生哪些颜色。
 
 一个活跃矩阵中的每个像素与一个包含电容器的晶体管配对，这使得每个子像素能够保留其电荷，而不是每次需要更换时都需要发送电荷。一个颜色过器显示了颜色，而一个顶层包含了可见的屏幕。
 
@@ -124,11 +138,11 @@ TFT LCD整理
 
 根据晶体管整理分类：a-Si/LTPS/IZGO
 
-根据照明方法进行分类：传输/变光/反射
+根据照明方法进行分类：透射率/变光/反射
 
 <figure markdown="span" class="displaywiki-figure">
-  [![根据照明方法进行分类：传输/变光/反射](tft-lcd-basics-classify-by-lighting-method-transmissive-transflective-reflective.png){ width="760" loading="lazy" }](tft-lcd-basics-classify-by-lighting-method-transmissive-transflective-reflective.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>根据照明方法进行分类：传输/变光/反射</figcaption>
+  [![根据照明方法进行分类：透射率/变光/反射](tft-lcd-basics-classify-by-lighting-method-transmissive-transflective-reflective.png){ width="760" loading="lazy" }](tft-lcd-basics-classify-by-lighting-method-transmissive-transflective-reflective.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>根据照明方法进行分类：透射率/变光/反射</figcaption>
 </figure>
 
 ## 相关阅读
@@ -137,6 +151,12 @@ TFT LCD整理
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
 - [如何读懂显示屏规格参数](display-specifications.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
+    2. [如何读懂显示屏规格参数](../display-specifications.md)
+    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

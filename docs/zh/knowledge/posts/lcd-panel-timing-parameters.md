@@ -11,7 +11,21 @@ tags:
   - 显示技术
 authors:
   - viewe_expert
+keywords:
+  - LCD
+  - MIPI DSI
+  - 屏参详解
+  - 把点屏参数讲成能看见的样子
+  - 接口协议
+  - 显示技术
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/lcd-panel-timing-parameters
+lastmod: 2026-09-06
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # LCD 屏参详解：把点屏参数讲成能看见的样子
 
@@ -170,7 +184,7 @@ backlight_enable(); /* 最后再打开聚光灯 */
 - reset 极性和延时对不对。
 - 背光有没有打开。
 - `0x11`、`0x29` 有没有发出去。
-- DSI host 是否真的进入 HS 传输。
+- DSI host 是否真的进入 HS 透射率。
 
 **花屏** 先看：
 
@@ -185,10 +199,13 @@ backlight_enable(); /* 最后再打开聚光灯 */
 - TE 是否配置正确。
 - ESD 检测是否误判。
 - 电源纹波、reset 时序、休眠唤醒流程是否稳定。
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 **偏色** 先看：
 
-- RGB/BGR 顺序。
+- RGB 并行/BGR 顺序。
 - bpp 配置。
 - panel init 里的颜色格式。
 - DSI host 的 pixel format。
@@ -241,8 +258,14 @@ backlight_enable(); /* 最后再打开聚光灯 */
     不要。Sleep Out (0x11)、Display On (0x29)、reset 拉低/拉高之间的延时是屏厂按面板特性标的，删掉或缩短容易出现半亮、闪屏、ESD 误判等"灵异"现象。第一版驱动应该原样移植屏厂 init code，亮起来后再逐步清理与注释。
 
 ??? question "Q5：屏黑屏怎么快速定位？"
-    按"硬件 → 时序 → 链路 → 命令"四步查：① 电源/reset/背光/0x11 0x29 是否到位；② porch 和 pixel clock 是否离谱；③ lane 数与 bpp 是否匹配，DSI host 是否真的进入 HS 传输；④ init 命令是否完整、顺序是否对。这四步过一遍，多数黑屏都能定位到具体一段。
+    按"硬件 → 时序 → 链路 → 命令"四步查：① 电源/reset/背光/0x11 0x29 是否到位；② porch 和 pixel clock 是否离谱；③ lane 数与 bpp 是否匹配，DSI host 是否真的进入 HS 透射率；④ init 命令是否完整、顺序是否对。这四步过一遍，多数黑屏都能定位到具体一段。
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+    2. [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](../mipi-interface-basics.md)
+    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

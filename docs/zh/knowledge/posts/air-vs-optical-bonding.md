@@ -8,7 +8,17 @@ tags:
   - 触摸贴合
 authors:
   - viewe_expert
+keywords:
+  - 显示屏框贴与全贴合对比
+  - 触摸贴合
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/air-vs-optical-bonding
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # 显示屏框贴与全贴合对比
 
@@ -103,7 +113,7 @@ authors:
 |  | 框贴 | 光学贴合 |
 | --- | --- | --- |
 | 光的反射 | 高 | 低 |
-| 透过率 | 平均水平 | 较高 |
+| 透射率 | 平均水平 | 较高 |
 | 防湿 | 平均水平 | 非常好。 |
 | 防尘 | 平均水平 | 非常好。 |
 | 显示效果 | 平均水平 | 很好。 |
@@ -124,6 +134,12 @@ authors:
 - [GF、GFF、GG 与 PG 电容触摸结构](capacitive-touch-structures.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [GF、GFF、GG 与 PG 电容触摸结构](../capacitive-touch-structures.md)
+    2. [手套触控、防水触控与抗干扰设计](../glove-waterproof-touch.md)
+    3. [电容式与电阻式触摸屏对比](../touch-panel-types.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

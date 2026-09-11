@@ -9,7 +9,19 @@ tags:
   - LCD
 authors:
   - viewe_expert
+keywords:
+  - LCD
+  - 基础知识
+  - 显示技术
+  - 液晶显示器的工作原理
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/lcd-basics
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # LCD 基础知识：液晶显示器的工作原理
 
@@ -22,7 +34,7 @@ authors:
 - 根据下文比较相关技术、应用条件和设计取舍。
 - 最终选型前，应确认光学、电气、结构、环境与量产要求。
 
-## 液晶仪器
+## 液晶显示器
 
 液晶显示器 (LCD) 是一个平板屏幕技术，通常用于电视和计算机显示器。它也用于笔记本电脑，平板电脑和智能手机等移动设备的屏幕中。
 
@@ -99,11 +111,11 @@ authors:
 
 - 液晶显示器 (LCD) 在各种行业的电子设备中广泛使用。它们通常根据其光传输模式分为三种显示整理。主要的区别在于它们如何使用光来照亮显示屏中的像素。
 
-- 传输：透射式显示器依赖于背光可见。对于此类显示器，从后面的显示玻璃发出的光必须通过LCD向前来照亮像素。传输LCD适合低光环境中，因为它们依赖背光是可见的。这些显示器也用于高分辨率的图像，视频和高质量的应用，这就是为什么你通常会发现具有透射式显示模式的TFT显示器。
+- 透射率：透射式显示器依赖于背光可见。对于此类显示器，从后面的显示玻璃发出的光必须通过LCD向前来照亮像素。传输LCD适合低光环境中，因为它们依赖背光是可见的。这些显示器也用于高分辨率的图像，视频和高质量的应用，这就是为什么你通常会发现具有透射式显示模式的TFT显示器。
 
 - 反射：反射显示器依赖于明亮的环境光线来可见。在此类显示器内没有后照源；相反，光来自周围的环境中反射，使得像素可以看到。
 
-- 变体：变体显示器结合后照和环境光反射以照亮像素，从而产生具有透射特性和反射性的显示屏。
+- 半透半反：变体显示器结合后照和环境光反射以照亮像素，从而产生具有透射特性和反射性的显示屏。
 
 <figure markdown="span" class="displaywiki-figure">
   [![优势](lcd-basics-advantages.png){ width="760" loading="lazy" }](lcd-basics-advantages.png){ .displaywiki-image-link title="查看原图" }
@@ -118,6 +130,9 @@ authors:
 - 液晶技术具有轻微，薄薄的低功耗优势，这使得墙壁电视，笔记本电脑，智能手机和板块成为可能。在进步过程中，它消除了许多显示技术的竞争。我们不再看到CRT监视器在我们的办公桌上，但任何技术都有其局限性。
 
 - 液晶技术的响应时间很慢，特别是在低温下，视角有限，后照明是必要的。专注于LCD缺点，OLED (Organic Light Emitting Diodes) 技术被开发出来。一些高端电视和手机开始使用AMOLED
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
 
 ## 相关阅读
 
@@ -125,6 +140,12 @@ authors:
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
 - [如何读懂显示屏规格参数](display-specifications.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
+    2. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
+    3. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

@@ -9,7 +9,19 @@ tags:
   - 串口屏
 authors:
   - viewe_expert
+keywords:
+  - UART
+  - 串口屏
+  - 嵌入式
+  - 智能显示屏解决方案
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/uart-smart-display
+lastmod: 2026-09-02
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+
 
 # UART 智能显示屏解决方案
 
@@ -28,7 +40,7 @@ authors:
 
 UART (Universal Asynchronous Receiver/Transmitter) 是一种经典和广泛使用的串行通信协议，通常用于嵌入式系统和智能设备。基于UART的智能显示器，其简单而稳定的通信方法适合各种应用场景。以下是主要应用背景：
 
-**1.1 工业控制**
+**1.1 工控**
 
 在工业自动化领域，设备需要实时监测和数据显示。基于UART的智能显示器可以显示传感器数据，设备状态和控制命令。这种应用场景要求显示器具有高可靠性和实时性能，以确保生产过程顺利进行。
 
@@ -92,7 +104,7 @@ UART接口支持各种外围设备的连接，如触摸传感器，摄像头和�
 
 用户要求
 
-工业控制：实时显示传感器数据和设备状态。
+工控：实时显示传感器数据和设备状态。
 
 医疗器械：显示患者监测数据和操作说明。
 
@@ -186,6 +198,12 @@ UART驱动程序：实现稳定的UART通信协议
 - [高可靠性显示解决方案](high-reliability-displays.md)
 - [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
+    2. [ESP32-P4 在多媒体与 HMI 显示应用中的使用](../esp32-p4-display.md)
+    3. [ESP32-S3 智能气象站仪表盘教程](../ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

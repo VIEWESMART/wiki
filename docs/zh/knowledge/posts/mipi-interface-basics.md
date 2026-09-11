@@ -9,7 +9,26 @@ tags:
   - MIPI DSI
 authors:
   - viewe_expert
+keywords:
+  - CSI-2
+  - D-PHY
+  - DSI
+  - MIPI
+  - MIPI DSI
+  - 图解
+  - 接口协议
+  - 接口详解
+og:type: article
+og:image: ../assets/brand/viewe-cn-logo.png
+twitter:card: summary_large_image
+canonical: https://www.displaywiki.com/zh/knowledge/posts/mipi-interface-basics
+lastmod: 2026-09-06
+cover: ../assets/brand/viewe-cn-logo.png
 ---
+!!! warning "量产注意"
+    在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
+
+
 
 # MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解
 
@@ -60,7 +79,7 @@ D-PHY 有个很巧妙的设计：同一对线可以在两种截然不同的模�
   <figcaption>图 4 · CSI-2 包结构：短包传同步信息，长包由 DI / WC / ECC 包头 + 像素负载 + CRC 组成</figcaption>
 </figure>
 
-短包用来传同步类信息，如帧开始/结束、行开始/结束等，结构简单。长包则承载真正的像素数据：包头里有数据标识 DI（含虚拟通道号和数据类型，如 RAW8/10/12、YUV、RGB）、字数 WC 和纠错码 ECC，中间是像素负载，末尾用 CRC 校验。其中"虚拟通道"是个很实用的概念——它让多路图像（比如多个摄像头或多种数据流）能复用同一条物理链路，靠虚拟通道号区分。DSI 显示侧的包结构与之类似，只是方向相反、数据类型不同。
+短包用来传同步类信息，如帧开始/结束、行开始/结束等，结构简单。长包则承载真正的像素数据：包头里有数据标识 DI（含虚拟通道号和数据类型，如 RAW8/10/12、YUV、RGB 并行）、字数 WC 和纠错码 ECC，中间是像素负载，末尾用 CRC 校验。其中"虚拟通道"是个很实用的概念——它让多路图像（比如多个摄像头或多种数据流）能复用同一条物理链路，靠虚拟通道号区分。DSI 显示侧的包结构与之类似，只是方向相反、数据类型不同。
 
 ## 05 DSI 显示：命令模式与视频模式
 
@@ -119,6 +138,12 @@ MIPI 是高速差分接口，板级设计和走线相当讲究，几个关键点
 ??? question "Q5：MIPI 板级设计最容易踩哪些坑？"
     主要四点：① 差分阻抗未控 100Ω，导致信号完整性劣化；② 数据/时钟通道不等长，skew 失控，高速下采样出错；③ 走线过长、过多过孔、直角残桩，FPC 排线未控阻抗；④ 初始化序列顺序错或延时不足，引起花屏/横纹/不亮。ESD 防护与 FPC 选型也是常被忽略的细节。
 
+!!! tip "延伸阅读：相关主题"
+    根据你的阅读主题，按相关度推荐以下文章：
+
+    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+    2. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
+    3. [图解 I2C、SPI、UART 的通信过程与选型对比](../i2c-spi-uart-protocols.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 
