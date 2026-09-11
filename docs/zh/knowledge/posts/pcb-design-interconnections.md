@@ -17,15 +17,73 @@ keywords:
   - 接口协议
   - 设计
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./pcb-design-interconnections-generating-manufacturing-data.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/pcb-design-interconnections
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./pcb-design-interconnections-generating-manufacturing-data.png
 ---
 
 
 # PCB 设计、制造与互连方式选择
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Gerber 和 ODB++ 在工厂都能接受，怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "一般 4 层以下简单板：Gerber 足够；6 层及以上、阻抗控制、HDI、盲埋孔板：优先给 ODB++。Gerber 是图形，ODB++ 含网络与设计意图，出错风险前者更高。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AOI 检测不到什么缺陷？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AOI 通过图像比对检测短路、开路、缺口，对内层有效；但对内层短路、镀层缺陷、孔铜厚度不足、化学铜不均等需要切片（Cross-section）或微电阻计（4-wire）测试。建议在出货报告里加 X-层抽样切片报告。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "HASL / ENIG / OSP 各擅胜场，怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HASL（锡铅 / 无铅）：低成本、DIP 友好，BGA 慎用。ENIG：平整、稳定，BGA/QFN 首选。OSP：消费批量、低成本、不多次回流。化学沉银：高频 / 高速。化学沉锡：压接 / 多次回流（注意锡须）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "PCB 上跑 100 MHz 一定要做阻抗匹配吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "当信号上升时间 ≤ 4 倍传输线延迟（\"长线效应\"）时必须做阻抗控制。简单经验：走线物理长度 > 上升时间对应传播距离的 1/6 就视为传输线，需 50 Ω（单端） / 90 Ω / 100 Ω（差分）匹配。100 MHz 看似不高，但很多接口（USB / HDMI / MIPI）边沿速率已达 GHz 级。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "车规 PCB 与消费 PCB 工艺差异在哪？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "车规（AEC-Q）需通过 -40 °C – 125 °C 温度循环 + 振动 + 寿命测试，对板材 Tg / Td、孔铜厚度、阻焊附着力、表面处理稳定性的要求显著提高。常见对策是选高 Tg FR-4、ENIG 表面、加厚孔铜、加强叠层对称与测试覆盖。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "HDI 与传统多层板的本质区别是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HDI 的核心是激光盲孔 + 薄介质，把线宽 / 线距 / 孔径压到更小；允许 BGA fanout 微孔、信号在高密度下走线。传统多层板的通孔在 HDI 中会让位给 stagger / stacked 微孔，但每阶压合都会推高成本。选 HDI 之前先评估密度与回报。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     PCB 设计不仅是画图，更是**为工厂提供一套可量产的物理规格**的过程：原理图、器件库、Gerber、叠层、SMD 焊盘、阻抗参数、表面处理、钻孔表、测试点。工厂用 CAM 软件接收这些数据，进入面板化 → 钻孔 → 沉铜 → 图形转移 → 蚀刻 → 阻焊 → 表面处理 → 外形加工 → 电气测试的标准化流程。系统端的设计取舍围绕**速度 / 功耗 / 热 / EMI / 环境 / 成本**六个维度展开。
@@ -311,12 +369,6 @@ IPC 把设备按环境严酷度分了三类（Class 1 / 2 / 3），对应不同�
 - [PCB 类型与材料选择](pcb-types-materials.md)
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
-    2. [PCB 结构与制造流程](../pcb-construction-process.md)
-    3. [PCB 类型与材料选择](../pcb-types-materials.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

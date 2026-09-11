@@ -23,15 +23,73 @@ keywords:
   - 并行
   - 接口协议
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/display-interface-guide
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
 ---
 
 
 # 显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "SPI 屏与 MCU 8080 屏如何选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "两者定位不同：SPI 适合低分辨率小尺寸（< 2\"）或触摸上报，引脚极省；MCU 8080 是单色字符 / 图形 / 3.5\" 以下小 TFT 的事实标准。需不需要更新画面、刷新速率高不高、用不用 GRAM，是核心判断点。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么 MIPI 在手机上这么普及？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MIPI DSI 把并行 RGB 并行 用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求\"轻薄 + 高 PPI + 长续航\"的折衷结果。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "UART 串口屏主要用在什么场景？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "用于工业 HMI 改造与快速原型：上位机通过串口下发 UI 与控件命令，屏端 MCU 解析后渲染，省去在外置 MCU 上移植 GUI 库的成本。优奕视界 串口屏即基于此。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "CAN 总线 ID 长度 11 位和 29 位怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "11 位（CAN 2.0A）节点少时足够，是主流。29 位（CAN 2.0B / CAN FD）支持更复杂网络，是车载多域控制器趋势。两者在同一总线上通过帧格式区分，可以混跑。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Modbus 寄存器读写经常用哪些功能码？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "- 03 读保持寄存器\n- 06 写单个寄存器\n- 16（0x10）写多个寄存器\n- 04 读输入寄存器"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "eDP 和 MIPI DSI 都能跑 4K，到底差在哪？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "eDP 主要服务笔记本 / 一体机 / 嵌入式主板，链路较长、带 Aux 通道、强调长距与固定连接。MIPI DSI 服务手机 / 平板 / 小尺寸强推屏，更短距、引脚更省、热设计更敏感。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     显示接口的选型与分辨率、传输距离、抗干扰、连接器成本、芯片资源强相关。本文按"并行 / 串行 / 通讯总线"三类逐项拆解主流接口，并给出一张横向对比表，帮助工程师用一张图完成初版选型。
@@ -428,12 +486,6 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
 - [MIPI 接口基础](mipi-interface-basics.md)
 - [LCD 面板时序参数详解](lcd-panel-timing-parameters.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
-    2. [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](../mipi-interface-basics.md)
-    3. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

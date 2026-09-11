@@ -12,11 +12,11 @@ keywords:
   - 显示屏框贴与全贴合对比
   - 触摸贴合
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./air-vs-optical-bonding-advantages.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/air-vs-optical-bonding
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./air-vs-optical-bonding-advantages.jpeg
 ---
 
 
@@ -121,7 +121,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 | 费用 | 平均水平 | 较高 |
 
 
-
 选择建议
 
 鉴于您的触摸显示器采用适用的粘合方法，我们可以分享我们的项目经验：从显示和触摸性能来看，光学贴合比框贴更好。基于成本考虑，框贴是一个可行的选择。在我们的项目经验中，大多数使用电容式触摸屏的项目选择了光学贴合。 
@@ -134,12 +133,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [GF、GFF、GG 与 PG 电容触摸结构](capacitive-touch-structures.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [GF、GFF、GG 与 PG 电容触摸结构](../capacitive-touch-structures.md)
-    2. [手套触控、防水触控与抗干扰设计](../glove-waterproof-touch.md)
-    3. [电容式与电阻式触摸屏对比](../touch-panel-types.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

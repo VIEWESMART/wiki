@@ -14,15 +14,73 @@ keywords:
   - 工程应用
   - 类型与材料选择
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/pcb-types-materials
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg
 ---
 
 
 # PCB 类型与材料选择
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "单面板和双面板何时选哪个？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "单面板只用于最简单电路（玩具、计算器、遥控、DC 电源初级），因为不能交叉走线。稍复杂的应用（家电主控、电源板、工控板）几乎都需要双面板起跳。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "高速 PCB 是否一定要选 PTFE？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不一定。5 Gbps 以下通常高 Tg FR-4 + 中损耗 / 低损耗等级就够；5–10 Gbps 选 Mid-loss；10 Gbps 以上 / PCIe 4.0+ / DDR5 才需要 PTFE（Rogers、Isola、Hitachi 等）路线。成本永远与速率强相关。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tg 越高的板越好吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "是工程取舍，越高越耐热但越脆越贵。标准 FR-4（Tg ~ 130 °C）够普通无铅回流；高 Tg FR-4（Tg ~ 150–170 °C）适合多层 / 多次回流 / 车规；超高 Tg（Tg > 200 °C）适合航天军工。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "金属基板和陶瓷基板如何选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LED 照明、电源模块、低中功率优先铝基板；高功率密度电力电子（SiC / GaN）优先氮化铝陶瓷；散热要求极高 + 绝缘考虑氮化硼（BeO，但有健康风险，与 SiC 一起慎选）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "柔性 PCB 是否可以完全替代刚性 PCB？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不行。FPC 成本高、焊接可靠性低、不能承载大电流与大尺寸元件、长期振动后铜皮易疲劳。FPC 用于连接 / 走线 / 信号互连，刚性板用于元件承载，刚挠结合板才是兼顾方案。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "高 Dk 和低 Dk 材料的应用差异？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "低 Dk 让信号传播更快，常用于高速；高 Dk 让铜线做得更窄即可达到相同阻抗（参考 Rogers RO4003 是低 Dk，RO4350B 略高），适合微型化或天线。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     PCB 可以从**层数 / 基板刚性 / 速率与频率 / 应用领域**四个维度分类：单 / 双 / 多层板、刚性 / 柔性 / 刚挠结合板、普通 / 高速 / 射频板、LED 金属基板 / 功率陶瓷基板等。选材核心看三类性能—热分解温度**热（Tg / Td / CTE / 导热系数）、电气（Dk / Df / 损耗角正切）、机械（杨氏模量 / 弯曲强度）**，三组参数必须与速率、功耗、热环境强相关才能反推工程取舍。
@@ -315,12 +373,6 @@ E 越大材料越不易形变。多层板的"软硬匹配"会影响叠层翘曲�
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [PCB 结构与制造流程](../pcb-construction-process.md)
-    2. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
-    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

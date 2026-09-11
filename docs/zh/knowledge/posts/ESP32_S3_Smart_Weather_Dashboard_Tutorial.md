@@ -383,12 +383,11 @@ Waveshare、Elecrow 这类品牌主要面向爱好者和临时实验场景，而
 ??? question "把气象站部署到户外前要检查什么？"
     做好电子器件的防潮，避免外壳热与阳光直射影响读数，并在预期工况下完成标定验证。
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [ESP32-P4 在多媒体与 HMI 显示应用中的使用](../esp32-p4-display.md)
-    2. [图解 I2C、SPI、UART 的通信过程与选型对比](../i2c-spi-uart-protocols.md)
-    3. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
+- [ESP32-P4 在多媒体与 HMI 显示应用中的使用](esp32-p4-display.md)
+- [图解 I2C、SPI、UART 的通信过程与选型对比](i2c-spi-uart-protocols.md)
+- [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，请联系我们的团队：
 

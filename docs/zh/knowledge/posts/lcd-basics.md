@@ -15,11 +15,11 @@ keywords:
   - 显示技术
   - 液晶显示器的工作原理
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./lcd-basics-lcd-display-structure.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/lcd-basics
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./lcd-basics-lcd-display-structure.png
 ---
 
 
@@ -140,12 +140,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
 - [如何读懂显示屏规格参数](display-specifications.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
-    2. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
-    3. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

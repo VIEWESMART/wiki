@@ -19,15 +19,65 @@ keywords:
   - 接口协议
   - 显示技术
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./lcd-panel-timing-parameters-fig1-roadmap.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/lcd-panel-timing-parameters
 lastmod: 2026-09-06
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./lcd-panel-timing-parameters-fig1-roadmap.png
 ---
 
 
 # LCD 屏参详解：把点屏参数讲成能看见的样子
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "htotal 和 pclk 怎么算？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "htotal = hactive + hfront_porch + hsync_len + hback_porch；vtotal = vactive + vfront_porch + vsync_len + vback_porch；pclk_hz = htotal × vtotal × fps。以 720×1280@60Hz 为例，pclk ≈ 74 MHz。pclk 是节拍器，敲错了节奏画面就乱。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "RGB565 和 RGB888 在屏参上有什么区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "颜色精度不同——RGB565 是 16bpp，RGB888 是 24bpp。同样分辨率与刷新率下，RGB888 的 payload 带宽比 RGB565 高 50%。如果 lane 数与 lane_rate 不够、或 host 端 pixel format 配置错，就会出现闪屏、花屏、颜色断层的现象。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "video mode 和 command mode 怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "video mode 持续推流，延迟低，适合动态画面（视频播放、车机、HMI）；command mode 按订单刷新，功耗低，适合静态或低刷新率屏（电子书、抄表、智能家居面板）。很多屏同时支持两种，可通过 DSI 命令切换。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "init sequence 的延时能省吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要。Sleep Out (0x11)、Display On (0x29)、reset 拉低/拉高之间的延时是屏厂按面板特性标的，删掉或缩短容易出现半亮、闪屏、ESD 误判等\"灵异\"现象。第一版驱动应该原样移植屏厂 init code，亮起来后再逐步清理与注释。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "屏黑屏怎么快速定位？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "按\"硬件 → 时序 → 链路 → 命令\"四步查：① 电源/reset/背光/0x11 0x29 是否到位；② porch 和 pixel clock 是否离谱；③ lane 数与 bpp 是否匹配，DSI host 是否真的进入 HS 透射率；④ init 命令是否完整、顺序是否对。这四步过一遍，多数黑屏都能定位到具体一段。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     屏参不是孤立数字：分辨率是座位表，porch 是过道，pixel clock 是节拍器，lane 是车道，bpp 是货物重量，init sequence 是开机仪式。掌握 htotal/vtotal/pclk/lane_rate 四个估算公式，再把故障现象翻译回参数，点屏调试就不是玄学。
@@ -260,12 +310,11 @@ backlight_enable(); /* 最后再打开聚光灯 */
 ??? question "Q5：屏黑屏怎么快速定位？"
     按"硬件 → 时序 → 链路 → 命令"四步查：① 电源/reset/背光/0x11 0x29 是否到位；② porch 和 pixel clock 是否离谱；③ lane 数与 bpp 是否匹配，DSI host 是否真的进入 HS 透射率；④ init 命令是否完整、顺序是否对。这四步过一遍，多数黑屏都能定位到具体一段。
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
-    2. [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](../mipi-interface-basics.md)
-    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](mipi-interface-basics.md)
+- [LCD 基础知识：液晶显示器的工作原理](lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

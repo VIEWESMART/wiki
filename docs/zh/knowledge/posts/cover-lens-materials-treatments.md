@@ -13,11 +13,11 @@ keywords:
   - 显示屏盖板材料
   - 盖板相关
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./cover-lens-materials-treatments-cover-glass-thickness.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/cover-lens-materials-treatments
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./cover-lens-materials-treatments-cover-glass-thickness.png
 ---
 
 
@@ -101,12 +101,6 @@ PMMA 盖板玻璃
 - [盖板防指纹与抗菌表面处理](anti-fingerprint-antibacterial.md)
 - [显示产品盖板定制指南](cover-lens-customization.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [盖板防指纹与抗菌表面处理](../anti-fingerprint-antibacterial.md)
-    2. [显示屏减反射与防眩光处理对比](../anti-reflective-vs-anti-glare.md)
-    3. [显示产品盖板定制指南](../cover-lens-customization.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

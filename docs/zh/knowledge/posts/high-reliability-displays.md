@@ -14,11 +14,11 @@ keywords:
   - 显示技术
   - 高可靠性显示解决方案
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./high-reliability-displays-how-to-achieve-high-reliability-in-display-screens.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/high-reliability-displays
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./high-reliability-displays-how-to-achieve-high-reliability-in-display-screens.png
 ---
 
 
@@ -121,12 +121,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [UART 智能显示屏解决方案](uart-smart-display.md)
 - [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [OLED 显示结构、工作原理及与 LCD 的对比](../oled-display-basics.md)
-    2. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
-    3. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

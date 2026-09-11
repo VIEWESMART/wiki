@@ -19,11 +19,11 @@ keywords:
   - 显示技术
   - 背板技术对比
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/tft-backplane-technologies
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -163,12 +163,6 @@ a-Si TFT ( amorphous Silicon TFT)
 - [OLED 显示结构、工作原理及与 LCD 的对比](oled-display-basics.md)
 - [透射型、反射式与半反半透式 LCD 对比](transmissive-reflective-transflective.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [OLED 显示结构、工作原理及与 LCD 的对比](../oled-display-basics.md)
-    2. [IPS、TN、VA 与 FFS TFT 面板技术对比](../tft-panel-technologies.md)
-    3. [如何读懂显示屏规格参数](../display-specifications.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

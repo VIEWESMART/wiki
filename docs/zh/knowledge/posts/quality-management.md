@@ -21,11 +21,11 @@ keywords:
   - 显示制造质量管理
   - 质量管理
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./quality-management-the-origins-of-5s-5s-lean-manufacturing.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/quality-management
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./quality-management-the-origins-of-5s-5s-lean-manufacturing.jpeg
 ---
 
 
@@ -709,12 +709,11 @@ DMADV项目方法称为DFSS ( Six Sigma) 五个阶段：
 
 原因与影响图 (也称为鱼骨或石川图)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
-    2. [显示屏定制、MOQ、交期与订购常见问题](../display-customization-faq.md)
-    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
+- [定制与阳光下可读显示解决方案](custom-sunlight-readable-displays.md)
+- [显示屏定制、MOQ、交期与订购常见问题](display-customization-faq.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

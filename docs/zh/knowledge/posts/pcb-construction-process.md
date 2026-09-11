@@ -14,15 +14,65 @@ keywords:
   - 工程应用
   - 结构与制造流程
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./pcb-construction-process-a-standard-printed-circuit-board.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/pcb-construction-process
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./pcb-construction-process-a-standard-printed-circuit-board.jpeg
 ---
 
 
 # PCB 结构与制造流程
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "PCB 颜色为什么多数是绿色？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "颜色来自阻焊层（通常是油墨或干膜感光层），绿色来自酞菁绿染料，对人眼敏感度低，工厂观感舒适，并不影响电气性能。蓝、黑、红、白、紫色都是阻焊染料配方问题，工厂侧都能批量供应。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "过孔、盲孔、埋孔到底怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "通孔最便宜、最可靠，但密度低；盲孔占表层走线空间少；埋孔可完全藏在内部且不占用表层空间，但需要压合前先做完、成本最高。HDI 板常用 1 阶 / 2 阶盲埋组合，关键还是看密度与成本。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ENIG 与 HASL 哪个更适合 BGA？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BGA 球距小、对平面度与共面性要求高，HASL 的锡面不平容易导致虚焊，ENIG 是 BGA 的常规选择。HASL 主要用在传统通孔或表贴封装为主的板。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么 PCB 还需要电气测试？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "即使通过了 AOI 和过程控制，仍可能存在隐性缺陷：内层开路、短路、短针、缺孔。飞行探针或针床测试可以 100% 覆盖网络连通性，是出厂质量底线。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "HDI 板是不是 HDI 等级越高越好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不一定。HDI 阶数（1 / 2 / 3 阶）指的是\"激光盲孔的最多叠层次数\"，阶数越高密度越大、成本也剧增。选 HDI 等级前先评估设计密度：超过 4 层 ± 微孔的需求才考虑 2 阶以上。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     PCB 是几乎所有电子设备中"电路连通 + 元件固定"的基础载体，由基板、铜箔、阻焊、丝印、焊盘、过孔、金手指等功能层组成。多层板的制造核心是**层压（Lamination）+ 沉铜**两个步骤，前后辅以内 / 外层图形转移、AOI、阻焊、表面处理与电气测试。
@@ -265,12 +315,6 @@ AOI 用高清摄像头快速扫描铜面，把实拍图与原始 Gerber 比对�
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
-    2. [PCB 类型与材料选择](../pcb-types-materials.md)
-    3. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

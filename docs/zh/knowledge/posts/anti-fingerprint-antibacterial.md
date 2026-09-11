@@ -12,11 +12,11 @@ keywords:
   - 盖板相关
   - 盖板防指纹与抗菌表面处理
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./anti-fingerprint-antibacterial-the-advantages-of-af-anti-fingerprint-technology.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/anti-fingerprint-antibacterial
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./anti-fingerprint-antibacterial-the-advantages-of-af-anti-fingerprint-technology.jpeg
 ---
 
 
@@ -197,12 +197,6 @@ VIEWE推出相关抗菌系列产品，在长期使用后将保持抗菌效果。
 - [显示屏减反射与防眩光处理对比](anti-reflective-vs-anti-glare.md)
 - [显示产品盖板定制指南](cover-lens-customization.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示屏减反射与防眩光处理对比](../anti-reflective-vs-anti-glare.md)
-    2. [显示产品盖板定制指南](../cover-lens-customization.md)
-    3. [显示屏盖板材料、厚度与表面处理](../cover-lens-materials-treatments.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

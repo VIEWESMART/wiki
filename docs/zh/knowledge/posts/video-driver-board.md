@@ -16,11 +16,11 @@ keywords:
   - 接口协议
   - 视频驱动板显示解决方案
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/video-driver-board
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -67,12 +67,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [高可靠性显示解决方案](high-reliability-displays.md)
 - [UART 智能显示屏解决方案](uart-smart-display.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
-    2. [PCB 设计、制造与互连方式选择](../pcb-design-interconnections.md)
-    3. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

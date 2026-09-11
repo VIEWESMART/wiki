@@ -14,11 +14,11 @@ keywords:
   - 定制与阳光下可读显示解决方案
   - 工程应用
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./custom-sunlight-readable-displays-tft-display-structure.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/custom-sunlight-readable-displays
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./custom-sunlight-readable-displays-tft-display-structure.jpeg
 ---
 
 
@@ -181,12 +181,6 @@ VIEWE可提供显示器定制，包括TFT面板 (尺寸，分辨率，规格...)
 - [UART 智能显示屏解决方案](uart-smart-display.md)
 - [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [户外显示选型：高亮 TFT 与半反半透 TFT 对比](../outdoor-tft-selection.md)
-    2. [高可靠性显示解决方案](../high-reliability-displays.md)
-    3. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

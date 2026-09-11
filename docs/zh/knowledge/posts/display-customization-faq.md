@@ -14,11 +14,11 @@ keywords:
   - 工程应用
   - 显示屏定制
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/display-customization-faq
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -71,12 +71,11 @@ cover: ../assets/brand/viewe-cn-logo.png
 
 答：请通过WhatsApp发送电子邮件/留下您的联系方式或与我们聊天，并让我们知道您的订单详细要求。请检查支付信息，如果一切都没事，我们收到您的支付后货物将尽快交给您。
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
-    2. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
-    3. [如何读懂显示屏规格参数](../display-specifications.md)
+- [定制与阳光下可读显示解决方案](custom-sunlight-readable-displays.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [如何读懂显示屏规格参数](display-specifications.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

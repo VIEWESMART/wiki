@@ -16,11 +16,11 @@ keywords:
   - 如何读懂显示屏规格参数
   - 工程应用
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./display-specifications-use-the-formula.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/display-specifications
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./display-specifications-use-the-formula.png
 ---
 
 
@@ -436,12 +436,6 @@ DCI-P3：用于电影和高动态射程 (HDR) 内容，覆盖更多的红色和�
 - [TFT LCD 基础知识：结构、原理与优势](tft-lcd-basics.md)
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
-    2. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
-    3. [户外显示选型：高亮 TFT 与半反半透 TFT 对比](../outdoor-tft-selection.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

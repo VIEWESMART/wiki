@@ -19,18 +19,68 @@ keywords:
   - 接口协议
   - 接口详解
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./mipi-interface-basics-fig1-mipi-system.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/mipi-interface-basics
 lastmod: 2026-09-06
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./mipi-interface-basics-fig1-mipi-system.png
 ---
+
 !!! warning "量产注意"
     在量产或恶劣工况（高低温、湿热、振动、ESD）下，注意该参数的 datasheet 曲线，超出范围会显著降低寿命。
 
 
-
 # MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "DSI 和 CSI-2 是同一套接口吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不是。DSI（Display Serial Interface）负责把画面从 SoC 推给屏幕，CSI-2（Camera Serial Interface）负责把摄像头采集的图像读进 SoC。两者方向相反、应用场景不同，但底层大多共用同一套物理层——D-PHY（或更高速的 C-PHY）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "HS 模式和 LP 模式可以同时存在吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。同一对 D-PHY 数据线有两种状态：HS（High-Speed）模式负责大批量像素传输，速率可达 Gbps 级；LP（Low-Power）模式用于控制命令、休眠唤醒与状态轮询，速率低、功耗低。两者通过 LP 序列触发切换。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "D-PHY 和 C-PHY 能互相替代吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不是替代关系。D-PHY 用差分对 + 独立时钟通道，生态成熟、兼容性最广；C-PHY 把三根线编成一组（Trio），用三相编码把时钟嵌入数据，每符号约 2.28 bit，在同线数下能跑出更高带宽，适合高分辨率省线场景。多数 SoC 的 MIPI 接口同时兼容两者。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "DSI 应该选 Command Mode 还是 Video Mode？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "看场景。Command Mode 按订单刷新，功耗低、适合静态或低刷新率屏（电子书、智能家居面板、抄表）；Video Mode 持续推视频流，延迟低、适合动态画面（手机、车机、HMI）。很多屏同时支持两种模式，通过 DSI 命令切换。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "MIPI 板级设计最容易踩哪些坑？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "主要四点：① 差分阻抗未控 100Ω，导致信号完整性劣化；② 数据/时钟通道不等长，skew 失控，高速下采样出错；③ 走线过长、过多过孔、直角残桩，FPC 排线未控阻抗；④ 初始化序列顺序错或延时不足，引起花屏/横纹/不亮。ESD 防护与 FPC 选型也是常被忽略的细节。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     MIPI 用极少的差分引脚跑出惊人的带宽，是手机、平板、车机、POS 等带屏带摄像头设备的高速链路标准。本文聚焦最常用的 DSI 与 CSI-2，把 D-PHY 通道、HS/LP 双模式、包结构与 C-PHY 一次讲清。
@@ -138,12 +188,11 @@ MIPI 是高速差分接口，板级设计和走线相当讲究，几个关键点
 ??? question "Q5：MIPI 板级设计最容易踩哪些坑？"
     主要四点：① 差分阻抗未控 100Ω，导致信号完整性劣化；② 数据/时钟通道不等长，skew 失控，高速下采样出错；③ 走线过长、过多过孔、直角残桩，FPC 排线未控阻抗；④ 初始化序列顺序错或延时不足，引起花屏/横纹/不亮。ESD 防护与 FPC 选型也是常被忽略的细节。
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](../display-interface-guide.md)
-    2. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
-    3. [图解 I2C、SPI、UART 的通信过程与选型对比](../i2c-spi-uart-protocols.md)
+- [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+- [LCD 屏参详解：把点屏参数讲成能看见的样子](lcd-panel-timing-parameters.md)
+- [图解 I2C、SPI、UART 的通信过程与选型对比](i2c-spi-uart-protocols.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

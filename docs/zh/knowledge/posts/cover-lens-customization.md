@@ -12,15 +12,73 @@ keywords:
   - 显示产品盖板定制指南
   - 盖板相关
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./cover-lens-customization-coverlens-solutions-for-your-different-products-need.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/cover-lens-customization
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./cover-lens-customization-coverlens-solutions-for-your-different-products-need.png
 ---
 
 
 # 显示产品盖板定制指南
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "盖板应该选玻璃、PMMA 还是 PC？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "玻璃：耐刮、透光率最高、热稳定性好、易做 AG / AR / AF 镀膜；消费类、工业、医疗、汽车首选。PMMA：透光率稍低但接近玻璃、重量轻、不易碎但相对易划伤，适合家电、桌面设备、智能家居。PC：耐冲击最强、透光率略低、抗冲击场景如儿童使用、可穿戴优先。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何让设备熄屏时与机身融为一体？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "方案是全黑印刷（黑胶 / 黑色油墨）：在盖板背面（贴显示那面）的非视区印不透光黑油墨，遮住视区外的机械结构与镀膜反射。要点是印刷的边界要与 LCD 视区精准对齐，否则会有溢光。优奕视界 工厂对位精度 ± 0.2 mm。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "隐藏图标是怎么做出来的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "隐藏图标的原理是半透油墨 + LED 背光：在玻璃背面按预期图标形状印半透油墨，未亮灯时几乎看不到；点亮 LED 后油墨透出图形。这套方案能做出\"用常干净，用时浮现\"的 UI 体验。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "盖板玻璃厚度怎么选？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "消费电子主流 0.5–0.7 mm；车载、工业可视场景 1.1–1.8 mm；超大尺寸或 3D 异形 2.0–3.0 mm。厚度越大刚性越好、但越重、越影响透光与触控灵敏度。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "抗菌镀膜对触摸有影响吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "正规的\"表面型\"或\"玻璃内部型\"抗菌镀膜都不影响 PCAP 触控；银离子型抗菌膜需要看透明性，金属氧化物纳米型（TiO₂、ZnO）更适配高透明场景。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2.5D 与 3D 盖板的取舍是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2.5D：边缘倒圆，配合平面 LCD，工艺成熟、成本可控、贴合难度一般。3D：曲面盖板，多与曲面 / 异形显示器搭配，光学贴合难度大，常需先用模具热弯再做边缘研磨，不可量产的小批量项目首选 3D，大批量优选 2.5D。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     盖板玻璃（Cover Lens）是用户看到与触碰的第一层。它既要"能透光"，也要"能遮挡人眼可见区、能开孔藏接口、能印 Logo、能叠耐磨与抗菌镀膜，还能配合 2.5D / 3D 异形与光学贴合"。本文按"选材 / 切割 / 印刷 / 玻璃替代 / 抗菌 / 彩色 / 超大 / 异形 / 光学贴合"九大定制维度逐一展开，给出每个能力的工程含义、典型图样与设计边界。
@@ -340,12 +398,6 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 - [盖板防指纹与抗菌表面处理](anti-fingerprint-antibacterial.md)
 - [空气贴合与光学贴合对比](air-vs-optical-bonding.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [盖板防指纹与抗菌表面处理](../anti-fingerprint-antibacterial.md)
-    2. [显示屏减反射与防眩光处理对比](../anti-reflective-vs-anti-glare.md)
-    3. [显示屏盖板材料、厚度与表面处理](../cover-lens-materials-treatments.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

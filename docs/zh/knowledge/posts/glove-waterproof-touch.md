@@ -13,11 +13,11 @@ keywords:
   - 触摸贴合
   - 防水触控与抗干扰设计
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./glove-waterproof-touch-application-scenarios-of-glove-touch-technology.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/glove-waterproof-touch
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./glove-waterproof-touch-application-scenarios-of-glove-touch-technology.jpeg
 ---
 
 
@@ -228,12 +228,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [GF、GFF、GG 与 PG 电容触摸结构](capacitive-touch-structures.md)
 - [显示屏框贴与全贴合对比](air-vs-optical-bonding.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示屏框贴与全贴合对比](../air-vs-optical-bonding.md)
-    2. [GF、GFF、GG 与 PG 电容触摸结构](../capacitive-touch-structures.md)
-    3. [电容式与电阻式触摸屏对比](../touch-panel-types.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

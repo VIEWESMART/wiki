@@ -19,15 +19,65 @@ keywords:
   - 显示结构
   - 的对比
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./oled-display-basics-the-oled-layer-structure.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/oled-display-basics
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./oled-display-basics-the-oled-layer-structure.jpeg
 ---
 
 
 # OLED 显示结构、工作原理及与 LCD 的对比
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "OLED 和 LCD 到底哪个更护眼？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "没有\"绝对护眼\"。OLED 在相同亮度下蓝光占比一般比 LCD 低，但 OLED 多用 PWM 调光，低亮度时若 PWM 频率太低会引发视疲劳；LCD 高亮方案在直射阳光下反而更省力护眼。结论是调好亮度 + 控制时长比\"OLED vs LCD\"更重要。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMOLED 和 PMOLED 的本质区别是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMOLED 给每个像素配一组 TFT，能独立精准控光，可放大尺寸并保持均匀性；PMOLED 用行列扫描直接驱动，结构和驱动简单，但尺寸一大难以保证寿命与均匀度。当前手机与电视全是 AMOLED。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "QD-OLED、QLED、OLED 是不是同一种？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不是。OLED 是自发光大类；QD-OLED 是\"OLED + 量子点\"组合（蓝光 OLED 激发量子点）；QLED 通常指\"量子点 + LCD 背光\"（量子点仅做色转换层，本身不发光）。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "OLED 在户外为什么常常不够亮？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OLED 的最大瞬时电流受寿命制约，全屏高亮难度高；同时为了补偿有机材料衰减，厂商会保留降额空间。LCD（特别是高亮方案 + 半透半反）户外可视性仍是强项。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "工控 / 数字标牌适合用 OLED 吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "谨慎。长时间显示同一菜单或 Logo 是烧屏温床。如果必须用 OLED，应配合像素位移、自动息屏、Logo 透明度变化等策略，并预留亮度衰减预算。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     OLED 是自发光器件，单像素独立控光，因此能做到纯黑、高对比、广视角、超薄和可弯曲。这是它替代 LCD 成为高端手机与电视首选的根本原因，代价是成本相对较高、长期使用存在烧屏风险、最大亮度暂时低于 LCD。
@@ -200,12 +250,6 @@ OLED 烧屏是指某些像素长时间高亮工作后，发光效率下降，在
 - [a-Si、LTPS 与 IGZO TFT 背板技术对比](tft-backplane-technologies.md)
 - [透射型、反射式与半反半透式 LCD 对比](transmissive-reflective-transflective.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
-    2. [高可靠性显示解决方案](../high-reliability-displays.md)
-    3. [科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？](../ips-vs-tn.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

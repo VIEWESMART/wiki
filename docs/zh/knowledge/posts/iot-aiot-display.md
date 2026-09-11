@@ -16,11 +16,11 @@ keywords:
   - 工程应用
   - 智能显示解决方案
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/iot-aiot-display
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -213,12 +213,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [高可靠性显示解决方案](high-reliability-displays.md)
 - [UART 智能显示屏解决方案](uart-smart-display.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [定制与阳光下可读显示解决方案](../custom-sunlight-readable-displays.md)
-    2. [高可靠性显示解决方案](../high-reliability-displays.md)
-    3. [户外显示选型：高亮 TFT 与半反半透 TFT 对比](../outdoor-tft-selection.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

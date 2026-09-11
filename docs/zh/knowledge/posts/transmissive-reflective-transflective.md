@@ -18,11 +18,11 @@ keywords:
   - 显示技术
   - 透射型
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./transmissive-reflective-transflective-transflective-lcds-combine-both-transmissive-and-reflective-properties.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/transmissive-reflective-transflective
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./transmissive-reflective-transflective-transflective-lcds-combine-both-transmissive-and-reflective-properties.jpeg
 ---
 
 
@@ -229,12 +229,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [a-Si、LTPS 与 IGZO TFT 背板技术对比](tft-backplane-technologies.md)
 - [OLED 显示结构、工作原理及与 LCD 的对比](oled-display-basics.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
-    2. [LCD 屏参详解：把点屏参数讲成能看见的样子](../lcd-panel-timing-parameters.md)
-    3. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

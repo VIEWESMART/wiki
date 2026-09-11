@@ -16,15 +16,65 @@ keywords:
   - 电容触摸结构
   - 触摸贴合
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./capacitive-touch-structures-self-capacitance.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/capacitive-touch-structures
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./capacitive-touch-structures-self-capacitance.png
 ---
 
 
 # 电容触摸屏分类
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "GF、GFF、GG、PG 四个结构怎么区分？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "看传感器和盖板的材质与层数。G+F = 盖板玻璃 + 单层膜传感器；G+F+F = 盖板玻璃 + 双层膜传感器（互电容，当前主流）；G+G = 盖板玻璃 + 玻璃基板传感器；P+G = 塑料盖板 + 玻璃基板传感器。命名规则是\"盖板材质 + 传感器材质/层数\"。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "GFF 和 GG 哪个更好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "看场景。GFF 轻薄、透光率略低 5%、成本低，是消费电子首选；GG 透光好、强度高、寿命长，适合工控、车规、医疗。两者都支持真实多点，差异在结构强度、透光率和成本。10 英寸以下是 GFF 主场，10 英寸以上多选 GG。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "GF 结构现在还用吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "越来越少。GF 是单层膜传感器，只能做单点或伪两点，无法支持手写与多点手势；除极低成本、对交互要求极弱的场景外，已基本被 GFF 取代。新项目若不是成本极端敏感，不建议再选 GF。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自电容和互电容有什么本质区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "自电容测每条信号线对地的电容变化，互电容测垂直交叉两条线之间的电容变化。自电容实现简单但不支持真实多点（容易出现\"鬼点\"），互电容是当前主流多点触摸的物理基础。手机、车机、医疗等人机交互场景用的几乎都是互电容。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "触摸屏和显示屏怎么贴合？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "框贴（Air Bonding）靠双面胶把触摸屏和显示屏四周粘住，中间有空气层，成本低、可返工，但抗反射差、易起雾；全贴合（Optical Bonding）用 OCR / OCA / LOCA 胶填充缝隙，防眩光、抗冲击、防起雾，光学效果最好，但不可返工且成本高。是否贴合、选哪种胶，取决于光学要求与环境可靠性要求。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     本指南介绍电容式触摸面板的常见结构、相关的设计权衡，以及工程师在选择显示解决方案时应验证的要点。
@@ -226,12 +276,6 @@ P+G 结构的主要问题是塑料盖板的耐磨性和强度较差；由于成�
 - [显示屏框贴与全贴合对比](air-vs-optical-bonding.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示屏框贴与全贴合对比](../air-vs-optical-bonding.md)
-    2. [手套触控、防水触控与抗干扰设计](../glove-waterproof-touch.md)
-    3. [电容式与电阻式触摸屏对比](../touch-panel-types.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

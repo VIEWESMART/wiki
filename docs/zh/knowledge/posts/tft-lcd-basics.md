@@ -18,11 +18,11 @@ keywords:
   - 显示技术
   - 结构
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./tft-lcd-basics-see-fig-1-for-tft-lcd-structure.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/tft-lcd-basics
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./tft-lcd-basics-see-fig-1-for-tft-lcd-structure.png
 ---
 
 
@@ -151,12 +151,6 @@ TFT LCD整理
 - [TFT LCD 模组的组成与结构](tft-lcd-module.md)
 - [如何读懂显示屏规格参数](display-specifications.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
-    2. [如何读懂显示屏规格参数](../display-specifications.md)
-    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

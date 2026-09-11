@@ -17,15 +17,73 @@ keywords:
   - 嵌入式
   - 显示应用中的使用
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/esp32-p4-display
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
 # ESP32-P4 在多媒体与 HMI 显示应用中的使用
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ESP32-P4 与 ESP32-S3 在显示能力上的核心差别是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ESP32-S3 只能驱动 LCD 接口（含 8 位并行 / I8080 / I80 + 部分型号的 MIPI DSI），没有 ISP、H.264、PPA、JPEG 硬件编解码。ESP32-P4 把这些全 IP 化了，且 MIPI DSI / CSI 双 1.5 Gbps lane 支持更高中分辨率（HMI 与小型电子广告牌首选）。结论是：S3 适合中低端 MCU + 简单 UI，P4 适合中型 UI + 摄像头 + 多媒体。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ESP32-P4 能直接跑 1024×600 的屏吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。MIPI DSI 2 lane × 1.5 Gbps ≈ 3 Gbps 总带宽；按每像素 24 bit（RGB888）算，每秒约能跑百万像素级帧，1024 × 600 @ 60fps（≈ 36.86 M pixel/s）足够。但是还要看屏端是否支持 DSI + 面板 ID 烧写 / 初始化序列，这些是软件工作量。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "H.264 1080p 编码器在内存 / 码率上有边界吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "软硬件编码 1080p@30fps；P slice + ROI + CAVLC 都齐全。注意码率通常 4–8 Mbps，需要 PSRAM 与高速 SPI Flash 支持；要保证码流长时间写入不溢出。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "LP 域能跑 GUI 吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不能。LP 域定位是低功耗常驻任务（触摸唤醒、外部中断、GPIO 监测、RTC），主频 40 MHz、内存极少。图形 UI、H.264、ISP 都在 HP 域。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "是否需要外挂 PSRAM / Flash？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ESP32-P4 片上 768 KB L2MEM + 128 KB HP ROM 不够大，几乎所有 HMI 项目都会外挂 ≥ 16 MB PSRAM + 16 MB Flash。Flash 用来存放字库、图片与 PSF 资源。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何评估 ESP32-P4 是否符合车规 / 工规？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ESP32-P4 是工业级（-40 °C – 125 °C 结温范围），但AEC-Q100 / Q104 认证并不强制。要在产品侧做车规振动 + 高低温循环 + 长期老化测试。TWAI、CAN 性能满足车载通信需求。"
+      }
+    }
+  ]
+}
+</script>
 
 !!! abstract "快速结论"
     ESP32-P4 是乐鑫面向"高端 HMI / 多媒体 IoT"推出的双核 RISC-V（HP）+ 单核 RISC-V（LP）异构 SoC，主频 400 MHz。它把 JPEG / H.264 / ISP / PPA、24 位 LCD、MIPI DSI/CSI、3 路 I2S 集成在单芯片上，特别适合智能家居、工控、医疗设备、消费类带屏产品的多媒体与显示方案。
@@ -278,12 +336,6 @@ ESP32-P4 是一颗**高性能 + 低功耗 + 多媒体**兼顾的 MCU。HP / LP �
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 - [ESP32-S3 智能天气仪表盘（实践示例）](ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [ESP32-S3 智能气象站仪表盘教程](../ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
-    2. [图解 I2C、SPI、UART 的通信过程与选型对比](../i2c-spi-uart-protocols.md)
-    3. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
 ## 参考数据来源
 
 本文涉及的标准、规格、应用笔记与官方资料：

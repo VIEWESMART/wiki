@@ -18,11 +18,11 @@ keywords:
   - 显示技术
   - 面板技术对比
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./tft-panel-technologies-ips-tft-lcd.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/tft-panel-technologies
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./tft-panel-technologies-ips-tft-lcd.jpeg
 ---
 
 
@@ -214,12 +214,6 @@ MVA LCD：为一般使用和家庭娱乐提供良好的平衡，比TN面板更�
 - [OLED 显示结构、工作原理及与 LCD 的对比](oled-display-basics.md)
 - [透射型、反射式与半反半透式 LCD 对比](transmissive-reflective-transflective.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [a-Si、LTPS 与 IGZO TFT 背板技术对比](../tft-backplane-technologies.md)
-    2. [TFT LCD 基础知识：结构、原理与优势](../tft-lcd-basics.md)
-    3. [TFT LCD 模组的组成与结构](../tft-lcd-module.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

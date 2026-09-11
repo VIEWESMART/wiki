@@ -12,11 +12,11 @@ keywords:
   - 电容式与电阻式触摸屏对比
   - 触摸贴合
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./touch-panel-types-capacitive-touch-panel.jpeg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/touch-panel-types
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./touch-panel-types-capacitive-touch-panel.jpeg
 ---
 
 
@@ -104,7 +104,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 随着可投射式电容性，电阻式触摸屏设备的快速发展，市场正在迅速缩小，但由于具备低成本和恶劣环境中表现更为可靠的优势，它仍然有部分应用场景。
 
 
-
 ## 电阻式与电容式触摸屏比较
 
 下面的表显示了电阻式和电容式触摸屏进行比较。
@@ -131,12 +130,6 @@ cover: ../assets/brand/viewe-cn-logo.png
 - [显示屏框贴与全贴合对比](air-vs-optical-bonding.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [显示屏框贴与全贴合对比](../air-vs-optical-bonding.md)
-    2. [GF、GFF、GG 与 PG 电容触摸结构](../capacitive-touch-structures.md)
-    3. [手套触控、防水触控与抗干扰设计](../glove-waterproof-touch.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

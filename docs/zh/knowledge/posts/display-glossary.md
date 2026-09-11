@@ -12,11 +12,11 @@ keywords:
   - 显示技术
   - 显示技术术语表
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/display-glossary
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -119,12 +119,11 @@ TFT
 
 这种照明模式取决于高亮度背光的功率。这些显示器适合低照明观看，但不适用于直接照明条件。
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
+## 相关阅读
 
-    1. [高可靠性显示解决方案](../high-reliability-displays.md)
-    2. [科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？](../ips-vs-tn.md)
-    3. [LCD 基础知识：液晶显示器的工作原理](../lcd-basics.md)
+- [高可靠性显示解决方案](high-reliability-displays.md)
+- [科普：TFT 和 IPS 屏幕到底有什么区别？项目选型该怎么挑？](ips-vs-tn.md)
+- [LCD 基础知识：液晶显示器的工作原理](lcd-basics.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

@@ -15,11 +15,11 @@ keywords:
   - 嵌入式
   - 智能显示屏解决方案
 og:type: article
-og:image: ../assets/brand/viewe-cn-logo.png
+og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/uart-smart-display
 lastmod: 2026-09-02
-cover: ../assets/brand/viewe-cn-logo.png
+cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
 ---
 
 
@@ -198,12 +198,6 @@ UART驱动程序：实现稳定的UART通信协议
 - [高可靠性显示解决方案](high-reliability-displays.md)
 - [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
 
-!!! tip "延伸阅读：相关主题"
-    根据你的阅读主题，按相关度推荐以下文章：
-
-    1. [IoT 与 AIoT 智能显示解决方案](../iot-aiot-display.md)
-    2. [ESP32-P4 在多媒体与 HMI 显示应用中的使用](../esp32-p4-display.md)
-    3. [ESP32-S3 智能气象站仪表盘教程](../ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 
