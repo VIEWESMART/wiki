@@ -3,11 +3,10 @@ title: "如何读懂显示屏规格参数"
 description: "系统了解如何读懂显示屏规格参数，包括关键原理、优缺点、应用场景和工程选型要点。"
 date: 2026-09-01
 categories:
-  - 展示基本知识
+  - 显示技术
 tags:
   - 工程应用
-  - LCD
-  - TFT
+  - 显示技术
 authors:
   - viewe_expert
 keywords:
@@ -27,408 +26,309 @@ cover: ./display-specifications-use-the-formula.png
 # 如何读懂显示屏规格参数
 
 !!! abstract "快速结论"
-    本指南解释了显示规格，相关的设计权衡以及在选择显示解决方案时工程师应该验证的点。
+    本指南解释显示规格的核心读法、相关设计权衡，以及在选型时工程师应当逐项验证的点。读完本文，你将能够独立看懂数据表上的每一项参数，并判断它对你的产品是否够用。
 
 ## 核心要点
 
-- 系统了解如何读懂显示屏规格参数，包括关键原理、优缺点、应用场景和工程选型要点。
-- 根据下文比较相关技术、应用条件和设计取舍。
-- 最终选型前，应确认光学、电气、结构、环境与量产要求。
+- 显示规格不是孤立的数字，它们共同决定画面在不同环境下的可读性、色彩准确度与寿命。
+- 工程选型时通常要先确认五件事：光学表现、电气接口、结构尺寸、环境可靠性和量产可行性。
+- 本文按从"几何"到"光学"再到"环境"的顺序逐项展开：尺寸与对角线 → 分辨率与 PPI → 亮度 → 亮度均匀性 → 对比度 → 颜色色域 → 视角。
 
-## 标签：
+## 1. 显示尺寸与对角线
 
-### 显示尺寸
+显示屏的尺寸通常指对角线长度，行业默认以英寸表达。
 
-显示屏的尺寸通常是通过其直角长度测量，通常以英寸表达。
+### 如何计算屏幕对角线
 
-如何计算屏幕大小
+**第一步：测量宽度与高度。**
 
-测量宽度和高度：阅读显示模块数据表或使用测量工具 (如规则或测量带) 来测量显示屏面积 (AA区域)，广度 (W) 和高度 (H)，以英寸或厘米。
+查阅显示模组的数据表，或用卡尺直接测量显示区域（AA 区）的宽度 W 与高度 H，单位可以是英寸也可以是厘米。
 
-计算对角长度：使用皮塔哥尔士定理来计算对方长度。
-
-详细的步骤
-
-测量宽度和高度：
-
-宽度 (W)：显示屏水平长度。
-
-高度 (H)：显示屏垂直长度。
-
-计算对角长度：
+**第二步：用勾股定理计算对角线长度。**
 
 <figure markdown="span" class="displaywiki-figure">
   [![使用公式](display-specifications-use-the-formula.png){ width="760" loading="lazy" }](display-specifications-use-the-formula.png){ .displaywiki-image-link title="查看原图" }
   <figcaption>使用公式</figcaption>
 </figure>
 
-举例
+### 举例
 
-假设显示屏宽度为16英寸，高度是9英寸。
+假设一块屏的宽度是 16 英寸、高度是 9 英寸，则对角线约为 18.36 英寸。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![因此，显示屏的直角长度大约为18.36英寸](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ width="760" loading="lazy" }](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>因此，显示屏的直角长度大约为18.36英寸</figcaption>
+  [![因此，显示屏的对角线长度约为 18.36 英寸](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ width="760" loading="lazy" }](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>因此，显示屏的对角线长度约为 18.36 英寸</figcaption>
 </figure>
 
-转换问题
+### 单位换算
 
-如果宽度和高度是以厘米衡量的，你可以首先将它们转换为英寸 (1英寸=2.54厘米)，然后进行计算。例如：
+如果给的是厘米，先换算成英寸（1 英寸 = 2.54 厘米），再用上面的方法计算。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![然后，使用上述方法来计算对角的长度](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ width="760" loading="lazy" }](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>然后，使用上述方法来计算对角的长度</figcaption>
+  [![然后用同样的方法计算对角线](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ width="760" loading="lazy" }](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>然后用同样的方法计算对角线</figcaption>
 </figure>
 
-其他考虑因素
+### 其他考虑因素
 
-视角比例：不同的显示器有不同的视角比率 (如16:9,4:3).
+- **宽高比**：不同显示器的宽高比不同，常见的有 16:9、4:3 等。
+- **实际测量**：很多显示器边框较厚，测量时只算可见显示区域，不要把边框算进去。
 
-实际测量：有些显示器的边框厚。在测量时，请确保只测量可见屏幕面积。
+## 2. 分辨率与像素结构
 
-通过遵循这些步骤，你可以准确计算显示屏的尺寸。
+### 什么是液晶显示器的"原生分辨率"
 
-### 液晶分辨率
+要理解原生分辨率，需要先理解像素，以及 LCD（尤其是 TFT LCD）是怎么把像素点亮起来的。
 
-液晶显示器的本地分辨率是什么？
+### 像素是什么
 
-为了了解液晶显示器的本地分辨率，更好了解LCD显示器技术，特别是TFT LCD制造过程。首先，我们需要理解像素是什么。
-
-像素是什么？
-
-像素，也称为图片元素，一个像素是数字显示设备上可显示和表示的数码图像或图形最小单元。
-
-液晶显示器不像CRT显示器一样运行，它将电子发射到玻璃屏幕上。LCD显示器有个别的像素排列在矩形网格中。每个像素都有RGB(红色，绿色，蓝色) 的子像素，可以启动或关闭。当所有像素的子像 Pixel被关掉时，它会出现黑色。当所有小像素都上100%时，它会显得白色。通过调整红色，绿色和蓝色光的单个水平，可实现数百万种颜色组合
+像素（Pixel，Picture Element）是数字显示设备上能表示的最小图像单元。每个像素由 RGB（红、绿、蓝）三个子像素组成，三个子像素可以独立控制开关与亮度。三者全关表现为黑色，三者全开 100% 表现为白色，通过调节三色的比例可以复现数百万种颜色。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![有RGB子像素的LCD像素](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ width="760" loading="lazy" }](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>有RGB子像素的LCD像素</figcaption>
+  [![有 RGB 子像素的 LCD 像素](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ width="760" loading="lazy" }](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 1有 RGB 子像素的 LCD 像素</figcaption>
 </figure>
 
-图.1 有RGB子像素的液晶像素
+LCD 不是 CRT，不会用电子束扫描荧光屏。它由按矩形网格排列的独立像素构成，每个子像素背后有一个 TFT（Thin Film Transistor，薄膜晶体管）元件，电极与 TFT 都沉积在玻璃基板上，构成整个显示器堆叠的一部分。所有平板显示器（LCD、OLED、Plasma 等）都只有"原生分辨率"这一种分辨率，CRT 才有扫描分辨率的概念。
 
-液晶屏幕的像素由后台电路和电极制成。每个子像素包含一个TFT (薄膜变压器) 元素。这些结构是通过将各种材料 (金属和) 沉积在玻璃基板上形成的，这些材料将成为整个显示器堆的一部分。
+参考量级：
 
-摄像头的画素是原生分辨率。实际上，所有平板显示器 (LCD,OLED,Plasma等) 都具有原生 分辨率，与CRT显示器不同
+- HD 电视：1280 × 720 = 921,600 像素
+- Full HD 电视：1920 × 1080 ≈ 2,073,600 像素
+- 8K 电视：7680 × 4320 ≈ 33,177,600 像素（K 代表 Kilo，即 1000）
 
-高清电视拥有1280×720=921,600像素；高清电视具有1920x1080=2,073,600像سل;8K电视具有7,680×4,320=33,177,600像xel. 8K中的K代表Kilo (1000)，这意味着电视已经达到约8,000个像素的水平分辨率。
+### PPI：每英寸像素数
 
-窗体底端
-
-### PPI：每英寸的像素
-
-PPI是Pixels Per Inch的缩写。它是一种测量单位，用于量化一个平方英寸表面上发现的像素数量。
-
-也就是说，想象一个平方英寸是分裂和组织在一个电网的细胞。每个电网中的细胞都有一个像素。
-
-也被称为像素，告诉你PPI.
+PPI 是 Pixels Per Inch 的缩写，量化的是一英寸表面上排列的像素数量。可以把一英寸想象成一张网格，网格里的每个格子就是一个像素。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![也被称为像素，告诉你PPI](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>也被称为像素，告诉你PPI</figcaption>
+  [![每英寸像素数（PPI）示意](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>每英寸像素数（PPI）示意</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![也被称为像素，告诉你PPI](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>也被称为像素，告诉你PPI</figcaption>
+  [![每英寸像素数（PPI）示意](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>PPI与清晰度</figcaption>
 </figure>
 
-通常，Pixels Per Inch值用于测量显示器的像素密度，例如您在计算机或笔记本电脑上，电视屏幕上，智能手机和任何显示设备上的监视器。
+PPI 常用来描述显示器、笔记本、电视、手机等任意显示设备的像素密度。
 
-有三个步骤来计算屏幕的PPI.
+### 计算 PPI 的三个步骤
 
-步骤一：找到屏幕的视角
+**第一步：测量屏幕对角线长度（英寸）。**
 
-计算PPI的第一个步骤是测量屏幕面积在英寸中。大多数显示器，屏幕，监视器和电视都以其面积测量进行销售，该测量应在屏幕或其文档上标记。
+屏幕、显示器、电视一般都按对角线尺寸销售，可以安装上文的显示尺寸来计算。
 
-第二步：找到方形像素
+**第二步：用勾股定理求对角线上的像素数。**
 
-鉴于屏幕的分辨率，你可以使用皮塔哥拉定理找到沿线的像素数量。
+已知屏幕分辨率（宽 × 高），可以算出对角线像素数 dp：
 
 <figure markdown="span" class="displaywiki-figure">
-  [![第二步：找到方形像素](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ width="760" loading="lazy" }](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>第二步：找到方形像素</figcaption>
+  [![第二步：用勾股定理求对角线像素数](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ width="760" loading="lazy" }](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>第二步：用勾股定理求对角线像素数</figcaption>
 </figure>
 
-换句话说，直角像素 dp等于像素 w平方宽度的平方根加上像素 h平方高度。
+例如 1920 × 1080 屏，dp = √(1920² + 1080²)。
 
-像素宽度等于屏幕分辨率的第一部分，而高度是第二。例如，1920×1080屏幕的像素寬度为1920，高度为1080.
+**第三步：用 PPI 公式。**
 
-第三步：使用PPI公式
+```
+PPI = dp / 屏幕对角线英寸数
+```
 
-鉴于在像素和英寸中对角的测量，使用以下公式来计算PPI.
+### 视网膜屏（Retina）
 
- PPI = dp/英寸
+视网膜屏是指人眼在该观看距离下分辨不出单个像素的像素密度。实际阈值取决于眼睛离屏幕的距离，通常观看笔记本屏幕（约 12 英寸 / 30 cm）时 PPI ≈ 300 就够细腻。
 
-因此，屏幕像素密度在每英寸的像素中等于直角dp沿线的像سل以直角分为英寸。
+## 3. 亮度
 
-视网膜是什么？
+显示屏亮度指显示表面辐射出的光强度，常见单位是 cd/m²，也叫 nits。亮度越高，在明亮环境下的可读性越好，整体视觉体验也更通透。
 
-网膜是果商标的品牌名称，它指具有像素密度的显示屏，使得每个像素可以被人眼睛察觉到。
+### 关键概念
 
-实际密度取决于您的眼睛通常距离屏幕多远，但在从12英寸处观看时，PPI为300通常是足够密度。
+- **亮度**：单位面积显示表面发出的光强度。
+- **单位**：cd/m²（或 nits）。
+- **典型值**：常见显示器在 200–500 cd/m² 之间，高亮屏可到 1000 cd/m² 及以上。
 
-### 亮度
+### 为什么亮度重要
 
-显示屏亮度，也称为光度，指显示屏所发射的光量。它通常以每平方米 (cd/m2) 的灯塔测量，也被称为"nits". 较高的亮度水平使屏幕在明亮环境中更可见，并提高了整体视觉体验，特别是在环境中的高照明条件下。
+- **可读性**：在户外或明亮室内，高亮度让画面保持可读。
+- **画质**：合适的亮度水平能提升对比度与色彩精度。
+- **舒适度**：恰当的亮度能减轻长时间使用的眼睛疲劳。
 
-关键点
+### 亮度测试方法
 
-亮度：每单位面积的显示表面发出的光强度。
+测量亮度需要专业工具与流程，常用工具有：
 
-测量单位：每平方米 (cd/m2) 的或。
+- **亮度计（Light Meter）**：例如 TOPCON BM-7 等，专门用于显示器亮度测量。
 
-典型值：常见显示器的亮度范围在200至500 cd/m2之间，较高亮度的显示器可达到1000 cd/ m2或以上。
+#### 在暗室中测亮度的流程
 
-显示亮度的重要性
+1. **准备显示器**：将显示器恢复出厂设置或标准测试图；测试前至少预热 30 分钟，让器件达到稳定工作温度。
+2. **架设测量设备**：把亮度计或光谱仪垂直对准屏幕中心，距离参照设备厂家建议；保证测量区域落在屏幕中心。
+3. **采集数据**：屏幕显示全屏白色（用校准软件或加载白色测试图）；在中心、四角、边缘等多个点测量亮度，评估亮度均匀性与平均值。
+4. **记录结果**：记录每个点的亮度读数；如有多点测量，给出平均亮度并标注屏内最大偏差。
 
-可见性：高亮度提高在明亮的环境中可见性，例如户外或照明良好的房间。
+### 亮度测试标准
 
-图像质量：正确的亮度水平有助于更好的图片质量，提高对比度和颜色精度。
+- **VESA FPDM（Flat Panel Display Measurements）**：平板显示测量标准，含亮度等指标。
+- **ISO 9241-307**：人机工效学标准，规定电子视觉显示器的测试方法。
+- **IEC 61966-2-1**：多媒体系统颜色测量与管理标准，覆盖显示亮度。
 
-用户舒适：适当的亮度设置会减少眼睛疲劳，特别是在长时间使用时。
+## 4. 亮度均匀性
 
-显示亮度的测试方法
+亮度均匀性指屏幕不同区域亮度的一致性。均匀性越好，屏内亮度差异越小，视觉体验越自然。
 
-测试显示器亮度涉及使用专业工具和程序来测量屏幕的亮度。以下是常用的方法和工具：
+### 计算亮度均匀性的步骤
 
-测量亮度的工具
+**第一步：测量多个点的亮度。**
 
-亮度计 (Light Meter)：专门用于测量显示器的亮度的设备。例如TOPCON BM-7
+在屏幕上选取若干固定点测量亮度，常见网格是 3 × 3（九点）或 5 × 5（二十五点），点位一般包含中心、四角，以及需要关注的中间位置。
 
-在黑暗的房间中测试亮度的程序
+**第二步：记录亮度值。**
 
-准备显示器：
+每个点读到的亮度通常以 cd/m² 为单位记录下来。
 
-确保显示器设置为工厂默认设置或标准化测试设置。
+**第三步：计算最暗与最亮点的比例。**
 
-至少30分钟加热显示器，以达到稳定的操作温度。
-
-设置测量设备：
-
-定位光度计或光谱射程仪垂直于显示表面，通常是设备制造商建议的距离。
-
-确保设备以测量区域为中心，通常是屏幕的中心，以保证均性。
-
-进行测量：
-
-在屏幕上显示一个全屏白色图像。可使用校准软件或通过加载白色测试模式进行此操作。
-
-在屏幕的不同点 (例如中心，角落和边缘) 进行多次测量以评估均度和平均亮度。
-
-计算和记录：
-
-记录每一个测量点的亮度读数。
-
-如果测量多个点，计算平均亮度。
-
-记录屏幕上的任何显著变化，以评估亮度均性。
-
-亮度测试标准
-
-遵守特定标准确保了亮度测量的一致性和准确性。
-
-VESA FPDM (平板显示测量) 标准：为测量各种显示特性，包括亮度提供指南。
-
-ISO 9241-307：人类与系统互动的工程学标准，规定电子视觉显示器的测试方法。
-
-IEC 61966-2-1：多媒体系统和设备的颜色测量和管理标准，包括显示亮度。
-
-## 结论
-
-了解和准确测量显示器亮度对于评估显示表现，确保最佳可见性和提高用户舒适性至关重要。通过使用适当的工具和遵守标准化程序，可以实现可靠和一致的亮度测量。
-
-### 亮度均性
-
-亮度均性是显示屏不同区域的亮度一致性的衡量仪。高亮度统一性意味着屏幕上的亮度变化最小，提供更均的视觉体验。
-
-计算光线均度的步骤
-
-测量亮度：
-
-测量屏幕上几个固定点的亮度 (亮度).这些点通常包括中心，四个角落和额外重要的中间位置。常见的测量网格是3x3 (九点) 或5x5 (二十五点).
-
-记录亮度值：
-
-记录每个测量点的亮度值，通常是每平方米 (cd/m2) 的光。
-
-确定最大和最小亮度：
+用下面的公式计算亮度均匀性：
 
 <figure markdown="span" class="displaywiki-figure">
-  [![计算光线均度](display-specifications-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-calculate-luminance-uniformity.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>计算光线均度</figcaption>
+  [![用公式计算亮度均匀性](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>计算公式</figcaption>
 </figure>
 
-使用以下公式计算光率均度：
+最终值用最暗点亮度与最亮点亮度的比值表示（百分比）。
+
+### 举例
+
+假设一块屏的 9 个测量点（3 × 3）亮度（cd/m²）如下：
 
 <figure markdown="span" class="displaywiki-figure">
-  [![使用以下公式计算光率均度](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>使用以下公式计算光率均度</figcaption>
-</figure>
-
-这一值表示最暗点与最明亮点的比例，以百分比表达。
-
-举例
-
-假设显示屏上九个点 (3x3格式) 的亮度值被测量如下 (cd/m2):
-
-<figure markdown="span" class="displaywiki-figure">
-  [![根据这些测量](display-specifications-from-these-measurements.png){ width="760" loading="lazy" }](display-specifications-from-these-measurements.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>根据这些测量</figcaption>
+  [![根据这些测量值](display-specifications-from-these-measurements.png){ width="760" loading="lazy" }](display-specifications-from-these-measurements.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>测试数据</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![高亮度均的重要性](display-specifications-importance-of-high-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-importance-of-high-luminance-uniformity.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>高亮度均的重要性</figcaption>
+  [![高亮度均匀性的重要性](display-specifications-importance-of-high-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-importance-of-high-luminance-uniformity.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>计算结果</figcaption>
 </figure>
 
-视觉舒适：具有高均度的显示器提供一致的亮度，减少眼睛疲劳。
+### 为什么亮度均匀性重要
 
-颜色准确性：对于需要精确的颜色表示，如图形设计和视频编辑等应用来说至关重要。
+- **视觉舒适**：高均匀性的屏幕亮度一致，眼睛不容易疲劳。
+- **色彩准确**：对图形设计、视频编辑等需要精确色彩表达的应用至关重要。
+- **专业应用**：医疗影像、航空航天等领域要求高均匀性以保证显示精确可靠。
 
-专业应用：在医疗成像和航空航天等领域，高亮度均性确保显示精确性和可靠性。
+## 5. 对比度（CR）
 
-## 结论
+对比度（Contrast Ratio，CR）是显示屏的关键规格，指屏幕能产生的最亮白色与最暗黑色之间的亮度比。它直接影响画面清晰度、层次感和整体视觉体验。
 
-亮度均性是显示性能的关键指标。通过测量和计算屏幕上的不同点的亮度，可以评估整个显示器的亮点均度。高亮度均性确保了更好的用户体验和视觉质量，这对于专业应用尤为重要。
+### 定义
 
-### CR：对比度
+对比度 = 最亮白色亮度 / 最暗黑色亮度，常以 1000:1、3000:1 等形式表达。
 
-对比比率是显示屏的关键规格，表明屏幕可以产生最明亮的白色和最黑暗的黑色之间的区别。它是决定显示屏质量的重要因素，影响了清晰度，深度和整体视觉体验。
+### 如何计算
 
-定义
-
-反对比率是指显示器能产生的最明亮的颜色 (白色) 与最黑暗的顏色 (黑色) 的亮度比例。它通常以1000:1,3000:1等格式表达。
-
-计算
-
-为计算对比率，测量白色和黑色水平的亮度 (亮度) 值，然后确定这两个值之间的比例。例如：
+测出全白画面与全黑画面的亮度值（cd/m²），再求两者比值即可。例如：
 
 <figure markdown="span" class="displaywiki-figure">
-  [![对比比例的重要性](display-specifications-importance-of-contrast-ratio.png){ width="760" loading="lazy" }](display-specifications-importance-of-contrast-ratio.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>对比比例的重要性</figcaption>
+  [![对比度的重要性](display-specifications-importance-of-contrast-ratio.png){ width="760" loading="lazy" }](display-specifications-importance-of-contrast-ratio.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>对比度计算公式</figcaption>
 </figure>
 
-图像质量：较高的对比率表明图片中最明亮和最黑暗的部分之间的差异更大，从而产生了更生动，更清晰，更真实的图像。
+### 对比度为什么重要
 
-色深：高对比率有助于更好的颜色 深度和更丰富的细节，特别是在黑暗场景。
+- **画质**：对比度高，最亮与最暗部分的差异更明显，画面更生动、清晰、真实。
+- **色深**：高对比度能呈现更丰富的色彩层次与细节，尤其在暗场景下。
+- **用眼舒适**：对比度足够时，眼睛更容易区分不同视觉元素，不易疲劳。
 
-眼睛舒适：具有更好的对比率的显示屏可以减少眼睛的疲劳，因为它们能够更清楚地区分不同的视觉元素。
+### 不同面板的典型对比度
 
-不同显示器的典型对比率
+- **TN（Twisted Nematic）面板**：通常对比度较低，约 1000:1 左右。
+- **IPS（In-Plane Switching）面板**：对比度一般优于 TN，常见 1000:1–1500:1。
+- **VA（Vertical Alignment）面板**：以高对比度著称，常见 3000:1–6000:1。
+- **OLED（Organic Light Emitting Diode）面板**：理论上可做到"无限对比度"，因为单个像素可完全关闭，呈现真正的黑色。
 
-TN (Twisted Nematic) 面板：通常具有较低的对比率，通常在1000:1左右。
+### 实际考虑
 
-IPS (飞机中转换) 面板：一般提供更好的对比率，通常在1000:1至1500:1.
+- **观看环境**：明亮房间因环境光反射，主观对比度会下降；暗室里显示器对比度更明显。
+- **内容类型**：高对比度对影音、游戏和任何要求画面还原度的场景都尤其重要。
+- **测量标准**：不同厂商使用的测量方法可能不同，尤其是"动态对比度"，实际可比性有限。
 
-VA (垂直调整) 面板：以较高的对比率而闻名，通常从3000:1到6000:1.
+## 6. 颜色色域（NTSC）
 
-OLED (Organic Light Emitting Diode) 面板：提供极高的对比率，通常被认为是无限的，因为它们可以完全关闭单个像素，实现真正的黑色。
+评估 TFT（Thin Film Transistor，薄膜晶体管）显示器的色彩能力时，色域（Color Gamut）是核心指标之一。色域代表显示器能复现的色彩范围，更高的色域代表色彩更为鲜艳。NTSC（National Television System Committee，国家电视系统委员会）色域是评估显示器色彩覆盖度时常用的参考标准。
 
-实际考虑
+### NTSC 色域的定义
 
-观看环境：在明亮的房间中，由于周围的光反射，感觉对比率可能较低。相反，在黑暗的房子里，显示的对比比率更明显。
+NTSC 色域是 1953 年 NTSC 为模拟电视广播制定的颜色标准。尽管 NTSC 标准本身已不再广泛用于现代数字显示，但 NTSC 色域仍是评估显示色彩能力的常用基准。
 
-内容整理：高对比率对于媒体消费，游戏和视觉忠诚度至关重要的任何应用都特别重要。
+### 颜色覆盖率
 
-测量标准：请注意，制造商可能会使用不同的标准和方法来测量对比率，特别是动态对比比率。
+色域覆盖率通常用 NTSC 色域的百分比表示。例如，某屏的 NTSC 色域覆盖率为 72%，意味着它能复现 NTSC 标准色谱中 72% 的颜色。
 
-## 结论
+### 如何计算 NTSC 色域覆盖率
 
-对于显示质量来说，对比率是关键的因素，它会影响屏幕在明亮和黑暗场景中能否复制细节。理解对比度比率有助于选择适合特定需求的显示器，从而确保最好的视觉体验。
+需要用色度图把显示器的色域和 NTSC 色域做比较，步骤如下：
 
-### 颜色Gamut
+1. **测量显示器的颜色范围**：用色彩分析仪或光谱仪测量屏幕的色域。
+2. **绘制色度图**：把显示器的色域与 NTSC 色域都画在 CIE 1931 色度图上。
+3. **计算覆盖率**：两者比对，得到 NTSC 色域百分比覆盖率。
 
-当评估TFT (薄膜晶体管) 显示器的颜色性能时，颜色范围是一个关键的指标。颜色范围内代表一个显示器可以复制的色彩范围。NTSC (国家电视系统委员会) 的颜色域是评估显示器颜色覆盖度的一个常用的标准。
+### 常见色域覆盖水平
 
-NTSC颜色Gamut的定义
+- **标准显示器**：约 72% NTSC 色域。适合一般办公与日常家用娱乐。
+- **高端显示器**：85% NTSC 色域及以上，适合摄影、视频编辑、专业设计等要求更高的应用。
+- **专业显示器**：可覆盖 100% 或以上 NTSC 色域，色彩鲜艳度高，能复现更丰富的色彩。
 
-NTSC 颜色范围指1953年国家电视系统委员会为模拟电视广播定义的颜色标准。尽管NTSC标准不再广泛应用于现代数字显示技术，但NTSc颜色范围仍然是评估显示颜色性能的参考标准。
+### 与其他色域标准的对比
 
-代表着颜色的木覆盖
+除 NTSC 外，业内常用的色域标准还有 sRGB、Adobe RGB、DCI-P3，每个标准覆盖的色彩范围不同，适用场景也不同：
 
-颜色范围覆盖率通常以NTSC颜色域的百分比表达。例如，具有72%的NTSc颜色幅度覆盖的显示屏意味着显示屏可以复制72% NTSC标准颜色谱。
+- **sRGB**：适合互联网与一般消费电子。
+- **Adobe RGB**：用于专业摄影与印刷，覆盖更广的绿色与蓝色。
+- **DCI-P3**：用于电影与 HDR 内容，覆盖更广的红色与绿色。
 
-计算NTSC颜色光覆盖率
+## 7. 视角
 
-为了计算显示器在NTSC单元中的颜色范围，需要使用染色图来比较显示器的颜色域和 NTSC色域。步骤如下：
+视角指屏幕在画面质量仍可接受的条件下，可观看的最大角度。角度越大时，色彩与对比度可能变化，画面会出现失真或色偏。了解视角有助于在不同观看场景下选择可见性与色彩精度合适的显示器。
 
-测量显示器的颜色范围：使用颜色分析仪或光谱射线计来测量屏幕的颜值范围。
+### 定义
 
-绘制染色图：将显示器的颜色范围和NTSC颜色范围内都绘制在CIE 1931染色率图上。
+**视角**：在色彩精度与对比度不发生显著下降的条件下，可以观看显示器的角度。详细规格请参考优奕视界显示数据表。
 
-计算覆盖率：比较显示器的颜色范围和NTSC颜色域以计算百分比覆盖度。
+### 为什么视角重要
 
-颜色光覆盖的常见价值
+- **用户体验**：宽视角保证从多个位置观看时画面都好看，适合需要共享画面的场景。
+- **应用适配**：不同应用对视角的要求不同。专业图形设计需要宽视角，而基本办公监看可能不需要。
+- **技术对比**：了解不同显示技术的视角差异，有助于针对场景选型。
 
-标准显示器：通常覆盖约72%的NTSC颜色范围。这些显示器适合一般使用，如办公工作和日常家庭娱乐。
+### 视角的测量
 
-高端显示器：通常覆盖NTSC颜色范围的85%或更多，使它们适合需要更好的颜色性能的应用程序，如摄影，视频编辑和专业设计。
+视角通常以屏幕中心为基准测得，一般用水平视角与垂直视角两个值表示：
 
-专业显示器：一些专业的显示器甚至可以覆盖100%或更多的NTSC颜色范围，提供出色的颜色精度和丰富的色彩复制。
+- **水平视角**：屏幕中心向左、向右两侧，图像质量仍可接受的最大角度。
+- **垂直视角**：屏幕中心向上、向下两侧，图像质量仍可接受的最大角度。
 
-与其他颜色游戏标准的比较
+### 视角规格
 
-除了NTSC色域外，还有其他常见的色域标准，如sRGB,Adobe RGB和DCI-P3.每个色域规范涵盖不同的颜色范围，适用于不同应用：
-
-sRGB：适合互联网和一般消费电子设备。
-
-Adobe RGB 并行：用于专业摄影和打印，覆盖更多的绿色和蓝色。
-
-DCI-P3：用于电影和高动态射程 (HDR) 内容，覆盖更多的红色和绿色。
-
-## 结论
-
-通过了解NTSC的颜色范围，用户可以评估显示器复制颜色的能力，并选择符合其特定需求的显示器。高 NTSC 颜色范围表示显示器可以复制更广泛的颜色，提供更丰富和更准确的视觉体验。
-
-### 视角
-
-显示屏的视角指一个屏幕可以以可接受的视觉性能观看的最大角度。在更宽的角度上，显示器的颜色和对比可能会变化，使图像出现扭曲或冲洗。了解视角至关重要，以便在不同的视角中选择可见性和颜色精度的显示器。
-
-定义
-
-视角：可以在没有显著降低图像质量的情况下查看显示器的角度，包括颜色精度和对比。详细信息请参阅VIEWE显示数据表。
-
-视角的重要性
-
-用户体验：一个更广泛的视角确保显示器从各种位置看起来很好，增强了用户体验，特别是用于共享视觉。
-
-应用适用性：不同应用程序需要不同的视角。例如，专业图形设计的显示器需要宽的视角，而基本办公监控则可能不需要。
-
-显示技术比较：了解不同显示技术的视角有助于选择适合特定需求的设备。
-
-视角的测量
-
-视角通常是从屏幕中心的度量。它们通常以两个值表示水平和垂直视角。
-
-水平视角：屏幕中心左边和右边的角度，图像质量仍然是可接受的。
-
-垂直视角：在屏幕中心以上和下面的角度，图像质量仍然是可接受的。
-
-视角规格
-
-制造商通常将视角指定为此表
+厂家通常按下方顺序标注视角性能：
 
 <figure markdown="span" class="displaywiki-figure">
   [![影响视角的因素](display-specifications-factors-affecting-viewing-angle.png){ width="760" loading="lazy" }](display-specifications-factors-affecting-viewing-angle.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>影响视角的因素</figcaption>
+  <figcaption>视角规格图</figcaption>
 </figure>
 
-显示技术：OLED>MVA>IPS>>TN
+**显示技术对比**：OLED > MVA > IPS >> TN
 
-后照明和极化器：后照的质量以及显示屏中使用的极化仪整理也影响了视角。
+**背光与偏光片**：背光模组质量以及偏光片的取向也会影响视角表现。
 
-实际考虑
+### 实际考虑
 
-环境：在公共或共享环境中使用的显示器，例如会议室中的电视和监视器，具有广的视角，可以容纳多位观众。
-
-目的：对于需要高颜色精度的任务，如图片和视频编辑，具有广的视角显示器是必不可少的，以确保不同视角位置的颜色一致。
-
-成本：具有更好的视角的显示器，特别是IPS和OLED，通常比具有TN面板的显示屏更昂贵。
-
-## 结论
-
-视角是显示性能的一个关键方面，影响到屏幕可以从不同位置看得多好。了解视角规格有助于用户选择适合其需求的显示器，以确保在各种设置中获得最佳观测体验。
+- **使用环境**：会议室电视与监控屏等公共/共享场景，需要宽视角以容纳多人观看。
+- **使用目的**：图片与视频编辑等要求高色彩精度的任务，需要宽视角以保证不同观看位置下色彩一致。
+- **成本**：视角更好的显示器（尤其是 IPS、OLED）通常比 TN 屏更贵。
 
 ## 相关阅读
 
@@ -441,7 +341,7 @@ DCI-P3：用于电影和高动态射程 (HDR) 内容，覆盖更多的红色和�
 本文涉及的标准、规格、应用笔记与官方资料：
 
 - [VESA DisplayPort 标准（含 eDP）](https://vesa.org/vesa-standards/)
-- [TFT LCD 通用规格书示例（BOE NV125FHM-N62）](https://www.mouser.com/datasheet/2/813/NV125FHM-N62-2919650.pdf)
+- [TFT LCD 通用规格书示例](../../../assets/datasheet/display/ALL-UE070WV-RB40-A092A.pdf)
 
 
 !!! info "没有找到您需要的内容？"
