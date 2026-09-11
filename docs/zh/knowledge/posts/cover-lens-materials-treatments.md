@@ -5,9 +5,7 @@ date: 2026-09-01
 categories:
   - 盖板和表面处理
 tags:
-  - 触摸贴合
-  - 表面处理
-  - 显示技术
+  - 盖板相关
 authors:
   - viewe_expert
 ---

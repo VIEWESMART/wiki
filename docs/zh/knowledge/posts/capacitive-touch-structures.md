@@ -6,7 +6,6 @@ categories:
   - 触摸和贴合
 tags:
   - 触摸贴合
-  - 触摸屏
 authors:
   - viewe_expert
 ---

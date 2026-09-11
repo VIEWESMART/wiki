@@ -5,8 +5,7 @@ date: 2026-09-01
 categories:
   - 盖板和表面处理
 tags:
-  - 工程应用
-  - 表面处理
+  - 盖板相关
 authors:
   - viewe_expert
 ---

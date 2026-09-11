@@ -1,6 +1,6 @@
 ---
 title: "PCB 类型与材料选择"
-description: "系统了解PCB 类型与材料选择，包括关键原理、优缺点、应用场景和工程选型要点。"
+description: "面向硬件工程师的 PCB 类型与材料选型手册：按"层数 / 基板刚性 / 速率与频率 / 应用领域"四个维度对 PCB 分类，并详细拆解热性能（Tg / Td / CTE / 导热系数）、电气性能（Dk / Df / 损耗角正切）、机械性能（杨氏模量 / 弯曲强度）三大选材决策维度，配合典型工程参数与适用场景。"
 date: 2026-09-01
 categories:
   - 接口和电子
@@ -14,183 +14,296 @@ authors:
 # PCB 类型与材料选择
 
 !!! abstract "快速结论"
-    本指南解释了选择PCB整理和材料，相关的设计权衡以及工程师在选择显示解决方案时应该验证的点。
+    PCB 可以从**层数 / 基板刚性 / 速率与频率 / 应用领域**四个维度分类：单 / 双 / 多层板、刚性 / 柔性 / 刚挠结合板、普通 / 高速 / 射频板、LED 金属基板 / 功率陶瓷基板等。选材核心看三类性能——**热（Tg / Td / CTE / 导热系数）、电气（Dk / Df / 损耗角正切）、机械（杨氏模量 / 弯曲强度）**，三组参数必须与速率、功耗、热环境强相关才能反推工程取舍。
 
 ## 核心要点
 
-- 系统了解PCB 类型与材料选择，包括关键原理、优缺点、应用场景和工程选型要点。
-- 根据下文比较相关技术、应用条件和设计取舍。
-- 最终选型前，应确认光学、电气、结构、环境与量产要求。
+- 按 **层数** PCB 可分为单面板、双面板、多层板。
+- 按 **基板刚性** 可分为刚性板、柔性板、刚挠结合板。
+- 按 **速率与频率** 可分为普通数字、高速数字（PCIe / DDR / USB 3.x / HDMI / MIPI）、射频微波（5G / 雷达 / WiGig）。
+- 按 **应用** 可分为 LED 金属基板（铝基板、铜基板）、功率模块陶瓷基板、汽车级长寿命板等。
+- 选材看三组特性：**热性能**（决定无铅回流与高温环境的可靠性）、**电气性能**（决定信号完整性、阻抗稳定性）、**机械性能**（决定振动 / 弯曲 / 跌落寿命）。
 
-## PCB整理
+## 1. PCB 的分类维度
 
-一般来说，印刷电路板 (PCB) 按层数量，基板整理和频率进行分类。根据材料，PCB 分为单侧 PCB，双侧 PCB 和多层 PCB. 与此同时，根据材料，PCB也可以分为硬 PCB，灵活 PCB和硬柔性 PCB.
+业界通常按下列四个维度分类 PCB，每个维度对应不同的工程取舍：
 
-单侧PCB
+- **按层数**：单面、双面、多层。
+- **按基板材料**：刚性（FR-4 / 高 Tg FR-4 / 高频 / 陶瓷）、柔性（PI / PET）、刚挠结合。
+- **按频率 / 速率**：普通数字、高速数字、射频微波。
+- **按应用**：消费类 LED 金属基板、功率模块陶瓷基板、车规级板、医疗板、航空航天板。
 
-单面PCB是最简单的印刷电路板。下图显示了单边PCB的结构。蓝色，黄色和绿色层分别是基板，导体铜层和接面具。在单边PCB中，只有一个侧面的基板被涂上铜层，而这个侧面是组件电气连接的地方。单侧PCB具有成本效益和易于制造。但它对电路设计有很多限制，因为导路不能交叉或重叠。因此，目前的单边PCB仅用于电子玩具，计算器等简单电路。
+## 2. 按层数分类
 
-<figure markdown="span" class="displaywiki-figure">
-  [![单侧PCB的结构](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>单侧PCB的结构</figcaption>
-</figure>
+### 2.1 单面板（Single-Sided PCB）
 
-图1：单侧PCB的结构
-
-双侧PCB
-
-与单侧PCB不同，双边PCB在基板的两侧都有铜层。同时，组件可以在两侧连接。通过孔和表面安装技术都广泛用于双方进行电路连接
+最简单的一类。蓝色 / 黄色 / 绿色分别是基板、导体铜层、阻焊层。单面板只有基板的一面有铜，是元件电气连接的唯一通道。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![双面PCB的结构](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>双面PCB的结构</figcaption>
+  [![单面板的结构](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-1 单面板结构</figcaption>
 </figure>
 
-图2：双侧PCB的结构
+**优点**：成本最低，制造工艺简单。
 
-双面PCB中嵌孔 (PTH) 作为桥梁。嵌洞的墙壁通常通过电解过程用铜涂层，以将一侧电路连接到另一边。由于双面PCB的电路密度增加，双边PCB适合更复杂的电线。与单侧PCB相比，它是灵活和紧的。诸如电源监测和放大器等各种应用正在使用双面 PCB.
+**缺点**：导线不能交叉重叠，设计自由度极低。
+
+**应用**：电子玩具、计算器、低成本遥控、简单电源等。常见结构如图 2-1 所示。
+
+### 2.2 双面板（Double-Sided PCB）
+
+基板两面均有铜层，元器件可在两面组装，通过通孔（PTH，Plated Through Hole）在两面之间导通。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![在双侧PCB上通过孔 (PTH) 涂层](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>在双侧PCB上通过孔 (PTH) 涂层</figcaption>
+  [![双面板的结构](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-2 双面板结构</figcaption>
 </figure>
-
-图3：双侧PCB上通过孔 (PTH) 涂层
-
-多层PCB
-
-多层PCB由两个以上的导电层组成，其中两层位于外面，其余的层被集成到隔离层中。每个2层之间是 prepreg，这是一个无电层，可以非常薄。在PCB中的层次表示独立导电铜层的数量。一般上层和下层是单侧PCB，内部层都是双面PCB.所有这些层都在高温和压力下合在一起形成一个板块。与单侧和双侧PCB相比，多层PCB适用于移动电话和笔记本电脑等高速电路，并且更灵活和紧。下面的图像是6层PCC的一个例子。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![六层PCB](pcb-types-materials-the-6-layer-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-6-layer-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>六层PCB</figcaption>
+  [![双面板 PTH 镀通孔](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-3 双面板 PTH 镀通孔</figcaption>
 </figure>
 
-图4：六层PCB
+**优点**：布线可在两面分布，密度提升明显；通孔 + 表贴结合使元件布局更灵活。
 
-对于不同层之间的电路连接，它通常通过管道实现：通过孔 (PTH)，盲管道和埋管管道。盲管连接PCB的最外层和相邻的内部层。从外部看不见的埋伏管只是连接到内部电路层之间。
+**应用**：电源监测、放大器、工业控制、消费类电源、消费电子主控板。
+
+### 2.3 多层板（Multi-Layer PCB）
+
+由两层以上导电铜层组成，最外两层为单面，**内层全部为双面**。每个 2 层之间的介质是 Prepreg，可薄至 0.05 mm 甚至更低。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![道](pcb-types-materials-the-vias.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-vias.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>道</figcaption>
+  [![六层 PCB](pcb-types-materials-the-6-layer-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-6-layer-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-4 六层 PCB</figcaption>
 </figure>
 
-图5：道
+全部层在高温高压下一次压合（**Lamination**）成一块板。**多层板** 适合高速、高密度、复杂互连场景：
 
-固体PCB
+- **手机 / 笔记本**：典型 6–10 层。
+- **服务器 / 交换机**：10–20 层 + HDI。
+- **核心路由 / AI 加速**：20+ 层 + 多阶 HDI。
 
-固体PCB的基板材料是玻璃纤维等固体材料，不能折叠或曲。固体 PCB可能是单侧，双侧或多层 PCB，取决于需要。主要优势包括低电子噪音和振动吸收。但一旦制造了硬 PCB，不能修改或更换。应用包括笔记本电脑，温度传感器，GPS设备等。
+不同层之间的互通用**通孔（PTH）、盲孔（Blind Via）、埋孔（Buried Via）** 三种 Via 完成（"管道 / 埋伏管 / 道"是早期机翻口径，工程师之间请统一用 Via）：见 [PCB 结构与制造流程](pcb-construction-process.md) 与 [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![坚固的PCB](pcb-types-materials-the-rigid-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-rigid-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>坚固的PCB</figcaption>
+  [![Via 示意](pcb-types-materials-the-vias.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-vias.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-5 通孔、盲孔与埋孔</figcaption>
 </figure>
 
-图6：固体PCB
+## 3. 按基板刚性分类
 
-灵活的PCB
+### 3.1 刚性 PCB（Rigid PCB）
 
-与硬PCB不同，柔性PCB通常由滚动环形铜 (RA) 和弹性塑料薄膜组成。它允许电路板适应在使用过程中无法旋转或移动的形状，而不会损坏印刷电路盘上的电路。灵活的PCB节省成本和大量空间，大大降低了板块重量和应用产品的大小。换句话说，它是需要高信号痕迹密度的各种应用程序的理想选择。灵活PCB可以是单侧，双侧或多层PCB的任何一种，根据需要。灵活 PCB的应用包括复杂电子产品，有机光发射二极管 (OLED)制造，液晶制造等。
+基板材料是玻璃纤维等刚性材料，**成型后不可弯折**。刚性 PCB 可以是单 / 双 / 多层。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![灵活的PCB](pcb-types-materials-flexible-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-flexible-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>灵活的PCB</figcaption>
+  [![刚性 PCB](pcb-types-materials-the-rigid-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-rigid-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-1 刚性 PCB</figcaption>
 </figure>
 
-图7：灵活的PCB
+**优点**：低电子噪声、抗振动、强度高、机械加工成熟。
 
-刚挠结合 PCB
+**缺点**：一旦制成不可改动。
 
-刚挠结合 PCB是刚性印制电路板和压制后的柔性印制电路板和其他工艺的组合。在刚挠结合 PCB 中，刚性电路板之间的相互连接是板的灵活性部分。因此，这种整理的板块可以折叠或连续曲，通常在制造过程中形成曲形。刚挠结合 PCB可用于具有特殊要求的产品，因为它既具备刚性区和柔性区，可以节省产品内部空间和容量，提高产品性能，例如更高的连接可靠性。然而，硬柔性PCB需要多个生产过程，导致低收益率，相对较长的生产周期和高价格。硬柔性的PCB的主要应用是在医疗，消费电子和航空航天领域。
+**应用**：笔记本、温度传感器、GPS、工业控制器、消费类主板。
+
+### 3.2 柔性 PCB（Flexible PCB / FPC）
+
+柔性 PCB 通常用**压延退火铜箔（Rolled-Annealed Copper, RA Copper）** 与 **聚酰亚胺（PI）** 或 **聚酯（PET）** 塑料薄膜组成，可弯折但不影响铜层上的电路。
+
+<figure markdown="span" class="displaywiki-figure">
+  [![柔性 PCB](pcb-types-materials-flexible-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-flexible-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-2 柔性 PCB</figcaption>
+</figure>
+
+**优点**：省空间、降重量、适应不规则外形、可动态弯折。
+
+**应用**：OLED / LCD 模组内部互连、手机摄像头模组、可穿戴设备、医疗探头、连接器补强板。
+
+### 3.3 刚挠结合 PCB（Rigid-Flex PCB）
+
+刚性板与柔性板通过层压组合连接；**刚性板之间的连接由柔性段完成**。这种板可在生产中预折成 3D 形状。
 
 <figure markdown="span" class="displaywiki-figure">
   [![刚挠结合 PCB](pcb-types-materials-rigid-flex-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-rigid-flex-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>刚挠结合 PCB</figcaption>
+  <figcaption>图 3-3 刚挠结合 PCB</figcaption>
 </figure>
 
-图8：刚挠结合 PCB
+**优点**：节省内部空间与连接器、提升连接可靠性、降低装配不良率。
 
-高频PCB
+**缺点**：工艺复杂、良率低、生产周期长、价格高。
 
-作为一个特殊的印刷电路板，高频PCB提供500MHz到2GHz的高频范围。它提供更快的信号流速率，适合高速设计。对各种物理性能，精度和技术参数有很高的要求。首先，高频PCB的基板材料应具有耐热性，耐化学性和良好的冲击性特征。其次，板的散射因子 (Df)必须小，这主要影响信号传输质量。除此之外，板的电常量 ((Dk) 必须小且稳定，因为信号传输速率与材料的電常量的平方根相反比例。换句话说，高电常量可能会导致信号传输延迟。
+**应用**：医疗、消费电子、航空航天、军工等结构紧凑且可靠性要求高的场景。
 
-高频PCB基板还应具有低吸水特性，因为高吸水量会在板块湿时导致消散因子和电常数的损失。高频PCB通常用于防碰系统 (CAS)，卫星系统，无线电系统，移动应用等。
+## 4. 按速率 / 频率分类
+
+### 4.1 高频 PCB
+
+专门面向 500 MHz – 2 GHz（甚至更高）的应用，要求信号传输速率快、损耗低、抗扰好。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![高频PCB](pcb-types-materials-high-frequency-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-high-frequency-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>高频PCB</figcaption>
+  [![高频 PCB](pcb-types-materials-high-frequency-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-high-frequency-pcb.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 4-1 高频 PCB</figcaption>
 </figure>
 
-图9：高频PCB
+**高频基板必须满足**：
 
-## 选择PCB材料
+- **耐热**：能承受回流焊、波峰焊、热冲击测试。
+- **耐化学**：承受镀液、蚀刻液、电镀药水。
+- **抗冲击**：满足振动 / 跌落测试。
+- **Dk 稳定**：相对介电常数在宽频率范围内保持稳定。
+- **Df 低**：损耗角正切（tan δ）越小，信号损耗越低。
+- **低吸水率**：吸水会导致 Dk / Df 漂移。
 
-在设计PCB板时，设计师必须定义PCB构造所需的板材材料。因此，设计者主要考虑两个基本的热和电性特性，其次是机械性质。
+**应用**：防撞雷达（CAS）、卫星通信、无线电、5G 基站、移动设备射频前端。
 
-PCB材料的热性能
+### 4.2 高速数字 PCB
 
-材料的热性能决定了它能够承受极端温度，同时保持其特性。在选择PCB材料时需要考虑的热性质如下：
+针对 PCIe、DDR、USB 3.x、HDMI、MIPI、SATA 等高速数字接口的 PCB。需要：
 
-玻璃过渡温度 (Tg)
+- **阻抗控制**（50 Ω / 90 Ω / 100 Ω）。
+- **差分对长度匹配**（skew 控制）。
+- **参考平面完整**（避免跨分割）。
+- **低损耗材料**（如 Mid-loss / Low-loss 等级）。
 
-玻璃过渡温度 (Tg) 是指由于聚合物链开始移动，PCB材料的性能从刚性 (玻璃) 状态到变形性 (灵活性) 的变化所经历的温度范围。下图1显示了基板的融化和软化现象。在玻璃过渡温度 (Tg) 和融化温 (Tm) 之间，基板达到状状态。一旦温度低于Tg,PCB施工材料将硬化，基底的性能将恢复到原始状态。如果温度高于Tm，基板会迅速失去形状和强度，因为材料从固体转变为粘液。
+### 4.3 普通数字 / 消费类 PCB
+
+Dk 一般 4.2–4.5，Df 0.02 左右，FR-4 即可满足。
+
+## 5. 按应用分类
+
+### 5.1 金属基板（铝基板、铜基板）
+
+**铝基板 / 铜基板**为 LED 照明、功率模组专用。基板底部贴铜或铝金属层承担高功率密度散热。
+
+### 5.2 陶瓷基板（氧化铝、氮化铝、氧化铍）
+
+高功率模块（IGBT、SiC、GaN）专用。氮化铝陶瓷基板热导率可达 170 W/(m·K)，远超 FR-4。陶瓷基板的电气绝缘与机械强度均远超普通基板，但成本高、不适合大批量消费类。
+
+### 5.3 车规 PCB
+
+符合 AEC-Q100 / Q104 / Q200 应力测试、长寿命、宽温、抗振动。基板多用高 Tg FR-4 或 PI，叠层需更高对称性、表面处理优先 ENIG。
+
+## 6. PCB 材料的关键性能
+
+设计 PCB 时**必须先定义板材**，主要看三类特性：**热、电气、机械**。
+
+### 6.1 热性能
+
+热性能决定 PCB 在极端温度下能否保持机械与电气稳定。
+
+#### 6.1.1 玻璃化转变温度（Tg）
+
+玻璃化转变温度 Tg 是聚合物从玻璃态向高弹态转变的温度范围。**在 Tg 与 Tm（熔化温度）之间**，基板处于"高弹态"；温度低于 Tg 时硬而脆，温度高于 Tg 时偏软。
 
 <figure markdown="span" class="displaywiki-figure">
   [![基板的状态](pcb-types-materials-the-state-of-the-substrate.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-state-of-the-substrate.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>基板的状态</figcaption>
+  <figcaption>图 6-1 基板的状态示意</figcaption>
 </figure>
 
-图1：基板的状态
+实务意义：无铅回流焊峰值温度 245–260 °C，要求板材 Tg > 150 °C（标准 FR-4）；多层 / 高密度 / 高过炉次数应选 Tg > 170 °C 的高 Tg FR-4。
 
-分解温度 (Td)
+#### 6.1.2 热分解温度（Td）
 
-降解温度 (Td) 是基板发生化学分解的温度，导致基板损失至少5%的质量。值得注意的是，如果基板的温度达到或超过Td，后来的特性变化是不可逆的。因此，必须选择能够在高于Tg但低于Td的温度范围内良好工作的材料。大多数PCB材料的Td性能都高于320，因为大多数接温度在200-250°C之间是有利的。
+热分解温度 Td 是基板材料**热失重 5% 的温度**。一旦温度达到或超过 Td，材料发生不可逆分解。
 
-热扩张系数 (CTE)
+实务要求：Td > 320 °C 的板材能稳定经过多次回流与返修。
 
-材料在加热时的扩张速度被称为热膨胀系数 (CTE).CTE的单位为ppm ((每百万零部件) /°C. 一般来说，电基板的CTE高于铜，这导致PCB加热后的相互连接问题。由于织玻璃限制材料在X和Y方向，即使材料的温度高于Tg,X和 Y轴沿CTE不会发生很大的变化。因此，材料将朝Z方向扩张，但沿这个轴的CTE应该尽可能低。
+#### 6.1.3 热膨胀系数（CTE）
 
-热导电性
+热膨胀系数 CTE（单位 ppm/°C）描述材料随温度变化的尺寸膨胀。
 
-热导性 (k) 被定义为PCB材料选择进行热的能力。换句话说，热导率越高，热转移就越高；热导度越低，热传输就越低。热导性的表达是：
+- 基板 X / Y 方向 CTE 受玻璃纤维限制，通常较低（10–20 ppm/°C）。
+- **基板 Z 方向 CTE 较高**（50–70 ppm/°C）：温度升高时 Z 向膨胀易破坏孔铜，需选低 Z-CTE 板材。
+- 铜的 CTE 约 17 ppm/°C。基板与铜的 CTE 失配将引发应力、断裂、焊点开裂。
 
- (Q * d) / (A * ΔT)
+#### 6.1.4 热导率（k）
 
-与铜 (386W/M°C) 的热导性相比，大多数电材料的热导率较低，从0.3到0.6W/m°C之间。这可能解释了为什么铜基层会比电基层消耗更多的热量。
+材料的热导率定义为单位厚度下，单位温差能传导的热功率。导热系数高的材料更利于散热：
 
-电气特性
+```
+Q = k · A · ΔT / d
+```
 
-电动恒定或相对允许性 (Er或Dk)
+铜的 k 高达 386 W/(m·°C)，普通 FR-4 仅 0.3–0.6 W/(m·°C)。**金属基板 / 陶瓷基板**正是用高 k 材料把功率器件热量快速带走。
 
-电动恒定或相对允许性 (Er 或 Dk) 是材料的允许性与真空允许性的比率。PCB构造中的大多数材料在2.5到4.5之间。电动常量随频率而变化，通常与频率相反比例。在广泛频率范围内保持相对稳定的电恒定的材料适用于高频应用
+### 6.2 电气性能
 
-电动损失接或散射因子 (Tan 或 Df)
+#### 6.2.1 介电常数（Dk / εr）
 
-电力损失是指电力材料固有的电磁能量散射。它也可以根据相应的损失数 (Tan) 来参数化，这是电力中抵抗和反应电流之间的相角。散射因子 Df 的范围从0.001到0.030.
+介电常数 Dk 是材料介电与真空介电的比值。FR-4 的 Dk 通常在 4.2–4.5 之间。
 
-PCB材料机械性能
+**Dk 越低**：信号传播速度越快，但通常成本越高；Dk 在频率升高时往往下降。
 
-电压 (Youngs) 模块或弹性模块
+#### 6.2.2 损耗角正切（Df / tan δ）
 
-紧张模块是 Hooke 定律适用的压力范围内沿同一轴的压力与压力的比率。
+损耗角正切 Df 表征材料把电磁能量转换为热的损耗。
 
-E = 压力/压力 = (F/A) / [(L  Lo) /L]
+- 普通 FR-4：Df ≈ 0.02；
+- 高频基板（Rogers RO4000 系列）：Df ≈ 0.0021；
+- 超低损耗基板：Df < 0.0015。
 
-F,A,L和Lo分别是对材料施加的力，材料的横切面积，材料最初长度以及经拉伸后的材料长度。
+高 Df 会让高速信号在介质中衰减明显，是 GHz 信号的"杀手"。
 
-柔性强度
+### 6.3 机械性能
 
-柔性强度 (也称为曲折强度或横断裂力) 是指PCB材料在中部装载或端支时产生的压力。柔性的强度单位为kg/m2或psi.
+#### 6.3.1 杨氏模量（Young's Modulus）
+
+胡克定律适用范围内，应力与应变之比：
+
+```
+E = σ / ε = (F / A) / [(L - L₀) / L₀]
+```
+
+E 越大材料越不易形变。多层板的"软硬匹配"会影响叠层翘曲与回流后的元件应力。
+
+#### 6.3.2 弯曲强度（Flexural Strength）
+
+弯曲强度又称横断裂力，是材料在三点 / 四点弯曲测试中断裂前的极限应力，单位 psi 或 N/mm²。
+
+实务意义：**柔性 PCB 的弯曲寿命**与弯曲半径、弯曲角、动静态受力、材料厚度、铜层结构都相关。
+
+## 7. 选材决策表
+
+| 速率 / 频率 | 推荐材料 | Df | 适配场景 |
+| --- | --- | --- | --- |
+| 普通数字 ≤ 100 MHz | FR-4（标准 Tg） | ~ 0.02 | 玩具、家电、消费类主控 |
+| 高速数字（PCIe / DDR / USB 3.x / HDMI / MIPI） | 高 Tg FR-4 / Mid-loss | 0.005–0.012 | 主板、网关、嵌入式 SoC |
+| 5G / WiFi 6 射频 | 高频 PTFE / 改性树脂 | < 0.005 | 通信基站、Wi-Fi 前端 |
+| 雷达 / 毫米波 | 超低损耗 PTFE（Df < 0.002） | < 0.002 | 汽车毫米波、卫星 |
+| 大功率 LED | 铝基板 / 陶瓷基板 | 不敏感 | 路灯、车灯、投影光源 |
+| 功率模块（IGBT / SiC / GaN） | 氮化铝 / 氮化硅陶瓷 | 不敏感 | 车载逆变器、服务器电源 |
+| 长寿命 / 车规 | 高 Tg FR-4 + PI 增强 | 0.005–0.02 | ECU、ADAS、车载 TBOX |
+
+## 8. FAQ
+
+??? question "Q1：单面板和双面板何时选哪个？"
+    单面板**只用于最简单电路**（玩具、计算器、遥控、DC 电源初级），因为不能交叉走线。稍复杂的应用（家电主控、电源板、工控板）几乎都需要双面板起跳。
+
+??? question "Q2：高速 PCB 是否一定要选 PTFE？"
+    不一定。**5 Gbps 以下**通常高 Tg FR-4 + 中损耗 / 低损耗等级就够；**5–10 Gbps** 选 Mid-loss；**10 Gbps 以上 / PCIe 4.0+ / DDR5** 才需要 PTFE（Rogers、Isola、Hitachi 等）路线。成本永远与速率强相关。
+
+??? question "Q3：Tg 越高的板越好吗？"
+    是工程取舍，**越高越耐热但越脆越贵**。标准 FR-4（Tg ~ 130 °C）够普通无铅回流；高 Tg FR-4（Tg ~ 150–170 °C）适合多层 / 多次回流 / 车规；超高 Tg（Tg > 200 °C）适合航天军工。
+
+??? question "Q4：金属基板和陶瓷基板如何选？"
+    **LED 照明、电源模块、低中功率**优先铝基板；**高功率密度电力电子（SiC / GaN）**优先氮化铝陶瓷；**散热要求极高 + 绝缘**考虑氮化硼（BeO，但有健康风险，与 SiC 一起慎选）。
+
+??? question "Q5：柔性 PCB 是否可以完全替代刚性 PCB？"
+    不行。FPC 成本高、焊接可靠性低、不能承载大电流与大尺寸元件、长期振动后铜皮易疲劳。**FPC 用于连接 / 走线 / 信号互连，刚性板用于元件承载**，刚挠结合板才是兼顾方案。
+
+??? question "Q6：高 Dk 和低 Dk 材料的应用差异？"
+    低 Dk 让信号传播更快，常用于高速；高 Dk 让铜线做得更窄即可达到相同阻抗（参考 Rogers RO4003 是低 Dk，RO4350B 略高），适合微型化或天线。
 
 ## 相关阅读
 
 - [PCB 结构与制造流程](pcb-construction-process.md)
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
-- [显示接口详解：MCU、RGB、LVDS、MIPI、SPI 等](display-interface-guide.md)
+- [显示接口详解：MCU、RGB、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 
     [**:material-archive-arrow-down: 知识库**](../../knowledge/tags.md){ .md-button .md-button--primary }
-    [**:material-magnify: 产品与解决方案**](https://www.chinasunyee.com){ .md-button }
+    [**:material-archive-arrow-down: 产品与解决方案**](https://www.chinasunyee.com){ .md-button }
     [**:material-email: 联系技术支持**](mailto:info@chinasunyee.com){ .md-button }

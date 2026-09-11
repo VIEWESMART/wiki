@@ -6,8 +6,6 @@ categories:
   - 触摸和贴合
 tags:
   - 触摸贴合
-  - 光学贴合
-  - 工程应用
 authors:
   - viewe_expert
 ---

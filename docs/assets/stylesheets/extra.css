@@ -442,6 +442,7 @@ a.product-card:hover .product-image-wrapper img {
 .md-typeset .accent-amber  { --acc: #d97706; --acc-bg: rgba(217, 119, 6, 0.15); }
 .md-typeset .accent-violet { --acc: #7c3aed; --acc-bg: rgba(124, 58, 237, 0.15); }
 .md-typeset .accent-rose   { --acc: #e11d48; --acc-bg: rgba(225, 29, 72, 0.14); }
+.md-typeset .accent-cyan   { --acc: #06b6d4; --acc-bg: rgba(6, 182, 212, 0.14); }
 
 /* 深色模式下微调虚线/描边对比 */
 [data-md-color-scheme="slate"] .md-typeset .l1-card {

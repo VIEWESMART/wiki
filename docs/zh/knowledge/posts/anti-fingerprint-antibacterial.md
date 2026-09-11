@@ -5,8 +5,7 @@ date: 2026-09-01
 categories:
   - 盖板和表面处理
 tags:
-  - 触摸贴合
-  - 表面处理
+  - 盖板相关
 authors:
   - viewe_expert
 ---
@@ -145,13 +144,13 @@ authors:
 
 塑料处理：可以使用塑料治疗来增强抗菌涂层对玻璃表面的粘合性。此过程包括将玻璃暴露于血，从而改变其表面特性并改善抗细病毒涂层的结合性
 
-VIEWE 抗菌剂：
+优奕视界 抗菌剂：
 
 当细菌或细菌接触到产品表面时，产品的银离子会与细菌或者细菌的细胞膜接触。在两者反应中，银离子会迅速有效地摧毁细菌和微生物；在此之后，银离子将从死细菌和细菌中释放出来，然后继续对其他接触活细菌及细菌进行重复的生物化学反应，直到细菌与细菌被消除。银离ons的影响是长期的杀菌剂，具有持久效果。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![VIEWE 抗菌剂](anti-fingerprint-antibacterial-viewe-antibacterial-solutions.jpeg){ width="760" loading="lazy" }](anti-fingerprint-antibacterial-viewe-antibacterial-solutions.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>VIEWE 抗菌剂</figcaption>
+  [![优奕视界 抗菌剂](anti-fingerprint-antibacterial-viewe-antibacterial-solutions.jpeg){ width="760" loading="lazy" }](anti-fingerprint-antibacterial-viewe-antibacterial-solutions.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>优奕视界 抗菌剂</figcaption>
 </figure>
 
 VIEWE推出相关抗菌系列产品，在长期使用后将保持抗菌效果。生物测试结果显示，它有效地抑制埃舍里奇亚 coli和斯塔菲洛科克 aureus，抗菌效果达到99%以上，反细菌能力随着时间的推移不会下降。

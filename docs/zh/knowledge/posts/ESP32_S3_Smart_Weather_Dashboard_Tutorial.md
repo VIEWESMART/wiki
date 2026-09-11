@@ -29,7 +29,7 @@ authors:
 
 搭建一台本地化的气象站，是 IoT 开发者绕不开的一课。但比起用一块独立 MCU 加一块颗粒感十足的分体屏幕、在面包板上乱糟糟地接线，现代嵌入式开发更讲究一体化集成。
 
-本教程将带你从零设计一套进阶的 **智能气象站仪表盘**，实时呈现温度、湿度、气压、海拔、雨量以及昼夜状态。整套系统的"大脑"是 **VIEWE 2.8 寸 ESP32-S3 智能显示屏**——一款集成度极高的 HMI（人机界面）模块，兼顾数据处理与图形显示双重负载。
+本教程将带你从零设计一套进阶的 **智能气象站仪表盘**，实时呈现温度、湿度、气压、海拔、雨量以及昼夜状态。整套系统的"大脑"是 **优奕视界 2.8 寸 ESP32-S3 智能显示屏**——一款集成度极高的 HMI（人机界面）模块，兼顾数据处理与图形显示双重负载。
 
 依托 **LVGL（Light and Versatile Graphics Library，轻量级多功能图形库）** 与 ESP-IDF 框架，我们将构建一套动态、可交互的 UI，把环境数据"画"出来。
 无论你是爱好者、学生还是电子发烧友，气象监测系统都是理解环境感知、嵌入式系统与图形用户界面的绝佳练手项目。
@@ -52,7 +52,7 @@ authors:
 
 要复现本项目，你至少需要以下元器件：
 
-* **HMI 模块：** [VIEWE 2.8 寸 ESP32-S3 MCU IPS TFT 显示屏](https://viewedisplay.com/product/esp32-2-8-inch-240x320-mcu-ips-tft-display-touch-screen-arduino-lvgl-wifi-ble-uart-smart-module/)
+* **HMI 模块：** [优奕视界 2.8 寸 ESP32-S3 MCU IPS TFT 显示屏](https://viewedisplay.com/product/esp32-2-8-inch-240x320-mcu-ips-tft-display-touch-screen-arduino-lvgl-wifi-ble-uart-smart-module/)
 * **大气传感器：** BME280 分线板
 * **降水传感器：** 标准模拟雨量传感器
 * **环境光传感器：** LDR 光敏电阻模块
@@ -95,7 +95,7 @@ ESP32-S3 智能显示屏作为中央枢纽，向所有外接传感器提供 3.3V
 **2. 模拟传感器（ADC 通道）**
 * `GPIO7`（ADC_CHANNEL_6）→ 雨量传感器模拟输出（AO）
 * `GPIO6`（ADC_CHANNEL_5）→ LDR 传感器模拟输出（AO）
-* *注意：两个模拟传感器共用 VIEWE 板上的 3.3V 与 GND。*
+* *注意：两个模拟传感器共用 优奕视界 板上的 3.3V 与 GND。*
 
 
 ## LVGL 仪表盘设计：信息密度与可读性的平衡
@@ -283,10 +283,10 @@ extern "C" void app_main(void) {
 
 如果你正在为这类想法挑选硬件，市面上的显示板琳琅满目。但当项目从面包板原型走向批量部署时，可靠性就成了决定性因素。
 
-Waveshare、Elecrow 这类品牌主要面向爱好者和临时实验场景，而 **[VIEWE](https://viewedisplay.com/)** 则把智能显示屏定位为 **工业级解决方案**。这意味着什么？
+Waveshare、Elecrow 这类品牌主要面向爱好者和临时实验场景，而 **[优奕视界](https://viewedisplay.com/)** 则把智能显示屏定位为 **工业级解决方案**。这意味着什么？
 
 * **耐受严苛工况：** 光学贴合等特性可防止凝露，保证户外或工业环境下的可读性。
-* **可商用与可量产：** 与创客板可能存在的供应链波动不同，VIEWE 自有工厂，长期供货稳定，质量管理严格。
+* **可商用与可量产：** 与创客板可能存在的供应链波动不同，优奕视界 自有工厂，长期供货稳定，质量管理严格。
 * **专业级接口：** 原生支持 RS485、CAN 总线、UART 等工业协议，摆脱标准爱好级 GPIO 的限制。
 
 👉 查看更多 [ESP32 显示屏](https://viewedisplay.com/iot_aiot-smart-display/)

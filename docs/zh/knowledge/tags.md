@@ -7,16 +7,16 @@
 <a class="l1-card accent-blue" href="#tag:显示技术">
   <span class="l1-ico">📺</span>
   <span class="l1-title">显示技术</span>
-  <span class="l1-desc">面板、背光、光学原理与选型</span>
-  <span class="l1-count">12 篇</span>
+  <span class="l1-desc">TFT、AMOLED、背光、光学原理与选型</span>
+  <span class="l1-count">11 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
 <a class="l1-card accent-green" href="#tag:触摸贴合">
   <span class="l1-ico">👆</span>
   <span class="l1-title">触摸贴合</span>
-  <span class="l1-desc">电容、电阻、贴合与表面处理</span>
-  <span class="l1-count">7 篇</span>
+  <span class="l1-desc">电容和电阻触摸屏、光学贴合等</span>
+  <span class="l1-count">4 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
@@ -32,7 +32,7 @@
   <span class="l1-ico">💻</span>
   <span class="l1-title">嵌入式</span>
   <span class="l1-desc">ESP32 / 智能屏 / 旋钮 / HDMI / 树莓派</span>
-  <span class="l1-count">4 篇</span>
+  <span class="l1-count">5 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
@@ -40,7 +40,15 @@
   <span class="l1-ico">🛠️</span>
   <span class="l1-title">工程应用</span>
   <span class="l1-desc">户外阳光、半透半反、品质管理与选型</span>
-  <span class="l1-count">18 篇</span>
+  <span class="l1-count">14 篇</span>
+  <span class="l1-go">查看 →</span>
+</a>
+
+<a class="l1-card accent-cyan" href="#tag:盖板相关">
+  <span class="l1-ico">🪟</span>
+  <span class="l1-title">盖板相关</span>
+  <span class="l1-desc">盖板技术、AR/AG/AF/抗菌等表面处理</span>
+  <span class="l1-count">4 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
