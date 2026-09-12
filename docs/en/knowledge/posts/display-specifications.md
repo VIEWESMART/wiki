@@ -257,6 +257,11 @@ Display brightness is more precisely called **luminance**. It describes luminous
 
 Higher luminance can improve visibility under strong ambient light, but brightness must be considered together with cover-glass reflectance, air or optical bonding, anti-reflective treatment, contrast, and viewing direction.
 
+<figure markdown="span" class="displaywiki-figure">
+  [![Two matched industrial displays in bright sunlight: the lower-luminance screen on the left is washed out by reflections, while the higher-luminance screen on the right remains readable](../../../assets/images/Post/display-specifications-brightness-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-brightness-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Brightness comparison: under the same high-ambient-light condition, the lower-luminance display at left is more affected by glare, while the higher-luminance display at right retains usable image visibility.</figcaption>
+</figure>
+
 ### Typical application ranges
 
 The following values are broad starting points, not acceptance limits:
@@ -330,6 +335,11 @@ Contrast ratio = Lwhite / Lblack
 For example, if white luminance is `500 cd/m²` and black luminance is `0.5 cd/m²`, the static contrast ratio is `1000:1`.
 
 <figure markdown="span" class="displaywiki-figure">
+  [![Two matched displays showing the same night scene: low contrast on the left produces gray blacks and weak shadow separation, while higher contrast on the right reveals deeper blacks and dark-scene detail](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Contrast comparison: the lower-contrast screen at left raises the black level and reduces tonal separation; the higher-contrast screen at right provides more depth and dark-scene detail.</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
   [![Diagram explaining display contrast ratio using white and black luminance](display-specifications-importance-of-contrast-ratio.png){ width="760" loading="lazy" }](display-specifications-importance-of-contrast-ratio.png){ .displaywiki-image-link title="Open full-size image" }
   <figcaption>Figure 12. Static contrast ratio compares white and black luminance under identical conditions.</figcaption>
 </figure>
@@ -344,6 +354,11 @@ Panel technologies have broad tendencies—VA LCDs often provide higher on-axis 
 ## Color gamut
 
 Color gamut is the range of colors a display can reproduce. It is commonly reported as coverage of a reference color space such as sRGB, DCI-P3, Adobe RGB, or NTSC, based on a specified chromaticity diagram.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Two matched displays showing the same flower image and color checker: the narrower-gamut screen on the left looks more muted, while the wider-gamut screen on the right reproduces a broader range of vivid colors](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Color-gamut comparison: a wider gamut can reproduce a larger range of colors. It does not, by itself, prove that colors are accurate.</figcaption>
+</figure>
 
 ### Coverage and area are not the same
 
@@ -371,6 +386,11 @@ Measure primary chromaticities with a suitable colorimeter or spectroradiometer,
 Viewing angle is the range of off-axis directions over which the display continues to meet a defined optical criterion. Datasheets often list horizontal and vertical values, such as `80/80/80/80`, representing left, right, up, and down angles from the surface normal.
 
 The limit is commonly defined using a minimum contrast ratio—such as `CR ≥ 10`—but color shift, grayscale inversion, and luminance loss may become unacceptable before that contrast threshold is reached. The criterion must therefore be read together with the angle.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Off-axis comparison of two industrial display modules: the narrower-viewing-angle screen on the left becomes dim and desaturated, while the wider-viewing-angle screen on the right maintains brightness and color](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Viewing-angle comparison: at an equivalent off-axis position, the narrower-angle display at left loses luminance and color quality sooner than the wider-angle display at right.</figcaption>
+</figure>
 
 <figure markdown="span" class="displaywiki-figure">
   [![Diagram showing horizontal and vertical display viewing-angle directions](display-specifications-factors-affecting-viewing-angle.png){ width="760" loading="lazy" }](display-specifications-factors-affecting-viewing-angle.png){ .displaywiki-image-link title="Open full-size image" }

@@ -144,6 +144,11 @@ PPI = dp / 屏幕对角线英寸数
 
 显示屏亮度指显示表面辐射出的光强度，常见单位是 cd/m²，也叫 nits。亮度越高，在明亮环境下的可读性越好，整体视觉体验也更通透。
 
+<figure markdown="span" class="displaywiki-figure">
+  [![两块相同工业显示屏在强日光下的亮度对比：左侧低亮度屏受反射影响而发灰，右侧高亮度屏仍清晰可读](../../../assets/images/Post/display-specifications-brightness-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-brightness-comparison.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>亮度对比：在相同的强环境光下，左侧较低亮度的显示屏更易受眩光影响；右侧较高亮度的显示屏仍能保持良好的画面可读性。</figcaption>
+</figure>
+
 ### 关键概念
 
 - **亮度**：单位面积显示表面发出的光强度。
@@ -228,6 +233,11 @@ PPI = dp / 屏幕对角线英寸数
 
 对比度 = 最亮白色亮度 / 最暗黑色亮度，常以 1000:1、3000:1 等形式表达。
 
+<figure markdown="span" class="displaywiki-figure">
+  [![两块相同显示屏显示夜景的对比：左侧低对比度屏黑色发灰且暗部层次较弱，右侧高对比度屏呈现更深黑色和更多暗部细节](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>对比度对比：左侧较低对比度会抬高黑位、压缩暗部层次；右侧较高对比度可带来更深的黑色与更清晰的暗场细节。</figcaption>
+</figure>
+
 ### 如何计算
 
 测出全白画面与全黑画面的亮度值（cd/m²），再求两者比值即可。例如：
@@ -259,6 +269,11 @@ PPI = dp / 屏幕对角线英寸数
 ## 6. 颜色色域（NTSC）
 
 评估 TFT（Thin Film Transistor，薄膜晶体管）显示器的色彩能力时，色域（Color Gamut）是核心指标之一。色域代表显示器能复现的色彩范围，更高的色域代表色彩更为鲜艳。NTSC（National Television System Committee，国家电视系统委员会）色域是评估显示器色彩覆盖度时常用的参考标准。
+
+<figure markdown="span" class="displaywiki-figure">
+  [![两块相同显示屏显示相同花卉和色卡：左侧较窄色域的颜色更平淡，右侧较宽色域可呈现更丰富鲜明的颜色](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>色域对比：较宽色域可以复现更大的色彩范围；但色域更宽本身并不等同于颜色更准确。</figcaption>
+</figure>
 
 ### NTSC 色域的定义
 
@@ -293,6 +308,11 @@ NTSC 色域是 1953 年 NTSC 为模拟电视广播制定的颜色标准。尽管
 ## 7. 视角
 
 视角指屏幕在画面质量仍可接受的条件下，可观看的最大角度。角度越大时，色彩与对比度可能变化，画面会出现失真或色偏。了解视角有助于在不同观看场景下选择可见性与色彩精度合适的显示器。
+
+<figure markdown="span" class="displaywiki-figure">
+  [![从相同斜视角度观看两块工业显示屏：左侧窄视角屏变暗并失去饱和度，右侧宽视角屏仍保持亮度和色彩](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>视角对比：在相同的离轴观看位置下，左侧窄视角显示屏更早出现亮度下降和色彩变化；右侧宽视角显示屏的画面保持更稳定。</figcaption>
+</figure>
 
 ### 定义
 
