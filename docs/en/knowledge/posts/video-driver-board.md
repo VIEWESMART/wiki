@@ -3,10 +3,11 @@ title: "Video Driver Board Display Solutions"
 description: "Understand how a video driver board connects HDMI or other video sources to an LCD panel and what to verify before selecting one."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Display Interface
 tags:
   - Display Interface
-  - Display Integration
+  - HDMI
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

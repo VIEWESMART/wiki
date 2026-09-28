@@ -3,11 +3,12 @@ title: "High-Brightness vs Transflective TFT for Outdoor Displays"
 description: "Compare high-brightness and transflective TFT displays for outdoor products using readability, power, color, temperature, cost, and availability."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Engineering Applications
 tags:
-  - Outdoor Display
+  - Engineering Applications
+  - Sunlight Readable
+  - TFT
   - Transflective
-  - LCD
 authors:
   - viewe_expert
 ---

@@ -3,7 +3,7 @@ title: "显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等"
 description: "一篇面向嵌入式工程师的显示接口选型指南，逐项拆解 MCU 8080/6800、并行 RGB 并行、LVDS、MIPI DSI、eDP、SPI、I2C、UART、USB、HDMI、RS232、CAN、RS485 等接口的总线特征、带宽、典型应用与选型取舍，附带接口横向对比表。"
 date: 2026-09-01
 categories:
-  - 接口和电子
+  - 接口协议
 tags:
   - 接口协议
   - MIPI DSI
@@ -41,10 +41,18 @@ cover: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "分辨率 1024 × 600 及以上的 7–10 英寸屏应优先选哪种接口？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "首选 **MIPI DSI**（4 lane）或 **LVDS**；笔记本、一体机场景可直接上 **eDP**。三者都是差分串行，配 8 英寸以上方案都能稳定传输。"
+      }
+    },
+    {
+      "@type": "Question",
       "name": "SPI 屏与 MCU 8080 屏如何选？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "两者定位不同：SPI 适合低分辨率小尺寸（< 2\"）或触摸上报，引脚极省；MCU 8080 是单色字符 / 图形 / 3.5\" 以下小 TFT 的事实标准。需不需要更新画面、刷新速率高不高、用不用 GRAM，是核心判断点。"
+        "text": "两者定位不同：**SPI** 适合低分辨率小尺寸（< 2\"）或触摸上报，引脚极省；**MCU 8080** 是单色字符 / 图形 / 3.5\" 以下小 TFT 的事实标准。需不需要更新画面、刷新速率高不高、用不用 GRAM，是核心判断点。"
       }
     },
     {
@@ -52,7 +60,7 @@ cover: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
       "name": "为什么 MIPI 在手机上这么普及？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MIPI DSI 把并行 RGB 并行 用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求\"轻薄 + 高 PPI + 长续航\"的折衷结果。"
+        "text": "MIPI DSI 把并行 RGB 接口用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求\"轻薄 + 高 PPI + 长续航\"的折衷结果。"
       }
     },
     {
@@ -60,7 +68,7 @@ cover: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
       "name": "UART 串口屏主要用在什么场景？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "用于工业 HMI 改造与快速原型：上位机通过串口下发 UI 与控件命令，屏端 MCU 解析后渲染，省去在外置 MCU 上移植 GUI 库的成本。优奕视界 串口屏即基于此。"
+        "text": "用于**工业 HMI 改造与快速原型**：上位机通过串口下发 UI 与控件命令，屏端 MCU 解析后渲染，省去在外置 MCU 上移植 GUI 库的成本。优奕视界 串口屏即基于此。"
       }
     },
     {
@@ -84,7 +92,7 @@ cover: ./display-interface-guide-1-1-mcu-interface-8080-6800.jpeg
       "name": "eDP 和 MIPI DSI 都能跑 4K，到底差在哪？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "eDP 主要服务笔记本 / 一体机 / 嵌入式主板，链路较长、带 Aux 通道、强调长距与固定连接。MIPI DSI 服务手机 / 平板 / 小尺寸强推屏，更短距、引脚更省、热设计更敏感。"
+        "text": "**eDP** 主要服务笔记本 / 一体机 / 嵌入式主板，链路较长、带 Aux 通道、强调长距与固定连接。**MIPI DSI** 服务手机 / 平板 / 小尺寸强推屏，更短距、引脚更省、热设计更敏感。"
       }
     }
   ]
@@ -194,8 +202,8 @@ SPI 是主从结构，典型拓扑是 1 个主机 + 1 个或多个从机。共 4
 - **CS**：片选，每个从机独占。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![SPI 方案示例](display-interface-guide-示例.jpeg){ width="760" loading="lazy" }](display-interface-guide-示例.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-1 SPI 方案示例</figcaption>
+  [![SPI 主从拓扑示意图](display-interface-guide-spi-topology.png){ width="760" loading="lazy" }](display-interface-guide-spi-topology.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-1 SPI 主从拓扑：SCLK、MOSI、MISO 三条线由所有从机共享，CS 为点对点独占，N 个从机需要 N 条片选。</figcaption>
 </figure>
 
 显示器场景下，SPI 适合传输配置命令与小尺寸低分辨率图像。以 QVGA 320 × 240 + 16 位色深 + 30 fps 为例：
@@ -251,13 +259,13 @@ LVDS 是 1994 年推出的电气层标准，而非完整协议。它定义了一
 MIPI 联盟面向移动设备降低显示控制器成本，定义了 DSI（显示）与 CSI（摄像头）两套串行总线协议。DSI 在物理层基于 D-PHY，单 lane 速率随版本演进（D-PHY 2.0 单 lane 可达 4.5 Gbit/s），由 1 条时钟 lane + 1 至多条数据 lane 组成。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![DSI 显示视图](display-interface-guide-显示器视频.jpeg){ width="760" loading="lazy" }](display-interface-guide-显示器视频.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-7 DSI 显示视图</figcaption>
+  [![MIPI DSI 显示视图示意](display-interface-guide-dsi-display-view.png){ width="760" loading="lazy" }](display-interface-guide-dsi-display-view.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-7 DSI 显示视图：由 1 条时钟 lane 与 1–4 条数据 lane 组成，DSI Host 向显示模组单向输出。</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![DSI 系统视图](display-interface-guide-系统视图dsi.jpeg){ width="760" loading="lazy" }](display-interface-guide-系统视图dsi.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-8 DSI 系统视图</figcaption>
+  [![MIPI 系统视图示意](display-interface-guide-dsi-system-view.png){ width="760" loading="lazy" }](display-interface-guide-dsi-system-view.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-8 DSI 系统视图：显示（DSI 输出）与摄像头（CSI 输入）两套协议共用同一 D-PHY 物理层。</figcaption>
 </figure>
 
 总线上的图像数据与 H/V blanking 区间信号交织；显示端无需大帧缓冲，但需持续刷新（30 或 60 fps），否则图像立即丢失。像素数据只走 HS 高速模式，命令则在 LP 低功耗模式 + blanking 区间内传输。
@@ -454,14 +462,14 @@ RS485 / Modbus 是工业界常见的低成本接口组合。差分对 RS485_A / 
 
 ## 6. FAQ
 
-??? question "Q1：分辨率 1024 × 600 及以上的 7"–10" 屏应优先选哪种接口？"
-    首选 **MIPI DSI**（4 lane）或 **LVDS**；笔记本、一体机场景可直接上 **eDP**。三者都是差分串行，配 8" 以上方案都能稳定传输。
+??? question "Q1：分辨率 1024 × 600 及以上的 7–10 英寸屏应优先选哪种接口？"
+    首选 **MIPI DSI**（4 lane）或 **LVDS**；笔记本、一体机场景可直接上 **eDP**。三者都是差分串行，配 8 英寸以上方案都能稳定传输。
 
 ??? question "Q2：SPI 屏与 MCU 8080 屏如何选？"
     两者定位不同：**SPI** 适合低分辨率小尺寸（< 2"）或触摸上报，引脚极省；**MCU 8080** 是单色字符 / 图形 / 3.5" 以下小 TFT 的事实标准。需不需要更新画面、刷新速率高不高、用不用 GRAM，是核心判断点。
 
 ??? question "Q3：为什么 MIPI 在手机上这么普及？"
-    MIPI DSI 把并行 RGB 并行 用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求"轻薄 + 高 PPI + 长续航"的折衷结果。
+    MIPI DSI 把并行 RGB 接口用 4–8 条差分 lane 替换后，引脚数大幅减少、EMI 大幅下降，且 D-PHY 物理层速率足够覆盖手机面板的高分辨率；这正是手机追求"轻薄 + 高 PPI + 长续航"的折衷结果。
 
 ??? question "Q4：UART 串口屏主要用在什么场景？"
     用于**工业 HMI 改造与快速原型**：上位机通过串口下发 UI 与控件命令，屏端 MCU 解析后渲染，省去在外置 MCU 上移植 GUI 库的成本。优奕视界 串口屏即基于此。

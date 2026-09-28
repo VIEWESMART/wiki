@@ -3,10 +3,13 @@ title: "I2C vs SPI vs UART: Communication and Selection Guide"
 description: "Compare I2C, SPI, and UART by wiring, topology, throughput, duplex operation, distance, and typical embedded-system applications."
 date: 2026-09-05
 categories:
-  - Interfaces and Electronics
-tags:
-  - Serial Communication
   - Display Interface
+tags:
+  - Display Interface
+  - I2C
+  - SPI
+  - UART
+  - Embedded
 authors:
   - viewe_expert
 ---

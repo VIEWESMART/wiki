@@ -3,10 +3,9 @@ title: "Display Customization, MOQ, Lead Time, and Ordering FAQ"
 description: "Answers to common questions about custom display feasibility, MOQ, tooling, lead time, smart-display use, shipping, payment, supply continuity, and ordering."
 date: 2026-09-01
 categories:
-  - Product and Sales FAQ
+  - Engineering Applications
 tags:
-  - Customization
-  - Display Integration
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

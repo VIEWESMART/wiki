@@ -3,7 +3,7 @@ title: "显示产品盖板定制指南"
 description: "面向产品经理与硬件工程师的盖板玻璃（Cover Lens）选型与定制实操指南：覆盖盖板材料（钢化玻璃 / PMMA / PC）、切割与异形、印刷方式（Logo / 隐藏图标 / LED 透光）、彩色玻璃、超大尺寸扩展、2.5D / 3D 异形、抗菌镀膜、以及与 LCD 的光学贴合。"
 date: 2026-09-01
 categories:
-  - 盖板和表面处理
+  - 盖板相关
 tags:
   - 盖板相关
 authors:
@@ -112,10 +112,11 @@ cover: ./cover-lens-customization-coverlens-solutions-for-your-different-product
   <figcaption>图 1-3 优奕视界 不同产品的盖板方案 III</figcaption>
 </figure>
 
-<figure markdown="span" class="displaywiki-figure">
-  [![盖板定制流程示意](cover-lens-customization-cover-lens-customization-for-display-products-diagram-4.png){ width="760" loading="lazy" }](cover-lens-customization-cover-lens-customization-for-display-products-diagram-4.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 1-4 盖板定制流程示意</figcaption>
-</figure>
+盖板可在显示模块边界之外做触摸或印刷扩展，整合 UI 其它组件，创造统一的整体外观。 可加入：
+
+- **扩展的触摸区域**（盖板大于显示模块）。
+- **印刷 Logo / 图标**的额外空间。
+- **射频天线、POS 支付模块**等外围器件的嵌入区。
 
 ## 2. 切割与定制形状
 
@@ -138,17 +139,17 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 
 <figure markdown="span" class="displaywiki-figure">
   [![盖板形状定制示意](cover-lens-customization-cover-lens-customization-for-display-products-diagram-8.png){ width="760" loading="lazy" }](cover-lens-customization-cover-lens-customization-for-display-products-diagram-8.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-4 盖板形状定制示意</figcaption>
+  <figcaption>图 2-4 盖板形状定制示意 I</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
   [![盖板形状定制示意](cover-lens-customization-cover-lens-customization-for-display-products-diagram-9.png){ width="760" loading="lazy" }](cover-lens-customization-cover-lens-customization-for-display-products-diagram-9.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-5 盖板形状定制示意</figcaption>
+  <figcaption>图 2-5 盖板形状定制示意 II</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![任何盖板玻璃形状都能匹配外壳](cover-lens-customization-any-cover-glass-shape-can-be-achieved-to-match-your-housing.png){ width="760" loading="lazy" }](cover-lens-customization-any-cover-glass-shape-can-be-achieved-to-match-your-housing.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 2-6 任何盖板玻璃形状都能匹配外壳</figcaption>
+  [![盖板尺寸与形状可定制](cover-lens-customization-cover-size-and-shape-can-be-customized.png){ width="760" loading="lazy" }](cover-lens-customization-cover-size-and-shape-can-be-customized.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 2-6 盖板形状定制示意 III</figcaption>
 </figure>
 
 盖板形状定制能力包括：
@@ -168,12 +169,7 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 
 <figure markdown="span" class="displaywiki-figure">
   [![全彩 Logo 印品牌](cover-lens-customization-brand-identity-with-full-color-logo-printing.png){ width="760" loading="lazy" }](cover-lens-customization-brand-identity-with-full-color-logo-printing.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 3-2 全彩 Logo 印品牌 I</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全彩 Logo 印品牌](cover-lens-customization-brand-identity-with-full-color-logo-printing-2.png){ width="760" loading="lazy" }](cover-lens-customization-brand-identity-with-full-color-logo-printing-2.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 3-3 全彩 Logo 印品牌 II</figcaption>
+  <figcaption>图 3-2 图标印刷 </figcaption>
 </figure>
 
 可选能力：
@@ -182,32 +178,55 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 - **可见或隐藏图标**：未点亮时不可见，点亮时浮现。
 - **预算友好的差异化方案**。
 
-### 3.1 隐藏图标与 LED 透光
+## 4. 隐藏显示和装饰显示
 
 把要"显示"的图形先用半透油墨印在盖板背面（看不到），通过盖板后方的 LED 灯照射时点亮即可显形。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![隐藏的 Logo 或图标用于在盖板表面创造想象力的效果](cover-lens-customization-hidden-logo-or-icons-can-be-used-to-create-imaginative-effects-on-the.png){ width="760" loading="lazy" }](cover-lens-customization-hidden-logo-or-icons-can-be-used-to-create-imaginative-effects-on-the.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 3-4 隐藏的 Logo 或图标用于打造想象力的效果</figcaption>
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-1 木纹装饰显示（亮屏状态）I</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![时尚外观](cover-lens-customization-stylish-appearance.png){ width="760" loading="lazy" }](cover-lens-customization-stylish-appearance.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 3-5 时尚外观 I</figcaption>
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black.jpeg){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-2 木纹装饰显示（亮屏状态） II</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![时尚外观](cover-lens-customization-stylish-appearance-2.png){ width="760" loading="lazy" }](cover-lens-customization-stylish-appearance-2.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 3-6 时尚外观 II</figcaption>
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black-2.jpeg){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-2.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-3 木纹装饰显示（熄屏状态） III</figcaption>
 </figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black-2.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-2.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-4 一体白（亮屏状态）  IV</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black-3.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-3.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-5 一体白（熄屏状态）</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black-5.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-5.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-7 一体黑（亮屏状态）</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![全白 / 全黑](cover-lens-customization-all-white-all-black-4.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-4.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>图 3-6 一体黑（熄屏状态）</figcaption>
+</figure>
+
 
 效果：
 
-- **时尚的外观**：点亮时图标立即出现，未点亮则与盖板融为一体。
-- **简洁的 UI**：只显示正在使用的图标。
-- **LED 多色区分**：用不同颜色的 LED 区分功能状态。
+- **熄屏时与设备整体颜色融为一体**。
+- **外观统一、优雅、现代**。
+- 适合高端音频、家电、智能家居、咖啡机等设计优先的产品。
 
-## 4. 玻璃替代品
+
+
+## 5. 玻璃替代品
 
 高透光 **PMMA（聚甲基丙烯酸甲酯，亚克力）** 和高透光 **PC（聚碳酸酯）** 是常见的玻璃替代材料，视觉上接近玻璃，但更轻、更耐冲击。
 
@@ -234,7 +253,7 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 
 适合用于：医疗器械、便携产品、可穿戴、家电触摸区。当需要更强的耐冲击能力（儿童使用场景、移动场景）时优先考虑 PMMA / PC；反之优先玻璃（耐刮、清晰度）。
 
-## 5. 抗菌保护
+## 6. 抗菌保护
 
 随着触摸屏在日常生活中越来越常见，抗菌能力成为医疗、餐饮、教育、家庭场景的硬性需求。
 
@@ -259,89 +278,7 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 - **不影响触摸**：对 PCAP 投影电容触摸屏无干扰。
 - **使用寿命**：与盖板同等寿命。
 
-## 6. 彩色玻璃
-
-当显示器不点亮时，**彩色油墨涂层**是隐藏可见区域的有效且经济的方式。
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-1 全白 / 全黑 I</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black.jpeg){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-2 全白 / 全黑 II</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black-2.jpeg){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-2.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-3 全白 / 全黑 III</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black-2.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-2.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-4 全白 / 全黑 IV</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black-3.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-3.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-5 全白 / 全黑 V</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black-4.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-4.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-6 全白 / 全黑 VI</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![全白 / 全黑](cover-lens-customization-all-white-all-black-5.png){ width="760" loading="lazy" }](cover-lens-customization-all-white-all-black-5.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 6-7 全白 / 全黑 VII</figcaption>
-</figure>
-
-效果：
-
-- **熄屏看起来完全黑色**（与设备整体颜色融为一体）。
-- **外观统一、优雅、现代**。
-- 适合高端音频、家电、智能家居、咖啡机等设计优先的产品。
-
-## 7. 超大尺寸盖板
-
-盖板尺寸与形状均可按需定制。
-
-<figure markdown="span" class="displaywiki-figure">
-  [![盖板尺寸与形状可定制](cover-lens-customization-cover-size-and-shape-can-be-customized.jpeg){ width="760" loading="lazy" }](cover-lens-customization-cover-size-and-shape-can-be-customized.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 7-1 盖板尺寸与形状可定制 I</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![盖板尺寸与形状可定制](cover-lens-customization-cover-size-and-shape-can-be-customized.png){ width="760" loading="lazy" }](cover-lens-customization-cover-size-and-shape-can-be-customized.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 7-2 盖板尺寸与形状可定制 II</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![盖板尺寸与形状可定制](cover-lens-customization-cover-size-and-shape-can-be-customized-2.png){ width="760" loading="lazy" }](cover-lens-customization-cover-size-and-shape-can-be-customized-2.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 7-3 盖板尺寸与形状可定制 III</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![盖板尺寸与形状可定制](cover-lens-customization-cover-size-and-shape-can-be-customized-3.png){ width="760" loading="lazy" }](cover-lens-customization-cover-size-and-shape-can-be-customized-3.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 7-4 盖板尺寸与形状可定制 IV</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![超大盖板可扩展的延伸区示意](cover-lens-customization-cover-lens-customization-for-display-products-diagram-34.png){ width="760" loading="lazy" }](cover-lens-customization-cover-lens-customization-for-display-products-diagram-34.png){ .displaywiki-image-link title="查看原图" }
-  <figcaption>图 7-5 超大盖板可扩展延伸区</figcaption>
-</figure>
-
-超大尺寸盖板可在显示模块边界之外做触摸或印刷扩展，整合 UI 其它组件，创造统一的整体外观。
-
-可加入：
-
-- **扩展的触摸区域**（盖板大于显示模块）。
-- **印刷 Logo / 图标**的额外空间。
-- **射频天线、POS 支付模块**等外围器件的嵌入区。
-
-## 8. 2.5D / 3D 异形盖板
+## 7. 2.5D / 3D 异形盖板
 
 异形盖板能从单一平面延伸到曲面甚至三维立体形状，与产品造型深度融合。
 
@@ -363,15 +300,18 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 - 可配合触摸功能。
 - 可选用玻璃或塑料基材。
 
-## 9. 光学贴合
+## 8. 光学贴合
 
 随着户外或高亮场景设备增多，**显示清晰度与视角**成为设计关键。光学贴合是在显示器与盖板之间填满光学树脂，用以消除空气层、改善强光下的可读性。
 
-<figure markdown="span" class="displaywiki-figure">![光学贴合示意（流程由流程图补充）]</figure>
+<figure markdown="span" class="displaywiki-figure">
+  [![框贴与光学贴合的剖面结构对比](cover-lens-optical-bonding-diagram.png){ width="760" loading="lazy" }](cover-lens-optical-bonding-diagram.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>框贴与光学贴合的剖面结构对比：两者差异只在中层——框贴在盖板与液晶模组之间保留空气层，界面反射与散射带来额外光损失；光学贴合用 OCA 光学胶填满间隙，反射减少，透过率与对比度同步提升。</figcaption>
+</figure>
 
 光学贴合可直接在第 9 节衔接，相关工艺与对比详见 [空气贴合与光学贴合对比](air-vs-optical-bonding.md)。
 
-## 10. FAQ
+## 9. FAQ
 
 ??? question "Q1：盖板应该选玻璃、PMMA 还是 PC？"
     玻璃：耐刮、透光率最高、热稳定性好、易做 AG / AR / AF 镀膜；**消费类、工业、医疗、汽车首选**。PMMA：透光率稍低但接近玻璃、重量轻、**不易碎但相对易划伤**，适合家电、桌面设备、智能家居。PC：耐冲击最强、透光率略低、**抗冲击场景**如儿童使用、可穿戴优先。
@@ -397,6 +337,10 @@ CNC、水刀、激光精密切割让盖板形状能够精细匹配外壳轮廓�
 - [显示屏减反射与防眩光处理对比](anti-reflective-vs-anti-glare.md)
 - [盖板防指纹与抗菌表面处理](anti-fingerprint-antibacterial.md)
 - [空气贴合与光学贴合对比](air-vs-optical-bonding.md)
+
+## 参考数据来源
+
+- [优奕视界盖板定制方案）](https://viewedisplay.com/cover-lens-solutions/)
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

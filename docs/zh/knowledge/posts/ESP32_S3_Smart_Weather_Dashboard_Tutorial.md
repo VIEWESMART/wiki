@@ -3,7 +3,7 @@ title: "ESP32-S3 智能气象站仪表盘教程"
 description: "基于 ESP32-S3 智能显示屏搭建离线气象站仪表盘：集成 BME280、雨量与光照传感器，LVGL 仪表盘界面，完整接线指引与可复用采集代码。"
 date: 2025-12-10
 categories:
-  - 接口和电子
+  - 嵌入式
 tags:
   - 嵌入式
   - ESP32
@@ -242,7 +242,7 @@ static void create_card(lv_obj_t *parent, int x, int y, int w, int h, const lv_i
     lv_obj_set_style_radius(card, 12, 0);
     lv_obj_set_style_border_color(card, border_color, 0);
     // [Styling omitted for brevity...]
-    
+
     lv_obj_t *value_label = lv_label_create(card);
     lv_label_set_text(value_label, value);
     lv_obj_align(value_label, LV_ALIGN_CENTER, 0, 30);
@@ -278,7 +278,7 @@ extern "C" void app_main(void) {
             sprintf(buf, "%u %%", hum); lv_label_set_text(humidity_value_label, buf);
             lvgl_port_unlock();
         }
-        
+
         // Polling logic for ADC sensors with 10ms delays...
         vTaskDelay(pdMS_TO_TICKS(10));
     }
@@ -388,6 +388,14 @@ Waveshare、Elecrow 这类品牌主要面向爱好者和临时实验场景，而
 - [ESP32-P4 在多媒体与 HMI 显示应用中的使用](esp32-p4-display.md)
 - [图解 I2C、SPI、UART 的通信过程与选型对比](i2c-spi-uart-protocols.md)
 - [IoT 与 AIoT 智能显示解决方案](iot-aiot-display.md)
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [ESP32-S3 系列数据手册（Espressif）](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
+- [ESP-IDF ESP32-S3 编程指南](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/index.html)
+- [LVGL 图形库文档](https://docs.lvgl.io/master/index.html)
+
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，请联系我们的团队：
 

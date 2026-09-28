@@ -3,10 +3,10 @@ title: "IPS, TN, VA, and FFS TFT Panel Technologies Compared"
 description: "Compare IPS, TN, VA, MVA, FFS, and AFFS TFT LCD modes by viewing angle, contrast, color shift, response, transmission, and cost."
 date: 2026-09-01
 categories:
-  - Display Technologies
-tags:
-  - TFT
   - Display Technology
+tags:
+  - Display Technology
+  - TFT
 authors:
   - viewe_expert
 ---

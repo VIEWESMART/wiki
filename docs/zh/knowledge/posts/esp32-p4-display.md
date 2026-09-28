@@ -3,7 +3,7 @@ title: "ESP32-P4 在多媒体与 HMI 显示应用中的使用"
 description: "面向嵌入式工程师的 ESP32-P4 选型与多媒体能力指南：双核 RISC-V + 24 位 LCD + MIPI DSI/CSI + ISP + H.264 + 多路 I2S 详解，覆盖智能家居、工业自动化、医疗保健、消费电子等典型应用场景的选型建议与设计取舍。"
 date: 2026-09-01
 categories:
-  - 接口和电子
+  - 嵌入式
 tags:
   - 嵌入式
   - ESP32
@@ -17,11 +17,11 @@ keywords:
   - 嵌入式
   - 显示应用中的使用
 og:type: article
-og:image: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
+og:image: ./esp32-p4-display-cover.png
 twitter:card: summary_large_image
 canonical: https://www.displaywiki.com/zh/knowledge/posts/esp32-p4-display
 lastmod: 2026-09-02
-cover: ./20200606 Circuit-Diagram-for-ESP32-based-Weather-Monitoring-System.jpg
+cover: ./esp32-p4-display-cover.png
 ---
 
 

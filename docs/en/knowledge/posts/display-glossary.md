@@ -3,7 +3,7 @@ title: "Display Technology Glossary"
 description: "A practical glossary of LCD, TFT, OLED, touch, optical, interface, mechanical, and embedded-display terminology for engineers and buyers."
 date: 2026-09-01
 categories:
-  - Glossary
+  - Display Technology
 tags:
   - Display Technology
 authors:
@@ -20,6 +20,11 @@ authors:
 - Distinguish technology families, such as LCD and OLED, from subtypes and driving methods such as TFT, IPS, and passive matrix.
 - Read optical values together with their units, test conditions, and typical or guaranteed status.
 - Use consistent interface, touch, bonding, and mechanical terminology across drawings and supplier communication.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Display terminology map: five categories at a glance](display-glossary-terminology-map-en.png){ width="760" loading="lazy" }](display-glossary-terminology-map-en.png){ .displaywiki-image-link title="View original" }
+  <figcaption>Display terminology map: common terms grouped into display basics, panel structure, interfaces, touch, and core devices, so each term can be located quickly by scenario.</figcaption>
+</figure>
 
 
 COG

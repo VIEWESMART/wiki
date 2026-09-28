@@ -3,10 +3,9 @@ title: "Anti-Reflective vs Anti-Glare Display Treatments"
 description: "Compare anti-reflective and anti-glare cover-lens treatments by reflection, haze, image clarity, durability, cost, and display application."
 date: 2026-09-01
 categories:
-  - Cover Lens and Surface Treatments
+  - Cover Lens
 tags:
   - Cover Lens
-  - Surface Treatment
 authors:
   - viewe_expert
 ---

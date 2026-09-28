@@ -3,10 +3,10 @@ title: "PCB Types and Material Selection"
 description: "Compare rigid, flex, rigid-flex, metal-core, RF, and high-temperature PCB constructions and choose materials from electrical and mechanical needs."
 date: 2026-09-01
 categories:
-  - Interfaces and Electronics
+  - Engineering Applications
 tags:
+  - Engineering Applications
   - PCB
-  - Manufacturing
 authors:
   - viewe_expert
 ---

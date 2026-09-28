@@ -3,10 +3,10 @@ title: "Custom and Sunlight-Readable Display Solutions"
 description: "Design a sunlight-readable display using brightness, reflection control, optical bonding, transflective technology, thermal management, and power budgeting."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Engineering Applications
 tags:
-  - Outdoor Display
-  - Display Integration
+  - Engineering Applications
+  - Sunlight Readable
 authors:
   - viewe_expert
 ---

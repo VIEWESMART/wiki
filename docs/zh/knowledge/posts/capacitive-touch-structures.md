@@ -3,7 +3,7 @@ title: "GF、GFF、GG 与 PG 电容触摸结构"
 description: "系统对比 GF、GFF、GG、PG 四种电容触摸结构：覆盖自电容/互电容原理、各结构盖板与传感器层叠方式、透光率与抗干扰等关键差异，附 10 英寸以下选 GFF、10 英寸以上选 GG 的工程选型建议。"
 date: 2026-09-01
 categories:
-  - 触摸和贴合
+  - 触摸贴合
 tags:
   - 触摸贴合
 authors:
@@ -90,7 +90,8 @@ cover: ./capacitive-touch-structures-self-capacitance.png
 投射式电容式触摸屏（PCAP）采用多层 ITO 层形成矩阵分布，X 轴与 Y 轴交叉构成电容矩阵。当手指触碰屏幕时，通过扫描 X 轴和 Y 轴即可检测到触摸位置上的电容变化。基于这一架构，投射式电容屏可以实现多点触控。
 
 <figure markdown="span" class="displaywiki-figure">
-  [![自电容](capacitive-touch-structures-self-capacitance.png){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.png){ .displaywiki-image-link title="查看原图" }
+  [![投射式电容屏的 X/Y 电极矩阵](capacitive-touch-structures-self-capacitance.png){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>投射式电容屏的电极矩阵：X 轴与 Y 轴电极（图中菱形为 ITO 电极图案）交叉排布形成电容矩阵，逐行逐列扫描即可检测触点位置上的电容变化，这也是其能够支持多点触控的架构基础。</figcaption>
 </figure>
 
 ## 原理分类
@@ -100,7 +101,8 @@ cover: ./capacitive-touch-structures-self-capacitance.png
 **自电容：**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![自电容](capacitive-touch-structures-self-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.jpeg){ .displaywiki-image-link title="查看原图" }
+  [![自电容扫描原理](capacitive-touch-structures-self-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>自电容扫描原理：分别沿 X 轴与 Y 轴逐条测量信号线自身的电容变化，再由行列交叉位置推算触摸坐标。由于两个方向独立测量，多点触摸时会出现无法区分的交叉点，这正是自电容"非真实多点"的根源。</figcaption>
 </figure>
 
 1. 测量信号线本身的电容。
@@ -111,7 +113,7 @@ cover: ./capacitive-touch-structures-self-capacitance.png
 
 <figure markdown="span" class="displaywiki-figure">
   [![互电容](capacitive-touch-structures-mutual-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-mutual-capacitance.jpeg){ .displaywiki-image-link title="查看原图" }
-  <figcaption>互电容</figcaption>
+  <figcaption>互电容扫描原理：逐个测量 X 与 Y 电极交叉点之间的耦合电容，每个交叉点都是独立的测量单元，因此多个触点可以被分别识别，这正是互电容能够支持真实多点触控的原因。</figcaption>
 </figure>
 
 1. 垂直交叉的两个信号线之间的电容。
@@ -145,7 +147,8 @@ cover: ./capacitive-touch-structures-self-capacitance.png
 **G+F结构触摸屏的应用**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+F结构触摸屏的应用](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ .displaywiki-image-link title="查看原图" }
+  [![智能手表等小尺寸单点触控设备](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>G+F 结构应用示例：智能手表等小尺寸、以单点触控为主的设备，结构薄、透光好、成本低，与 G+F"盖板玻璃 + 单层膜传感器"的定位相匹配。</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
@@ -176,7 +179,8 @@ cover: ./capacitive-touch-structures-self-capacitance.png
 **G+F+F结构触摸屏的应用**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+F+F 结构电容式触摸屏](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ .displaywiki-image-link title="查看原图" }
+  [![智能 POS 终端等需要多点触控与手势操作的设备](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ .displaywiki-image-link title="查看原图" }
+  <figcaption>G+F+F 结构应用示例：智能 POS 终端等需要多点触控、手写与手势操作的设备，是当前应用最广泛的触控屏结构。</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
@@ -207,7 +211,8 @@ G+G 是玻璃盖板 + 单层玻璃基板触摸传感器的结构。玻璃作为�
 **G+G结构触摸屏的应用**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+G结构触摸屏的应用](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ .displaywiki-image-link title="查看原图" }
+  [![机场自助值机等公共终端上的触控操作](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ .displaywiki-image-link title="查看原图" }
+  <figcaption>G+G 结构应用示例：机场自助值机等公共终端长期高频使用，对耐久性、透光率与外观一致性要求较高，适合采用盖板玻璃 + 玻璃传感器的 G+G 结构。</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
@@ -275,6 +280,13 @@ P+G 结构的主要问题是塑料盖板的耐磨性和强度较差；由于成�
 - [电容式与电阻式触摸屏对比](touch-panel-types.md)
 - [显示屏框贴与全贴合对比](air-vs-optical-bonding.md)
 - [手套触控、防水触控与抗干扰设计](glove-waterproof-touch.md)
+
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [CO5300 触控驱动 IC 规格书](../../../assets/datasheet/display/CO5300.pdf)
+- [IPC-A-610 电子组件的可接受性](https://shop.ipc.org/ipc-a-610)
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

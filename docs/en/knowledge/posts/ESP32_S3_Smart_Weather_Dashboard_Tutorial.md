@@ -3,11 +3,10 @@ title: "ESP32-S3 Smart Weather Dashboard Tutorial"
 description: "Build an offline ESP32-S3 weather dashboard with BME280, rain, and light sensors, LVGL widgets, wiring guidance, and reusable acquisition code."
 date: 2025-12-10
 categories:
-  - Display
+  - Embedded
 tags:
+  - Embedded
   - ESP32
-  - UART Display
-  - HMI
   # - Engineering Selection
   # - FAQ
 authors:

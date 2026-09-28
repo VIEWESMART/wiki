@@ -3,10 +3,10 @@ title: "LCD Basics: How Liquid Crystal Displays Work"
 description: "Understand how LCDs use liquid crystals, polarizers, electrodes, color filters, and backlights to form images, plus their main types and limits."
 date: 2026-09-01
 categories:
-  - Display Fundamentals
-tags:
-  - LCD
   - Display Technology
+tags:
+  - Display Technology
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

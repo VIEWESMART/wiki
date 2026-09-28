@@ -3,7 +3,7 @@ title: "PCB 类型与材料选择"
 description: "面向硬件工程师的 PCB 类型与材料选型手册：按"层数 / 基板刚性 / 速率与频率 / 应用领域"四个维度对 PCB 分类，并详细拆解热性能（Tg / Td / CTE / 导热系数）、电气性能（Dk / Df / 损耗角正切）、机械性能（杨氏模量 / 弯曲强度）三大选材决策维度，配合典型工程参数与适用场景。"
 date: 2026-09-01
 categories:
-  - 接口和电子
+  - 工程应用
 tags:
   - 工程应用
   - PCB
@@ -372,6 +372,13 @@ E 越大材料越不易形变。多层板的"软硬匹配"会影响叠层翘曲�
 - [PCB 结构与制造流程](pcb-construction-process.md)
 - [PCB 设计、制造与互连方式选择](pcb-design-interconnections.md)
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [IPC-4101 刚性印制板基材规范](https://shop.ipc.org/ipc-4101)
+- [IPC-A-610 电子组件的可接受性](https://shop.ipc.org/ipc-a-610)
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

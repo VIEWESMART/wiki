@@ -3,9 +3,8 @@ title: "IPS vs TN TFT Displays: Differences and Selection Guide"
 description: "Compare IPS and TN TFT LCDs by viewing angle, color stability, response, contrast, cost, temperature behavior, and industrial use."
 date: 2025-11-10
 categories:
-  - Display
+  - Display Technology
 tags:
-  - TFT
   - Display Technology
 authors:
   - viewe_expert

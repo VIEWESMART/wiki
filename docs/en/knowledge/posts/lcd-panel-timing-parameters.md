@@ -3,11 +3,12 @@ title: "LCD Panel Timing Parameters and MIPI DSI Bandwidth"
 description: "Learn LCD active-area, porch, sync, pixel-clock, bits-per-pixel, MIPI DSI lane-rate, and initialization parameters with practical fault diagnosis."
 date: 2026-09-05
 categories:
-  - Interfaces and Electronics
+  - Display Interface
 tags:
+  - Display Interface
   - MIPI DSI
   - LCD
-  - Display Interface
+  - Display Technology
 authors:
   - viewe_expert
 ---

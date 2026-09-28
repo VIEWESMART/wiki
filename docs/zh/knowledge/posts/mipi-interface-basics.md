@@ -3,7 +3,7 @@ title: "MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解"
 description: "DSI、CSI-2、D-PHY 三大 MIPI 接口体系全图解：覆盖 HS/LP 双模式、CSI-2 长短包结构、DSI 命令/视频模式、D-PHY vs C-PHY 对比，附差分阻抗、长度匹配、ESD 等板级设计要点。"
 date: 2026-09-05
 categories:
-  - 接口和电子
+  - 接口协议
 tags:
   - 接口协议
   - MIPI DSI
@@ -193,6 +193,14 @@ MIPI 是高速差分接口，板级设计和走线相当讲究，几个关键点
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 - [LCD 屏参详解：把点屏参数讲成能看见的样子](lcd-panel-timing-parameters.md)
 - [图解 I2C、SPI、UART 的通信过程与选型对比](i2c-spi-uart-protocols.md)
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [MIPI DSI 规范（MIPI Alliance）](https://www.mipi.org/specifications/dsi)
+- [MIPI D-PHY 规范（MIPI Alliance）](https://www.mipi.org/specifications/d-phy)
+- [TFT LCD 模组规格书示例（7 英寸 WVGA）](../../../assets/datasheet/display/ALL-UE070WV-RB40-A092A.pdf)
+
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

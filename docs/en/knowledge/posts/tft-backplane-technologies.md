@@ -3,10 +3,11 @@ title: "a-Si, LTPS, and IGZO TFT Backplanes Compared"
 description: "Compare a-Si, LTPS, and IGZO TFT backplanes by mobility, pixel density, power, uniformity, leakage, cost, and display application."
 date: 2026-09-01
 categories:
-  - Display Technologies
-tags:
-  - TFT
   - Display Technology
+tags:
+  - Display Technology
+  - TFT
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

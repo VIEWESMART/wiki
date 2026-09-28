@@ -3,10 +3,10 @@ title: "Image Format Basics: What Are Color Models and Color Spaces"
 description: "An engineering guide that explains what color models (RGB, HSV, CMYK, YCbCr, Lab, XYZ) and color spaces (sRGB, Adobe RGB, DCI-P3, Rec.2020) actually do, how they relate to each other, and where color-space and color-model conversions show up inside an ISP or camera-to-display pipeline."
 date: 2026-09-12
 categories:
-  - Display Fundamentals
+  - Display Technology
 tags:
   - Display Technology
-  - Engineering Selection
+  - Engineering Applications
 authors:
   - viewe_expert
 keywords:
@@ -333,7 +333,7 @@ The ISP (Image Signal Processor) performs these conversions during processing so
 
 For an embedded display project, this has a direct consequence: if the camera outputs YCbCr 4:2:0 and the display is driven in RGB, a model and space conversion will happen at some point. Whether the conversion matrix and white points line up decides whether the final image looks faithful or shifts off color.
 
-## Summary: one table to tell them apart
+## 9. Summary: one table to tell them apart
 
 | Comparison | Color Model | Color Space |
 |---|---|---|
@@ -345,6 +345,26 @@ For an embedded display project, this has a direct consequence: if the camera ou
 | Common examples | RGB, HSV, CMYK, Lab, YCbCr | sRGB, Adobe RGB, Display P3, Rec.2020 |
 
 One sentence to wrap up: **the color model decides how to record a color; the color space decides how to interpret that record.** Together they keep the same image looking as close to identical as possible across different devices.
+
+## Frequently Asked Questions
+
+??? question "What is the difference between a color model and a color space?"
+    A color model only specifies which numbers are used to describe a color; it solves the encoding problem and does not guarantee consistency. A color space adds the white point, gamma curve, and gamut boundaries on top of that model, and answers what those numbers actually look like. The same RGB triplet interpreted in sRGB, Adobe RGB, or DCI-P3 produces different real colors.
+
+??? question "Are RGB and sRGB the same thing?"
+    No. RGB is a color model: it only says that a color is described by red, green, and blue channels. sRGB is a color space built on the RGB model that defines a specific white point, gamma curve, and gamut. The same RGB values mean different actual colors under sRGB and Adobe RGB, which is exactly why an image without an embedded color space tends to shift.
+
+??? question "Why does the same image look different on different monitors?"
+    Three layers are usually involved: the monitor may interpret the same RGB values under a different color space; the panel white point and gamma curve vary from unit to unit; and gamut coverage differs, so a wide-gamut panel showing sRGB content without mapping will oversaturate. Consistency requires both ends of the chain to agree on a color space and to apply gamut mapping where needed.
+
+??? question "Which color space should an embedded display project use?"
+    For most HMI, industrial, and instrument applications, sRGB is sufficient: the chain stays simple and compatibility is best. Consumer-facing photo playback or video may benefit from DCI-P3 coverage for a more vivid look, but only if the entire chain from camera and ISP to display supports it and is tagged correctly. The key rule is agreement across the chain, not maximum gamut at a single point.
+
+??? question "What happens when a camera outputs YCbCr and the display is driven in RGB?"
+    The signal must pass through a color-model conversion (YCbCr to RGB) and possibly a color-space match. This is normally done by the ISP or the display controller and involves conversion matrices and white-point handling. If the matrix coefficients or the white point do not match, the whole picture shifts in color, which is one of the most common causes of color cast in embedded imaging pipelines.
+
+??? question "Is a wider gamut always better?"
+    No. A wider gamut means more saturated colors can be represented, but if the content was authored in sRGB and is shown on a wide-gamut panel without mapping, it will oversaturate and skin tones will look red. Wide gamut also usually demands more from the backlight and driver, raising both cost and power. Deciding on a gamut target should start from the content source and the capability of the whole chain.
 
 ## Related Reading
 

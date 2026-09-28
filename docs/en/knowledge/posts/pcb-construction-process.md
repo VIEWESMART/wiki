@@ -3,10 +3,10 @@ title: "PCB Construction and Manufacturing Process"
 description: "Follow the multilayer PCB manufacturing flow from material and imaging through lamination, drilling, plating, solder mask, finish, routing, and inspection."
 date: 2026-09-01
 categories:
-  - Interfaces and Electronics
+  - Engineering Applications
 tags:
+  - Engineering Applications
   - PCB
-  - Manufacturing
 authors:
   - viewe_expert
 ---

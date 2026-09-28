@@ -3,10 +3,9 @@ title: "Cover Lens Customization for Display Products"
 description: "Plan a custom display cover lens, including material, shape, printing, icons, openings, coatings, bonding, tolerances, and validation."
 date: 2026-09-01
 categories:
-  - Cover Lens and Surface Treatments
+  - Cover Lens
 tags:
   - Cover Lens
-  - Customization
 authors:
   - viewe_expert
 ---

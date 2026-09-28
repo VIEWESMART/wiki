@@ -3,9 +3,10 @@ title: "High-Reliability Display Solutions"
 description: "Translate reliability requirements into display component selection, derating, protection, validation tests, traceability, and supply planning."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Engineering Applications
 tags:
-  - Display Integration
+  - Engineering Applications
+  - Display Technology
 authors:
   - viewe_expert
 ---

@@ -3,9 +3,10 @@ title: "Display Manufacturing Quality: 5S, ISO 9001, IATF 16949, ISO 14000, and 
 description: "Overview of 5S, ISO 9001, IATF 16949, ISO 14001, and Six Sigma concepts relevant to display manufacturing and supplier quality."
 date: 2026-09-01
 categories:
-  - Manufacturing and Quality
+  - Engineering Applications
 tags:
-  - Manufacturing
+  - Engineering Applications
+  - Quality Management
 authors:
   - viewe_expert
 ---

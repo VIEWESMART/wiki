@@ -3,11 +3,10 @@ title: "MIPI Interfaces Explained: DSI, CSI-2, D-PHY, and C-PHY"
 description: "Understand MIPI DSI and CSI-2, D-PHY HS and LP signaling, packet formats, command and video modes, C-PHY, and PCB design requirements."
 date: 2026-09-05
 categories:
-  - Interfaces and Electronics
-tags:
-  - MIPI DSI
   - Display Interface
-  - Serial Communication
+tags:
+  - Display Interface
+  - MIPI DSI
 authors:
   - viewe_expert
 ---

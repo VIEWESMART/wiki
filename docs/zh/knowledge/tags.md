@@ -8,7 +8,7 @@
   <span class="l1-ico">📺</span>
   <span class="l1-title">显示技术</span>
   <span class="l1-desc">TFT、AMOLED、背光、光学原理与选型</span>
-  <span class="l1-count">11 篇</span>
+  <span class="l1-count">13 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
@@ -40,7 +40,7 @@
   <span class="l1-ico">🛠️</span>
   <span class="l1-title">工程应用</span>
   <span class="l1-desc">户外阳光、半透半反、品质管理与选型</span>
-  <span class="l1-count">14 篇</span>
+  <span class="l1-count">16 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 

@@ -3,11 +3,11 @@ title: "TFT LCD Module Components and Construction"
 description: "Understand the LCD cell, backlight, drivers, FPC, PCB, touch panel, cover lens, frame, adhesives, and interfaces in a TFT LCD module."
 date: 2026-09-01
 categories:
-  - Display Fundamentals
+  - Display Technology
 tags:
+  - Display Technology
   - TFT
   - LCD
-  - Display Integration
 authors:
   - viewe_expert
 ---

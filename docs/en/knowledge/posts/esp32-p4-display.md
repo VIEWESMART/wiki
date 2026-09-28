@@ -3,11 +3,10 @@ title: "ESP32-P4 for Multimedia and HMI Display Applications"
 description: "Assess ESP32-P4 capabilities for multimedia and HMI products, including display, camera, audio, memory, interfaces, security, and power design."
 date: 2026-09-01
 categories:
-  - Interfaces and Electronics
+  - Embedded
 tags:
+  - Embedded
   - ESP32
-  - HMI
-  - IoT
 authors:
   - viewe_expert
 ---

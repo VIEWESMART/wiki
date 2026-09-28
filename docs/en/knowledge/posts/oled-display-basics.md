@@ -3,9 +3,11 @@ title: "OLED Display Structure, Operation, and LCD Comparison"
 description: "Understand OLED layer structure, self-emissive operation, LCD differences, image-quality benefits, lifetime limits, and selection considerations."
 date: 2026-09-01
 categories:
-  - Display Technologies
+  - Display Technology
 tags:
   - Display Technology
+  - OLED
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

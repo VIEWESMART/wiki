@@ -3,7 +3,7 @@ title: "PCB 结构与制造流程"
 description: "一篇面向硬件工程师的 PCB 制造入门指南：拆解 PCB 各功能层（基板 / 铜箔 / 半固化片 / 阻焊层 / 丝印 / 焊盘 / 过孔 / 金手指），并按 19 步标准流程梳理单 / 双 / 多层 PCB 的制造过程，覆盖 Lamination、沉铜、ENIG、QC 等关键工艺。"
 date: 2026-09-01
 categories:
-  - 接口和电子
+  - 工程应用
 tags:
   - 工程应用
   - PCB

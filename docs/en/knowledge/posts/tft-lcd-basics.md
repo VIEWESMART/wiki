@@ -3,8 +3,9 @@ title: "TFT LCD Basics: Structure, Operation, and Benefits"
 description: "Learn how TFT LCD pixels, transistors, storage capacitors, liquid crystals, color filters, polarizers, and backlights form an image."
 date: 2026-09-01
 categories:
-  - Display Fundamentals
+  - Display Technology
 tags:
+  - Display Technology
   - TFT
   - LCD
 authors:

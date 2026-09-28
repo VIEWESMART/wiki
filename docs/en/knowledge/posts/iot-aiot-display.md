@@ -3,10 +3,10 @@ title: "IoT and AIoT Smart Display Solutions"
 description: "Plan an IoT or AIoT smart display by partitioning user interface, connectivity, sensing, edge processing, security, updates, and cloud services."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Embedded
 tags:
-  - IoT
-  - HMI
+  - Embedded
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

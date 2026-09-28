@@ -3,10 +3,10 @@ title: "How to Read Display Specifications: An Engineering Guide"
 description: "Learn how to evaluate LCD display size, resolution, PPI, brightness, uniformity, contrast ratio, color gamut, and viewing angle for engineering selection."
 date: 2026-09-01
 categories:
-  - Display Fundamentals
+  - Engineering Applications
 tags:
+  - Engineering Applications
   - Display Technology
-  - Engineering Selection
 authors:
   - viewe_expert
 ---

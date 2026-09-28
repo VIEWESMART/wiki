@@ -3,10 +3,9 @@ title: "Display Cover Lens Materials, Thickness, and Treatments"
 description: "Select display cover-lens material, thickness, strengthening, printing, and surface treatment for optical, mechanical, and environmental requirements."
 date: 2026-09-01
 categories:
-  - Cover Lens and Surface Treatments
+  - Cover Lens
 tags:
   - Cover Lens
-  - Surface Treatment
 authors:
   - viewe_expert
 ---

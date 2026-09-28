@@ -3,11 +3,12 @@ title: "Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More"
 description: "Compare MCU, SPI, RGB, LVDS, MIPI DSI, eDP, HDMI, USB, UART, RS-232, RS-485, and CAN interfaces for display-system design."
 date: 2026-09-01
 categories:
-  - Interfaces and Electronics
+  - Display Interface
 tags:
   - Display Interface
   - MIPI DSI
-  - Serial Communication
+  - LVDS
+  - Engineering Applications
 authors:
   - viewe_expert
 ---

@@ -5,7 +5,7 @@ date: 2026-09-01
 categories:
   - Touch and Bonding
 tags:
-  - Display Integration
+  - Touch and Bonding
 authors:
   - viewe_expert
 ---

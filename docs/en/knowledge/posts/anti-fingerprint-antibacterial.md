@@ -3,10 +3,9 @@ title: "Anti-Fingerprint and Antibacterial Cover-Lens Treatments"
 description: "Compare anti-fingerprint and antibacterial cover-lens treatments, including their functions, processes, durability limits, and validation requirements."
 date: 2026-09-01
 categories:
-  - Cover Lens and Surface Treatments
+  - Cover Lens
 tags:
   - Cover Lens
-  - Surface Treatment
 authors:
   - viewe_expert
 ---

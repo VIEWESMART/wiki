@@ -3,11 +3,10 @@ title: "UART Smart Display Solutions"
 description: "Evaluate UART smart displays for embedded HMI systems, including architecture, protocol design, bandwidth, reliability, security, and customization."
 date: 2026-09-01
 categories:
-  - Display Solutions
+  - Embedded
 tags:
+  - Embedded
   - UART Display
-  - HMI
-  - Serial Communication
 authors:
   - viewe_expert
 ---

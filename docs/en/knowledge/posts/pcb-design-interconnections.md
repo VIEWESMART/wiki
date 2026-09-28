@@ -3,10 +3,11 @@ title: "PCB Design, Fabrication, and Interconnection Selection"
 description: "Design and select PCB interconnections using stack-up, routing, vias, finishes, connectors, flex circuits, cables, and assembly constraints."
 date: 2026-09-01
 categories:
-  - Interfaces and Electronics
+  - Engineering Applications
 tags:
+  - Engineering Applications
   - PCB
-  - Display Integration
+  - Display Interface
 authors:
   - viewe_expert
 ---

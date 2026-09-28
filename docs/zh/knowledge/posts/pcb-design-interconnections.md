@@ -3,7 +3,7 @@ title: "PCB 设计、制造与互连方式选择"
 description: "面向硬件工程师的 PCB 端到端实操指南：从原理图与 PCB CAD 设计的输入、Gerber / ODB++ / IPC-D-350 等制造数据格式、工厂端 CAM 与 AOI、双面板制造流程，到系统级设计取舍（时钟频率、电源分布、热管理、EMI、环境与成本）的工程权衡。"
 date: 2026-09-01
 categories:
-  - 接口和电子
+  - 工程应用
 tags:
   - 工程应用
   - PCB
@@ -368,6 +368,13 @@ IPC 把设备按环境严酷度分了三类（Class 1 / 2 / 3），对应不同�
 - [PCB 结构与制造流程](pcb-construction-process.md)
 - [PCB 类型与材料选择](pcb-types-materials.md)
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
+
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [IPC-2221B 印制板设计标准](https://www.ipc.org/TOC/IPC-2221B.pdf)
+- [IPC-A-610 电子组件的可接受性](https://shop.ipc.org/ipc-a-610)
 
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：

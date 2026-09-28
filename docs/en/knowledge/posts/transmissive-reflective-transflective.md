@@ -3,11 +3,12 @@ title: "Transmissive, Reflective, and Transflective LCDs Compared"
 description: "Compare transmissive, reflective, and transflective LCDs by light source, outdoor visibility, indoor appearance, power, color, and application."
 date: 2026-09-01
 categories:
-  - Display Technologies
+  - Display Technology
 tags:
-  - Transflective
+  - Display Technology
+  - Sunlight Readable
   - LCD
-  - Outdoor Display
+  - Transflective
 authors:
   - viewe_expert
 ---

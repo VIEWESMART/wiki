@@ -3,7 +3,7 @@ title: "LCD 屏参详解：把点屏参数讲成能看见的样子"
 description: "用剧场比喻讲清 LCD 屏参：分辨率是座位、porch 是过道、pixel clock 是节拍器、MIPI lane 是车道、init sequence 是开机仪式。覆盖 htotal/pclk/lane_rate 估算公式与黑屏/花屏/闪屏/偏色的参数化排查方法。"
 date: 2026-09-05
 categories:
-  - 接口和电子
+  - 接口协议
 tags:
   - 接口协议
   - MIPI DSI
@@ -315,6 +315,13 @@ backlight_enable(); /* 最后再打开聚光灯 */
 - [显示接口详解：MCU、RGB 并行、LVDS、MIPI、SPI、UART 等](display-interface-guide.md)
 - [MIPI 接口详解：DSI、CSI-2 与 D-PHY 图解](mipi-interface-basics.md)
 - [LCD 基础知识：液晶显示器的工作原理](lcd-basics.md)
+## 参考数据来源
+
+本文涉及的标准、规格与资料：
+
+- [TFT LCD 模组规格书示例（7 英寸 WVGA）](../../../assets/datasheet/display/ALL-UE070WV-RB40-A092A.pdf)
+- [VESA DMT 显示时序标准](https://glenwing.github.io/docs/VESA-DMT-1.13.pdf)
+
 !!! info "没有找到您需要的内容？"
     如果您需要更多产品、资源或技术支持，欢迎联系我们的团队：
 

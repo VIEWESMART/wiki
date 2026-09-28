@@ -5,8 +5,7 @@ date: 2026-09-01
 categories:
   - Touch and Bonding
 tags:
-  - Touchscreen
-  - Touch Technology
+  - Touch and Bonding
 authors:
   - viewe_expert
 ---
