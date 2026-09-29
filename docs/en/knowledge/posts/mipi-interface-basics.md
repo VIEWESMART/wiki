@@ -131,6 +131,8 @@ On the display side, DSI can not only carry pixels but also control the screen w
 
 Command Mode suits panels with their own graphics memory (GRAM): once the processor has written a frame into the panel's memory it can let go, and the panel keeps refreshing itself, updating only when the picture changes — very power-efficient, ideal for small screens and mostly static content (smart watches, standby screens). Video Mode suits panels without memory: the processor must push every frame of the pixel stream continuously, as if playing a video, with demanding real-time requirements — ideal for large screens and dynamic video. Which mode to choose mainly depends on the panel's characteristics and the power target.
 
+The mechanics behind the two modes — how GRAM decides who owns the refresh, how to choose between burst and sync-pulse timing, what TE and BTA actually do, and how to configure them in the device tree — are covered in a dedicated article: [DSI Video Mode vs Command Mode: From GRAM and TE to Panel Bring-up](dsi-video-mode-vs-command-mode.md).
+
 ## 6. D-PHY vs C-PHY: Two Physical Layers
 
 Besides the mainstream D-PHY, MIPI also defines a more efficient physical layer, C-PHY. Each has its own strengths:

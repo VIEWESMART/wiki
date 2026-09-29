@@ -24,7 +24,7 @@
   <span class="l1-ico">🔌</span>
   <span class="l1-title">接口协议</span>
   <span class="l1-desc">MIPI / LVDS / RGB / I2C / SPI / UART</span>
-  <span class="l1-count">6 篇</span>
+  <span class="l1-count">8 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
@@ -40,7 +40,7 @@
   <span class="l1-ico">🛠️</span>
   <span class="l1-title">工程应用</span>
   <span class="l1-desc">户外阳光、半透半反、品质管理与选型</span>
-  <span class="l1-count">16 篇</span>
+  <span class="l1-count">17 篇</span>
   <span class="l1-go">查看 →</span>
 </a>
 
