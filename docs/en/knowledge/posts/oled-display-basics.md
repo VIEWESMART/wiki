@@ -12,146 +12,227 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is actually easier on the eyes, OLED or LCD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no absolute answer. At the same brightness, OLED generally has a lower blue-light share than LCD, but OLED is often dimmed by PWM, and a low PWM frequency at low brightness can cause eye strain; a high-brightness LCD is actually easier on the eyes in direct sunlight. The conclusion is that setting the right brightness and controlling how long you look at the screen matters more than the OLED versus LCD choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the essential difference between AMOLED and PMOLED?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMOLED gives every pixel its own TFT, so light can be controlled independently and precisely, which allows larger sizes while keeping uniformity; PMOLED drives the OLED directly by row and column scanning, so the structure and driving are simple, but once the size grows it becomes hard to guarantee lifetime and uniformity. Phones and TVs today are all AMOLED."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are QD-OLED, QLED, and OLED the same thing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. OLED is the broad self-emissive family; QD-OLED is a combination of OLED and quantum dots, where a blue OLED excites the quantum-dot layer; QLED usually means quantum dots plus an LCD backlight, where the quantum dots act only as a color-conversion layer and do not emit by themselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is OLED often not bright enough outdoors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The peak instantaneous current of OLED is limited by lifetime, which makes full-screen high brightness difficult, and makers also hold back headroom to compensate for degradation of the organic material. LCD, especially a high-brightness or transflective design, is still the strong option for outdoor readability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is OLED suitable for industrial control or digital signage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Be cautious. Showing the same menu or logo for long periods is the perfect condition for burn-in. If OLED must be used, pair it with pixel shift, automatic screen-off, and opacity changes on the logo, and budget for brightness degradation."
+      }
+    }
+  ]
+}
+</script>
+
 # OLED Display Structure, Operation, and LCD Comparison
 
 !!! abstract "Quick answer"
-    OLED pixels emit light directly, enabling deep blacks, fast response, thin construction, and flexible form factors. Trade-offs include image retention, differential aging, peak-brightness behavior, lifetime, and cost.
+    OLED is a self-emissive device in which every pixel is controlled independently, so it can deliver true black, very high contrast, wide viewing angles, extreme thinness, and a bendable form. That is the fundamental reason it has become the first choice for high-end phones and TVs, at the price of higher cost, a long-term burn-in risk, and peak brightness that is still below LCD.
 
 ## Key Takeaways
 
-- OLED does not require a conventional backlight, so black pixels can be effectively off.
-- Content, brightness, temperature, duty cycle, and static UI elements strongly influence aging and lifetime.
-- Compare interface, driver support, power by content, optical performance, lifetime, and supply continuity for the exact module.
+- The essential difference between OLED and LCD is whether a backlight is needed: LCD relies on a backlight plus liquid-crystal modulation, while OLED emits directly from organic material.
+- The OLED layer stack consists of cathode, anode, emissive layer, and conductive layer, and electrons and holes recombine in the emissive layer to release photons.
+- OLED splits into sub-types such as AMOLED, PMOLED, and QD-OLED, and AMOLED is the mainstream for phones and TVs.
+- Against LCD, OLED offers true black, extremely high contrast, faster response, and a bendable form, but costs more, has lower peak brightness, and carries a burn-in risk under long bright operation.
+- The selection decision should combine resolution, lifetime requirement, outdoor readability, and budget.
 
+## 1. What OLED Is
 
-## OLED Structure and Operating Principle
+OLED stands for organic light-emitting diode, and is also called an organic electroluminescent (EL) device. It is built from carbon-containing organic compounds, and when current flows, the organic layers emit light directly without any additional backlight module.
 
-OLED (Organic Light Emitting Diode) displays are self-illuminating due to their organic material, so there's no need for a backlight to achieve maximum visibility in all environments. This allows less power consumption, better contrast, deeper blacks, more vibrant colors and for OLEDs to be significantly thinner than standard LCD modules with backlight.
+Because it is self-emissive, an OLED display naturally offers:
 
-### The OLED Layer Structure
+- **True black**: a pixel that is not emitting is pure black, and contrast can exceed 1,000,000 : 1.
+- **Thinner construction**: there is no backlight module, so total thickness can be compressed to the millimeter range.
+- **Flexibility**: replace the glass substrate with a flexible base material and you get curved, foldable, or rollable screens.
+- **Lower power**: a dark image draws almost no power.
 
-The main components of an OLED display are the cathode, anode, emissive layer, and the conductive layer. The anode and a cathode are between a glass top plate (seal) and a glass bottom plate (substrate).
+An LCD must use its backlight to illuminate the whole liquid-crystal layer, so it cannot switch off a single pixel and black is always a grayish black.
+
+## 2. OLED Layer Structure
+
+The core of an OLED display is the **cathode, anode, emissive layer, and conductive layer**, sealed between an upper and a lower substrate:
 
 <figure markdown="span" class="displaywiki-figure">
   [![The OLED Layer Structure](oled-display-basics-the-oled-layer-structure.jpeg){ width="760" loading="lazy" }](oled-display-basics-the-oled-layer-structure.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The OLED Layer Structure</figcaption>
+  <figcaption>OLED layer structure: substrate, anode, hole injection and transport layers, emissive layer, electron transport and injection layers, cathode, and encapsulation.</figcaption>
 </figure>
 
-OLEDs use a technique known as electroluminescence, in which material emits light in response to the flow of electric current. When electric current is applied to the two conductors, the organic material produces a bright, electro-luminescent light. When energy passes from the negatively charged cathode layer to the anode layer, it stimulates the organic material sandwiched between them, which emits light that is visible through the outermost layer of glass.
+- **Substrate**: glass or flexible plastic, acting as the supporting base.
+- **Anode**: usually transparent ITO, connected to the positive side.
+- **Hole injection layer (HIL) / hole transport layer (HTL)**: carry holes from the anode to the emissive layer.
+- **Emissive layer (EML)**: the organic light-emitting material, where light is actually generated.
+- **Electron transport layer (ETL) / electron injection layer (EIL)**: carry electrons from the cathode to the emissive layer.
+- **Cathode**: a thin metal or alloy layer, connected to the negative side, reflecting light and injecting electrons.
+- **Encapsulation**: blocks water and oxygen, and is critical to lifetime.
+
+## 3. How OLED Works
+
+Electroluminescence in an OLED works like this: electrons travel from the cathode toward the anode while holes travel from the anode toward the cathode; the two meet and recombine in the **emissive layer**, releasing the surplus energy as photons.
 
 <figure markdown="span" class="displaywiki-figure">
   [![Electrical current flows from the Cathode to the Anode through the organic layers](oled-display-basics-electrical-current-flows-from-the-cathode-to-the-anode-through-the-org.jpeg){ width="760" loading="lazy" }](oled-display-basics-electrical-current-flows-from-the-cathode-to-the-anode-through-the-org.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Electrical current flows from the Cathode to the Anode through the organic layers</figcaption>
+  <figcaption>Carrier flow across the OLED layers, from the cathode through the organic stack to the anode.</figcaption>
 </figure>
 
-As electricity starts to flow from the cathode to the anode, the cathode gains electrons while the anode loses electrons, causing electron removal (electron holes) from the conductive layer.
+The steps in detail:
 
-Electrons encounter electron holes at the edges between the emissive and conductive layers causing electrons to recombine and release their extra energy in the form of a photon of light.
-
-### OLED vs. LCD
-
-OLED has better image quality, contrasts, viewing angles, color accuracy, flexibility, and power-efficiency in comparison to LCD. OLED provides better color contrasts because it can create a pure black unlike LCD displays. LCD only works with backlighting. Backlighting is when a light is put behind a device in order to display an image. Because this backlight is always on, LCDs can never achieve a full-black like an OLED can. An OLED can show deeper and truer black levels.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![LCD and OLED Comparison](oled-display-basics-lcd-and-oled-comparison.png){ width="760" loading="lazy" }](oled-display-basics-lcd-and-oled-comparison.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>LCD and OLED Comparison</figcaption>
-</figure>
-
-Fig. 3 LCD and OLED Comparison
-
-Also because of the LED backlight, the power consumption of the OLED is less than that of LCD. OLED only emits light when electric current is passed through, so if there is no current, there is absolutely no light. OLED can also change the brightness of a picture pixel by pixel.  Because of the limitation of the backlight, LCD displays can at best only dim the screen by small regions. This is because the only way to dim the picture is to reduce the brightness of the backlight, and it is not feasible to have a backlight for every pixel.
-
-Other benefits of OLED include less blue light emitted because of the lack of a backlight, a faster refresh rate, and faster response times. The faster refresh rates and response times make it perfect for video games and virtual reality.
-
-Though it has better quality, OLED devices tend to have a more premium price tag. This is why OLED is currently only the main choice for high-end mobile devices and TVs. LCD displays are less expensive, and LCD TVs have nearly as high picture quality. The price of OLED products may come down in the future, but hasn’t shown indications of happening soon. LCD panels also have the added benefit of having a higher maximum luminance making it better for bright spaces or places with direct sunlight. Another disadvantage of OLED is that there is risk for burn-in. Burn-in is when the shadow of an image is permanently left on the screen even after the picture has been changed. It is caused by the pixels in that region being used too much making them not as bright as before. However, burn-in only happens after watching the same channel eight hours a day for a long time. Most of the time, the after-image fades quickly.
-
-Another competitor of OLED worth mentioning are QD-LED or quantum dot displays. Instead of using OLED emitters, these displays use quantum dots, nanoparticles that emit light, to produce images.
-
-Which devices have OLED screens?
-
-Samsung has been making OLED smartphones the longest. The Samsung Galaxies are known for their high-resolution OLED screens. High-end Apple smartphones also have OLED screens. Sony, Panasonic, and LG make ultra-high definition (UHD) OLED TVs. LG Display is one of the largest manufactures of the OLED panels that these other companies use for their devices. All these companies have also started making rollable devices like TVs.
-
-What should I expect from an OLED picture?
-
-You should expect high color contrasts and wider viewing angles. The true blacks of the OLED displays make the other colors stand out more. OLEDs also lose less color contrast at wider viewing angles compared to LCDs. LCDs are best viewed from the center and lose color contrast quickly as the angle increases. OLED technology is also improving rapidly. OLEDs now have a larger color gamut (selection of colors) than before as well as higher HDR and faster response times.
-
-Should I buy an OLED device?
-
-Yes. If the higher price is not an issue, choose OLED every time. The color contrasts, flexibility, and power efficiency are unparalleled by LCD displays. OLED has true blacks and is much thinner than other displays because there is no need for a backlight. It also can be made into foldable or rollable devices and emits less blue light than other devices. The picture quality of OLED is truly unmatched.
-
-### How OLED Pixels Produce Light
-
-OLED stands for Organic Light-Emitting Diode (OLED). It is also known as organic electroluminescent (EL) diode. OLED is a relatively new type of display for televisions, smartphones, and laptops. After being invented in 1987, OLED is already one of the two top display technologies in the industry. This display technology uses organic (carbon-containing) compounds that emit light when a current is passed through it. Unlike LCD (Liquid Crystal Display) to use RGB (Red, Green, Blue) color filter before white light source to produce full color, an OLED display uses OLED emitters to produce its own light.
-
-There are many different types of OLED technology. The most common type of OLED is AMOLED or active-matrix OLEDs which is the main type used in OLED TV screens and phones. AMOLED uses thin-film transistors (TFTs) as semiconductors which makes the display much more efficient. There are also passive-matrix OLEDs (PMOLED) which don’t have a thin film transistor. PMOLED are easier to make, but are not as energy-efficient as AMOLEDs. There are also PLEDs which are polymer light-emitting diodes or PLED as well as quantum dot OLEDs (QD-OLED). These QD-OLEDs use both quantum dots, nanocrystals that also emit light, as well as traditional OLED material.
-
-What’s “organic” about OLEDs?
-
-OLED In this case, organic refers to its chemistry definition: molecules that consist of chains or rings of carbon along with other elements. These organic molecules have electroluminescence meaning they light up in response to a current.
-
-How does an LED work?
-
-LED stands for Light Emitting Diode. This refers to any system with two electrodes that emits light in the presence of an electric current. The electrodes are of opposite charges. The positively charged electrode is called the cathode while the negatively charged electrode is the anode. In between the electrodes are the organic layers. Therefore, when the electrons go from the cathode to anode creating a current, they pass through the organic materials which then emit colored light.
-
-Parts of an OLED
-
-OLED panels consist of six layers. The outside most layers are the seal and the substrate. These are made out of either plastic or glass. The substrate is the foundation of the OLED and the seal protects the outside. In between those two layers are the cathode and the anode. In the very center are the two layers of organic molecules, the emissive layer and the conductive layer.
+1. Voltage is applied between the cathode and the anode.
+2. The cathode releases electrons, which enter the emissive layer through the ETL.
+3. The anode draws electrons out of the HTL, leaving holes behind that migrate to the emissive layer.
+4. Electrons and holes recombine inside the EML, exciting the organic molecules to an excited state.
+5. As the excited molecules fall back to the ground state they release photons, which leave through the transparent anode and the substrate.
+6. The emission color is set by the energy bands of the organic molecules themselves; the common primary emitters are blue and yellow-green, and the remaining colors are produced through color filter layers.
 
 <figure markdown="span" class="displaywiki-figure">
   [![How does an OLED display work?](oled-display-basics-how-does-an-oled-display-work.png){ width="760" loading="lazy" }](oled-display-basics-how-does-an-oled-display-work.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>How does an OLED display work?</figcaption>
+  <figcaption>How a single OLED pixel produces light.</figcaption>
 </figure>
 
-OLED works like an LED but uses organic molecules instead of other semiconductors to produce light. Electricity flows from the cathode to the anode through the emissive and conductive layers producing colored light. The primary OLED materials are yellow and blue. Color filters are then used to make the rest of the color.
+## 4. OLED versus LCD
 
-Advantages of OLEDs
+OLED and LCD are both mainstream flat-panel technologies, but the self-emissive versus backlit difference shows up clearly across the performance dimensions.
 
-OLED display technology has extremely high image quality and wide viewing angles. That is why it is used in high end products like the newest and most premium Apple phones. Because each pixel in an OLED display can be controlled individually, OLED displays have higher resolution. Also, OLEDs don’t have a backlight, so its power consumption is also less than LCD. They are also energy-efficient displays because instead of having a backlight on all the time, energy is only emitted when a pixel is turned on. Also because of the lack of a backlight, there are flexible OLED displays. Backlights limit designers to only flat displays. OLED emits its own light, so its devices can be rollable or foldable.
+<figure markdown="span" class="displaywiki-figure">
+  [![LCD and OLED Comparison](oled-display-basics-lcd-and-oled-comparison.png){ width="760" loading="lazy" }](oled-display-basics-lcd-and-oled-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>LCD and OLED compared at a glance.</figcaption>
+</figure>
 
-In addition, OLED also has a faster response time compared to LCD making it ideal for gaming and virtual reality. They can be also extremely long-lasting with a lifespan of around 22 years if used 6 hours a day. OLEDs now have a larger color gamut (selection of colors) than before as well as higher HDR (High Contrast Ratio).
+The table below compares the metrics engineers usually look at:
 
-Is OLED really better than LCD?
+| Dimension | OLED | LCD (with backlight) |
+| --- | --- | --- |
+| Black level | Almost zero (true black) | Limited by backlight leakage |
+| Contrast | On the order of 1,000,000 : 1 | On the order of 1000 : 1 |
+| Viewing angle | Close to 180° | Color shift and brightness loss off-axis |
+| Response time | Microseconds | Milliseconds |
+| Thickness | Extremely thin, no backlight | Limited by backlight thickness |
+| Curved / foldable | Native support | Difficult |
+| Blue-light share | Lower | Higher |
+| Peak brightness | Rather low, high-end excepted | High, suited to outdoor use |
+| Lifetime | Organic material degrades, burn-in risk | Long-life backlight |
+| Cost | Higher | Lower |
+| Power | Very low for dark images | Stable, since the backlight stays on |
 
-Since the old cathode ray tube (CRT) became obsolete, LCDs and OLEDs have been the biggest display technologies. However, OLED has higher color contrast, viewing angles, flexibility, refresh rates, and power efficiency compared to LCD. Because LCD only works with backlighting where a light is put behind the device in order to display an image, they can never achieve a full-black like an OLED can. An OLED can show deeper and truer blacklevels. Also because of the LED backlight, the power consumption of the OLED is less than that of LCD. OLED only emits light when a current is passed through, so if there is no current, there is absolutely no light. OLED can also change the brightness of a picture pixel by pixel. Because of the limitation of the backlight, LCD displays can at best only dim the screen by small regions. This is because the only way to dim the picture is to reduce the brightness of the backlight, and it is not feasible to have a backlight for every pixel. Another benefit of OLED is that there is less blue light emitted compared to LCD because there is no backlight.
+## 5. OLED Sub-types
 
-What are the benefits of OLED Display?
+OLED is a broad family, and it is split further by driving method, emitting material, and the way color is produced.
 
-The main benefits of the OLED display are high color contrasts, wider viewing angles, and flexibility. The true blacks of the OLED displays make the other colors stand out more. OLEDs also lose less color contrast at wider viewing angles compared to LCDs. LCDs only have high color contrast when viewed head-on. OLEDs are also noticeably thinner than other displays because they don’t need a backlight. The lack of a backlight also allows them to be made on curved surfaces, so rollable and foldable devices are made possible.
+### 5.1 AMOLED and PMOLED
 
-How is OLED different from LED?
+- **AMOLED (active-matrix OLED)**: uses a TFT as the switch for every pixel, so each pixel can be controlled independently and precisely. It is the mainstream route for phones and TVs.
+- **PMOLED (passive-matrix OLED)**: applies row and column scan signals directly to the OLED. The structure and driving are simple, but once the size grows, refresh rate and uniformity become hard to guarantee, so it is mostly used in small formats such as watches and early MP3 players.
 
-OLED uses organic materials to emit light while LED uses other compound semiconductors. OLED is also able to be made into devices on their own while LED can only be used as a backlight for LCD displays.
+### 5.2 QD-OLED and PLED
 
-Is OLED screen bad for the eyes?
+- **QD-OLED (quantum-dot OLED)**: uses a blue OLED as the excitation source for a quantum-dot layer that produces red and green, giving a wider color gamut; it is common in high-end TVs.
+- **PLED (polymer light-emitting diode)**: uses a polymer as the emitting layer and can be produced by solution processes such as inkjet printing, which suits large flexible panels.
+- There are further splits into polymer and small molecule, and into printing and evaporation, which we will not go into here.
 
-OLED screens are better for the eyes compared to other devices like LCD because they emit less blue light. The backlights of other displays emit lots of blue light. OLED has much less blue light (34%) compared to LCD displays (65%).
+## 6. Where OLED Fits
 
-## OLED Selection Summary
+### 6.1 High-end consumer electronics
 
-The color contrasts, flexibility, and power efficiency of OLED are unparalleled by LCD displays. OLED has true blacks and is much thinner than other displays because there is no need for a backlight. It also can be made into foldable or rollable devices and emits less blue light than other devices.
+- Smartphones, laptops, tablets, and VR / AR headsets.
+- High-end TVs, especially along the QD-OLED route.
+
+### 6.2 Industrial, automotive, and wearable
+
+- Smartwatches: deep black, high contrast, and a slim form.
+- Automotive instrumentation: wide temperature range and wide viewing angle mean OLED is increasingly displacing older technologies.
+- Industrial control panels: some high-ambient-light situations are still the strength of LCD, including high-brightness types, so the choice has to be made per scenario.
+
+### 6.3 Where OLED does not fit
+
+- **Long-term display of the same static image** (control-room menus, fuel-pump panels): high burn-in risk.
+- **Very bright outdoor light**: LCD, including transflective and high-brightness types, remains the first choice.
+- **Highly cost-sensitive mid- and low-end consumer products**: LCD still holds a 3 to 5 times price advantage.
+
+## 7. Blue Light and Eye Health
+
+OLED emits by electroluminescence, and there is no mechanism that forces it to emit blue light throughout. Laboratory measurements commonly put the blue-light share of OLED in the low 30% range, clearly below the 60%+ typical of an LCD backlight. That does not translate directly into being harmless to the eye, but at the same brightness the blue-light dose is lower with OLED.
+
+Note that eye comfort is closely tied to brightness, color temperature, and how long the display is used. With either OLED or LCD you should work at a sensible brightness and take regular breaks.
+
+## 8. Burn-in: Causes and Countermeasures
+
+### 8.1 What burn-in is
+
+OLED burn-in is the loss of emission efficiency in pixels that run bright for a long time, leaving a ghost of the previous image behind after the content changes.
+
+### 8.2 Mitigation
+
+- **Pixel shift**: move the whole image by 1–2 pixels periodically to spread the on-time across neighbouring pixels.
+- **On-screen time limits**: make bright UI elements such as logos and status bars vary their opacity or move them regularly.
+- **Auto brightness / auto screen-off**: turn the screen off after a period of inactivity, which matters especially for industrial and signage use.
+- **Lifetime estimation**: commercial OLED from mainstream makers can exceed 15 years at 6 hours of bright operation per day.
+
+## 9. Selection Guidance
+
+- **Choose OLED**: when high contrast, wide viewing angle, a bendable form, and a thin body matter, and you do not need peak brightness or long-term static content.
+- **Choose LCD**: when the budget is tight, the application is bright outdoor use, the same image is shown for long periods, or peak brightness is a hard requirement.
+- **Choose QD-OLED or a high-brightness LCD**: only when one dimension of color or brightness has to be pushed to an extreme.
+
+## 10. Frequently Asked Questions
+
+??? question "Q1: Which is actually easier on the eyes, OLED or LCD?"
+    There is no absolute answer. At the same brightness, OLED generally has a lower blue-light share than LCD, but OLED is often dimmed by PWM, and a low PWM frequency at low brightness can cause eye strain; a high-brightness LCD is actually easier on the eyes in direct sunlight. The conclusion is that setting the right brightness and controlling how long you look at the screen matters more than the OLED versus LCD choice.
+
+??? question "Q2: What is the essential difference between AMOLED and PMOLED?"
+    AMOLED gives every pixel its own TFT, so light can be controlled independently and precisely, which allows larger sizes while keeping uniformity; PMOLED drives the OLED directly by row and column scanning, so the structure and driving are simple, but once the size grows it becomes hard to guarantee lifetime and uniformity. Phones and TVs today are all AMOLED.
+
+??? question "Q3: Are QD-OLED, QLED, and OLED the same thing?"
+    No. OLED is the broad self-emissive family; QD-OLED is a combination of OLED and quantum dots, where a blue OLED excites the quantum-dot layer; QLED usually means quantum dots plus an LCD backlight, where the quantum dots act only as a color-conversion layer and do not emit by themselves.
+
+??? question "Q4: Why is OLED often not bright enough outdoors?"
+    The peak instantaneous current of OLED is limited by lifetime, which makes full-screen high brightness difficult, and makers also hold back headroom to compensate for degradation of the organic material. LCD, especially a high-brightness or transflective design, is still the strong option for outdoor readability.
+
+??? question "Q5: Is OLED suitable for industrial control or digital signage?"
+    Be cautious. Showing the same menu or logo for long periods is the perfect condition for burn-in. If OLED must be used, pair it with pixel shift, automatic screen-off, and opacity changes on the logo, and budget for brightness degradation.
 
 ## Related reading
 
 - [IPS, TN, VA, and FFS TFT Panel Technologies Compared](tft-panel-technologies.md)
 - [a-Si, LTPS, and IGZO TFT Backplanes Compared](tft-backplane-technologies.md)
 - [Transmissive, Reflective, and Transflective LCDs Compared](transmissive-reflective-transflective.md)
-
-## Frequently Asked Questions
-
-??? question "What is the main difference between OLED and LCD?"
-    OLED pixels emit light individually, while an LCD modulates a separate light source or ambient light.
-
-??? question "Does OLED always consume less power?"
-    No. OLED power depends strongly on displayed content and brightness; bright full-screen content can consume more than a dark interface.
-
-??? question "How can image retention risk be reduced?"
-    Avoid persistent high-brightness static elements, use dimming or screen shifts where appropriate, manage thermal conditions, and follow the panel maker’s lifetime guidance.
-
-??? question "Why can OLED show true black?"
-    A black OLED pixel can be switched off, so it emits almost no light instead of relying on a backlight blocked by a liquid-crystal cell.
-
-??? question "What should be checked for an industrial OLED application?"
-    Review lifetime at the intended brightness and temperature, static-content duty cycle, image-retention mitigation, interface, sealing, and supply continuity.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

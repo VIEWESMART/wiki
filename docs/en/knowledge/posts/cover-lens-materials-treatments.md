@@ -10,103 +10,165 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I choose the cover lens glass thickness?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start from the impact-resistance requirements and the mechanical constraints of the assembly, then choose from the standard thickness series (0.55 / 0.7 / 1.1 / 1.8 / 3 / 4 mm). A thicker cover lens resists impact better but is heavier and attenuates the touch signal more; a thinner one is lighter and slimmer but the drop risk must be assessed. For thicker specifications, specific touch controller solutions can support cover lenses up to 15 mm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the cover-lens thickness the same as the total thickness of the touch module?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The cover-lens glass thickness is only one layer; the total display-face thickness also includes the touch sensor and the adhesive layer. For example, a 0.7 mm cover lens + a 0.55 mm sensor + a 0.15 mm adhesive layer totals about 1.4 mm. The mechanical and durability behavior must be checked against the total thickness, otherwise the change to the assembly is easily underestimated."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between chemically strengthened glass and thermally tempered glass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both raise the strength through post-processing, but in different ways: chemical strengthening relies on ion exchange to form a compressive stress layer on the surface, and the glass splits into long splinters when it breaks; thermal tempering relies on heat treatment, and its fracture pattern is different. Choose according to the fragment-safety requirements and the application scenario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose among the AR, AG, and AF surface treatments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AR reduces reflection and suits scenarios that need high transmittance and low reflectance; AG breaks reflections up to remove glare spots and suits strong-light environments; AF reduces oil retention and suits products with frequent touch that easily show fingerprints. The three can be combined, and the common pairing is AG anti-glare plus AF anti-fingerprint."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose between Corning Gorilla Glass and PMMA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look at whether the main risk is scratching or shattering. Chemically strengthened glass (such as Gorilla Glass) has a hard, highly scratch-resistant surface but can still break under a strong impact; PMMA does not shatter easily under external force and is easy to drill and cut into irregular shapes, suiting products with complex shapes or a high drop risk, at the cost of relatively weaker surface hardness and scratch resistance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the cover-lens color applied?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mainly by the silk-screen printing process. All that is needed is a drawing marked with the Pantone or RAL color codes, and samples are usually delivered within about ten working days. Note the distinction: tinting solves the appearance color of the cover lens and the ink areas; to guarantee the color reproduction of the displayed image itself, choose a low-tint substrate such as ultra-clear glass."
+      }
+    }
+  ]
+}
+</script>
+
 # Display Cover Lens Materials, Thickness, and Treatments
 
 !!! abstract "Quick answer"
-    Cover-lens selection balances impact resistance, scratch resistance, weight, optical quality, touch sensitivity, manufacturing limits, and cost. Material and thickness should be chosen together with coatings and bonding.
+    The cover lens is the most frequently customized part of a product, and the part that changes its appearance the most. Selection means deciding four things in order: thickness (driven by impact and mechanical requirements), the safety scheme (chemically strengthened or thermally tempered glass), color and appearance (silk-screen printing), and surface treatments (AR / AG / AF). In addition, Corning Gorilla Glass and PMMA serve two different demands — scratch resistance and shatter resistance, respectively.
 
 ## Key Takeaways
 
-- Use glass when scratch resistance, optical stability, and premium appearance dominate; consider polymers when weight or impact behavior dominates.
-- Increasing thickness can improve stiffness but may affect weight, touch sensitivity, edge processing, and cost.
-- Specify strengthening, coatings, printing, adhesive, and environmental tests as part of the finished assembly.
+- Every module with a projected capacitive touch screen has a top layer — the cover lens — and it is the main source of the product's appearance differences.
+- Cover-lens thickness is chosen from the standard thickness series according to impact and mechanical requirements; common values are 0.55 / 0.7 / 1.1 / 1.8 / 3 / 4 mm.
+- Distinguish the cover-lens glass thickness from the total thickness of cover lens + touch sensor + adhesive layer; it is the total thickness that determines the assembly's mechanical and durability behavior.
+- Glass safety comes from post-process strengthening: chemically strengthened and thermally tempered glass break differently, so choose according to the safety requirements.
 
+## 1. The Cover Lens: The Most Customized Part of a Product
 
-## Cover-Lens Design Factors
+A display module with a projected capacitive touch screen has a top layer called the cover lens. It is the most frequently customized component of the product, and the part that can completely change the appearance of the display, so it has to be designed together with the other elements of the product.
 
-Modules with projected capacitive touch panels have a top layer, called a cover. This part of the module is the most often customized component of the product. It’s the part that allows the display to completely change its appearance. To perfectly blend with the rest of your product design.
+Besides custom color and shape, the cover lens can also be specified with different glass thicknesses, strengthening methods, and surface treatments.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Cover Glass Thickness](cover-lens-materials-treatments-cover-glass-thickness.png){ width="760" loading="lazy" }](cover-lens-materials-treatments-cover-glass-thickness.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Cover Glass Thickness</figcaption>
+  [![Custom cover-lens samples in different thicknesses, colors, shapes, and surface treatments](cover-lens-materials-treatments-cover-glass-thickness.png){ width="760" loading="lazy" }](cover-lens-materials-treatments-cover-glass-thickness.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Custom cover-lens samples: different colors (black, red, yellow, blue, and pattern printing), different outlines (including rounded corners and irregular shapes), and different glass thicknesses, all with FPC tails for integration with the touch module.</figcaption>
 </figure>
 
-Just send us your design, and we’ll do the rest. Other than customized color and shape, we offer different glass thicknesses, strengthened glass, surface treatments, and more.
+## 2. Cover Lens Glass Thickness
 
-### Cover Glass Thickness
+The thickness of the cover lens glass depends on the impact-protection requirements and the overall mechanical requirements, and it is chosen from a standard thickness series. The recommended thickness values are **0.55 mm, 0.7 mm, 1.1 mm, 1.8 mm, 3 mm, and 4 mm**.
 
-The thickness of the cover glass depends on impact protection requirements and general mechanical requirements. Cover lens thickness is chosen among specific thickness series. The recommended thickness values are 0,55mm, 0.7mm 1.1mm 1.8mm 3mm and 4mm.
+A common mistake is to equate the cover-lens thickness with the total thickness of the display face. The cover-lens glass thickness and the overall thickness of the touch sensor have to be distinguished: for example, a 0.7 mm cover lens (CG) combined with a 0.55 mm touch sensor and a 0.15 mm adhesive layer gives a display-face thickness of about 1.4 mm. In other words, simply switching to a thicker cover lens noticeably changes the mechanical characteristics of the whole assembly — which is important to understand from a durability point of view.
 
-It is worth to distinguish cover glass thickens to total touch sensor thickness.
+If the project requires thicker glass, further customization is possible. Touch controller solutions such as Hycon, Ilitek, EETI, and PenMount can support cover lenses up to 15 mm thick.
 
-It’s especially important when we have thin CG like 0.7 or 1.1mm, if we have 0.7mm CG and 0.55 sensor, with 0.15mm glue, we actually have 1.4mm in display area, so double CG which change mechanics completely. Understanding this fact is important from durability point of view.
+## 3. Glass Safety
 
-If your project requires thicker glass, feel free to contact us. We use touch controllers (Hycon, Ilitek, EETI, PenMount), which can support cover glass up to 15 mm of thickness.
+The second aspect of the design process is the safety of the glass. Two common strengthening schemes are:
 
-### Glass Safety Considerations
+- **Chemically strengthened glass**: an ion-exchange process creates a compressive stress layer on the glass surface.
+- **Thermally tempered glass**: heat treatment raises the strength.
 
-The second aspect of the designing process is the safety of the glass. The two most popular options are:
+Both gain strength from the post-processing, but they break differently: when chemically strengthened glass breaks, it splits into long splinters, unlike regular glass; the structure of thermally tempered glass after breaking also differs visibly from the former. For applications with fragment-safety requirements, choose the scheme according to the actual service environment.
 
-Chemically strengthened glass
+## 4. True Color and Color Printing
 
-Thermally tempered glass
+The clarity and color reproduction of the displayed image are usually achieved by choosing ultra-clear (extra-white) glass, a component that is virtually free of color tint. It is important to stress that cover-lens tinting and display color are two different things: tinting determines the appearance color of the cover lens and the legends in the ink areas, not the color reproduction of the displayed image itself.
 
-Both options have increased strength as the result of a post-production process (as the names suggest – the chemical or thermal treatment).
+As for the process, all that is needed is a drawing marked with the Pantone or RAL color codes, and silk-screen printed cover-lens samples can be provided within about ten working days.
 
-When chemically strengthened glass gets broken, it shatters in long splinters, unlike regular glass. The appearance of the structure after breaking of the thermally tempered glass is different – it crumbles into smaller, granular chunks.
+## 5. Surface Treatments
 
-### Optical Clarity and Color Accuracy
+Three types of optical treatment can be applied to the cover-lens surface, each with a different purpose:
 
-As you know, our displays always give out clear and vibrant images. Colors remain sharp and true. We achieve this effect by choosing an ultra-clear cover glass solution for the display.
+- **AR (anti-reflection)**: a coating of a specific thickness is applied to the cover-lens surface to reduce reflection from the display surface.
+- **AG (anti-glare)**: a fine micro-rough structure is formed on the cover-lens surface to break up specular reflections and remove bright glare spots from the image.
+- **AF (anti-fingerprint)**: by reducing the ability of the cover-lens surface to retain oils, fingerprints and smudges left on the display surface are reduced.
 
-This means, that the component is absolutely discolored.
+The three treatments can be combined; for the trade-offs, see the related chapters on anti-reflection vs anti-glare and on anti-fingerprint and antibacterial surface treatments.
 
-The design of custom artwork is quite simple. We just need a drawing of your artwork with indication of used colors in Pantone or RAL. Then we provide samples of the cover lens made in a silk printing process within a dozen working days.
+## 6. Special Materials
 
-### Cover-Lens Surface Treatments
+Besides regular glass, two special materials are available:
 
-Anti-reflection (AR) – reducing the reflection on the surface of the display by applying a coating of a specific thickness to the surface of a cover lens.
+**Corning Gorilla Glass**
 
-Anti-glare (AG) – removing a bright glare from the display surface by creating a rough surface on the cover lens.
+A wear-resistant glass product used to protect display screens. It is made by a chemically strengthening process, and its strength comes from the ion exchange performed during production, making it suitable for scenarios with high scratch-resistance requirements.
 
-Anti-finger (AF) – preventing fingerprints and smudges on the display surface by applying a type of treatment that reduces the ability of the cover lens retaining oils
+**PMMA cover lens**
 
-### Specialized Cover-Lens Materials
+PMMA (polymethyl methacrylate), commonly known as acrylic, acrylic glass, or plexiglass, is often used as a cover-lens material. One advantage is that it does not shatter when struck by an external force; another is that it is easy to drill holes in and cut into different shapes — suited to products with many irregular features that are sensitive to shatter risk but have relatively relaxed surface-hardness requirements.
 
-We also offer special materials for cover lenses:
+## 7. Selection Guidelines
 
-Corning Gorilla Glass
+- **Fix the thickness before the structure**: choose from the standard thickness series according to the impact requirements, and check the total thickness of cover lens + sensor + adhesive layer.
+- **Define the safety requirements**: for scenarios with fragment-safety requirements, choose chemically strengthened or thermally tempered glass and confirm that its fracture pattern meets the standard.
+- **Choose surface treatments by environment**: prefer AR / AG in strong-light environments and AF for high-frequency touch; they can be combined.
+- **Separate appearance from image quality**: tinting handles the appearance color of the cover lens, while image quality is determined by the glass substrate (such as ultra-clear glass) and the display module.
+- **Choose the material by mechanical risk**: for scratch resistance, prefer chemically strengthened glass (such as Gorilla Glass); for shatter resistance and irregular machining, consider PMMA.
+- **Confirm touch compatibility**: a thick cover lens weakens the touch signal-to-noise ratio, so confirm the supported thickness range together with the touch controller solution.
 
-Gorilla Glass is used to protect display screens. It’s a scratch-resistant and durable glass product made for touch screens. Gorilla Glass screens are famous for being very thin.
+## 8. Frequently Asked Questions
 
-This type of glass is made from chemically strengthened alkali-aluminosilicate. The glass has its strength thanks to the ion exchange process it undergoes during manufacturing.
+??? question "Q1: How do I choose the cover lens glass thickness?"
+    Start from the impact-resistance requirements and the mechanical constraints of the assembly, then choose from the standard thickness series (0.55 / 0.7 / 1.1 / 1.8 / 3 / 4 mm). A thicker cover lens resists impact better but is heavier and attenuates the touch signal more; a thinner one is lighter and slimmer but the drop risk must be assessed. For thicker specifications, specific touch controller solutions can support cover lenses up to 15 mm.
 
-PMMA Cover lens
+??? question "Q2: Is the cover-lens thickness the same as the total thickness of the touch module?"
+    No. The cover-lens glass thickness is only one layer; the total display-face thickness also includes the touch sensor and the adhesive layer. For example, a 0.7 mm cover lens + a 0.55 mm sensor + a 0.15 mm adhesive layer totals about 1.4 mm. The mechanical and durability behavior must be checked against the total thickness, otherwise the change to the assembly is easily underestimated.
 
-Poly(methyl methacrylate) (PMMA), also known as acrylic, acrylic glass, or plexiglass is often used as a cover glass option. One advantage of this kind of cover lens is that when impacted by external force it will not shatter into fragments. Another advantage is that it’s very easy to make holes in it, and cut out different shapes. Also, PMMA is very light.
+??? question "Q3: What is the difference between chemically strengthened glass and thermally tempered glass?"
+    Both raise the strength through post-processing, but in different ways: chemical strengthening relies on ion exchange to form a compressive stress layer on the surface, and the glass splits into long splinters when it breaks; thermal tempering relies on heat treatment, and its fracture pattern is different. Choose according to the fragment-safety requirements and the application scenario.
+
+??? question "Q4: How do I choose among the AR, AG, and AF surface treatments?"
+    AR reduces reflection and suits scenarios that need high transmittance and low reflectance; AG breaks reflections up to remove glare spots and suits strong-light environments; AF reduces oil retention and suits products with frequent touch that easily show fingerprints. The three can be combined, and the common pairing is AG anti-glare plus AF anti-fingerprint.
+
+??? question "Q5: How do I choose between Corning Gorilla Glass and PMMA?"
+    Look at whether the main risk is scratching or shattering. Chemically strengthened glass (such as Gorilla Glass) has a hard, highly scratch-resistant surface but can still break under a strong impact; PMMA does not shatter easily under external force and is easy to drill and cut into irregular shapes, suiting products with complex shapes or a high drop risk, at the cost of relatively weaker surface hardness and scratch resistance.
+
+??? question "Q6: How is the cover-lens color applied?"
+    Mainly by the silk-screen printing process. All that is needed is a drawing marked with the Pantone or RAL color codes, and samples are usually delivered within about ten working days. Note the distinction: tinting solves the appearance color of the cover lens and the ink areas; to guarantee the color reproduction of the displayed image itself, choose a low-tint substrate such as ultra-clear glass.
 
 ## Related reading
 
 - [Anti-Reflective vs Anti-Glare Display Treatments](anti-reflective-vs-anti-glare.md)
 - [Anti-Fingerprint and Antibacterial Cover-Lens Treatments](anti-fingerprint-antibacterial.md)
 - [Cover Lens Customization for Display Products](cover-lens-customization.md)
-
-## Frequently Asked Questions
-
-??? question "Is thicker cover glass always stronger?"
-    Not always. Glass type, strengthening, edge quality, hole geometry, mounting stress, and impact location can matter as much as nominal thickness.
-
-??? question "Can plastic replace glass in a display cover lens?"
-    Yes for some products, especially when weight and impact behavior are important, but scratch resistance, chemical resistance, optical distortion, and aging must be evaluated.
-
-??? question "When should surface treatments be specified?"
-    Specify them before final sampling because AR, AG, AF, hardness, printing, and bonding processes can affect one another.
-
-??? question "How does cover thickness affect capacitive touch?"
-    A thicker dielectric generally weakens the finger signal, so sensor design and controller tuning must support the selected stack.
-
-??? question "What should be included in a cover-lens drawing?"
-    Include material, thickness, outline, datums, openings, edge finish, printing layers, colors, coatings, tolerances, cosmetic zones, and inspection requirements.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

@@ -11,211 +11,216 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the main advantages of IPS / FFS over TN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wider viewing angles and more stable color. The molecules in IPS and FFS rotate within a plane parallel to the substrates, so the optical path changes little at oblique angles, and the color and brightness falloff seen from the side is much smaller than on TN. How much exactly improves still depends on the measured viewing-angle curves of the panel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is VA known for high contrast?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In VA the molecules align perpendicular to the substrates when unpowered and, together with crossed polarizers, block almost all light, forming a very deep black state. The darker the black, the higher the static contrast, so VA and MVA usually deliver higher contrast numbers than TN and IPS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is TN obsolete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. TN is still the fastest-responding and lowest-cost option and remains widely used in budget monitors, laptops, and industrial devices with a fixed viewing direction. As long as its viewing-angle and color weaknesses are acceptable in the application, TN is a reasonable choice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which panel mode offers the widest viewing angles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IPS and FFS / AFFS usually provide the best wide-angle color stability. But viewing-angle behavior is decided by measured data, and designs within the same technology family can differ noticeably, so check the viewing-angle curves and samples of the specific model before selecting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can panel mode predict response time at low temperature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Low-temperature response depends on the liquid-crystal formulation, cell gap, drive method, and the specific gray-to-gray transitions, and the same panel mode can behave very differently across designs. Always consult the low-temperature response data of the exact model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "For industrial equipment, how do I choose among TN / IPS / VA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with the viewing conditions: for a fixed, head-on viewing direction, the low cost and fast response of TN are acceptable; for multi-viewer or oblique viewing, choose IPS / FFS; when black level and contrast matter most, choose VA / MVA. Then weigh backlight brightness, transmission mode (transmissive, reflective, or transflective), and the operating temperature range together — never judge by panel mode alone."
+      }
+    }
+  ]
+}
+</script>
+
 # IPS, TN, VA, and FFS TFT Panel Technologies Compared
 
 !!! abstract "Quick answer"
-    TFT panel modes arrange and switch liquid crystals differently. TN emphasizes simplicity and cost, IPS and FFS emphasize wide-angle color stability, and VA/MVA emphasize strong dark-state contrast.
+    TFT panel technologies differ in how the liquid-crystal molecules are arranged and how they flip when voltage is applied. TN wins on response speed and cost, IPS and FFS on wide viewing angles and color stability, and VA/MVA on contrast and deep blacks. Selection should be based on measured electro-optical curves and samples; never infer brightness, lifetime, or environmental grade from the technology name alone.
 
 ## Key Takeaways
 
-- Choose from viewing direction, contrast, color shift, response, transmission, temperature, cost, and availability.
-- Do not infer brightness, lifetime, or environmental grade from panel mode alone.
-- Review measured curves and samples of the exact panel because implementations vary within every technology family.
+- The four technologies split by liquid-crystal arrangement and field direction: TN twists the molecules 90° between two substrates, IPS and FFS rotate them in a plane parallel to the substrates, and VA and MVA align them perpendicular to the substrates.
+- Look to IPS and FFS for viewing angle and color stability, to VA and MVA for deep blacks and high contrast, and to TN for cost and response speed.
+- Panel mode alone does not determine brightness, lifetime, or environmental grade; these depend on the backlight design, the drive method, and measured data.
+- Before final selection, confirm the optical, electrical, mechanical, environmental, and volume-production requirements.
 
+## 1. TN: Twisted Nematic
 
-## IPS TFT LCD
+TN (Twisted Nematic) is the simplest and lowest-cost liquid-crystal mode. The liquid-crystal molecules form a 90° helical twist between two glass substrates, with a polarizer laminated on each side and the two transmission axes crossed at 90°.
 
-In-Plane Switching (IPS) technology acts on the liquid crystals inside an LCD, so when voltage is applied, the liquid crystal rotates in parallel (or in-plane), allowing the light to pass through instead of turning upright. This behavior of the crystals significantly improves many viewing aspects of the display.
+With no voltage applied, the liquid-crystal layer rotates the polarization direction of the incoming light by 90°, so the light passes through the second polarizer and the pixel appears bright. When voltage is applied, the molecules align with the field, the rotation effect disappears, the light is blocked, and the pixel turns dark. This "bright when unpowered" behavior is called normally white mode.
 
-<figure markdown="span" class="displaywiki-figure">
-  [![IPS TFT LCD](tft-panel-technologies-ips-tft-lcd.jpeg){ width="760" loading="lazy" }](tft-panel-technologies-ips-tft-lcd.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>IPS TFT LCD</figcaption>
-</figure>
+Normally white mode is easy to manufacture and offers high transmittance; the trade-off is a narrow viewing angle. Viewed from the side, the effective phase retardation of the liquid-crystal layer changes, and the image washes out with visible color shift.
 
-Compared to regular TN panels, IPS is superior in color, viewing angles, and these TFTs can even handle direct sunlight due to their high brightness.
+**Key characteristics**
 
-<figure markdown="span" class="displaywiki-figure">
-  [![How does IPS work ?](tft-panel-technologies-how-does-ips-work.gif){ width="760" loading="lazy" }](tft-panel-technologies-how-does-ips-work.gif){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>How does IPS work ?</figcaption>
-</figure>
+- Response speed: the fastest among the three mainstream modes.
+- Cost: simple structure, the lowest manufacturing and purchasing cost.
+- Transmittance: relatively high, so brightness is favored under the same backlight.
+- Viewing angle and color: narrow viewing angle, with obvious color and contrast shift when viewed from the side.
 
-In the animation above, both linear polarizing filters have their axes of transmission in the same direction. To obtain the 90 degree twisted nematic structure of the liquid crystal layer between the two glass plates without an applied electric field (OFF state), the inner surfaces of the glass plates are treated to align the bordering liquid crystal molecules at a right angle. Because the arrangement of electrodes are in the same plane and on a single glass plate, they generate an electric field essentially parallel to this plate.
+## 2. IPS: In-Plane Switching
 
-The liquid crystal molecules have a positive dielectric anisotropy and align themselves with their long axis parallel to an applied electrical field. In the OFF state, entering light becomes linearly polarized by polarizer. The twisted nematic liquid crystal layer rotates the polarization axis of the passing light by 90 degrees, so that ideally no light passes through a polarizer. In the ON state, a sufficient voltage is applied between electrodes and a corresponding electrical field is generated that realigns the liquid crystal molecules and light can pass through a polarizer.
-
-## VA/MVA TFT LCD
-
-VA: Vertical Alignment
-
-MVA: Multi-domain Vertical Alignment
-
-These displays offer wide viewing angles, good black depth, fast response times and good color reproduction and depth. Each pixel within a MVA type TFT consists of three sub-pixels (Red, Green and Blue).
-
-Each of these sub-pixels is divided further into two or more sub-pixels, where the liquid crystals are randomly lined up due to the ridged polarized glass. When a charge is applied to the transistor, the crystals twist.
-
-With these crystals being randomly placed, it allows the backlight to shine through in all different directions keeping the intended color saturation retained while giving the display a 150° viewing angle.
+IPS (In-Plane Switching) places both electrodes on the same glass substrate, so the electric field runs parallel to the substrate and the liquid-crystal molecules rotate within a plane parallel to the substrates instead of standing up the way TN molecules do.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Premium (MVA) TFT Displays](tft-panel-technologies-premium-mva-tft-displays.jpeg){ width="760" loading="lazy" }](tft-panel-technologies-premium-mva-tft-displays.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Premium (MVA) TFT Displays</figcaption>
+  [![Viewing-angle comparison between IPS and TN](tft-panel-technologies-ips-tft-lcd.jpeg){ width="760" loading="lazy" }](tft-panel-technologies-ips-tft-lcd.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Viewing-angle comparison between IPS and TN: IPS (left) keeps color and brightness consistent at oblique angles, while TN (right) washes out and shifts color when viewed from the side</figcaption>
 </figure>
 
-Premium TFT Displays are a step up from our standard TN TFTs with brighter backlights and wider viewing angles. By using MVA technology, these displays offer rich blacks and have the ability to retain constant color reproduction at up to 75° angles from all sides. Premium TFT displays also have higher brightness LEDs than the standard TFT displays giving these display types a better overall picture quality for more visually demanding applications.
+With no field applied, the molecules align uniformly within the substrate plane. Light passing the first polarizer keeps its polarization almost unchanged through the liquid-crystal layer and is blocked by the second polarizer, so the pixel is dark. When voltage is applied, the molecules rotate within the plane, change the polarization of the light, and the pixel turns bright.
 
-## FFS/AFFS TFT LCD
+Because the molecules always move within the substrate plane, the optical path through the layer changes much less from different viewing angles, so IPS improves viewing angle and color stability markedly over TN. Paired with a high-brightness backlight, these panels can also be used in scenes with direct sunlight.
 
-FFS (Fringe Field Switching)
+<figure markdown="span" class="displaywiki-figure">
+  [![Liquid-crystal layer and light modulation between crossed polarizers](tft-panel-technologies-how-does-ips-work.gif){ width="760" loading="lazy" }](tft-panel-technologies-how-does-ips-work.gif){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Arrangement and light modulation of a liquid-crystal layer between two crossed polarizers; the animation shows a 90° twisted-nematic structure, while IPS molecules rotate within a plane parallel to the substrates</figcaption>
+</figure>
 
-AFFS (Advanced Fringe Field Switching)
+## 3. VA / MVA: Vertical Alignment
 
-The AFFS is similar to the IPS in concept; both align the crystal molecules in a parallel-to-substrate manner, improving viewing angles. However, the AFFS is more advanced and can better optimize power consumption. Most notably, AFFS has high transmittance, meaning that less of the light energy is absorbed within the liquid crystal layer and more is transmitted towards the surface. IPS TFT LCDs typically have lower transmittances, hence the need for the brighter backlight. This transmittance difference is rooted in the AFFS’s compact, maximized active cell space beneath each pixel.
+In VA (Vertical Alignment), the liquid-crystal molecules align perpendicular to the substrates when no voltage is applied. Light passing the first polarizer keeps its polarization state almost unchanged through the layer and is fully blocked by the second polarizer, forming the "normally black" state. When voltage is applied, the molecules tilt toward the field direction, light starts to pass, and the pixel turns bright.
 
-Since 2004, Hydis, who developed the AFFS, has licensed the AFFS to the Japanese company Hitachi Displays, where people are developing complicated AFFS LCD panels. Hydis has improved display properties like outdoor readability of the screen, making it even more appealing to use for its main application: mobile phones displays.
+The direct benefit of the normally black state is a deep black level, giving contrast significantly higher than TN and IPS.
 
-## TN, IPS, and MVA Comparison
+The weakness of VA also comes from the vertical alignment: at oblique angles the optical path differences across the layer are large, producing brightness and color shift. MVA (Multi-domain Vertical Alignment) solves this by dividing each pixel into multiple domains; protrusions (ridges) on the substrate make the molecules in different domains tilt in different directions, and the multi-directional compensation widens the viewing angle.
 
-TN (Twisted Nematic), IPS (In-Plane Switching), and MVA (Multi-Domain Vertical Alignment) are three prevalent types of LCD (Liquid Crystal Display) panel technologies. Each technology has unique characteristics that affect the display's performance, image quality, and suitability for different applications. This document compares TN, IPS, and MVA technologies based on several criteria.
+<figure markdown="span" class="displaywiki-figure">
+  [![Cross-section structure of an MVA panel](tft-panel-technologies-premium-mva-tft-displays.jpeg){ width="760" loading="lazy" }](tft-panel-technologies-premium-mva-tft-displays.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Cross-section structure of an MVA panel: between the upper and lower polarizers are substrates with ridges and a vertically aligned liquid-crystal layer, with the backlight at the bottom</figcaption>
+</figure>
 
-Key Differences
+Each pixel of an MVA panel consists of red, green, and blue sub-pixels, and each sub-pixel is further divided into two or more domains, with the molecules tilting in different directions within each domain because of the ridged substrate. When voltage is applied the molecules tilt, and the backlight exits in multiple directions, widening the viewing angle to about 150° while preserving color reproduction.
 
-TN (Twisted Nematic) Panels
+The typical behavior of these panels is a full black level with rich dark detail, and consistent color reproduction within about 75° in every direction.
 
-Technology: Twisted Nematic
+## 4. FFS / AFFS: Fringe Field Switching
 
-Manufacturing Process: Simpler and cheaper to produce
+FFS (Fringe Field Switching) and AFFS (Advanced Fringe Field Switching) can be seen as refinements of IPS: they likewise align the liquid-crystal molecules in a plane parallel to the substrates to obtain wide viewing angles, but the electrode structure is different, using fringe fields between transparent electrodes to drive the molecules.
 
-Orientation: Liquid crystals twist at 90 degrees when activated
+The most prominent advantage of AFFS is higher transmittance: the liquid-crystal layer absorbs less light energy and more light is delivered to the display surface, so it does not need as bright a backlight as IPS. The difference comes from the more compact, fully used active cell area beneath each pixel in AFFS.
 
-IPS (In-Plane Switching) Panels
+Since 2004, Hydis, the developer of AFFS, has licensed the technology to Hitachi Displays in Japan, which develops the more complex AFFS liquid-crystal panels. Hydis has continued to improve display performance, including outdoor readability, making the technology more attractive in its main application: mobile-phone displays.
 
-Technology: In-Plane Switching
+## 5. TN, IPS, and MVA Comparison
 
-Manufacturing Process: More complex and expensive
+TN (Twisted Nematic), IPS (In-Plane Switching), and MVA (Multi-Domain Vertical Alignment) are the three most common liquid-crystal display technologies. Each takes a different position on performance, image quality, and application scenarios; the tables below compare them on a unified set of dimensions.
 
-Orientation: Liquid crystals rotate parallel to the panel
+### 5.1 Working Principles
 
-MVA (Multi-Domain Vertical Alignment) Panels
+| Item | TN | IPS | MVA |
+|---|---|---|---|
+| Full name | Twisted Nematic | In-Plane Switching | Multi-Domain Vertical Alignment |
+| Liquid-crystal alignment | 90° helical twist when unpowered | Parallel to the substrates; rotates in plane when powered | Perpendicular when unpowered; tilts when powered |
+| Field direction | Perpendicular to the substrates | Parallel to the substrates | Perpendicular to the substrates, multi-domain tilt |
+| Manufacturing complexity | Simple, low cost | Complex, high cost | Moderate |
+| Normal state | Normally white | Normally black | Normally black |
 
-Technology: Multi-Domain Vertical Alignment
+### 5.2 Advantages and Disadvantages
 
-Manufacturing Process: Intermediate complexity
+| Dimension | TN | IPS | MVA |
+|---|---|---|---|
+| Response speed | Fastest | Slower | Slower |
+| Contrast | Lowest | Moderate | Highest, deepest black level |
+| Viewing angle | Narrowest | Widest | Moderately wide |
+| Color accuracy | Poor | Best | Better than TN, below IPS |
+| Cost | Lowest | Highest | In the middle |
+| Power consumption | Relatively low | Relatively high | Moderate |
 
-Orientation: Liquid crystals align vertically and tilt when activated
+### 5.3 TN Panels
 
-Advantages and Disadvantages
+- Strengths: fastest response times, suited to fast-moving content; lowest manufacturing and purchasing cost; widely used in budget monitors and laptops.
+- Limitations: poorer color reproduction and calibration; narrow viewing angle with obvious color and contrast shift from the side; contrast below IPS and MVA.
 
-TN Panels
+### 5.4 IPS Panels
 
-### Advantages
+- Strengths: best color accuracy and consistency, suited to graphic design, photo editing, and other work that demands precise color; wide viewing angles with minimal color and contrast shift; a clear, well-balanced image.
+- Limitations: slower response than TN, so fast-moving scenes may show motion blur; more complex manufacturing and higher cost; higher power consumption than TN.
 
-- Response Time: Typically the fastest response times, making them ideal for fast-paced gaming.
+### 5.5 MVA Panels
 
-- Cost: Generally the cheapest to produce and purchase.
+- Strengths: higher contrast than TN and IPS with deeper blacks; better color accuracy than TN; wider viewing angles than TN.
+- Limitations: slower response than TN, not ideal for fast-paced gaming; more expensive than TN but cheaper than IPS; image quality better than TN but usually below IPS.
 
-- Availability: Widely available and commonly used in budget monitors and laptops.
+## 6. Typical Application Scenarios
 
-### Limitations
+| Technology | Typical applications |
+|---|---|
+| TN | Competitive gaming monitors, budget monitors and laptops; industrial devices that need extremely fast response or a fixed viewing direction |
+| IPS / FFS | Professional monitors (design, imaging, video editing), high-end monitors, tablets, and smartphones |
+| MVA | Home entertainment, general office monitors, and commercial or industrial displays that need high contrast |
 
-- Color Accuracy: Poorer color reproduction and less accurate color calibration.
+## 7. Selection Guide
 
-- Viewing Angles: Narrow viewing angles, leading to color and contrast shifts when viewed from the side.
+For industrial and embedded projects, start from three questions:
 
-- Contrast Ratio: Lower contrast ratios compared to IPS and MVA panels.
+1. **Viewing direction**: for multi-viewer or unfixed viewing angles, prefer IPS / FFS; for a fixed, head-on viewing direction, the narrow-angle weakness of TN is not a problem.
+2. **Image-quality priority**: when black level and contrast matter most (night monitoring, shadow detail), choose VA / MVA; when color reproduction and consistency matter most, choose IPS / FFS.
+3. **Cost and response**: for tight budgets or high-speed response (dynamic waveforms, video preview), TN still has value.
 
-- IPS Panels
+Keep in mind that panel mode alone does not determine brightness, lifetime, or environmental grade. Outdoor readability depends on backlight brightness, transflective structure, and surface treatment; low-temperature response depends on the liquid-crystal formulation and cell gap. Always verify against the datasheet and measured data of the exact model.
 
-### Advantages
+## 8. Frequently Asked Questions
 
-Color Accuracy: Superior color accuracy and consistency, excellent for professional work that requires precise color representation (e.g., graphic design, photo editing).
+??? question "Q1: What are the main advantages of IPS / FFS over TN?"
+    Wider viewing angles and more stable color. The molecules in IPS and FFS rotate within a plane parallel to the substrates, so the optical path changes little at oblique angles, and the color and brightness falloff seen from the side is much smaller than on TN. How much exactly improves still depends on the measured viewing-angle curves of the panel.
 
-- Viewing Angles: Wide viewing angles with minimal color and contrast shift.
+??? question "Q2: Why is VA known for high contrast?"
+    In VA the molecules align perpendicular to the substrates when unpowered and, together with crossed polarizers, block almost all light, forming a very deep black state. The darker the black, the higher the static contrast, so VA and MVA usually deliver higher contrast numbers than TN and IPS.
 
-- Image Quality: Generally better overall image quality with vibrant colors.
+??? question "Q3: Is TN obsolete?"
+    No. TN is still the fastest-responding and lowest-cost option and remains widely used in budget monitors, laptops, and industrial devices with a fixed viewing direction. As long as its viewing-angle and color weaknesses are acceptable in the application, TN is a reasonable choice.
 
-### Limitations
+??? question "Q4: Which panel mode offers the widest viewing angles?"
+    IPS and FFS / AFFS usually provide the best wide-angle color stability. But viewing-angle behavior is decided by measured data, and designs within the same technology family can differ noticeably, so check the viewing-angle curves and samples of the specific model before selecting.
 
-- Response Time: Slower response times compared to TN panels, which can lead to motion blur in fast-moving scenes.
+??? question "Q5: Can panel mode predict response time at low temperature?"
+    No. Low-temperature response depends on the liquid-crystal formulation, cell gap, drive method, and the specific gray-to-gray transitions, and the same panel mode can behave very differently across designs. Always consult the low-temperature response data of the exact model.
 
-- Cost: More expensive to produce and purchase due to complex manufacturing processes.
-
-- Power Consumption: Higher power consumption compared to TN panels.
-
-- MVA Panels
-
-### Advantages
-
-- Contrast Ratio: Higher contrast ratios than TN and IPS, providing deeper blacks and better overall contrast.
-
-- Color Accuracy: Better color accuracy than TN panels, though not as good as IPS panels.
-
-- Viewing Angles: Wider viewing angles than TN panels but generally narrower than IPS panels.
-
-### Limitations
-
-- Response Time: Slower response times than TN panels, which may not be ideal for fast-paced gaming.
-
-- Cost: Typically more expensive than TN panels but less expensive than IPS panels.
-
-- Image Quality: While better than TN panels, image quality is often not as high as IPS panels.
-
-- Use Cases and Applications
-
-- TN Panel Applications:
-
-- Gaming Monitors: Fast response times make them suitable for competitive gaming.
-
-- Budget Monitors: Affordable options for general computing and office work.
-
-- Laptops: Common in budget and mid-range laptops due to low cost.
-
-- IPS Panel Applications:
-
-- Professional Monitors: Ideal for graphic design, photo and video editing, and other color-critical tasks.
-
-- High-End Monitors: Used in premium monitors and displays for enhanced viewing experiences.
-
-- Tablets and Smartphones: Popular in mobile devices due to superior color reproduction and wide viewing angles.
-
-- MVA Panel Applications:
-
-- Home Entertainment: Good for watching movies and general media consumption due to high contrast ratios.
-
-- General Use Monitors: Suitable for a balance of work and entertainment, providing a middle ground between TN and IPS.
-
-- Business Monitors: Used in office environments where better image quality than TN is desired without the higher cost of IPS.
-
-## Panel-Technology Selection Summary
-
-TN, IPS and MVA panels each have unique strengths and weaknesses, making them suitable for different applications:
-
-TN LCD: Best for gaming and budget-friendly displays due to their fast response times and low cost.
-
-IPS LCD: Best for professional use and high-end displays due to their excellent color accuracy and wide viewing angles.
-
-MVA LCD: Offer a good balance for general use and home entertainment with higher contrast ratios and better image quality than TN panels but at a lower cost than IPS panels.
+??? question "Q6: For industrial equipment, how do I choose among TN / IPS / VA?"
+    Start with the viewing conditions: for a fixed, head-on viewing direction, the low cost and fast response of TN are acceptable; for multi-viewer or oblique viewing, choose IPS / FFS; when black level and contrast matter most, choose VA / MVA. Then weigh backlight brightness, transmission mode (transmissive, reflective, or transflective), and the operating temperature range together — never judge by panel mode alone.
 
 ## Related reading
 
 - [a-Si, LTPS, and IGZO TFT Backplanes Compared](tft-backplane-technologies.md)
 - [OLED Display Structure, Operation, and LCD Comparison](oled-display-basics.md)
 - [Transmissive, Reflective, and Transflective LCDs Compared](transmissive-reflective-transflective.md)
-
-## Frequently Asked Questions
-
-??? question "What is the main advantage of IPS or FFS?"
-    They generally provide wider viewing angles and more stable color than conventional TN panels, though exact performance varies by design.
-
-??? question "Why is VA known for high contrast?"
-    Its liquid-crystal alignment can create a strong dark state, producing deeper blacks when viewed under the intended conditions.
-
-??? question "Is TN obsolete?"
-    No. TN remains useful for cost-sensitive, fast-response, or controlled-viewing-direction products when its optical trade-offs are acceptable.
-
-??? question "Which panel mode usually provides the widest viewing angles?"
-    IPS and FFS implementations generally provide strong wide-angle color stability, but the exact panel data and sample must be evaluated.
-
-??? question "Can panel mode predict response time at low temperature?"
-    Not reliably. Check measured response across temperature for the exact liquid-crystal formulation, cell gap, drive method, and transition.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

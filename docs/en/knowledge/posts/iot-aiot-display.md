@@ -11,212 +11,227 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What application scenarios suit IoT smart display solutions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical scenarios include smart home control hubs and panels, industrial HMIs and equipment status displays, patient information terminals on medical devices, wearables, and interactive displays in retail and advertising. The test is simple: the device needs both local display interaction and network connectivity, under clear constraints on power consumption, size or cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why choose a SoC such as the ESP32 instead of an MCU plus a separate Wi-Fi module?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High integration is the core reason. A dual-mode SoC such as the ESP32 integrates processing, Wi-Fi, Bluetooth and display driving on a single chip, reducing the number of external components and PCB area, lowering system cost and design complexity, and avoiding the interface and co-design issues between an MCU and a separate communication module."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should edge AI and cloud AI divide the work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tasks with demanding real-time requirements, sensitive data or unstable networks belong on the device (such as wake-word recognition or simple image judgments); tasks that need large models, complex reasoning or cross-device data aggregation belong in the cloud. Local inference significantly reduces latency, while the cloud provides stronger compute and a more complete view of the data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you secure communication for IoT display devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The baseline capabilities are hardware encryption, secure boot and flash encryption: secure boot ensures the firmware has not been tampered with, flash encryption protects sensitive data in storage, and hardware encryption accelerates secure communication. On top of that, handle authentication, data encryption and signed firmware updates at the application layer, and complete vulnerability scanning and penetration testing during development."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the low-power benefits come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "First, the SoC itself supports multiple low-power modes, so it can sleep when idle and wake on events. Second, the high integration reduces the static power drawn by external components. Third, on the display side, high-brightness or transflective solutions can reduce backlight power. For battery devices, average power consumption and wake-up time must be budgeted together."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which interface resources matter when developing this kind of solution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the acquisition side, I2C, SPI, ADC and GPIO are commonly used to connect temperature & humidity, air quality, ambient light and knob devices; on the display side, choose RGB, SPI or MIPI DSI according to resolution and refresh rate; on the communication side, rely on the SoC's built-in Wi-Fi and Bluetooth. When designing, count the usage of each interface and reserve margin for debugging and expansion."
+      }
+    }
+  ]
+}
+</script>
+
 # IoT and AIoT Smart Display Solutions
 
 !!! abstract "Quick answer"
-    An IoT smart display combines local interaction with sensing and connectivity; an AIoT design adds local or cloud-assisted inference. A robust architecture keeps essential control usable when the network or cloud is unavailable.
+
+    The VIEWE IoT Smart series is built on an ESP32 or equivalent MCU — a highly integrated Wi-Fi + Bluetooth dual-mode SoC that puts sensor acquisition, graphical UI display and network connectivity on a single chip. With its balance of performance, power efficiency and peripheral interfaces, it has become a mainstream choice for smart display devices. This post covers the solution architecture, target industries, advantages, and the complete design and validation workflow.
 
 ## Key Takeaways
 
-- Partition UI, real-time control, connectivity, storage, cloud services, and inference before selecting hardware.
-- Define authentication, secure boot, encrypted communication, update recovery, and device lifecycle management early.
-- Budget processor, memory, network, display, audio, camera, thermal, and power requirements using real workloads.
+- The core of the solution is a dual-mode SoC: it provides both Wi-Fi and Bluetooth connectivity while driving a TFT display and touch interaction.
+- High integration simplifies system design: acquisition, display and connectivity are handled by a single chip, reducing external components and overall device cost.
+- Rich peripheral interfaces (GPIO, ADC, DAC, I2C, SPI, UART) make it easy to connect a wide range of sensors and actuators.
+- Hardware encryption, secure boot and flash encryption form the baseline security capability and are prerequisites for connecting IoT devices to the cloud.
 
+## 1. Solution Overview
 
-## IoT and AIoT Display Architecture
+The VIEWE IoT Smart series, developed on an ESP32 or equivalent MCU, is a highly integrated Wi-Fi and Bluetooth dual-mode SoC (System on Chip) designed for IoT (Internet of Things) and AIoT (Artificial Intelligence of Things) applications. With strong performance, low power consumption and rich peripheral interfaces, these smart displays have become a popular choice for a wide range of smart-screen applications.
 
-The VIEWE IOT Smart series, developed by ESP32 or equivalent MCU, is a highly integrated Wi-Fi and Bluetooth dual-mode SoC (System on Chip) designed for IoT (Internet of Things) and AIoT (Artificial Intelligence of Things) applications. With its powerful performance, low power consumption, and rich peripheral interfaces, VIEWE IOT Smart Display has become a popular choice for various Smart display applications. Here are the key application industry:
+The value of the solution is that it consolidates three traditionally separate functions onto a single chip:
 
-1. Smart Home
+- **Sensing**: read sensor data through GPIO, ADC, I2C, SPI, UART and other interfaces.
+- **Display**: drive a TFT display with touch, run a graphical user interface and refresh it in real time.
+- **Connectivity**: communicate with the cloud, mobile phones or other devices over Wi-Fi or Bluetooth.
 
-In the Smart home sector, the need for intuitive and interactive display interfaces is crucial for monitoring and controlling home automation systems. VIEWE Smart displays can show real-time data from various sensors (temperature, humidity, air quality, etc.) and allow users to control devices like lights, thermostats, and security systems via a touchscreen or voice commands.
+## 2. Solution Architecture
 
-2. Industrial Automation
+The diagram below shows the complete chain from the sensing layer to the application layer:
 
-Industrial environments require robust and reliable systems for monitoring and controlling machinery and processes. VIEWE IOT Smart displays can be used to show sensor data, equipment status, and operational parameters. Their connectivity features enable real-time communication with other industrial systems and remote monitoring capabilities.
+<figure markdown="span" class="displaywiki-figure">
+  [![VIEWE IoT AIoT smart display solution architecture, from bottom to top: sensing layer, smart display terminal, connectivity layer and application layer](iot-aiot-display-architecture-en.png){ width="760" loading="lazy" }](iot-aiot-display-architecture-en.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>IoT / AIoT smart display solution architecture: the sensing layer connects temperature & humidity, air quality, ambient light, camera and knob devices via GPIO / ADC / I2C / SPI / UART; the smart display terminal consists of an ESP32 / MCU SoC, an LVGL graphical UI and a TFT display + touch; the connectivity layer provides Wi-Fi, Bluetooth BLE and cloud / edge AI capabilities; the application layer covers smart home, industrial automation, healthcare, consumer electronics, and retail & advertising.</figcaption>
+</figure>
 
-3. Healthcare
+## 3. Key Application Industries
 
-In healthcare applications, VIEWE IOT Smart displays can provide critical information such as patient vital signs, medical records, and treatment schedules. These displays can be integrated into medical devices to ensure that healthcare providers have instant access to important patient data, enhancing the quality of care and operational efficiency.
+**1. Smart Home**
 
-4. Consumer Electronics
+In the smart home sector, intuitive and interactive display interfaces are essential for monitoring and controlling home automation systems. VIEWE smart displays can show real-time data from various sensors (temperature, humidity, air quality, etc.) and allow users to control devices such as lights, thermostats and security systems via a touch screen or voice commands.
 
-Devices like Smartwatches, fitness trackers, and other wearable gadgets benefit from the compact and efficient VIEWE IOT MCU/SoC. These devices can display real-time health metrics, notifications, and user interactions. The low power consumption of MCU/SoC  ensures long battery life, which is essential for portable devices.
+**2. Industrial Automation**
 
-5. Retail and Advertising
+Industrial environments require stable and reliable systems for monitoring machinery and processes. VIEWE IoT smart displays can show sensor data, equipment status and operating parameters, while their connectivity enables real-time communication with other industrial systems and remote monitoring.
 
-In retail and advertising, dynamic and interactive displays can enhance customer engagement and provide personalized shopping experiences. VIEWE IOT Smart displays can show promotional content, product information, and advertisements tailored to the customer's preferences and behaviors.
+**3. Healthcare**
 
-## Benefits and Design Trade-offs
+In healthcare applications, the devices can present critical information such as patient vital signs, medical records and treatment schedules. Displays integrated into medical devices give healthcare providers instant access to important data, improving both quality of care and operational efficiency.
 
-- VIEWE IoT/AIoT Smart displays offer several unique advantages that make them ideal for various applications:
+**4. Consumer Electronics**
 
-- 1. High Integration
+Smartwatches, fitness trackers and other wearable devices benefit from the compact and efficient MCU/SoC: they can display real-time health metrics, notifications and interactive interfaces, while low power consumption guarantees battery life — critical for portable devices.
 
-VIEWE IOT Smart display integrates Wi-Fi, Bluetooth, and dual-core processing power, providing a comprehensive solution for connectivity and computation. This high level of integration simplifies the design process and reduces the overall system cost.
+**5. Retail and Advertising**
 
-- 2. Low Power Consumption
+In retail and advertising, dynamic and interactive displays can boost customer engagement and deliver personalized shopping experiences. Devices can show tailored promotional content, product information and broadcast messages based on customer preferences and behavior.
 
-VIEWE IOT Smart display is designed with energy efficiency in mind, supporting various power-saving modes. This feature is crucial for battery-operated devices, allowing for extended operation times without frequent recharging.
+## 4. Solution Advantages
 
-- 3. Versatile Connectivity
+1. **High integration**: Wi-Fi, Bluetooth and dual-core processing are integrated on one chip, providing a complete solution for connectivity and computation, simplifying design and reducing total system cost.
+2. **Low power consumption**: energy efficiency is a design priority, with multiple low-power modes — crucial for battery-operated devices, extending run time without frequent recharging.
+3. **Versatile connectivity**: built-in Wi-Fi and Bluetooth allow seamless integration with a wide range of IoT devices and networks.
+4. **Rich peripheral interfaces**: GPIO, ADC, DAC, I2C, SPI, UART and other interfaces make it easy to integrate sensors, displays and other components for different applications.
+5. **Real-time processing**: the dual-core processor together with a real-time operating system such as FreeRTOS handles complex tasks and real-time data efficiently.
+6. **Security features**: hardware encryption, secure boot and flash encryption protect data and secure communication, helping devices and networks withstand potential threats.
+7. **Cost effectiveness**: a high-performance solution at a competitive price, making it an economical choice for developing smart display devices.
+8. **Mature community and ecosystem**: an active developer community with comprehensive documentation, libraries and development tools accelerates development and troubleshooting, shortening time to market.
+9. **AI capabilities**: capable of basic AI tasks such as voice recognition and image processing. Local inference improves responsiveness and reduces latency compared with purely cloud-based solutions, which is particularly valuable for AIoT applications.
 
-With built-in Wi-Fi and Bluetooth capabilities, VIEWE IOT Smart display can seamlessly connect to a wide range of IoT devices and networks. This versatility enables it to support various communication protocols and integrate into different environments easily.
+## 5. Design and Testing Process
 
-- 4. Rich Peripheral Interfaces
+Designing and testing an IoT / AIoT smart display solution requires a systematic approach to ensure effective hardware–software integration and complete functional validation.
 
-VIEWE IOT Smart display supports a wide range of peripheral interfaces, including GPIO, ADC, DAC, I2C, SPI, and UART. This extensive support allows for the easy integration of various sensors, displays, and other components, making it highly adaptable for different applications.
+### 5.1 Design Process
 
-- 5. Real-Time Processing
+**1) Requirements Analysis**
 
-With its powerful dual-core processor and support for real-time operating systems like FreeRTOS, VIEWE IOT Smart display can handle complex tasks and real-time data processing efficiently. This capability is essential for applications requiring immediate responses and high reliability.
+- User requirements: identify application scenarios (such as smart home, industrial automation, etc.) and gather specific requirements for functionality, performance and interfaces.
+- Technical requirements: define system-level specifications including hardware, communication protocols, power consumption and security.
 
-- 6. Advanced Security Features
+**2) Concept Design**
 
-Security is a critical concern in IoT applications. VIEWE IOT Smart display includes hardware encryption, secure boot, and flash encryption features to protect data and ensure secure communication. These advanced security measures help safeguard the device and network from potential threats.
+- System architecture: draw the system architecture diagram and define the connections between the smart display, the main board, sensors and interface modules.
+- Functional modules: partition the design into data acquisition, data processing, user interface and communication modules.
 
-- 7. Cost-Effective
+**3) Hardware Design**
 
-VIEWE IOT Smart display offers a high-performance solution at a competitive price, making it a cost-effective choice for developing Smart display devices. Its affordability does not compromise on features, making it accessible for a wide range of applications.
+- Schematic design: use EDA tools to create schematics and determine the connections between electronic components.
+- Circuit design: design the PCB layout based on the schematics, paying attention to signal integrity, power distribution and thermal management.
+- Component selection: choose displays, sensors, storage and power management modules that meet the requirements.
 
-- 8. Robust Community and Ecosystem
+**4) Software Design**
 
-The VIEWE IOT Smart display has a large and active community, providing extensive documentation, libraries, and development tools. This robust ecosystem accelerates development and troubleshooting, enabling faster time-to-market for new products.
+- Operating system: select and configure a suitable real-time operating system (such as FreeRTOS).
+- Driver development: write drivers for peripherals, covering UART, I2C, SPI and other interfaces.
+- Application development: design the user interface, develop data processing and communication modules, and implement the application functions.
+- Security design: integrate data encryption, authentication and secure communication.
 
-- 9. AI Capabilities
+**5) Prototyping**
 
-VIEWE IOT Smart display is equipped to handle basic AI tasks, such as voice recognition and image processing. This capability is particularly useful for AIoT applications, where local processing of AI tasks can enhance performance and reduce latency compared to cloud-based solutions.
+- Hardware prototype: build prototype hardware and run preliminary tests to verify the correctness and performance of the hardware design.
+- Software prototype: deploy the software on the hardware prototype and perform initial functional testing.
 
-## Development and Validation Process
+### 5.2 Testing Process
 
-Designing and testing an IoT/AIoT Smart Display solution requires a systematic approach to ensure the effective integration of hardware and software and comprehensive validation of functionality. Below is a detailed design and testing process:
+**1) Unit Testing**: test individual hardware components (display, sensors, interface modules) for function and performance; unit-test the software modules with simulators or real hardware to verify each module's independent functionality and stability.
 
-1. Design Process
+**2) Integration Testing**: integrate all hardware components and verify overall system function and performance to ensure all parts work together; run the complete software system on real hardware to verify interactions and data flow between modules.
 
-### Requirements Analysis
+**3) System Testing**
 
-User Requirements: Identify application scenarios (such as smart home, industrial automation, etc.) and gather specific user requirements for functionality, performance, and interface.
+- Functional testing: fully verify that system functions meet user requirements and technical specifications.
+- Performance testing: test response time, data throughput and power consumption under different loads.
+- Reliability testing: run long-duration tests to verify stability and reliability.
+- Compatibility testing: verify compatibility with other devices and systems to ensure correct operation in different environments.
 
-Technical Requirements: Define the technical requirements of the system, including hardware specifications, communication protocols, power consumption, and security.
+**4) User-Experience Testing**: invite target users for experience testing, collect feedback and evaluate interface usability and system practicality, then improve and optimize accordingly.
 
-### System Architecture
+**5) Security Testing**
 
-System Architecture: Create a system architecture diagram to define the connections between the VIEWE IOT smart display and other hardware components (such as main board, sensors, interface modules).
+- Vulnerability scanning: use security tools to detect vulnerabilities and weaknesses in the system.
+- Penetration testing: simulate attacker behavior to evaluate the system's defenses.
+- Security audit: review code and system configuration to ensure compliance with security standards and best practices.
 
-Functional Modules: Define the functional modules, including data acquisition, data processing, user interface, and communication modules.
+**6) Acceptance Testing**: perform final verification to confirm that all functions and performance indicators meet the design requirements; prepare test reports and user manuals documenting the results and providing operation guidelines.
 
-### Hardware Design
+### 5.3 Deployment and Maintenance
 
-Schematic Design: Use EDA tools to create schematics, determining the connections and relationships between electronic components.
+- **Deployment**: install the devices on site and complete commissioning to ensure the system runs correctly; provide operation training for users.
+- **Maintenance**: provide remote technical support, carry out regular system checks and maintenance, and update software versions and security patches promptly; respond to faults quickly to minimize downtime.
 
-PCB Design: Design the printed circuit board (PCB) layout based on the schematics, considering signal integrity, power distribution, and thermal management.
+Following the process above ensures that the smart display solution achieves the expected quality and reliability and meets the needs of a wide range of application scenarios.
 
-Component Selection: Choose display screens, sensors, storage devices, and power management modules that meet the design requirements.
+## 6. Selection Considerations
 
-### Software Design
+- **Confirm connectivity needs**: for scenarios that require Wi-Fi and Bluetooth simultaneously, choose a dual-mode SoC first; if only wired communication is needed, a lower-cost option may be considered.
+- **Check display specifications**: clarify resolution, refresh rate and interface type (RGB, SPI, MIPI DSI, etc.), and confirm that the SoC's display driver capability matches.
+- **Evaluate peripheral resources**: count the GPIO, ADC, I2C, SPI and UART usage according to the number of sensors and actuators, and reserve margin for debugging and expansion.
+- **Work out the power budget**: for battery-powered devices, evaluate the wake-up time and average power consumption of each low-power mode.
+- **Confirm security requirements**: for scenarios that upload data to the cloud, verify that secure boot, flash encryption and secure communication meet the requirements.
+- **Assess AI compute**: if local voice or image processing is needed, confirm in advance that compute, memory and model size are a match.
 
-Operating System: Select and configure a suitable real-time operating system (such as FreeRTOS).
+## 7. Frequently Asked Questions
 
-Driver Development: Develop drivers for peripherals, including UART, I2C, SPI, and other interfaces.
+??? question "Q1: What application scenarios suit IoT smart display solutions?"
+    Typical scenarios include smart home control hubs and panels, industrial HMIs and equipment status displays, patient information terminals on medical devices, wearables, and interactive displays in retail and advertising. The test is simple: the device needs both local display interaction and network connectivity, under clear constraints on power consumption, size or cost.
 
-Application Development: Design the user interface, develop data processing and communication modules, and implement specific application functions.
+??? question "Q2: Why choose a SoC such as the ESP32 instead of an MCU plus a separate Wi-Fi module?"
+    High integration is the core reason. A dual-mode SoC such as the ESP32 integrates processing, Wi-Fi, Bluetooth and display driving on a single chip, reducing the number of external components and PCB area, lowering system cost and design complexity, and avoiding the interface and co-design issues between an MCU and a separate communication module.
 
-Security Design: Integrate security features such as data encryption, authentication, and secure communication.
+??? question "Q3: How should edge AI and cloud AI divide the work?"
+    Tasks with demanding real-time requirements, sensitive data or unstable networks belong on the device (such as wake-word recognition or simple image judgments); tasks that need large models, complex reasoning or cross-device data aggregation belong in the cloud. Local inference significantly reduces latency, while the cloud provides stronger compute and a more complete view of the data.
 
-### Prototyping
+??? question "Q4: How do you secure communication for IoT display devices?"
+    The baseline capabilities are hardware encryption, secure boot and flash encryption: secure boot ensures the firmware has not been tampered with, flash encryption protects sensitive data in storage, and hardware encryption accelerates secure communication. On top of that, handle authentication, data encryption and signed firmware updates at the application layer, and complete vulnerability scanning and penetration testing during development.
 
-Hardware Prototyping: Build hardware prototypes and conduct preliminary testing to verify the correctness and performance of the hardware design.
+??? question "Q5: Where do the low-power benefits come from?"
+    First, the SoC itself supports multiple low-power modes, so it can sleep when idle and wake on events. Second, the high integration reduces the static power drawn by external components. Third, on the display side, high-brightness or transflective solutions can reduce backlight power. For battery devices, average power consumption and wake-up time must be budgeted together.
 
-Software Prototyping: Deploy software on the hardware prototypes and perform initial functionality testing.
-
-2. Testing Process
-
-### Unit Testing
-
-Hardware Testing: Test the functionality and performance of individual hardware components (such as display screens, sensors, interface modules) to ensure they meet design requirements.
-
-Software Testing: Use simulators or actual hardware to conduct unit testing of software modules, verifying the independent functionality and stability of each module.
-
-### Integration Testing
-
-Hardware Integration Testing: Integrate all hardware components and test the overall functionality and performance of the system, ensuring all parts work together seamlessly.
-
-Software Integration Testing: Run the complete software system on actual hardware, testing the interactions and data flow between software modules to verify the overall system functionality.
-
-### System Testing
-
-Functional Testing: Conduct comprehensive testing of all system functions to ensure they meet user requirements and technical specifications.
-
-Performance Testing: Test the system's performance under various load conditions, including response time, data throughput, and power consumption.
-
-Reliability Testing: Perform long-term operation testing to verify the stability and reliability of the system over extended periods.
-
-Compatibility Testing: Test the system's compatibility with other devices and systems to ensure it operates correctly in different environments.
-
-### User-Experience Testing
-
-User Testing: Invite target users for experience testing, collect feedback and suggestions, and evaluate the usability of the user interface and practicality of the system.
-
-Improvements and Optimization: Make improvements and optimizations based on user feedback and testing results to enhance the user experience and system performance.
-
-### Security Testing
-
-Vulnerability Scanning: Use security scanning tools to detect security vulnerabilities and weaknesses in the system.
-
-Penetration Testing: Simulate attacker behavior to perform penetration testing and evaluate the system's defense capabilities.
-
-Security Audit: Review code and system configurations to ensure compliance with security standards and best practices.
-
-### Acceptance Testing
-
-Validation Testing: Conduct final validation testing to ensure all functions and performance indicators meet the design requirements.
-
-Documentation: Prepare detailed test reports and user manuals, documenting the test results and providing system operation guidelines.
-
-3. Deployment and Maintenance
-
-### Deployment
-
-On-Site Installation: Install the devices at designated locations, perform on-site debugging, and ensure the system operates correctly.
-
-User Training: Provide training to users on how to operate the system proficiently.
-
-### Lifecycle Maintenance
-
-Remote Support: Offer remote technical support to resolve any issues users encounter during operation.
-
-Regular Maintenance: Perform regular system checks and maintenance, update software versions and security patches to ensure the system remains stable.
-
-Fault Handling: Quickly respond to and address system faults to minimize downtime and improve system reliability.
-
-Following the systematic design and testing process outlined above ensures the high quality and reliability of the VIEWE Smart Display solution, meeting the needs of various application scenarios.
-
-## Design Summary
-
-VIEWE IOT Smart display series offer a versatile, powerful, and cost-effective solution for a wide range of applications, from Smart homes and industrial automation to healthcare and consumer electronics. Their high integration, low power consumption, versatile connectivity, and advanced security features make them an ideal choice for modern Smart display requirements. As the demand for Smart and connected devices continues to grow, VIEWE IOT Smart solutions will play a crucial role in shaping the future of IoT and AIoT applications.
+??? question "Q6: Which interface resources matter when developing this kind of solution?"
+    On the acquisition side, I2C, SPI, ADC and GPIO are commonly used to connect temperature & humidity, air quality, ambient light and knob devices; on the display side, choose RGB, SPI or MIPI DSI according to resolution and refresh rate; on the communication side, rely on the SoC's built-in Wi-Fi and Bluetooth. When designing, count the usage of each interface and reserve margin for debugging and expansion.
 
 ## Related reading
 
 - [Custom and Sunlight-Readable Display Solutions](custom-sunlight-readable-displays.md)
 - [High-Reliability Display Solutions](high-reliability-displays.md)
 - [UART Smart Display Solutions](uart-smart-display.md)
-
-## Frequently Asked Questions
-
-??? question "What is the difference between IoT and AIoT displays?"
-    IoT displays exchange device or cloud data, while AIoT displays also use machine-learning inference locally or through a service to interpret inputs or personalize behavior.
-
-??? question "Should an IoT display work offline?"
-    Critical controls and status should normally remain available locally. Decide which functions can degrade when connectivity or cloud services are unavailable.
-
-??? question "What security features should be planned?"
-    Typical requirements include unique device identity, secure boot, signed updates, encrypted transport, credential protection, access control, logging, and a supported update lifecycle.
-
-??? question "Should AI inference run locally or in the cloud?"
-    Choose from latency, privacy, connectivity, model size, update needs, compute, power, cost, and the required offline behavior.
-
-??? question "How should an AIoT display recover from a failed update?"
-    Use authenticated images, an atomic or dual-partition update strategy, health checks, rollback, protected credentials, and a documented service path.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

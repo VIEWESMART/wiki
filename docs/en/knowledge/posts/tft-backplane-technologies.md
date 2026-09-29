@@ -1,6 +1,6 @@
 ---
 title: "a-Si, LTPS, and IGZO TFT Backplanes Compared"
-description: "Compare a-Si, LTPS, and IGZO TFT backplanes by mobility, pixel density, power, uniformity, leakage, cost, and display application."
+description: "Compare a-Si, LTPS, and IGZO TFT backplanes by carrier mobility, process temperature, and cost, and see which resolutions, refresh rates, and applications each one suits."
 date: 2026-09-01
 categories:
   - Display Technology
@@ -12,156 +12,214 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the core difference between a-Si, LTPS, and IGZO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The core difference lies in the material and crystalline state of the semiconductor layer, which in turn sets carrier mobility. a-Si is amorphous silicon with mobility around 0.5–1 cm²/V·s and the lowest cost; LTPS is poly-silicon with mobility up to about 100 cm²/V·s, the strongest performance but the highest cost; IGZO is an oxide semiconductor with mobility around 10–20 cm²/V·s, in the middle and with extremely low leakage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is LTPS suited to high PPI displays?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High PPI means smaller pixels and a shorter charging time, so the transistor must deliver enough drive current to charge the pixel voltage within a very short window. LTPS has high mobility, so a transistor of the same size can supply more current and therefore charge faster at the same pixel size, which supports higher resolution and refresh rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the practical benefit of low leakage in IGZO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Low leakage means the pixel voltage can be held for a long time, so the refresh frequency can be reduced (low-frequency drive) without visible flicker, which cuts power consumption significantly. This is especially valuable where the display stays on but the content changes rarely, and it also makes it easier to achieve a narrow bezel together with high refresh."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do large-size TVs mostly use a-Si?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Large panels are extremely cost sensitive, and pixel density is relatively low, so the mobility of a-Si is already sufficient. The a-Si process is mature, the generation lines are large, and the cost per unit area is low, which keeps it the mainstream choice for large-size TVs and digital signage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How large is the cost difference between the three backplanes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The usual order is a-Si lowest, IGZO in the middle, LTPS highest. LTPS needs additional steps such as laser annealing, with high equipment and process complexity; IGZO needs oxide semiconductor deposition and tight stability control, so its cost falls between the two. The exact gap varies with generation line, volume, and yield, so ask the panel maker for actual quotations and yield data before volume production."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which backplane should my project use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with size and PPI: for large size, low PPI, and cost sensitivity choose a-Si; for small size and high PPI, or where high refresh is needed, choose LTPS; where high refresh must be combined with low power, or where content is static for long periods, choose IGZO. Once the route is fixed, confirm supply capability, production yield, and the system power budget with the panel maker."
+      }
+    }
+  ]
+}
+</script>
+
 # a-Si, LTPS, and IGZO TFT Backplanes Compared
 
 !!! abstract "Quick answer"
-    The TFT backplane controls pixels and strongly affects resolution, refresh behavior, power, aperture ratio, uniformity, and cost. a-Si is mature and economical, LTPS offers high mobility, and IGZO combines useful mobility with low leakage.
+    The core metric of a backplane technology is carrier mobility: a-Si is about 0.5–1 cm²/V·s, IGZO about 10–20 cm²/V·s, and LTPS up to 100 cm²/V·s. The higher the mobility, the faster a pixel can be charged, and the better the support for high PPI and high refresh rate, at the price of a more complex process. Rule of thumb: a-Si for large size and cost, LTPS for high PPI and high refresh, IGZO for low power and narrow bezel.
 
 ## Key Takeaways
 
-- Use a-Si for mature, cost-sensitive designs that do not require extreme pixel density or integration.
-- Consider LTPS for high-density or high-performance panels where mobility is critical.
-- Consider IGZO when low leakage, power efficiency, and higher resolution justify process and sourcing trade-offs.
+- All three backplanes are arrays of thin-film transistors; what separates them is the material and crystalline state of the semiconductor layer.
+- a-Si runs at around 300°C and costs the least, which suits large-size and mainstream displays.
+- LTPS has the highest mobility, up to 100 cm²/V·s, and is the first choice for high PPI and high refresh, but it needs laser annealing and costs the most.
+- IGZO sits in the middle (10–20 cm²/V·s) with extremely low leakage, which suits high refresh and low-power static display. It is the newer route.
 
+## 1. What a TFT Backplane Is
 
-## a-Si, LTPS, and IGZO Backplane Comparison
+The thin-film transistor (TFT) array is the pixel switch layer of liquid-crystal and some OLED displays. Every pixel is charged and discharged by one thin-film transistor, and how fast that transistor switches and how much it leaks depend on the material and the crystalline state of the semiconductor layer. That is what separates the different backplane routes:
 
-Thin-Film Transistor (TFT) technologies are essential in various display devices. Three prominent types of TFT technologies are a-Si (amorphous silicon), LTPS (Low-Temperature Polycrystalline Silicon), and IGZO (Indium Gallium Zinc Oxide). This document outlines the key differences between these technologies and compares their advantages and disadvantages.
+- **a-Si**: amorphous silicon
+- **LTPS**: low-temperature poly-silicon
+- **IGZO**: indium gallium zinc oxide
 
-a-Si TFT (Amorphous Silicon TFT)
+Thin-film transistor technology matters in every kind of display device. This article compares the operating principles and the application boundaries of these three mainstream routes.
 
-Material: Amorphous silicon
+!!! warning "Production note"
+    Under volume production or harsh conditions (high and low temperature, damp heat, vibration, ESD), check the datasheet curves for this parameter; running outside the specified range will significantly shorten lifetime.
 
-Manufacturing Temperature: Low (around 300°C)
+<figure markdown="span" class="displaywiki-figure">
+  [![a-Si, LTPS, and IGZO TFT backplanes compared](tft-backplane-comparison-en.png){ width="760" loading="lazy" }](tft-backplane-comparison-en.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Carrier mobility together with process temperature decides cost, achievable size, and application</figcaption>
+</figure>
 
-Electron Mobility: ~0.5 - 1 cm²/Vs
+## 2. The Three Backplanes at a Glance
 
-### Advantages
+| Item | a-Si | LTPS | IGZO |
+|---|---|---|---|
+| Semiconductor material | Amorphous silicon | Poly-silicon | Oxide semiconductor |
+| Carrier mobility | ~0.5 – 1 cm²/V·s | ~100 cm²/V·s | ~10 – 20 cm²/V·s |
+| Process temperature | Low, around 300°C | Below 600°C, needs laser annealing | Low to moderate |
+| Cost | Lowest | Highest | In the middle |
+| Maturity | Most mature | Mature | Relatively new |
+| Typical strength | Cost and large area | High PPI, high refresh, low power | High refresh plus low-power static display |
+| Typical applications | Large-size TVs, monitors, digital signage | Flagship phones, laptops, wearables | Tablets, laptops, 4K/8K TVs, medical displays |
 
-- Cost-Effective: Lower manufacturing costs due to simpler processes and lower temperatures.
+## 3. a-Si TFT (Amorphous Silicon)
 
-- Mature Technology: Well-established and widely used in various display applications.
+**Material**: amorphous silicon
+**Process temperature**: low, around 300°C
+**Carrier mobility**: about 0.5 – 1 cm²/V·s
 
-- Adequate Performance: Suitable for applications that do not require extremely high resolutions or fast response times.
+**Advantages**
 
-### Limitations
+- Cost effective: a simple process at low temperature keeps manufacturing cost down.
+- Mature technology: a well-established supply chain, widely used across display products.
+- Adequate for applications that do not need extremely high resolution or fast response.
 
-- Lower Mobility: Results in slower response times and limits on resolution and refresh rates.
+**Limitations**
 
-- Higher Power Consumption: Less efficient, affecting battery life in portable devices.
+- Lower mobility: response is slower, and both resolution and refresh rate are constrained.
+- Higher power consumption: lower efficiency, which affects battery life in portable devices.
+- Brightness and color accuracy: generally below LTPS and IGZO because electron transport is less efficient.
 
-- Brightness and Color Accuracy: Generally lower than LTPS and IGZO due to less efficient electron flow.
+**Typical applications**
 
-- Si TFT Applications:
+- TVs: commonly used in large-screen LCD TVs because of cost.
+- Monitors: suited to desktop monitors that do not demand extreme performance.
+- Entry-level smartphones and consumer devices: common where cost is the main consideration.
+- Digital signage: display scenarios that do not need high resolution or fast refresh.
 
-- Televisions: Commonly used in large screen LCD TVs due to cost efficiency.
+## 4. LTPS TFT (Low-Temperature Poly-Silicon)
 
-- Monitors: Suitable for computer monitors where extremely high performance is not critical.
+**Material**: poly-silicon
+**Process temperature**: below 600°C, and additional steps such as laser annealing are required
+**Carrier mobility**: about 100 cm²/V·s
 
-- Entry-Level Smartphones: Used in budget smartphones where cost is a significant factor.
+**Advantages**
 
-- Digital Signage: Effective for displays that do not require high resolutions or fast refresh rates.
+- High performance: high mobility supports high resolution, fast response, and higher refresh rate.
+- Power efficient: low consumption, which suits battery-powered devices such as phones and laptops.
+- Display quality: efficient electron transport gives better brightness, color accuracy, and overall image quality.
 
-- LTPS TFT (Low-Temperature Polycrystalline Silicon TFT)
+**Limitations**
 
-- Material: Polycrystalline silicon
+- Higher cost: a hotter process and a more complex flow raise manufacturing cost significantly.
+- Manufacturing complexity: needs more advanced production technology and equipment.
+- Yield risk: the process complexity can lead to lower yield than a-Si.
 
-- Manufacturing
+**Typical applications**
 
-- Temperature: Moderate (below 600°C)
+- High-end smartphones: excellent image quality and power behavior, common in flagship models.
+- Laptops: used for high-resolution screens where both performance and battery life matter.
+- Tablets: secures display quality together with power efficiency.
+- Wearables: suits smartwatches and other products that need high resolution at low power.
+- Professional monitors: for professional equipment that requires outstanding image quality and performance.
 
-- Electron Mobility: ~100 cm²/Vs
+## 5. IGZO TFT (Indium Gallium Zinc Oxide)
 
-### Advantages
+**Material**: oxide semiconductor
+**Process temperature**: low to moderate
+**Carrier mobility**: about 10 – 20 cm²/V·s
 
-- High Performance: High electron mobility allows for high resolutions, fast response times, and better refresh rates.
+**Advantages**
 
-- Power Efficiency: Lower power consumption, beneficial for battery-powered devices like smartphones and laptops.
+- Moderate mobility: better than a-Si and below LTPS, balancing performance against cost.
+- High transparency: allows higher light transmission, improving display brightness and efficiency.
+- Low power: extremely low leakage gives a clear advantage for static images, which suits e-paper and static display.
+- High resolution: supports high resolution and high pixel density.
 
-- Superior Display Quality: Better brightness, color accuracy, and overall display quality due to efficient electron flow.
+**Limitations**
 
-### Limitations
+- Cost: higher than a-Si, but generally lower than LTPS.
+- Relatively new: less mature than a-Si and LTPS, so development and manufacturing involve more challenges.
 
-- Higher Cost: More expensive manufacturing process due to higher temperatures and more complex procedures.
+**Typical applications**
 
-- Manufacturing Complexity: Requires advanced manufacturing technology and equipment.
+- Tablets and laptops: high-resolution displays that must balance performance and power.
+- 4K and 8K TVs: high resolution plus high energy efficiency suits advanced TV displays.
+- Medical displays: medical imaging places high demands on resolution and accuracy.
+- E-paper and static display: low power suits e-readers and other devices that show static content for long periods.
 
-- Potential Lower Yield Rates: Complexity can result in lower yields compared to a-Si.
+## 6. Selection Checklist
 
-- LTPS TFT Applications:
+- **Fix size and pixel density first**: for large size and low PPI, favor the cost advantage of a-Si; for small size and high PPI, LTPS or IGZO is required.
+- **Then look at refresh rate and power**: for portable devices that need high refresh, LTPS and IGZO are both clearly better than a-Si; for long static display, favor IGZO.
+- **Assess the leakage requirement**: when the pixel voltage must be held for a long time (low-frequency drive, low-power standby), the low leakage of IGZO is the key advantage.
+- **Account for cost and yield**: the LTPS process is complex and the most expensive, so yield and capacity must be assessed before volume production.
+- **Confirm supply and generation line**: different backplanes come from different panel generation lines, so long-term supply must be confirmed with the supplier.
 
-- High-End Smartphones: Preferred for flagship models due to superior display quality and power efficiency.
+## 7. Frequently Asked Questions
 
-- Laptops: Used in high-resolution laptop screens for better performance and battery life.
+??? question "Q1: What is the core difference between a-Si, LTPS, and IGZO?"
+    The core difference lies in the material and crystalline state of the semiconductor layer, which in turn sets carrier mobility. a-Si is amorphous silicon with mobility around 0.5–1 cm²/V·s and the lowest cost; LTPS is poly-silicon with mobility up to about 100 cm²/V·s, the strongest performance but the highest cost; IGZO is an oxide semiconductor with mobility around 10–20 cm²/V·s, in the middle and with extremely low leakage.
 
-- Tablets: Ensures high display quality and efficient power usage.
+??? question "Q2: Why is LTPS suited to high PPI displays?"
+    High PPI means smaller pixels and a shorter charging time, so the transistor must deliver enough drive current to charge the pixel voltage within a very short window. LTPS has high mobility, so a transistor of the same size can supply more current and therefore charge faster at the same pixel size, which supports higher resolution and refresh rate.
 
-- Wearable Devices: Ideal for smartwatches and other wearables that benefit from high resolution and low power consumption.
+??? question "Q3: What is the practical benefit of low leakage in IGZO?"
+    Low leakage means the pixel voltage can be held for a long time, so the refresh frequency can be reduced (low-frequency drive) without visible flicker, which cuts power consumption significantly. This is especially valuable where the display stays on but the content changes rarely, and it also makes it easier to achieve a narrow bezel together with high refresh.
 
-- High-Resolution Displays: Used in professional monitors and other devices requiring excellent display quality and performance.
+??? question "Q4: Why do large-size TVs mostly use a-Si?"
+    Large panels are extremely cost sensitive, and pixel density is relatively low, so the mobility of a-Si is already sufficient. The a-Si process is mature, the generation lines are large, and the cost per unit area is low, which keeps it the mainstream choice for large-size TVs and digital signage.
 
-- IGZO TFT (Indium Gallium Zinc Oxide TFT)
+??? question "Q5: How large is the cost difference between the three backplanes?"
+    The usual order is a-Si lowest, IGZO in the middle, LTPS highest. LTPS needs additional steps such as laser annealing, with high equipment and process complexity; IGZO needs oxide semiconductor deposition and tight stability control, so its cost falls between the two. The exact gap varies with generation line, volume, and yield, so ask the panel maker for actual quotations and yield data before volume production.
 
-- Material: Indium Gallium Zinc Oxide
-
-- Manufacturing Temperature: Low to moderate
-
-- Electron Mobility: ~10 - 20 cm²/Vs
-
-- Advantages and Disadvantages
-
-### Advantages
-
-- Moderate Mobility: Better electron mobility than a-Si but lower than LTPS, providing a good balance of performance.
-
-- High Transparency: Allows for higher transparency and better light transmission, improving display brightness and efficiency.
-
-- Power Efficiency: Lower power consumption, especially in static images, making it ideal for e-paper and static displays.
-
-- High Resolution: Supports high resolution and high pixel density displays.
-
-### Limitations
-
-- Cost: More expensive than a-Si but generally less costly than LTPS.
-
-- Relatively New Technology: Less mature than a-Si and LTPS, potentially leading to higher development and manufacturing challenges.
-
-- IGZO TFT Applications:
-
-- Tablets and Laptops: Used in high-resolution displays where a balance of performance and power efficiency is needed.
-
-- 4K and 8K Televisions: High resolution and good power efficiency make it suitable for advanced TV displays.
-
-- Medical Displays: High resolution and accuracy are critical for medical imaging applications.
-
-- E-paper and Static Displays: Low power consumption makes it ideal for static image displays and e-readers.
-
-## Backplane Selection Summary
-
-Each TFT technology has its unique strengths and weaknesses, making them suitable for different applications. a-Si TFTs are cost-effective and widely used for standard display applications, LTPS TFTs offer superior performance, high resolution(PPI) for high-end devices, and IGZO TFTs provide a good balance of performance and power efficiency for a range of advanced applications. Understanding the specific needs of the application can help in choosing the appropriate TFT technology.
+??? question "Q6: Which backplane should my project use?"
+    Start with size and PPI: for large size, low PPI, and cost sensitivity choose a-Si; for small size and high PPI, or where high refresh is needed, choose LTPS; where high refresh must be combined with low power, or where content is static for long periods, choose IGZO. Once the route is fixed, confirm supply capability, production yield, and the system power budget with the panel maker.
 
 ## Related reading
 
 - [IPS, TN, VA, and FFS TFT Panel Technologies Compared](tft-panel-technologies.md)
 - [OLED Display Structure, Operation, and LCD Comparison](oled-display-basics.md)
 - [Transmissive, Reflective, and Transflective LCDs Compared](transmissive-reflective-transflective.md)
-
-## Frequently Asked Questions
-
-??? question "Is the TFT backplane the same as the LCD mode?"
-    No. The backplane provides pixel-switching transistors, while TN, IPS, VA, and FFS describe liquid-crystal alignment and optical behavior.
-
-??? question "Why does carrier mobility matter?"
-    Higher mobility can support smaller transistors, faster pixel charging, higher pixel density, and greater circuit integration.
-
-??? question "Does IGZO always use less power?"
-    Its low leakage can help in suitable designs, but total display power also depends on backlight, refresh strategy, drivers, resolution, and content.
-
-??? question "Can the backplane technology be identified from the interface?"
-    No. Similar panel interfaces can be used with different backplanes; confirm the construction with the panel manufacturer.
-
-??? question "Which backplane parameters matter to an integrator?"
-    Resolution, refresh behavior, power, leakage, uniformity, optical performance, temperature behavior, lifetime, cost, and supply availability are more useful than the label alone.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

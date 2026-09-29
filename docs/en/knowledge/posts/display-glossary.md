@@ -10,127 +10,178 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a Cell, an LCM, and a module?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Cell is the liquid-crystal cell, containing only the two glass substrates, the liquid-crystal layer, the alignment layers, and the polarizers — the core light-modulation unit of the display. An LCM (LCD Module) adds driver circuitry, a backlight, and an interface on top of the Cell. A module is a broader term that usually also includes the cover lens, touch, and mechanical parts. Stating the level clearly when requesting a quote avoids misunderstandings about interfaces and scopes of responsibility."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I choose among transmissive, reflective, and transflective?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look at the lighting conditions of the usage environment. For mainly indoor or low-light use where high brightness and color matter, choose transmissive; for mainly strong outdoor light where power consumption is sensitive, choose reflective; when the screen must be readable both in sunlight and at night or in the dark, choose transflective. Note that transflective usually involves a compromise in brightness and color performance, so some trade-off must be accepted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the differences among the IPS, VA, MVA, and TN liquid-crystal modes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are mainly trade-offs among viewing angle, contrast, and response speed. TN is fast and cheap but has narrow viewing angles; VA offers high contrast and purer blacks but obvious off-angle color shift; MVA is a wide-viewing-angle improvement of VA; IPS has the widest viewing angles and the best color consistency, making it the overall preferred choice of the three, at a relatively higher cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I choose among I2C, SPI, RGB, and MIPI DSI interfaces?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start from the host's available pins and the bandwidth requirement. I2C uses the fewest lines but is the slowest, suited to small character displays and low-refresh graphics; SPI balances pins and speed, and QSPI further increases throughput; RGB is a parallel interface suited to small and medium sizes with moderate refresh rates; MIPI DSI uses high-speed differential signaling for high resolution and high refresh rates, but places the highest demands on the host and PCB design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How should I choose between capacitive and resistive touch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consider the operation method and the usage environment. Capacitive touch offers high light transmittance and supports multi-point and gesture input, suited to consumer and industrial scenarios that need fluid interaction, but recognition suffers with thick gloves or water on the screen. Resistive touch works with gloves, fingernails, or a stylus tip and adapts well to harsh environments, at the cost of lower transmittance and shorter life, and usually without multi-point support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do terminology definitions differ among suppliers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The display industry has long used Chinese and English abbreviations side by side. Some terms come from process names (such as COG and LCM), others from optical or interface standards (such as MVA and MIPI DSI), and cross-language translation differences add ambiguity and mistranslation. The reliable practice is to define the boundary of every term explicitly in technical agreements and specification sheets, and to treat drawings as authoritative rather than verbal consensus."
+      }
+    }
+  ]
+}
+</script>
+
 # Display Technology Glossary
 
 !!! abstract "Quick answer"
-    This glossary defines common display terms in engineering context so specifications, quotations, and design reviews use consistent language. Follow the linked guides when a term requires deeper selection guidance.
+    Terminology confusion in the display industry comes mainly from three sources: the same word means different things to different suppliers (such as the boundary between a Cell and an LCM), Chinese and English abbreviations coexist (such as COG and MVA), and machine translation introduces mistranslations (such as rendering "polarizer" as a "polarizing agent"). This article organizes common terms into five categories — display principles, panel structure and manufacturing, interfaces and communication, touch technology, and core devices — giving the accurate definition of each term and what it actually means for selection.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Display terminology map: five categories at a glance](display-glossary-terminology-map-en.png){ width="760" loading="lazy" }](display-glossary-terminology-map-en.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Display terminology map at a glance: common terms grouped into display principles, panel structure, interfaces, touch, and core devices, so each term can be located quickly by scenario.</figcaption>
+</figure>
 
 ## Key Takeaways
 
-- Distinguish technology families, such as LCD and OLED, from subtypes and driving methods such as TFT, IPS, and passive matrix.
-- Read optical values together with their units, test conditions, and typical or guaranteed status.
-- Use consistent interface, touch, bonding, and mechanical terminology across drawings and supplier communication.
+- Display terms fall into five groups: display principles and types, panel structure and manufacturing, interfaces and communication, touch technology, and core devices and systems.
+- The most easily confused aspect is the structural hierarchy: liquid-crystal cell → module (LCM) → finished device — the word "screen" does not refer to the same thing in every context.
+- The optical mode (transmissive / reflective / transflective) directly determines outdoor readability and power consumption; it is the first fork in the selection process.
+- Interfaces and touch each have their own trade-off dimensions and must be evaluated together with host resources, pin budget, and the usage environment.
+- Terminology definitions may differ between suppliers; before mass production, rely on drawings and specification sheets rather than verbal agreements.
 
-<figure markdown="span" class="displaywiki-figure">
-  [![Display terminology map: five categories at a glance](display-glossary-terminology-map-en.png){ width="760" loading="lazy" }](display-glossary-terminology-map-en.png){ .displaywiki-image-link title="View original" }
-  <figcaption>Display terminology map: common terms grouped into display basics, panel structure, interfaces, touch, and core devices, so each term can be located quickly by scenario.</figcaption>
-</figure>
+## 1. Display Principles and Types
 
+| Term | Definition and selection implications |
+|---|---|
+| **TFT** (Thin-Film Transistor) | An active-matrix LCD in which every pixel is driven by its own thin-film transistor, capable of full color, fast animation, and complex graphics — the mainstream display technology today. |
+| **LCD** (Liquid Crystal Display) | A display that uses liquid-crystal molecules to modulate how much backlight passes through; divided into active-matrix (TFT) and passive-matrix types, presenting information as characters, graphics, or pixel-level content. |
+| **OLED** (Organic Light-Emitting Diode) | Uses self-emissive organic materials, so no backlight is needed to achieve high visibility in most environments; high contrast, fast response, and available in flexible form factors. |
+| **MVA** (Multi-domain Vertical Alignment) | A wide-viewing-angle LCD mode that splits each sub-pixel into multiple alignment domains to widen the viewing angle; better than early TN and second only to IPS. |
+| **IPS** (In-Plane Switching) | Liquid-crystal molecules rotate in planes parallel to the substrates; wide viewing angles and good color consistency make it the mainstream wide-viewing-angle LCD mode. |
+| **TN** (Twisted Nematic) | Fast response and low cost, but noticeable viewing-angle and color shift; suited to instruments, cost-sensitive products, and fixed viewing positions. |
+| **VA** (Vertical Alignment) | Liquid-crystal molecules align perpendicular to the substrates; high contrast and purer blacks, at the cost of trade-offs in viewing-angle color shift and response time. |
+| **Transmissive** | Relies entirely on backlight illumination; high brightness and suited to indoor and low-light environments, but readability is poor under direct strong light. |
+| **Reflective** | Uses ambient light for illumination with no backlight, so power draw is extremely low; the display is clearer in strong light but unreadable in the dark. |
+| **Transflective** | Combines transmissive and reflective properties, working in both strong light and low light — the compromise for outdoor devices that must balance readability and power consumption. |
 
-COG
+## 2. Panel Structure and Manufacturing
 
-(Chip-On-Glass) These displays are monochromatic passive matrix LCDs. They can be a character or graphic display type, and designed without a PCB. Instead, the LCD's driver/controller is directly bonded to the glass of the display, allowing a more compact size.
+| Term | Definition and selection implications |
+|---|---|
+| **COG** (Chip-On-Glass) | The driver IC is bonded directly onto the glass substrate without a separate PCB, giving a more compact structure and smaller size; common in character and graphic monochrome LCDs. |
+| **PCB** (Printed Circuit Board) | A substrate that mechanically supports and electrically connects electronic components; the carrier of the driver and interface circuits. |
+| **Header / Through-hole** | A connector made of rows of small open holes; its pin layout is compatible with common development boards, making it easy to connect display modules to platforms such as Arduino for rapid prototyping and validation. |
+| **Backlight Unit** | The light-source assembly behind the LCD cell, usually composed of LEDs and a light guide plate; it directly determines the brightness and uniformity of a transmissive display. |
+| **Polarizer** | An optical film that passes light of only a specific polarization direction; it is the prerequisite for liquid-crystal light modulation; it is occasionally mistranslated in the industry as a "polarizing agent", but it is the same component. |
+| **Cell** | The core light-modulation unit consisting of two glass substrates, the liquid-crystal layer, alignment layers, and polarizers; it does **not** include driver circuitry or a backlight. |
+| **Module** (LCM, LCD Module) | The complete assembly of cell + driver circuitry + backlight + interface — what is colloquially called "the screen". |
+| **Optical Bonding** | Fills the air gap between the cover lens and the display layer with optical adhesive, improving light transmittance and contrast and significantly enhancing readability in strong light. |
 
-Embedded System
+## 3. Interfaces and Communication
 
-A computer system with a dedicated function within a larger mechanical system. It is embedded as part of a complete device often including hardware and mechanical parts. Embedded Systems often have a lot of constraints on aspects like computational resources, power consumption, bandwidth, physical size, and cost. An example of an embedded system might be a microcontroller built into a microwave, air-conditioner, TV, etc.
+| Term | Definition and selection implications |
+|---|---|
+| **HDMI** (High-Definition Multimedia Interface) | Transmits audio and video in a standardized digital format and is the replacement for analog video interfaces; an HDMI TFT module connects with a single standard HDMI cable, with no extra protocol conversion required. |
+| **I2C** (I-squared-C) | Lets an MCU control peripheral chips with only two I/O lines; suited to scenarios where simplicity and low manufacturing cost matter more than speed, saving both development time and I/O resources. |
+| **SPI and QSPI** | SPI is a serial interface that transfers data bit by bit, using few pins; QSPI (Quad SPI) is a four-line SPI that provides higher throughput within the same pin budget. |
+| **RGB** | A parallel interface that transfers pixel data clock-by-clock; suited to small and medium sizes with moderate refresh-rate requirements, but uses a relatively large number of pins. |
+| **MIPI DSI** | The Display Serial Interface defined by the MIPI Alliance; it uses high-speed differential signaling and suits high-resolution, high-refresh-rate applications. |
+| **UART** | Universal Asynchronous Receiver-Transmitter; commonly used by serial smart displays, with simple wiring and a low development barrier, but limited bandwidth and transmission distance. |
+| **Synchronous interface** | Every transmitted bit has a paired receiving bit; it needs more pins in exchange for deterministic timing. |
+| **Parallel interface** | Multiple bits are transferred simultaneously; fast but pin-heavy and complex to route, common on older MCU interfaces. |
 
-HDMI
+## 4. Touch Technology
 
-(High Definition Multimedia Interface) Allows for information to be sent in a standardized digital format. This interface is quickly becoming the replacement for analog video and is growing in demand. You may be familiar with this term in relation to your TV or monitor – and the HDMI TFT Modules are equally as easy to connect to, you just need a standard HDMI cable.
+| Term | Definition and selection implications |
+|---|---|
+| **Capacitive touch** | Locates touches through capacitive coupling between the finger and the sensor; high sensitivity and multi-point support, but thick gloves or other insulators block the coupling and cause unresponsive touches. |
+| **Resistive touch** | Relies on the top layer of the panel being pressed into contact with the lower layers; it works with thick gloves or an ordinary stylus, at the cost of lower light transmittance and shorter life. |
+| **Glove touch** | Enables capacitive operation while wearing gloves by raising the signal-to-noise ratio, adjusting algorithm thresholds, or using gloves woven with conductive fibers. |
+| **Waterproof touch** | Uses hydrophobic coatings to reduce water residue, plus multi-frequency signals and algorithms to distinguish "water droplet coverage" from "a real touch", suppressing false touches. |
+| **Multi-touch** | Supports recognizing multiple touch points simultaneously — the basis for pinch, rotate, and other gestures — and places higher demands on the touch IC's scanning and computing power. |
+| **Touch IC** | The chip that scans the electrodes, computes coordinates, and outputs touch events; its signal-to-noise ratio and algorithms directly determine the touch experience and interference immunity. |
 
-HMI
+## 5. Core Devices and Systems
 
-This is any device or software that allows you (a human) to interact with the workings of a machine. This could be as simple as a push button or a single-touch display, or a remote connection operated by a smartphone.
+| Term | Definition and selection implications |
+|---|---|
+| **IC** (Integrated Circuit) | Also called a chip or controller; it implements the display's driving and functions — in effect the brain of the display. |
+| **MCU** (Microcontroller Unit) | The main computer of the application system, issuing commands to the various electronic components; the computing and control core of an embedded device. |
+| **Embedded system** | A dedicated computing system, usually constrained in computing resources, power consumption, bandwidth, physical size, and cost — for example the controllers inside microwave ovens, air conditioners, and TVs. |
+| **LED** (Light-Emitting Diode) | A semiconductor light source used both as a status indicator and as the core device of backlights and dimming. |
+| **PWM dimming** | Controls the brightness of backlight LEDs via pulse-width modulation, with the duty cycle determining average brightness; too low a frequency can produce visible flicker. |
+| **Driver board** | The circuit board that converts input signals into the timing and voltages the panel requires — a key link in the display module's signal chain. |
+| **SoC** (System-on-Chip) | Integrates a processor, memory interfaces, and multiple peripherals on a single chip, such as the common ESP32 family. |
 
-IC
+## 6. Selection Notes on Terminology
 
-(Integrated Circuit) Also referred to as a “chip” or “controller.” This is a small piece of hardware that is responsible for the functionality of a display. Simply put, it is the brain of the display.
+- **Confirm first which level "screen" refers to**: a Cell, an LCM, a module, and a finished device have different boundaries, with different interfaces, quotations, and scopes of responsibility — be specific about the level when requesting a quote.
+- **Decide the optical mode before other parameters**: transmissive, reflective, and transflective determine outdoor readability and the power ceiling; a wrong choice here is hard to compensate for by tuning other parameters later.
+- **Match the interface to the host's resources**: I2C and SPI save pins but have limited bandwidth; RGB and MIPI DSI offer ample bandwidth but consume more pins and PCB layers.
+- **Evaluate touch separately from the display**: the touch IC, cover lens structure, and bonding method all affect the final experience — do not judge by the panel's specifications alone.
+- **Define terms in writing**: suppliers may use terms such as COG and LCM differently; before mass production, rely on drawings and specification sheets rather than verbal agreements.
 
-I2C Interface
+## 7. Frequently Asked Questions
 
-(I-squared-C) This interface is appropriate for peripherals where simplicity and low manufacturing costs are important, more than speed. You’ll save development time and I/O lines because of the capability of a microcontroller controlling the device chips with only two I/O pins and software. There are no extra boards or logic required for standard LCDs
+??? question "Q1: What is the difference between a Cell, an LCM, and a module?"
+    A Cell is the liquid-crystal cell, containing only the two glass substrates, the liquid-crystal layer, the alignment layers, and the polarizers — the core light-modulation unit of the display. An LCM (LCD Module) adds driver circuitry, a backlight, and an interface on top of the Cell. A module is a broader term that usually also includes the cover lens, touch, and mechanical parts. Stating the level clearly when requesting a quote avoids misunderstandings about interfaces and scopes of responsibility.
 
-LCD
+??? question "Q2: How should I choose among transmissive, reflective, and transflective?"
+    Look at the lighting conditions of the usage environment. For mainly indoor or low-light use where high brightness and color matter, choose transmissive; for mainly strong outdoor light where power consumption is sensitive, choose reflective; when the screen must be readable both in sunlight and at night or in the dark, choose transflective. Note that transflective usually involves a compromise in brightness and color performance, so some trade-off must be accepted.
 
-(Liquid Crystal Display) These are either active or passive matrix displays that can display information as text or pixel-by-pixel. Types we offer are: TFTs, COG, Graphic and Character LCDs.
+??? question "Q3: What are the differences among the IPS, VA, MVA, and TN liquid-crystal modes?"
+    They are mainly trade-offs among viewing angle, contrast, and response speed. TN is fast and cheap but has narrow viewing angles; VA offers high contrast and purer blacks but obvious off-angle color shift; MVA is a wide-viewing-angle improvement of VA; IPS has the widest viewing angles and the best color consistency, making it the overall preferred choice of the three, at a relatively higher cost.
 
-LED
+??? question "Q4: How should I choose among I2C, SPI, RGB, and MIPI DSI interfaces?"
+    Start from the host's available pins and the bandwidth requirement. I2C uses the fewest lines but is the slowest, suited to small character displays and low-refresh graphics; SPI balances pins and speed, and QSPI further increases throughput; RGB is a parallel interface suited to small and medium sizes with moderate refresh rates; MIPI DSI uses high-speed differential signaling for high resolution and high refresh rates, but places the highest demands on the host and PCB design.
 
-(Light Emitting Diode) LEDs are semiconductor light sources that emit light when current flows through it.
+??? question "Q5: How should I choose between capacitive and resistive touch?"
+    Consider the operation method and the usage environment. Capacitive touch offers high light transmittance and supports multi-point and gesture input, suited to consumer and industrial scenarios that need fluid interaction, but recognition suffers with thick gloves or water on the screen. Resistive touch works with gloves, fingernails, or a stylus tip and adapts well to harsh environments, at the cost of lower transmittance and shorter life, and usually without multi-point support.
 
-MCU
+??? question "Q6: Why do terminology definitions differ among suppliers?"
+    The display industry has long used Chinese and English abbreviations side by side. Some terms come from process names (such as COG and LCM), others from optical or interface standards (such as MVA and MIPI DSI), and cross-language translation differences add ambiguity and mistranslation. The reliable practice is to define the boundary of every term explicitly in technical agreements and specification sheets, and to treat drawings as authoritative rather than verbal consensus.
 
-(Microcontroller Unit) The MCU of an application is essentially the main computer that sends out all the commands to the various electronic components so the device can perform whatever its functions are.
+## Related reading
 
-MVA
-
-(Multi-domain Vertical Alignment) MVA could also be helpful remembered as “Multiple Viewing Angles.” This technology in TFTs changes how the sub-pixels in the display are divided and directed when shining through the screen and allow for an easy to read image from nearly any angle of viewing. This is secondary in best viewing angles after IPS technology.
-
-OLED
-
-(Organic Light Emitting Diode) OLED displays are self-illuminating due to their organic material and require no backlight for maximum visibility in all environments.
-
-Parallel Interface
-
-This interface requires many more pins because each transmitted bit goes to one paired receiving bit. It’s simple and fast in terms of communication, but at the cost of more occupied pins.
-
-PCB
-
-(Printed Circuit Board) A printed board that supports and electrically connects electronic components.
-
-PWM
-
-(Pulse Width Modulation) A type of digital signal used to control the dimming of backlight LEDs.
-
-Reflective
-
-This light mode uses reflective polarizers to benefit from ambient light environments without the need to power a backlight. However, without a backlight these displays suffer in low-light conditions with visibility.
-
-Resistive
-
-This is a type of touch panel that relies on the top layer of the panel to be pressed in and come in contact with the lower layers. The nature of this touch type allows for touch interaction even with thick gloves or objects.
-
-RJ45
-
-This is the technical name for the size and shape of the port that Ethernet cables are plugged into. An RJ45 port can connect with any cable with an RJ45 compatible head, this is not limited to only Ethernet cables.
-
-SPI / QSPI
-
-SPI is a serial interface. Its information is sent in series instead of all at once which allows for fewer pins to connect to. QSPI , or “Quad SPI,” is a more powerful SPI serial interface.
-
-TFT
-
-(Thin-Film Transistor) These are active matrix LCD displays with full RGB color. They exhibit bright color and have the ability to show fast animations and complex graphics.
-
-Through Hole
-
-This is a type of connector that is made up of rows of tiny open holes. The design of this connection is intended to make it much easier to develop and prototype with the display because of how easy it is to connect with a breadboard or Arduino board since it mimics their pin layout. In a VFD, the Through Hole is formed on the insulating layer connecting the anode electrode to the wiring pattern.
-
-Transflective
-
-This light mode uses both reflecting and transmitting properties, making it the most versatile. These displays perform adequately both in direct sunlight and low-light conditions.
-
-Transmissive
-
-This light mode depends on the power of a high brightness backlight. These displays are good for low-lighting viewing, but not for direct light conditions.
-
-## Frequently Asked Questions
-
-??? question "What is the difference between LCD and TFT?"
-    LCD is the broader display technology; TFT is an active-matrix method used to control individual pixels in many LCD panels.
-
-??? question "Are brightness and sunlight readability the same?"
-    No. Brightness is emitted luminance, while sunlight readability also depends on reflection, contrast, cover treatment, bonding, and viewing conditions.
-
-??? question "Why do display specifications use typical values?"
-    Optical and electrical properties vary with production, temperature, drive conditions, and measurement method. Confirm which limits are guaranteed for your application.
-
-??? question "How should an ambiguous display term be handled in a specification?"
-    Define the intended meaning, unit, measurement method, and acceptance limit instead of relying on an informal label.
-
-??? question "Where can I find selection guidance beyond a glossary definition?"
-    Use the related technical guides for comparisons, design constraints, and validation guidance tied to each term.
+- [High-Reliability Display Solutions](high-reliability-displays.md)
+- [IPS vs TN TFT Displays: Differences and Selection Guide](ips-vs-tn.md)
+- [LCD Basics: How Liquid Crystal Displays Work](lcd-basics.md)
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

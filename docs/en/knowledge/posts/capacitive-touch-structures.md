@@ -10,209 +10,261 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you tell the G+F, G+F+F, G+G, and P+G structures apart?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look at the material and layer count of the sensor and the cover. G+F = cover lens + single-layer film sensor; G+F+F = cover lens + double-layer film sensor (mutual capacitance, today's mainstream); G+G = cover lens + glass-substrate sensor; P+G = plastic cover + glass-substrate sensor. The naming rule is 'cover material + sensor material or layer count'."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GFF or GG better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the scenario. GFF is thin and light, has about 5% lower transmittance, and costs less, making it the first choice for consumer electronics; GG has good transmittance, high strength, and long life, and suits industrial control, automotive, and medical use. Both support true multi-touch; the differences lie in structural strength, transmittance, and cost. Below 10 inches is GFF's home ground; above 10 inches GG is usually chosen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the GF structure still used today?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Less and less. GF uses a single-layer film sensor and can only do single-point or pseudo two-point touch, so it cannot support handwriting and multi-touch gestures; apart from extremely low-cost scenarios with very weak interaction requirements, it has largely been replaced by GFF. For a new project, unless cost is extremely sensitive, GF is no longer recommended."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the essential difference between self-capacitance and mutual capacitance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Self-capacitance measures the capacitance change of each signal line to ground, while mutual capacitance measures the capacitance change between two perpendicularly crossing lines. Self-capacitance is simple to implement but does not support true multi-touch (it easily produces ghost points), while mutual capacitance is the physical basis of today's mainstream multi-touch. Phones, car infotainment, and medical equipment almost all use mutual capacitance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are the touch screen and the display bonded together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Air bonding sticks the touch screen and the display together around their edges with double-sided tape, leaving an air gap in the middle; it is low cost and reworkable, but has poor anti-reflection and fogs easily. Optical bonding fills the gap with OCR / OCA / LOCA adhesive, which guards against glare, impact, and fogging and gives the best optical result, but it is not reworkable and costs more. Whether to bond, and which adhesive to choose, depends on the optical and environmental reliability requirements."
+      }
+    }
+  ]
+}
+</script>
+
 # Touch Panel Classification
 
 !!! abstract "Quick answer"
-    Capacitive touch structures differ mainly in sensor material, layer count, and cover material. Film structures favor thinness and cost, while glass-sensor structures generally favor optical stability, durability, and demanding industrial use.
+    This guide covers the common structures of capacitive touch panels, the related design trade-offs, and the points an engineer should verify when choosing a display solution.
 
 ## Key Takeaways
 
-- Select the structure after defining touch points, cover thickness, glove and water behavior, optical targets, and impact requirements.
-- G+F and G+F+F can reduce weight and thickness; G+G generally offers stronger dimensional and environmental stability.
-- Touch-controller tuning and the finished mechanical stack are as important as the sensor structure itself.
+- Get a systematic view of the G+F, G+F+F, G+G, and P+G capacitive touch structures, including the key principles, pros and cons, application scenarios, and engineering selection points.
+- Compare the related technologies, application conditions, and design trade-offs in the sections below.
+- Before the final selection, confirm the optical, electrical, mechanical, environmental, and volume-production requirements.
 
-
-The principle of the capacitive touch screen is that when the finger touches the metal layer, due to the electric field of the human body, a coupling capacitor is formed between the user and the surface of the touch screen. For high-frequency currents, the capacitor is a direct conductor, so the finger sucks a small amount from the contact point. current. Through the detection circuit to detect this small current change to feel the position of the finger.
+The principle of the capacitive touch screen is that when a finger touches the metal layer, the electric field of the human body forms a coupling capacitor between the user and the surface of the touch screen. For high-frequency current, a capacitor behaves as a conductor, so the finger draws a small amount of current from the contact point. A detection circuit then senses this small current change to locate the finger.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![self-capacitance](capacitive-touch-structures-self-capacitance.png){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>PCAP-Capacitance</figcaption>
+  [![X/Y electrode matrix of a projected capacitive touch screen](capacitive-touch-structures-self-capacitance.png){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Projected capacitive electrode matrix: the X-axis and Y-axis electrodes (the rhombus shapes are the ITO electrode pattern) cross each other to form a capacitance matrix, and scanning row by row and column by column detects the capacitance change at the touch point. This is the architectural basis that lets a projected capacitive screen support multi-touch.</figcaption>
 </figure>
 
+A projected capacitive (PCAP) touch screen uses multiple ITO layers to form a matrix distribution, with the X-axis and Y-axis crossing to build a capacitance matrix. When a finger touches the screen, scanning the X and Y axes detects the capacitance change at the touch position. Based on this architecture, a projected capacitive screen can achieve multi-touch.
 
-The projected capacitive touch screen (PCAP) adopts multi-layer ITO layers to form a matrix distribution. The X-axis and Y-axis cross distribution is used as the capacitance matrix. When the finger touches the screen, the change of the capacitance at the touch position can be detected by scanning the X and Y axes. Then calculate where the finger is. Based on this architecture, projected capacitance can achieve multi-touch operation.
+## 1. Classification by Sensing Principle
 
-## Classification by Sensing Principle
-projected capacitive touch screens are divided into two modes: self-capacitance and mutual capacitance.
+Projected capacitive touch screens are divided into two modes by sensing principle: self-capacitance and mutual capacitance.
 
-### Self-Capacitance
+**Self-capacitance:**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![self-capacitance](capacitive-touch-structures-self-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>self-capacitance</figcaption>
-</figure>   
+  [![self-capacitance sensing principle](capacitive-touch-structures-self-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-self-capacitance.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Self-capacitance sensing: the capacitance of each signal line is measured along the X axis and the Y axis separately, and the touch coordinate is then inferred from the crossing of the two. Because the two directions are measured independently, multiple touches produce crossing points that cannot be told apart, which is exactly why self-capacitance is not true multi-touch.</figcaption>
+</figure>
 
-1. Measure the capacitance of the signal line itself
-2. Advantages: simple, slow
-3. Disadvantages: non-true multipoint, susceptible to interference
+1. Measure the capacitance of the signal line itself.
+2. Advantages: simple to implement.
+3. Disadvantages: slower scanning, not true multi-touch, and susceptible to interference.
 
-### Mutual capacitance
+**Mutual capacitance:**
 
 <figure markdown="span" class="displaywiki-figure">
   [![mutual capacitance](capacitive-touch-structures-mutual-capacitance.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-mutual-capacitance.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>mutual capacitance</figcaption>
-</figure>  
+  <figcaption>Mutual-capacitance sensing: the coupling capacitance between each crossing point of the X and Y electrodes is measured one by one, so every crossing point is an independent measuring cell and multiple touches can be identified separately. This is why mutual capacitance supports true multi-touch.</figcaption>
+</figure>
 
-1. Measure capacitance between two signals that intersect perpendicularly
-2. Advantages: more real points, fast speed
-3. Disadvantages: complex, high power consumption, high cost
+1. The capacitance between two signal lines that cross perpendicularly.
+2. Advantages: supports true multi-touch and is fast.
+3. Disadvantages: more complex structure, and higher power consumption and cost.
 
-## Classification by Sensor Stack
-Common projected mutual capacitive touch screens have four structures, namely G+F, P+G, G+G, and G+F+F structures. The detailed structure and characteristics are as follows:
+## 2. Classification by Sensor Stack
+
+Capacitive touch screens come in four structures: G+F, P+G, G+G, and G+F+F.
 
 ### G+F capacitive touch screen
 
-Structure: cover glass + film sensor.
+Structure: cover lens + film sensor.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Structure: cover glass + film sensor](capacitive-touch-structures-structure-cover-glass-film-sensor.png){ width="760" loading="lazy" }](capacitive-touch-structures-structure-cover-glass-film-sensor.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Structure: cover glass + film sensor</figcaption>
-</figure>   
+  [![Structure: cover lens + film sensor](capacitive-touch-structures-structure-cover-glass-film-sensor.png){ width="760" loading="lazy" }](capacitive-touch-structures-structure-cover-glass-film-sensor.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure: cover lens + film sensor</figcaption>
+</figure>
 
-Features: Use a single-layer film sensor, the sensor pattern has triangles, polygons, etc. according to different touch control IC, Since there is only one layer of sensor mutual compatibility products, it only supports single-point touch and Gesture operation. After optimizing the touch software, it achieves a virtual two-point gesture touch effect.
+Function: it uses a single-layer film sensor, and the sensor pattern is laid out as triangles, polygons, and so on depending on the touch control IC. After optimizing the touch software, a virtual two-point gesture touch effect can be achieved.
 
-*the advantages of G+F structure capacitive touch screen*
+**Advantages of the G+F capacitive touch screen**
 
-- low cost of mold, strong cost efficiency, in capacitor TP
+- Low cost.
+- The thickness can be made thinner, with better light transmission.
 
-- The product with the lowest price, the total thickness can be made thinner, the light transmission is good, the delivery time is short, and the shape of the cover glass can be replaced.
+**Disadvantages of the G+F capacitive touch screen**
 
-*the disadvantages of G+F structure capacitive touch screen*
+- Single-point touch only, poor touch accuracy, and it cannot support gesture operation and more functions.
 
-- only single-point touch, poor touch accuracy, unable to realize gesture operation and more functions.
-
-*Application of G+F structure touch screen*
+**Applications of the G+F touch screen**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Application of G+F structure touch screen](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  [![Small single-touch devices such as smartwatches](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-structure-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+F application example: small, mostly single-touch devices such as smartwatches, where a thin stack, good transmittance, and low cost match the cover lens plus single film sensor construction.</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+F+F structure capacitive touch screen](capacitive-touch-structures-g-f-f-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-f-f-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Application of G+F structure touch screen</figcaption>
+  [![G+F capacitive touch screen applications](capacitive-touch-structures-application-of-g-f-structure-touch-screen-2.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-structure-touch-screen-2.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+F capacitive touch screen applications</figcaption>
 </figure>
 
 ### G+F+F capacitive touch screen
 
-Structure: cover glass + film sensor + film sensor.
-
 <figure markdown="span" class="displaywiki-figure">
-  [![the advantages of G+F+F structure capacitive touch screen](capacitive-touch-structures-the-advantages-of-g-f-f-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-the-advantages-of-g-f-f-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>G+F+F structure capacitive touch screen<</figcaption>
+  [![G+F+F capacitive touch screen](capacitive-touch-structures-g-f-f-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-f-f-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+F+F capacitive touch screen structure</figcaption>
 </figure>
 
-Features: This structure uses two layers of film sensors, and the sensor is generally a rhombus structure.
+**Advantages of the G+F+F capacitive touch screen**
 
-Advantages:  
-- Supports real multi-point operation, supports complex tasks such as gesture touch and wake-up. The touch screen with GFF structure is the most widely used touch screen structure  
-- Due to the mutual-capacitance structure of the double-layer sensor film, the accuracy is high, the handwriting effect is good, it supports real Multi-touch, High anti-interference (EMI/EMC/ESD…) and Large size touch. 
-- And film sensor is flexible for 2.5D and 3D usage
+- It supports real multi-point operation and complex functions such as gesture touch and wake-up. The GFF structure touch screen is currently the most widely used touch screen structure.
+- Thanks to the mutual-capacitance structure of the double-layer sensor film, the accuracy is high and the handwriting effect is good; it supports real multi-touch, has strong anti-interference (EMI/EMC/ESD), and can support large-size touch.
 
-Disadvantages of G+F+F structure capacitive touch screen
-- The light transmittance is poor due to the use of multi-layer film materials, which is 5% lower than the G/G structure.
-- relatively high price than GF Touch panel
+!!! warning "Production note"
+    Under volume production or harsh conditions (high and low temperature, damp heat, vibration, ESD), check the datasheet curves for this parameter; running outside the specified range will significantly shorten lifetime.
 
-Application of G+F+F structure touch screen
+**Disadvantages of the G+F+F capacitive touch screen**
+
+- Because it uses multi-layer film materials, the light transmittance is 5% lower than the G+G structure.
+- The price is relatively higher than a GF touch screen.
+
+**Applications of the G+F+F touch screen**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+G structure capacitive touch screen](capacitive-touch-structures-g-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  [![Smart POS terminals and other devices that need multi-touch and gesture operation](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+F+F application example: smart POS terminals and similar devices that require multi-touch, handwriting, and gesture operation — the most widely used touch screen structure today.</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![G+G structure capacitive touch screen](capacitive-touch-structures-g-g-structure-capacitive-touch-screen-2.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-g-structure-capacitive-touch-screen-2.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>G+F+F capacitive touch screen application</figcaption>
+  [![G+F+F capacitive touch screen applications](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen-2.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-f-f-structure-touch-screen-2.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+F+F capacitive touch screen applications</figcaption>
 </figure>
 
 ### G+G capacitive touch screen
-Structure: Cover glass + sensor glass
-
-Features: This structure adopts single-layer induction glass. Usually the sensor pattern is a rhombus structure. Glass is used as the substrate, which has high strength and good heat resistance, so the sensor can be fabricated on both sides of the glass substrate.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![the advantages of G+G structure capacitive touch screen](capacitive-touch-structures-the-advantages-of-g-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-the-advantages-of-g-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>G+G structure capacitive touch screen</figcaption>
+  [![Structure of a G+G capacitive touch screen](capacitive-touch-structures-g-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure of a G+G capacitive touch screen</figcaption>
 </figure>
 
-G+G is the structure of glass cover and single-layer glass substrate touch sensor. The glass substrate touch sensor adopts high-temperature ITO process, the quality of the ITO film layer is good, and the service life is longer.
+G+G is the structure of a cover lens plus a single-layer glass-substrate touch sensor. Glass serves as the sensor substrate, which brings high strength and good heat resistance.
 
-the advantages of G+G structure capacitive touch screen
+**Advantages of the G+G capacitive touch screen**
 
-- Mutual-capacitance touch structure with double-layer touch sensor, high precision, good light transmission, and good handwriting effect.
-- Support real multi-touch, the shape of the cover glass can be changed, good reliability and long service life.
+- A double-layer touch sensor gives high precision, good light transmission, and a good handwriting effect.
+- Supports multi-touch.
+- High reliability and long service life.
 
-the disadvantages of G+G structure capacitive touch screen
+**Disadvantages of the G+G capacitive touch screen**
 
-- The sensor glass is easily damaged after impact, and the development cost is relatively high. It is mostly used for medium and large products such as tablet computers and monitors.
-- It’s heaver than GFF Touch screen and not suitable for mobile application.
+- The sensor glass is easily damaged after impact.
+- Heavier than a GFF touch screen, so it is not suitable for mobile applications.
 
-Application of G+G structure touch screen
+**Applications of the G+G touch screen**
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Application of G+G structure touch screen](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  [![Touch operation on public terminals such as airport self-check-in kiosks](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-g-g-structure-touch-screen.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+G application example: public terminals such as airport self-check-in kiosks, which run at a high duty cycle and need durability, transmittance, and consistent appearance, matching the cover lens plus glass sensor construction.</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![P+G structure capacitive touch screen](capacitive-touch-structures-p-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-p-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Application of G+G structure touch screen</figcaption>
+  [![G+G capacitive touch screen applications](capacitive-touch-structures-g-g-structure-capacitive-touch-screen-2.png){ width="760" loading="lazy" }](capacitive-touch-structures-g-g-structure-capacitive-touch-screen-2.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>G+G capacitive touch screen applications</figcaption>
 </figure>
 
 ### P+G capacitive touch screen
-Structure: Plastic cover + sensor glass
 
-Features: This structure adopts single-layer induction glass. Similar to the structure of G+G, just replace the cover glass with a plastic cover
-
-<figure markdown="span" class="displaywiki-figure">
-  [![the advantages of P+G structure capacitive touch screen](capacitive-touch-structures-the-advantages-of-p-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-the-advantages-of-p-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>P+G structure capacitive touch screen</figcaption>
-</figure>
-
-P+G is the structure of glass cover and single-layer glass substrate touch sensor. Similar to the G+G structure.
-
-the disadvantages of P+G structure capacitive touch screen
-
-- The sensor glass is easily damaged after impact
-- the strength of the plastic cover is low
-
-Application of P+G structure touch screen
+The structure is similar to G+G, except that a plastic cover replaces the cover lens.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Application of P+G structure touch screen](capacitive-touch-structures-application-of-p-g-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-p-g-structure-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Application of P+G structure touch screen</figcaption>
+  [![Structure of a P+G capacitive touch screen](capacitive-touch-structures-p-g-structure-capacitive-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-p-g-structure-capacitive-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure of a P+G capacitive touch screen</figcaption>
 </figure>
 
-## Selection Guidance
-If your cost requirements are not high, and your products are below 10 inches of tft display products, VIEWE suggest you choose G+F+F touch structure, excellent performance and relatively thin size.
+**Advantages of the P+G capacitive touch screen**
 
-If your product is more than 10 inches of tft display products, it is recommended to use G+G touch results, in the large size of G+G structure has stronger stability and durability.
+- A clear cost advantage.
 
-G+F products have poor touch accuracy, and their performance will be unsatisfactory unless your human-computer interaction interface is very simple and easy to touch.
+**Disadvantages of the P+G capacitive touch screen**
 
-The main problem of P+G structure is that the wear resistance and strength of the plastic cover plate is poor, and it is only used in special service conditions to replace G+G because of low cost.
+- The plastic cover has low strength, is not scratch or wear resistant, and feels mediocre to the finger.
 
-If you have demand in the touch screen and LCD display, please contact [VIEWE](https://viewedisplay.com/), according to your usage scenarios and requirements we will give the optimal solution.
+**Applications of the P+G touch screen**
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Applications of the P+G touch screen](capacitive-touch-structures-application-of-p-g-structure-touch-screen.png){ width="760" loading="lazy" }](capacitive-touch-structures-application-of-p-g-structure-touch-screen.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Applications of the P+G touch screen</figcaption>
+</figure>
+
+If your cost requirements are not high and your product is a TFT display product below 10 inches, [VIEWE](https://viewedisplay.com/) suggests you choose the G+F+F touch structure, which performs well and stays relatively thin and light.
+
+If your product is a TFT display product above 10 inches, the G+G touch structure is recommended.
+
+G+F products have poor touch accuracy, and their performance will be unsatisfactory unless the human-computer interaction interface is very simple and easy to touch.
+
+The main problem of the P+G structure is the poor wear resistance and strength of the plastic cover; because of its low cost, it is used only under special service conditions to replace G+G.
+
+If you have requirements for touch screens and LCD displays, please contact [VIEWE](https://viewedisplay.com/), and we will provide the optimal solution based on your usage and requirements.
+
+## 3. Conclusion
+
+For capacitive touch structures there is no "best", only the "most suitable". Selection starts with three things: size (10 inches is the dividing line between GFF and GG), interaction needs (whether true multi-touch or handwriting is required), and environment (whether the panel must resist scratches, impact, and interference). GFF is currently the highest-volume structure and offers the best cost-performance; GG suits high-reliability scenarios such as industrial control, automotive, and medical; GF has almost been replaced by GFF; PG survives only where cost is extremely sensitive and touch requirements are very low. Only by aligning the structure, the IC, and the cover lens together can you avoid experience problems that only surface at volume production.
+
+## 4. Frequently Asked Questions
+
+??? question "Q1: How do you tell the G+F, G+F+F, G+G, and P+G structures apart?"
+    Look at the material and layer count of the sensor and the cover. G+F = cover lens + single-layer film sensor; G+F+F = cover lens + double-layer film sensor (mutual capacitance, today's mainstream); G+G = cover lens + glass-substrate sensor; P+G = plastic cover + glass-substrate sensor. The naming rule is 'cover material + sensor material or layer count'.
+
+??? question "Q2: Is GFF or GG better?"
+    It depends on the scenario. GFF is thin and light, has about 5% lower transmittance, and costs less, making it the first choice for consumer electronics; GG has good transmittance, high strength, and long life, and suits industrial control, automotive, and medical use. Both support true multi-touch; the differences lie in structural strength, transmittance, and cost. Below 10 inches is GFF's home ground; above 10 inches GG is usually chosen.
+
+??? question "Q3: Is the GF structure still used today?"
+    Less and less. GF uses a single-layer film sensor and can only do single-point or pseudo two-point touch, so it cannot support handwriting and multi-touch gestures; apart from extremely low-cost scenarios with very weak interaction requirements, it has largely been replaced by GFF. For a new project, unless cost is extremely sensitive, GF is no longer recommended.
+
+??? question "Q4: What is the essential difference between self-capacitance and mutual capacitance?"
+    Self-capacitance measures the capacitance change of each signal line to ground, while mutual capacitance measures the capacitance change between two perpendicularly crossing lines. Self-capacitance is simple to implement but does not support true multi-touch (it easily produces ghost points), while mutual capacitance is the physical basis of today's mainstream multi-touch. Phones, car infotainment, and medical equipment almost all use mutual capacitance.
+
+??? question "Q5: How are the touch screen and the display bonded together?"
+    Air bonding sticks the touch screen and the display together around their edges with double-sided tape, leaving an air gap in the middle; it is low cost and reworkable, but has poor anti-reflection and fogs easily. Optical bonding fills the gap with OCR / OCA / LOCA adhesive, which guards against glare, impact, and fogging and gives the best optical result, but it is not reworkable and costs more. Whether to bond, and which adhesive to choose, depends on the optical and environmental reliability requirements.
 
 ## Related reading
 
-- [Capacitive vs Resistive Touchscreens](touch-panel-types.md)
+- [Capacitive vs Resistive Touch Screens](touch-panel-types.md)
 - [Air Bonding vs Optical Bonding for Displays](air-vs-optical-bonding.md)
 - [Glove Touch, Waterproof Touch, and Interference Resistance](glove-waterproof-touch.md)
-
-## Frequently Asked Questions
-
-??? question "What do G and F mean in touch-panel structures?"
-    G means a glass layer and F means a film sensor layer. The notation describes the principal cover and sensor stack.
-
-??? question "Does G+G always provide better touch performance?"
-    Not automatically. It can provide good optical and dimensional stability, but performance also depends on the controller, sensor pattern, cover thickness, grounding, and firmware tuning.
-
-??? question "Which structure is best for a curved or lightweight product?"
-    Film-based structures are often easier to adapt to thin or lightweight products, but bend radius, optical quality, lamination, and lifetime requirements must be reviewed.
-
-??? question "Does adding more sensor layers improve touch accuracy?"
-    Not necessarily. Layer count affects routing and multi-touch implementation, but accuracy also depends on pattern design, controller capability, stack-up, and tuning.
-
-??? question "How should a touch structure be qualified?"
-    Test optical quality, linearity, accuracy, multi-touch, noise, temperature, humidity, impact, bending, and adhesion on the final stack.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

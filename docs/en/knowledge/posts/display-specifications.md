@@ -11,432 +11,409 @@ authors:
   - viewe_expert
 ---
 
-# How to Read Display Specifications
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@type": "TechArticle",
-      "@id": "https://www.displaywiki.com/knowledge/posts/display-specifications/#article",
-      "headline": "How to Read Display Specifications: An Engineering Guide",
-      "description": "Learn how to evaluate LCD display size, resolution, PPI, brightness, uniformity, contrast ratio, color gamut, and viewing angle for engineering selection.",
-      "url": "https://www.displaywiki.com/knowledge/posts/display-specifications/",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.displaywiki.com/knowledge/posts/display-specifications/"
-      },
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://www.displaywiki.com/knowledge/posts/display-specifications-use-the-formula.png"
-      },
-      "datePublished": "2026-09-01",
-      "dateModified": "2026-09-11",
-      "author": {
-        "@type": "Organization",
-        "name": "VIEWE",
-        "url": "https://viewedisplay.com/"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "VIEWE",
-        "url": "https://viewedisplay.com/"
-      },
-      "inLanguage": "en",
-      "keywords": [
-        "Display Technology",
-        "Engineering Selection"
-      ]
+      "@type": "Question",
+      "name": "For brightness and contrast on a datasheet, should I read the typical or the minimum value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A datasheet usually lists both a typical (typ) and a minimum (min) value. Contrast is generally given only as a typical value, while brightness, color coordinates, and response time often have both a min and a typ column. Engineering selection should **design margin against the min**: a solution built on typ easily fails in volume-production batches and at low temperature. If the datasheet gives only typ, ask the supplier for the min value and the actual test conditions."
+      }
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://www.displaywiki.com/knowledge/posts/display-specifications/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Does a higher resolution always produce a better image?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Viewing distance, active size, pixel layout, content, optics, processing capability, and interface bandwidth determine whether the extra resolution is useful."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between brightness and luminance uniformity?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Brightness describes luminance at a measurement point; uniformity describes how consistent luminance is across multiple points on the active area."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why can viewing-angle specifications be misleading?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The result depends on the contrast threshold, direction, color shift criterion, panel mode, and measurement method. Review polar data when off-axis performance matters."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should typical datasheet values be used as design limits?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Use guaranteed minimum and maximum limits where available, and obtain written confirmation when a critical value is only listed as typical."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How should two display datasheets be compared?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Normalize units and test conditions, then compare optical, electrical, mechanical, environmental, interface, lifetime, and supply requirements for the exact parts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is color gamut the same as color accuracy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Color gamut describes the range of colors a display can reproduce. Color accuracy describes how closely displayed colors match defined target values. A wide-gamut display can still be inaccurate if its white point, gamma, calibration, or color processing is incorrect."
-          }
-        }
-      ]
+      "@type": "Question",
+      "name": "The rated contrast is 1000:1, so why does it still look gray outdoors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the datasheet contrast is measured in a **dark room**. Outdoor ambient light reflects off the screen surface and raises the black level, so the real bright-room contrast is far below the rated value. What matters here is not the panel's own CR but the surface treatment and the brightness. Anti-glare (AG), anti-reflective (AR), or combined AGAR treatment can cut reflection, while a high-brightness backlight widens the gap between the bright areas and the reflected light; the two must be considered together."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a higher NTSC gamut coverage mean more accurate color?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily. Gamut only describes **how large a range of colors can be covered**; it says nothing about whether the color is accurate. Color accuracy depends on the white-point color temperature, the gamma curve, grayscale color shift, and the ΔE deviation. A screen with a high gamut but a cool white point will look more vivid yet render color less accurately. Professional scenarios should require both gamut coverage and a ΔE specification."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "For resolution and PPI, which should I look at during selection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The two do different jobs: resolution decides how much content fits on one screen, PPI decides how sharp the picture is, and PPI is determined jointly by resolution and size. When the viewing distance is short (handheld, desktop), text sharpness is mainly governed by PPI, and about 300 PPI is already close to the limit of human resolution; when the distance is long (industrial cabinets, signage boards), it is enough for the resolution to match the viewing distance—chasing high PPI brings no benefit and only adds cost and power consumption."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a viewing-angle specification written as 89/89/89/89 mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means the maximum angle at which image quality is still acceptable is 89° to the left, right, up, and down from the screen center. Here acceptable usually means contrast has dropped to 10:1, though some manufacturers judge by brightness falling to 50% of the center value. TN panels commonly specify something like 70/70/60/60, while IPS and VA can reach 89/89/89/89. Note that the criteria differ between manufacturers, so rated values can only be compared roughly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What luminance uniformity counts as acceptable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Luminance uniformity is usually expressed as the ratio of the dimmest point to the brightest point; a common industry requirement is 70% to 80% or more, while scenarios such as automotive and medical imaging usually require 85% or more. When judging, confirm both the number of measurement points and the acceptance criterion; a common practice is 9 points (3 × 3) or 25 points (5 × 5), and a datasheet that reports only the center value has limited reference value."
+      }
     }
   ]
 }
 </script>
 
+# How to Read Display Specifications
+
 !!! abstract "Quick answer"
-    Read display specifications as a system, not as isolated headline numbers. Start with active-area size and native resolution, use PPI to assess pixel density, then evaluate brightness, luminance uniformity, contrast ratio, color gamut, and viewing angle under the intended operating conditions. Before approving a display, also verify its interface, mechanical envelope, power requirements, operating temperature, surface treatment, lifetime, and production tolerances.
+    Every specification on a datasheet maps to one engineering judgment: brightness decides readability under strong light, contrast decides dark-scene gradation, PPI decides text sharpness, and viewing angle decides how consistent the image stays for several viewers. This article breaks the datasheet down item by item, in the order geometry, optics, and environment. The single most important rule is this: parameters that drift with process and temperature—brightness, color coordinates, response time—should always be designed with margin against the **minimum (min)**, not the typical (typ).
 
-Display datasheets contain many numbers, but a higher value is not automatically better. Each specification describes one part of the viewing experience, and several specifications interact. A bright panel, for example, may still be difficult to read outdoors if its cover glass produces strong reflections.
+## Key Takeaways
 
-This guide explains the most common optical specifications and shows how to use them during display selection.
+- Display specifications are not isolated numbers; together they determine readability, color accuracy, and lifetime in different environments.
+- During engineering selection, confirm five things first: optical performance, electrical interface, mechanical dimensions, environmental reliability, and volume-production feasibility.
+- This article works through them in the order geometry → optics → environment: size and diagonal → resolution and PPI → brightness → luminance uniformity → contrast ratio → color gamut → viewing angle.
 
-## Key takeaways
+## 1. Display Size and Diagonal
 
-- **Size and resolution are different:** size describes physical dimensions; resolution describes the panel's fixed pixel matrix.
-- **PPI indicates pixel density:** it helps estimate how sharp text and graphics will appear at a given viewing distance.
-- **Brightness alone does not guarantee sunlight readability:** ambient reflections, optical bonding, contrast, and surface treatment also matter.
-- **Uniformity and contrast depend on measurement conditions:** compare values only when the test method is equivalent.
-- **Color gamut is not color accuracy:** gamut describes range, while accuracy describes how closely rendered colors match their targets.
-- **Viewing-angle figures require a criterion:** the quoted angle is normally tied to a minimum contrast ratio or an allowed color shift.
+Display size usually means the diagonal length, which the industry expresses in inches by default.
 
-## Display specification quick-reference table
+### How to Calculate the Screen Diagonal
 
-| Specification | What it describes | Why it matters | What to verify |
-| --- | --- | --- | --- |
-| Display size | Diagonal of the active area | Product dimensions and viewing distance | Confirm active area, outline size, and aspect ratio |
-| Native resolution | Fixed horizontal × vertical pixel matrix | Image detail and graphics workload | Confirm orientation, timing, and scaling behavior |
-| PPI | Pixels per linear inch | Perceived sharpness | Evaluate together with viewing distance |
-| Brightness | On-axis white luminance in cd/m² | Visibility in ambient light | Check typical/minimum value and test condition |
-| Luminance uniformity | Brightness consistency across the panel | Image consistency and visual quality | Confirm measurement grid and formula |
-| Contrast ratio | White luminance divided by black luminance | Black level and image depth | Compare static values under equal conditions |
-| Color gamut | Range of reproducible colors | Color capability | Confirm reference gamut and coverage method |
-| Viewing angle | Off-axis range meeting a stated criterion | Visibility from different positions | Check horizontal/vertical directions and criterion |
+**Step 1: Measure the width and height.**
 
-## Display size and active area
+Check the display module datasheet, or measure the width (W) and height (H) of the active area (AA) directly with calipers; the unit may be either inches or centimeters.
 
-Display size is conventionally specified by the diagonal length of the **active area (AA)**, usually in inches. It does not include the bezel, flexible printed circuit, mounting tabs, or the complete module outline.
+**Step 2: Use the Pythagorean theorem to calculate the diagonal length.**
 
-### Calculate diagonal size
+<figure markdown="span" class="displaywiki-figure">
+  [![Formula used to calculate the display diagonal length](display-specifications-use-the-formula.png){ width="760" loading="lazy" }](display-specifications-use-the-formula.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>The formula</figcaption>
+</figure>
 
-If the active-area width is `W` and its height is `H`, the diagonal `D` is:
+### Example
+
+Suppose a screen is 16 inches wide and 9 inches high; its diagonal is about 18.36 inches.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Worked example showing a display diagonal of about 18.36 inches](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ width="760" loading="lazy" }](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>The display diagonal is therefore about 18.36 inches</figcaption>
+</figure>
+
+### Unit Conversion
+
+If the dimensions are given in centimeters, convert them to inches first (1 inch = 2.54 cm), then use the method above.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Example converting metric dimensions before calculating the display diagonal](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ width="760" loading="lazy" }](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Then calculate the diagonal with the same method</figcaption>
+</figure>
+
+### Other Considerations
+
+- **Aspect ratio**: different displays have different aspect ratios; 16:9 and 4:3 are common.
+- **Actual measurement**: many displays have thick bezels, so measure only the visible active area and do not include the bezel.
+
+## 2. Resolution and Pixel Structure
+
+### What the "Native Resolution" of an LCD Means
+
+To understand native resolution, you first need to understand pixels and how an LCD—especially a TFT LCD—turns pixels on.
+
+### What a Pixel Is
+
+A pixel (picture element) is the smallest image unit a digital display can show. Each pixel is made of three subpixels—R (red), G (green), and B (blue)—that can be switched and dimmed independently. With all three off, the pixel is black; with all three at 100%, it is white; and by adjusting the ratio of the three, it can reproduce millions of colors.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![An LCD pixel built from red, green, and blue subpixels](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ width="760" loading="lazy" }](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>An LCD pixel with RGB subpixels</figcaption>
+</figure>
+
+An LCD is not a CRT and does not scan a phosphor screen with an electron beam. It is built from independent pixels arranged in a rectangular grid, each subpixel backed by a TFT (thin-film transistor) element; the electrodes and the TFT are both deposited on a glass substrate and form part of the entire display stack. All flat-panel displays (LCD, OLED, plasma, and so on) have only one resolution—the native resolution—whereas only a CRT has the concept of a scanning resolution.
+
+Reference magnitudes:
+
+- HD TV: 1280 × 720 = 921,600 pixels
+- Full HD TV: 1920 × 1080 ≈ 2,073,600 pixels
+- 8K TV: 7680 × 4320 ≈ 33,177,600 pixels (K stands for kilo, that is, 1000)
+
+### PPI: Pixels Per Inch
+
+PPI is short for pixels per inch; it quantifies how many pixels are packed into one inch of surface. Picture one inch as a grid, where each cell in the grid is one pixel.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Illustration of pixels per inch (PPI) within one inch](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Pixels per inch (PPI) illustrated</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Comparison of low, medium, and high pixel densities](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>PPI and sharpness</figcaption>
+</figure>
+
+PPI is commonly used to describe the pixel density of any display device: monitors, laptops, TVs, phones, and more.
+
+### The Three Steps to Calculate PPI
+
+**Step 1: Measure the screen diagonal in inches.**
+
+Screens, monitors, and TVs are usually sold by diagonal size, which can be calculated as in the display size section above.
+
+**Step 2: Use the Pythagorean theorem to find the diagonal pixel count.**
+
+Given the screen resolution (width × height), you can compute the diagonal pixel count dp:
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Step 2: finding the diagonal pixel count with the Pythagorean theorem](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ width="760" loading="lazy" }](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Step 2: find the diagonal pixel count with the Pythagorean theorem</figcaption>
+</figure>
+
+For example, for a 1920 × 1080 screen, dp = √(1920² + 1080²).
+
+**Step 3: Apply the PPI formula.**
 
 ```text
-D = sqrt(W² + H²)
+PPI = dp / screen diagonal in inches
 ```
 
-Use the same unit for `W` and `H`. To report the result in inches, convert millimetres or centimetres before or after calculating the diagonal:
+### Retina Displays
 
-```text
-1 inch = 25.4 mm = 2.54 cm
-```
+A Retina display is a pixel density at which the human eye cannot distinguish individual pixels at the given viewing distance. The actual threshold depends on how far the eye is from the screen; when viewing a laptop screen (roughly 12 inches / 30 cm), a PPI of about 300 is already sharp enough.
+
+## 3. Brightness
+
+Display brightness is the light intensity radiated from the display surface; the common unit is cd/m², also called nits. The higher the brightness, the better the readability in a bright environment and the clearer the overall visual experience.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Diagram showing the Pythagorean formula used to calculate display diagonal size](display-specifications-use-the-formula.png){ width="760" loading="lazy" }](display-specifications-use-the-formula.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 1. The active-area diagonal is calculated from its width and height.</figcaption>
+  [![Two matched industrial displays in strong sunlight: the lower-luminance screen on the left looks washed out, while the higher-luminance screen on the right stays readable](../../../assets/images/Post/display-specifications-brightness-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-brightness-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Brightness comparison: under the same strong ambient light, the lower-luminance display on the left is more affected by glare, while the higher-luminance display on the right keeps good image readability.</figcaption>
 </figure>
 
-### Example: a 16 × 9-inch active area
+### Key Concepts
 
-For an active area measuring 16 inches wide and 9 inches high:
+- **Brightness**: the light intensity emitted per unit area of the display surface.
+- **Unit**: cd/m² (or nits).
+- **Typical values**: common monitors fall between 200–500 cd/m², and high-brightness displays can reach 1000 cd/m² and above.
 
-```text
-D = sqrt(16² + 9²)
-  = sqrt(337)
-  ≈ 18.36 inches
-```
+### Why Brightness Matters
+
+- **Readability**: outdoors or in a bright room, high brightness keeps the image readable.
+- **Image quality**: an appropriate brightness level improves contrast and color accuracy.
+- **Comfort**: suitable brightness reduces eye strain during long use.
+
+### Brightness Measurement Methods
+
+Measuring brightness requires dedicated tools and procedures. Common tools include:
+
+- **Light meter**: such as the TOPCON BM-7, designed specifically for display brightness measurement.
+
+#### Procedure for Measuring Brightness in a Dark Room
+
+1. **Prepare the display**: restore the display to factory settings or a standard test pattern; warm it up for at least 30 minutes before testing so the device reaches a stable operating temperature.
+2. **Set up the measurement equipment**: aim the light meter or spectroradiometer perpendicular to the center of the screen at a distance recommended by the equipment maker; make sure the measurement area falls on the screen center.
+3. **Collect data**: display full-screen white (with calibration software or a white test image); measure brightness at several points—center, corners, and edges—to assess luminance uniformity and the average value.
+4. **Record the results**: record the brightness reading at each point; for a multi-point measurement, report the average brightness and note the largest deviation across the screen.
+
+### Brightness Test Standards
+
+- **VESA FPDM (Flat Panel Display Measurements)**: a flat-panel measurement standard that includes brightness and other metrics.
+- **ISO 9241-307**: an ergonomics standard that specifies test methods for electronic visual displays.
+- **IEC 61966-2-1**: a color measurement and management standard for multimedia systems that covers display brightness.
+
+## 4. Luminance Uniformity
+
+Luminance uniformity is the consistency of brightness across different areas of the screen. The better the uniformity, the smaller the brightness difference within the screen and the more natural the visual experience.
+
+### Steps to Calculate Luminance Uniformity
+
+**Step 1: Measure the brightness at several points.**
+
+Pick several fixed points on the screen and measure their brightness; a common grid is 3 × 3 (nine points) or 5 × 5 (twenty-five points), with points normally covering the center, the four corners, and any intermediate positions of interest.
+
+**Step 2: Record the brightness values.**
+
+Record each point's brightness, usually in cd/m².
+
+**Step 3: Calculate the ratio of the dimmest point to the brightest point.**
+
+Use the formula below to calculate luminance uniformity:
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Worked example calculating an 18.36-inch diagonal from a 16 by 9-inch active area](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ width="760" loading="lazy" }](display-specifications-therefore-the-diagonal-length-of-the-display-screen-is-approximately-1.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 2. A 16 × 9-inch active area has a diagonal of approximately 18.36 inches.</figcaption>
+  [![Formula for calculating luminance uniformity from minimum and maximum luminance](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Calculation formula</figcaption>
 </figure>
 
-The same method applies when dimensions are supplied in centimetres or millimetres.
+The final value is expressed as the ratio (a percentage) of the dimmest point's brightness to the brightest point's brightness.
+
+### Example
+
+Suppose a screen's nine measurement points (3 × 3) have the following brightness (cd/m²):
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Example converting metric active-area dimensions before calculating display diagonal size](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ width="760" loading="lazy" }](display-specifications-then-use-the-same-method-as-above-to-calculate-the-diagonal-length.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 3. Metric dimensions can be converted to inches before calculating the diagonal.</figcaption>
-</figure>
-
-!!! tip "Engineering check"
-    Do not use diagonal size alone to judge mechanical fit. Verify the active area, viewing area, module outline, thickness, connector position, mounting features, and required assembly tolerances on the dimensional drawing.
-
-## Native resolution
-
-Native resolution is the fixed physical pixel matrix manufactured into a flat-panel display. A resolution of `1920 × 1080`, for example, contains 1,920 pixel columns and 1,080 pixel rows, for a total of 2,073,600 pixels.
-
-Each LCD pixel commonly contains red, green, and blue subpixels. Thin-film transistors (TFTs) in the backplane control the voltage applied to the liquid crystal at each subpixel. The resulting optical transmission, together with the color filter and backlight, produces the visible color.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Structure of an LCD pixel with red, green, and blue subpixels](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ width="760" loading="lazy" }](display-specifications-lcd-pixel-with-rgb-sub-pixels.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 4. A typical TFT LCD pixel consists of red, green, and blue subpixels.</figcaption>
-</figure>
-
-Driving content at the native resolution normally produces the sharpest result. If the input image uses another resolution, the display controller must scale it, crop it, or place it within unused borders. Scaling can soften fine text and line graphics.
-
-Common resolution labels include:
-
-| Marketing label | Pixel matrix | Total pixels |
-| --- | ---: | ---: |
-| HD | 1280 × 720 | 921,600 |
-| Full HD | 1920 × 1080 | 2,073,600 |
-| 4K UHD | 3840 × 2160 | 8,294,400 |
-| 8K UHD | 7680 × 4320 | 33,177,600 |
-
-!!! note
-    Resolution does not determine physical size. Two displays can have the same resolution but different diagonals, pixel pitches, and PPI values.
-
-## Pixel density (PPI)
-
-**Pixels per inch (PPI)** is the number of pixels along one linear inch of the display. It is not the number of pixels in one square inch. Higher PPI generally makes individual pixels less visible and improves the rendering of small text and detailed graphics, but the practical benefit depends on viewing distance and visual acuity.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Comparison illustrating different pixel densities within the same physical area](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 5. More pixels within the same physical distance produce a higher pixel density.</figcaption>
-</figure>
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Close-up comparison of coarse and fine pixel grids at different PPI values](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ width="760" loading="lazy" }](display-specifications-also-known-as-pixels-tells-you-the-ppi-2.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 6. A finer pixel grid can render edges and text more smoothly.</figcaption>
-</figure>
-
-### Calculate PPI
-
-For a display with horizontal resolution `Wp`, vertical resolution `Hp`, and diagonal size `D` in inches:
-
-```text
-Diagonal pixels, Dp = sqrt(Wp² + Hp²)
-PPI = Dp / D
-```
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Formula for calculating diagonal pixels from horizontal and vertical resolution](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ width="760" loading="lazy" }](display-specifications-step-two-find-the-diagonal-pixels.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 7. Diagonal pixel count is calculated from the horizontal and vertical pixel counts.</figcaption>
-</figure>
-
-For a 15.6-inch Full HD display:
-
-```text
-Dp = sqrt(1920² + 1080²) ≈ 2202.9 pixels
-PPI = 2202.9 / 15.6 ≈ 141.2 PPI
-```
-
-### PPI and viewing distance
-
-There is no universal PPI threshold at which pixels become invisible. The result depends on viewing distance, eyesight, content, and the pixel structure. “Retina” is an Apple marketing term for products designed so that individual pixels are difficult to distinguish at their intended viewing distance; it is not a general display-industry measurement standard.
-
-!!! tip "Engineering check"
-    Increasing resolution raises memory bandwidth, interface bandwidth, graphics-processing load, and often power consumption. Select the PPI required by the viewing distance and content instead of maximizing resolution without a system-level benefit.
-
-## Brightness (luminance)
-
-Display brightness is more precisely called **luminance**. It describes luminous intensity emitted or reflected from a unit projected area and is specified in candelas per square metre (`cd/m²`). One nit is equivalent to `1 cd/m²`.
-
-Higher luminance can improve visibility under strong ambient light, but brightness must be considered together with cover-glass reflectance, air or optical bonding, anti-reflective treatment, contrast, and viewing direction.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Two matched industrial displays in bright sunlight: the lower-luminance screen on the left is washed out by reflections, while the higher-luminance screen on the right remains readable](../../../assets/images/Post/display-specifications-brightness-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-brightness-comparison.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Brightness comparison: under the same high-ambient-light condition, the lower-luminance display at left is more affected by glare, while the higher-luminance display at right retains usable image visibility.</figcaption>
-</figure>
-
-### Typical application ranges
-
-The following values are broad starting points, not acceptance limits:
-
-| Application environment | Indicative luminance |
-| --- | ---: |
-| Controlled indoor environment | 250–400 cd/m² |
-| Bright indoor or shaded outdoor environment | 500–800 cd/m² |
-| High-ambient-light outdoor environment | 800–1,500+ cd/m² |
-
-Actual requirements depend on the complete optical stack and ambient illuminance. A lower-luminance optically bonded display with effective anti-reflective treatment may outperform a brighter display with high surface reflection.
-
-### Basic luminance measurement procedure
-
-1. Define the display mode, input signal, white test pattern, drive settings, ambient condition, and measurement geometry.
-2. Allow the display and backlight to reach thermal stability according to the agreed procedure.
-3. Position a calibrated luminance meter or spectroradiometer normal to the display at the specified distance.
-4. Measure the center point for nominal luminance, or use a defined grid when uniformity is also required.
-5. Record the instrument, aperture, distance, drive conditions, ambient condition, panel temperature, and measured values.
-
-Published values should identify whether they are **typical** or **minimum** specifications. Measurements from different suppliers are not directly comparable unless their test conditions are equivalent.
-
-!!! note "Standards and test methods"
-    Relevant procedures may be defined by a customer specification, the display manufacturer's inspection standard, VESA Flat Panel Display Measurements, or applicable ISO/IEC documents. Use the exact edition and method required by the project rather than citing a standard without its measurement conditions.
-
-## Luminance uniformity
-
-Luminance uniformity describes how consistently brightness is distributed across the active area. Poor uniformity may appear as dark corners, bright edges, bands, mura, or local hot spots.
-
-A common evaluation uses a 3 × 3 grid, although 5 × 5 and application-specific grids are also used. Measure all points under the same drive and environmental conditions.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Nine-point measurement grid used to evaluate display luminance uniformity](display-specifications-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-calculate-luminance-uniformity.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 8. A nine-point grid samples the center, edges, and corners of the active area.</figcaption>
-</figure>
-
-One common formula is:
-
-```text
-Luminance uniformity (%) = Lmin / Lmax × 100
-```
-
-where `Lmin` and `Lmax` are the minimum and maximum readings from the defined measurement grid.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![Formula defining luminance uniformity as minimum luminance divided by maximum luminance](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-use-the-following-formula-to-calculate-luminance-uniformity.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 9. A common uniformity calculation uses the ratio of the dimmest point to the brightest point.</figcaption>
+  [![Nine luminance readings taken on a 3 by 3 measurement grid](display-specifications-from-these-measurements.png){ width="760" loading="lazy" }](display-specifications-from-these-measurements.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Test data</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Worked example using nine luminance readings to determine minimum and maximum brightness](display-specifications-from-these-measurements.png){ width="760" loading="lazy" }](display-specifications-from-these-measurements.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 10. Determine the minimum and maximum readings from the agreed measurement grid.</figcaption>
+  [![Worked example showing the luminance uniformity calculated from the nine readings](display-specifications-importance-of-high-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-importance-of-high-luminance-uniformity.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Calculation result</figcaption>
 </figure>
+
+### Why Luminance Uniformity Matters
+
+- **Visual comfort**: a highly uniform screen has consistent brightness and is easier on the eyes.
+- **Color accuracy**: crucial for applications that need precise color rendering, such as graphic design and video editing.
+- **Professional applications**: fields such as medical imaging and aerospace require high uniformity for accurate, reliable display.
+
+## 5. Contrast Ratio (CR)
+
+Contrast ratio (CR) is a key display specification: the ratio of the brightest white the screen can produce to the darkest black. It directly affects image clarity, tonal separation, and the overall visual experience.
+
+### Definition
+
+Contrast ratio = brightest white luminance / darkest black luminance, usually expressed as 1000:1, 3000:1, and so on.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Visual comparison showing the benefit of high luminance uniformity](display-specifications-importance-of-high-luminance-uniformity.png){ width="760" loading="lazy" }](display-specifications-importance-of-high-luminance-uniformity.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 11. High luminance uniformity helps produce a consistent image across the screen.</figcaption>
+  [![Two matched displays showing the same night scene: the lower-contrast screen on the left has gray blacks and weak shadow detail, while the higher-contrast screen on the right shows deeper blacks and more dark-scene detail](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Contrast comparison: the lower-contrast screen on the left raises the black level and compresses dark-scene gradation; the higher-contrast screen on the right gives deeper blacks and clearer dark-scene detail.</figcaption>
 </figure>
 
-!!! warning
-    Not every datasheet uses `Lmin / Lmax`. Some specifications compare each point with the center or average value. Always confirm the formula, grid locations, edge offsets, pattern, and acceptance threshold before comparing panels.
+### How to Calculate It
 
-## Contrast ratio
-
-Static contrast ratio is the ratio of white-state luminance to black-state luminance under the same measurement conditions:
-
-```text
-Contrast ratio = Lwhite / Lblack
-```
-
-For example, if white luminance is `500 cd/m²` and black luminance is `0.5 cd/m²`, the static contrast ratio is `1000:1`.
+Measure the luminance of a full-white image and a full-black image (in cd/m²), then take the ratio. For example:
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Two matched displays showing the same night scene: low contrast on the left produces gray blacks and weak shadow separation, while higher contrast on the right reveals deeper blacks and dark-scene detail](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-contrast-ratio-comparison.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Contrast comparison: the lower-contrast screen at left raises the black level and reduces tonal separation; the higher-contrast screen at right provides more depth and dark-scene detail.</figcaption>
+  [![Formula defining contrast ratio as white luminance divided by black luminance](display-specifications-importance-of-contrast-ratio.png){ width="760" loading="lazy" }](display-specifications-importance-of-contrast-ratio.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Contrast ratio formula</figcaption>
 </figure>
+
+### Why Contrast Ratio Matters
+
+- **Image quality**: with high contrast, the difference between the brightest and darkest parts is more pronounced, and the image is more vivid, clear, and true to life.
+- **Color depth**: high contrast reveals richer color gradation and detail, especially in dark scenes.
+- **Eye comfort**: sufficient contrast makes it easier for the eye to distinguish visual elements and less tiring.
+
+### Typical Contrast Ratio by Panel Type
+
+- **TN (twisted nematic) panels**: usually lower contrast, around 1000:1.
+- **IPS (in-plane switching) panels**: generally better than TN, commonly 1000:1–1500:1.
+- **VA (vertical alignment) panels**: known for high contrast, commonly 3000:1–6000:1.
+- **OLED (organic light-emitting diode) panels**: theoretically capable of "infinite contrast", because each pixel can be switched off completely to produce true black.
+
+### Practical Considerations
+
+- **Viewing environment**: in a bright room, ambient-light reflection lowers subjective contrast; in a dark room the monitor's contrast is more apparent.
+- **Content type**: high contrast especially matters for video, games, and any scene that demands faithful image reproduction.
+- **Measurement standard**: different manufacturers may use different measurement methods, especially for "dynamic contrast", so real-world comparability is limited.
+
+## 6. Color Gamut (NTSC)
+
+When evaluating the color capability of a TFT (thin-film transistor) display, color gamut is one of the core metrics. Color gamut is the range of colors a display can reproduce; a higher gamut means more vivid colors. The NTSC (National Television System Committee) gamut is a common reference standard for assessing a display's color coverage.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Diagram explaining display contrast ratio using white and black luminance](display-specifications-importance-of-contrast-ratio.png){ width="760" loading="lazy" }](display-specifications-importance-of-contrast-ratio.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 12. Static contrast ratio compares white and black luminance under identical conditions.</figcaption>
+  [![Two matched displays showing the same flower image and color checker: the narrower-gamut screen on the left looks muted, while the wider-gamut screen on the right reproduces richer, more vivid colors](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Color-gamut comparison: a wider gamut can reproduce a larger range of colors; but a wider gamut by itself does not mean more accurate color.</figcaption>
 </figure>
 
-Higher native contrast can improve black level and dark-scene detail. However, perceived contrast also depends on ambient reflections, viewing angle, panel mode, local dimming, cover materials, and optical bonding.
+### Definition of the NTSC Gamut
 
-Panel technologies have broad tendencies—VA LCDs often provide higher on-axis native contrast than conventional IPS or TN LCDs, while self-emissive OLED pixels can produce extremely low black luminance—but actual values vary by product and test method. “Infinite contrast” should be treated as a theoretical or marketing description because real measurements are limited by ambient light and instrument sensitivity.
+The NTSC gamut is the color standard that the NTSC defined in 1953 for analog television broadcasting. Although the NTSC standard itself is no longer widely used in modern digital displays, the NTSC gamut remains a common benchmark for assessing display color capability.
 
-!!! tip "Compare like with like"
-    Prefer static or native contrast measured under defined conditions. Dynamic contrast figures may change the backlight or image processing between white and black measurements and should not be compared directly with static contrast.
+### Color Coverage
 
-## Color gamut
+Gamut coverage is usually expressed as a percentage of the NTSC gamut. For example, a screen with 72% NTSC coverage can reproduce 72% of the colors in the NTSC standard gamut.
 
-Color gamut is the range of colors a display can reproduce. It is commonly reported as coverage of a reference color space such as sRGB, DCI-P3, Adobe RGB, or NTSC, based on a specified chromaticity diagram.
+### How to Calculate NTSC Gamut Coverage
+
+You need a chromaticity diagram to compare the display's gamut with the NTSC gamut. The steps are:
+
+1. **Measure the display's color range**: use a color analyzer or spectroradiometer to measure the screen's gamut.
+2. **Plot the chromaticity diagram**: plot both the display gamut and the NTSC gamut on the CIE 1931 chromaticity diagram.
+3. **Calculate the coverage**: compare the two to obtain the NTSC gamut coverage percentage.
+
+### Common Gamut Coverage Levels
+
+- **Standard displays**: about 72% NTSC, suitable for general office work and everyday home entertainment.
+- **High-end displays**: 85% NTSC and above, suitable for photography, video editing, professional design, and other more demanding applications.
+- **Professional displays**: can cover 100% NTSC or more, with high color vividness and a richer range of reproducible colors.
+
+### Comparison with Other Gamut Standards
+
+Besides NTSC, other common gamut standards include sRGB, Adobe RGB, and DCI-P3. Each covers a different range of colors and suits different scenarios:
+
+- **sRGB**: suitable for the web and general consumer electronics.
+- **Adobe RGB**: used in professional photography and printing, covering a wider green and blue range.
+- **DCI-P3**: used for cinema and HDR content, covering a wider red and green range.
+
+## 7. Viewing Angle
+
+Viewing angle is the maximum angle at which the screen can still be viewed with acceptable image quality. At larger angles, color and contrast may change and the image may distort or shift color. Understanding viewing angle helps you choose a display with the right visibility and color accuracy for different viewing scenarios.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Two matched displays showing the same flower image and color checker: the narrower-gamut screen on the left looks more muted, while the wider-gamut screen on the right reproduces a broader range of vivid colors](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-color-gamut-comparison.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Color-gamut comparison: a wider gamut can reproduce a larger range of colors. It does not, by itself, prove that colors are accurate.</figcaption>
+  [![Two industrial displays viewed from the same oblique angle: the narrow-angle screen on the left dims and loses saturation, while the wide-angle screen on the right keeps its brightness and color](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Viewing-angle comparison: at the same off-axis viewing position, the narrower-angle display on the left loses brightness and color sooner, while the wider-angle display on the right keeps a more stable image.</figcaption>
 </figure>
 
-### Coverage and area are not the same
+### Definition
 
-- **Gamut coverage** indicates how much of the reference gamut is contained within the display gamut.
-- **Gamut area ratio** compares the area of the display gamut with the area of the reference gamut, even when parts of the two gamuts do not overlap.
+**Viewing angle**: the angle at which the display can be viewed without a significant drop in color accuracy and contrast. For detailed specifications, refer to the VIEWE display datasheet.
 
-A statement such as “72% NTSC” is incomplete unless the datasheet identifies the chromaticity space and calculation method. It is often used as a rough legacy description for standard-gamut displays, but it should not be treated as an exact substitute for `100% sRGB`.
+### Why Viewing Angle Matters
 
-### Common reference gamuts
+- **User experience**: a wide viewing angle keeps the image looking good from many positions, which suits scenarios where the screen is shared.
+- **Application fit**: different applications have different viewing-angle requirements. Professional graphic design needs a wide viewing angle, while basic office monitoring may not.
+- **Technical comparison**: understanding the viewing-angle differences between display technologies helps you select for the scenario.
 
-| Reference gamut | Common use |
-| --- | --- |
-| sRGB | Web content, desktop interfaces, and general-purpose products |
-| Adobe RGB | Photography and print workflows requiring extended green/cyan coverage |
-| DCI-P3 / Display P3 | Cinema, modern media, and wide-gamut consumer devices |
-| NTSC | Legacy reference still used in some display datasheets |
+### Measuring Viewing Angle
 
-Measure primary chromaticities with a suitable colorimeter or spectroradiometer, plot them in the stated chromaticity space, and calculate coverage using the agreed method.
+Viewing angle is usually measured from the center of the screen and expressed as two values, horizontal and vertical:
 
-!!! note
-    A wide gamut does not guarantee accurate color. Color accuracy also depends on the white point, electro-optical transfer function or gamma, calibration, bit depth, processing, and unit-to-unit consistency.
+- **Horizontal viewing angle**: the maximum angle to the left and right of the screen center at which image quality is still acceptable.
+- **Vertical viewing angle**: the maximum angle above and below the screen center at which image quality is still acceptable.
 
-## Viewing angle
+### Viewing-Angle Specifications
 
-Viewing angle is the range of off-axis directions over which the display continues to meet a defined optical criterion. Datasheets often list horizontal and vertical values, such as `80/80/80/80`, representing left, right, up, and down angles from the surface normal.
-
-The limit is commonly defined using a minimum contrast ratio—such as `CR ≥ 10`—but color shift, grayscale inversion, and luminance loss may become unacceptable before that contrast threshold is reached. The criterion must therefore be read together with the angle.
+Manufacturers normally state viewing-angle performance as follows:
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Off-axis comparison of two industrial display modules: the narrower-viewing-angle screen on the left becomes dim and desaturated, while the wider-viewing-angle screen on the right maintains brightness and color](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ width="960" loading="lazy" }](../../../assets/images/Post/display-specifications-viewing-angle-comparison.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Viewing-angle comparison: at an equivalent off-axis position, the narrower-angle display at left loses luminance and color quality sooner than the wider-angle display at right.</figcaption>
+  [![Viewing-angle specification table listing horizontal and vertical angles at a contrast ratio above 10](display-specifications-factors-affecting-viewing-angle.png){ width="760" loading="lazy" }](display-specifications-factors-affecting-viewing-angle.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Viewing-angle specification diagram</figcaption>
 </figure>
 
-<figure markdown="span" class="displaywiki-figure">
-  [![Diagram showing horizontal and vertical display viewing-angle directions](display-specifications-factors-affecting-viewing-angle.png){ width="760" loading="lazy" }](display-specifications-factors-affecting-viewing-angle.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Figure 13. Viewing angle is evaluated in the horizontal and vertical directions from the display normal.</figcaption>
-</figure>
+**Display technology comparison**: OLED > MVA > IPS >> TN
 
-Viewing-angle performance depends on panel mode, compensation films, polarizers, backlight design, touch panel, cover lens, and bonding method. IPS, VA, TN, and OLED technologies have different off-axis behaviors, but no universal ranking applies to every product and criterion.
+**Backlight and polarizer**: the quality of the backlight unit and the orientation of the polarizer also affect viewing-angle performance.
 
-!!! tip "Engineering check"
-    Evaluate viewing direction in the installed orientation. A display that performs well in landscape orientation may expose its weakest viewing direction when rotated into portrait orientation.
+### Practical Considerations
 
-## Engineering selection checklist
+- **Usage environment**: public or shared scenarios such as meeting-room TVs and monitoring screens need a wide viewing angle to accommodate several viewers.
+- **Usage purpose**: tasks that demand high color precision, such as photo and video editing, need a wide viewing angle so colors stay consistent from different positions.
+- **Cost**: displays with better viewing angles (IPS and OLED in particular) are usually more expensive than TN panels.
 
-Before approving a display, verify the following items against the actual application:
+## 8. Frequently Asked Questions
 
-- **Optical:** brightness, uniformity, contrast, color gamut, white point, viewing angle, surface treatment, and readability under target ambient light.
-- **Image:** native resolution, PPI, orientation, pixel format, color depth, timing, and scaling requirements.
-- **Electrical:** interface, voltage rails, logic levels, backlight driver, current, power sequencing, and electromagnetic compatibility.
-- **Mechanical:** active area, viewing area, outline dimensions, thickness, connector location, mounting features, and tolerance stack-up.
-- **Environmental:** operating/storage temperature, humidity, vibration, shock, UV exposure, ingress protection, and condensation risk.
-- **Integration:** touch technology, cover lens, air or optical bonding, optical films, enclosure, thermal management, and firmware support.
-- **Production:** minimum and typical limits, inspection criteria, cosmetic standard, lifetime, availability, change control, and lot-to-lot consistency.
+??? question "Q1: For brightness and contrast on a datasheet, should I read the typical or the minimum value?"
+    A datasheet usually lists both a typical (typ) and a minimum (min) value. Contrast is generally given only as a typical value, while brightness, color coordinates, and response time often have both a min and a typ column. Engineering selection should **design margin against the min**: a solution built on typ easily fails in volume-production batches and at low temperature. If the datasheet gives only typ, ask the supplier for the min value and the actual test conditions.
 
-## Summary
+??? question "Q2: The rated contrast is 1000:1, so why does it still look gray outdoors?"
+    Because the datasheet contrast is measured in a **dark room**. Outdoor ambient light reflects off the screen surface and raises the black level, so the real bright-room contrast is far below the rated value. What matters here is not the panel's own CR but the surface treatment and the brightness. Anti-glare (AG), anti-reflective (AR), or combined AGAR treatment can cut reflection, while a high-brightness backlight widens the gap between the bright areas and the reflected light; the two must be considered together.
 
-The best display is not the model with the highest individual specification. It is the model whose optical, electrical, mechanical, environmental, and production characteristics work together in the target product. Compare datasheets using equivalent test conditions, clarify ambiguous measurement methods with the supplier, and validate representative samples in the real enclosure and lighting environment before production release.
+??? question "Q3: Does a higher NTSC gamut coverage mean more accurate color?"
+    Not necessarily. Gamut only describes **how large a range of colors can be covered**; it says nothing about whether the color is accurate. Color accuracy depends on the white-point color temperature, the gamma curve, grayscale color shift, and the ΔE deviation. A screen with a high gamut but a cool white point will look more vivid yet render color less accurately. Professional scenarios should require both gamut coverage and a ΔE specification.
 
-## Frequently asked questions
+??? question "Q4: For resolution and PPI, which should I look at during selection?"
+    The two do different jobs: resolution decides how much content fits on one screen, PPI decides how sharp the picture is, and PPI is determined jointly by resolution and size. When the viewing distance is short (handheld, desktop), text sharpness is mainly governed by PPI, and about 300 PPI is already close to the limit of human resolution; when the distance is long (industrial cabinets, signage boards), it is enough for the resolution to match the viewing distance—chasing high PPI brings no benefit and only adds cost and power consumption.
 
-??? question "Does a higher resolution always produce a better image?"
-    No. Viewing distance, active size, pixel layout, content, optics, processing capability, and interface bandwidth determine whether the extra resolution is useful.
+??? question "Q5: What does a viewing-angle specification written as 89/89/89/89 mean?"
+    It means the maximum angle at which image quality is still acceptable is 89° to the left, right, up, and down from the screen center. Here acceptable usually means contrast has dropped to 10:1, though some manufacturers judge by brightness falling to 50% of the center value. TN panels commonly specify something like 70/70/60/60, while IPS and VA can reach 89/89/89/89. Note that the criteria differ between manufacturers, so rated values can only be compared roughly.
 
-??? question "What is the difference between brightness and luminance uniformity?"
-    Brightness describes luminance at a measurement point; uniformity describes how consistent luminance is across multiple points on the active area.
-
-??? question "Why can viewing-angle specifications be misleading?"
-    The result depends on the contrast threshold, direction, color shift criterion, panel mode, and measurement method. Review polar data when off-axis performance matters.
-
-??? question "Should typical datasheet values be used as design limits?"
-    No. Use guaranteed minimum and maximum limits where available, and obtain written confirmation when a critical value is only listed as typical.
-
-??? question "How should two display datasheets be compared?"
-    Normalize units and test conditions, then compare optical, electrical, mechanical, environmental, interface, lifetime, and supply requirements for the exact parts.
-
-??? question "Is color gamut the same as color accuracy?"
-    No. Color gamut describes the range of colors a display can reproduce. Color accuracy describes how closely displayed colors match defined target values. A wide-gamut display can still be inaccurate if its white point, gamma, calibration, or color processing is incorrect.
+??? question "Q6: What luminance uniformity counts as acceptable?"
+    Luminance uniformity is usually expressed as the ratio of the dimmest point to the brightest point; a common industry requirement is 70% to 80% or more, while scenarios such as automotive and medical imaging usually require 85% or more. When judging, confirm both the number of measurement points and the acceptance criterion; a common practice is 9 points (3 × 3) or 25 points (5 × 5), and a datasheet that reports only the center value has limited reference value.
 
 ## Related reading
 

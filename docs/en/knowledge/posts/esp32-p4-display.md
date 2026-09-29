@@ -11,418 +11,315 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the core difference between ESP32-P4 and ESP32-S3 in display capability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ESP32-S3 can only drive LCD interfaces (including 8-bit parallel / I8080 / I80 and MIPI DSI on some parts) and has **no ISP, H.264, PPA, or JPEG hardware codec**. ESP32-P4 turns all of these into dedicated IP, and its MIPI DSI / CSI lanes at 1.5 Gbps support higher resolutions (the first choice for HMI and small digital signage). The conclusion: **S3 suits mid- and low-end MCUs with a simple UI, while P4 suits a mid-size UI with a camera and multimedia**."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can ESP32-P4 drive a 1024×600 display directly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. MIPI DSI at 2 lanes × 1.5 Gbps gives roughly 3 Gbps of total bandwidth; at 24 bits per pixel (RGB888) that is enough for megapixel-class frames, so 1024 × 600 @ 60fps (≈ 36.86 M pixel/s) fits comfortably. However, **it also depends on whether the panel supports DSI and on panel ID programming / the initialization sequence**, which is software work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the memory and bitrate limits of the 1080p H.264 encoder?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The encoder handles 1080p@30fps, with P slices, ROI, and CAVLC all available. Note that **the bitrate is typically 4–8 Mbps**, which needs PSRAM and high-speed SPI flash to back it; make sure the stream can be written continuously over long runs without overflow."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the LP domain run a GUI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The LP domain is positioned for low-power always-on tasks (touch wake, external interrupts, GPIO monitoring, RTC), runs at 40 MHz, and has very little memory. **Graphical UI, H.264, and ISP all live in the HP domain.**"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is external PSRAM / flash required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The on-chip 768 KB L2MEM plus 128 KB HP ROM is not large enough, so **almost every HMI project adds at least 16 MB PSRAM plus 16 MB flash externally**. The flash stores fonts, images, and PSF assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I evaluate whether ESP32-P4 meets automotive or industrial-grade requirements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ESP32-P4 is industrial-grade (-40 °C – 125 °C junction temperature range), but **AEC-Q100 / Q104 certification is not mandatory**. Automotive vibration, high/low temperature cycling, and long-term aging tests have to be done on the product side. TWAI and CAN performance meet in-vehicle communication needs."
+      }
+    }
+  ]
+}
+</script>
+
 # ESP32-P4 for Multimedia and HMI Display Applications
 
 !!! abstract "Quick answer"
-    ESP32-P4 targets compute-intensive HMI and multimedia applications with display, camera, and audio peripherals, but it has no integrated Wi-Fi or Bluetooth. Connected products typically pair it with a companion wireless chip.
+    ESP32-P4 is Espressif's heterogeneous SoC for high-end HMI and multimedia IoT, pairing a dual-core RISC-V HP system with a single-core RISC-V LP system at 400 MHz. It integrates JPEG / H.264 / ISP / PPA, a 24-bit LCD interface, MIPI DSI/CSI, and three I2S ports on a single chip, which makes it a strong fit for multimedia and display designs in smart-home, industrial, medical, and consumer products with a screen.
 
 ## Key Takeaways
 
-- Match display resolution, pixel format, frame buffers, memory bandwidth, and software effects before choosing the final panel.
-- Plan wireless connectivity separately and account for the companion device, interface, firmware, and certification impact.
-- Validate camera, audio, security, boot, power, thermal, and peripheral requirements as a complete system.
+- **Heterogeneous dual-core**: the HP system is a dual-core RISC-V at 400 MHz; the LP system is a single-core RISC-V at 40 MHz that handles low-power duties.
+- **Multimedia core**: JPEG codec, H.264 encoder (1080p@30fps), ISP, PPA, and Camera-LCD controller.
+- **Display capability**: a 24-bit parallel RGB LCD (compatible with RGB parallel / MOTO6800 / i8080) plus MIPI DSI (2 lanes × 1.5 Gbps).
+- **Camera capability**: MIPI CSI (2 lanes × 1.5 Gbps) plus DVP and DW-GDMA.
+- **Audio capability**: three standard I2S ports (master / slave, full-duplex / half-duplex), one LP I2S, and a dedicated audio PLL (6–125 MHz).
+- **Interface peripherals**: 5 × UART (up to 5 Mbps), multiple SPI (including QSPI / Octal), 2 × I2C, I3C, USB 2.0 OTG, Ethernet MAC (IEEE 1588), TWAI (CAN), SD/MMC, and more.
 
+## 1. Overview
 
-https://www.espressif.com/en/news/ESP32-P4
+ESP32-P4 is a high-performance microcontroller that Espressif designed specifically for IoT devices. It combines a dual-core HP RISC-V system with a single-core LP RISC-V system running at 400 MHz and 40 MHz respectively, delivering strong image and voice processing capability while keeping always-on monitoring available in low-power scenarios through its heterogeneous topology. The SoC integrates a rich set of peripheral interfaces (multiple GPIOs, various communication buses, and sensor interfaces) and suits screen-equipped HMI products in smart homes, industrial automation, healthcare, and consumer electronics.
 
-ESP32-P4 is a high-performance microcontroller (MCU) equipped with a 32-bit RISC-V dual-core processor. It features powerful audio and video processing capabilities, a rich set of peripheral interfaces, and low-power characteristics, making it particularly suitable for Internet of Things (IoT) devices and various smart applications. The following is a detailed introduction to the specifications, features, and core capabilities of ESP32-P4, with a focus on its audio and video multimedia capabilities and human-machine interaction support capabilities.
+The benefit of the heterogeneous design is that the HP domain runs at full speed when it needs to render graphics, encode and decode, or process video, while the LP domain takes over the always-on logic during sleep, so **overall system power stays far below that of an HP-only design**.
 
-## Platform Overview
+## 2. Core Specifications
 
-ESP32-P4 is a high-performance microcontroller (MCU) designed specifically for Internet of Things (IoT) devices. It is powered by a 32-bit RISC-V dual-core processor with a clock frequency of up to 400 MHz, offering powerful image and voice processing capabilities. The chip integrates a high-performance (HP) system and a low-power (LP) system. The HP system is driven by a dual-core processor, while the LP system is powered by a single-core processor, making it suitable for low-power applications. ESP32-P4 also integrates a rich set of peripheral interfaces, including multiple GPIOs, various communication interfaces, and sensor interfaces, and supports multiple human-machine interaction methods such as displays, cameras, and voice recognition.
+### 2.1 Processor
 
-## Core Architecture and Resources
+| Domain | Architecture | Clock | Purpose |
+| --- | --- | --- | --- |
+| HP | 32-bit dual-core RISC-V | 400 MHz | Main application, video / audio / display processing |
+| LP | 32-bit single-core RISC-V | 40 MHz | Low-power always-on, GPIO monitoring, RTC tasks |
 
-- **Processor**:
+### 2.2 Memory
 
-- **High-performance Processor**: A 32-bit RISC-V dual-core processor with a clock frequency of up to 400 MHz.
-
-- **Low-power Processor**: A 32-bit RISC-V single-core processor with a clock frequency of up to 40 MHz.
-
-- **Memory**:
-
-- **On-chip Storage**:
+**On-chip memory**:
 
 - 128 KB HP ROM
-
 - 768 KB HP L2MEM
-
 - 16 KB LP ROM
-
 - 32 KB LP SRAM
+- 8 KB TCM (Tightly Coupled Memory)
 
-- 8 KB System Tightly Coupled Memory (TCM)
+**External memory**:
 
-- **External Storage**:
+- 16 MB or 32 MB PSRAM (external memory expansion)
+- Up to 128 MB external flash (for code and data)
 
-- Supports 16 MB or 32 MB of PSRAM for memory expansion.
+### 2.3 Package
 
-- Supports up to 128 MB of external flash for storing programs and data.
+- QFN104 (10 × 10 mm), suitable for compact designs.
 
-- **Package**:
+## 3. Image and Display
 
-- QFN104 (10×10 mm) package, suitable for compact designs.
+### 3.1 JPEG Codec
 
-## Multimedia Capabilities
+- Supports 8-bit color samples and raw image formats (RGB888 / RGB565 / YUV422 / GRAY).
+- Supports compressed image formats: YUV444 / YUV422 / YUV420.
+- Static image encode and decode up to 4K; MJPEG encode 720p@88fps or 1080p@34fps; MJPEG decode 720p@88fps or 1080p@30fps.
 
-ESP32-P4 excels in audio and video processing, with the following core capabilities:
+### 3.2 Image Signal Processor (ISP)
 
-### Image and Video Processing
-
-- **JPEG Codec**:
-
-- Supports 8-bit color sampling and raw image formats such as RGB888, RGB565, YUV422, and GRAY.
-
-- Supports compressed image formats such as YUV444, YUV422, and YUV420.
-
-- Static image encoding can reach a resolution of 4K, and the maximum performance of MJPEG encoding is 720p@88fps or 1080p@34fps.
-
-- Static image decoding can reach a resolution of 4K, and the maximum performance of MJPEG decoding is 720p@88fps or 1080p@30fps.
-
-- **Image Signal Processor (ISP)**:
-
-- Maximum resolution of 1920 x 1080.
-
+- Maximum resolution 1920 × 1080.
 - Three input channels: MIPI CSI, DVP, and DW-GDMA.
+- Input formats: RAW8 / RAW10 / RAW12.
+- Output formats: RAW8 / RGB888 / RGB565 / YUV422 / YUV420.
+- Algorithm support: Bayer domain noise reduction (Bayer NR), demosaic, color correction matrix (CCM), lens shading correction (LSC), edge enhancement, and contrast / brightness / sharpness adjustment.
 
-- Input formats support RAW8, RAW10, and RAW12.
-
-- Output formats support RAW8, RGB888, RGB565, YUV422, and YUV420.
-
-- Supports functions such as Bayer domain noise reduction (BF), demosaicing (Demosaic), color correction matrix (CCM), gamma correction, sharpening (Edge), and contrast/hue/saturation/brightness adjustment.
-
-- **Pixel Processing Accelerator (PPA)**:
+### 3.3 Pixel Processing Accelerator (PPA)
 
 - Supports image rotation, scaling, and mirroring.
+- Supports ARGB8888 / RGB888 / RGB565 / YUV420.
+- Scaling factor of 8-bit integer plus 4-bit fraction.
+- Supports horizontal / vertical flipping.
 
-- Supports formats such as ARGB8888, RGB888, RGB565, and YUV420.
+### 3.4 Camera-LCD Controller
 
-- Supports horizontal and vertical scaling, with an 8-bit integer part and a 4-bit fractional part for the scaling factor.
+- Supports 8/16/24-bit parallel output (LCD mode): RGB parallel, MOTO6800, and i8080.
+- Supports 8/16-bit parallel input (DVP image sensors).
+- Supports connecting an LCD and a camera at the same time.
 
-- Supports horizontal and vertical mirroring.
+### 3.5 H.264 Encoder
 
-- **Camera-LCD Controller**:
+- Supports progressive YUV420 video with an encoding performance of 1080p@30fps.
+- I / P frames, GOP, and dual-slice mode.
+- Macroblock partitioning of 4×4 / 16×16.
+- Inter prediction: 4×4 / 4×8 / 8×4 / 8×8 / 8×16 / 16×8 / 16×16.
+- 1/2 and 1/4 pixel motion estimation.
+- Context-adaptive variable-length coding (CAVLC).
+- P-skip blocks; P slices support I macroblocks.
+- Adaptive luma / chroma quantization.
+- Fixed QP and macroblock-level bitrate control.
+- MV merging and ROI (up to 8 regions).
 
-- Supports 8/16/24-bit parallel output modes and multiple LCD modes such as RGB, MOTO6800, and I8080.
+### 3.6 MIPI CSI (Camera Input)
 
-- Supports 8/16-bit parallel input modes and DVP image sensors.
+- Complies with MIPI CSI-2 and uses D-PHY v1.1.
+- 2 lanes × 1.5 Gbps.
+- Input formats: RGB888 / RGB666 / RGB565 / YUV422 / YUV420 / RAW8 / RAW10 / RAW12.
 
-- Supports connecting both LCD and camera devices simultaneously.
+### 3.7 MIPI DSI (Display Output)
 
-- **H264 Encoder**:
+- Complies with MIPI DSI and uses D-PHY v1.1.
+- 2 lanes × 1.5 Gbps.
+- Input formats: RGB888 / RGB666 / RGB565 / YUV422.
+- Output formats: RGB888 / RGB666 / RGB565.
+- Video mode plus fixed image mode.
 
-- Supports progressive YUV420 video, with a maximum encoding performance of 1080p@30fps.
+## 4. Camera Capabilities
 
-- Supports I-frames and P-frames, as well as GOP mode and dual-stream mode.
+### 4.1 MIPI CSI
 
-- Supports 4 x 4 and 16 x 16 partitioning of intra-luminance macroblocks.
+Same as 3.6. Suited to high-resolution, high-bandwidth scenarios such as security cameras and face-recognition cameras.
 
-- Supports all inter-prediction macroblock partitioning modes: 4 x 4, 4 x 8, 8 x 4, 8 x 8, 8 x 16, 16 x 8, and 16 x 16.
+### 4.2 DVP (Digital Video Port)
 
-- Supports 1/2 and 1/4 pixel precision motion estimation.
+- Compatible with a wide range of image sensors.
+- 8 / 16-bit parallel input, covering mainstream mid- and low-end cameras.
 
-- Supports context-adaptive variable-length coding (CAVLC).
+## 5. Audio Capabilities
 
-- Supports P-skip blocks, and P slices support I macroblocks.
+### 5.1 Standard I2S Controllers (× 3)
 
-- Supports quantization result reduction for luminance and chrominance components.
+- Master / slave mode, full-duplex / half-duplex.
+- 8 / 16 / 24 / 32-bit data widths.
+- BCK clock from 10 kHz to 40 MHz.
+- Supports TDM PCM, TDM MSB alignment, PDM, and more.
+- I2S0 supports PDM ↔ PCM conversion.
 
-- Supports fixed QP and macroblock-level bitrate control.
+### 5.2 LP I2S Controller
 
-- Supports the MV merging function, which can output the MV of each macroblock to memory.
+- Slave mode only, with I2S 16-bit data reception.
+- BCK clock from 10 kHz to 5 MHz.
+- TDM PCM, TDM MSB alignment, TDM standard, and PDM RX.
 
-- Supports regions of interest (ROI), with up to 8 rectangular ROI regions at arbitrary positions configurable.
+### 5.3 Audio PLL
 
-- **MIPI Camera Serial Interface (CSI)**:
+- Adjustable from 6 to 125 MHz; provides a low-jitter clock source for audio codecs.
 
-- Complies with the MIPI CSI-2 protocol and uses DPHY v1.1.
+## 6. Human–Machine Interface Capabilities
 
-- 2-lane x 1.5 Gbps, with input formats supporting RGB888, RGB666, RGB565, YUV422, YUV420, RAW8, RAW10, and RAW12.
+ESP32-P4 has hardware IP for all three interaction fronts—display, camera, and voice—and can cover:
 
-- **MIPI Display Serial Interface (DSI)**:
+- **Smart home**: screen-equipped smart speakers, smart switches, and smart appliance panels.
+- **Industrial automation**: screen-equipped HMI, POS, and barcode scanners.
+- **Medical devices**: screen-equipped blood analyzers, portable ultrasound, and wearable monitoring.
+- **Consumer electronics**: smart watches, walkie-talkies, action cameras, and children's toys.
 
-- Complies with the MIPI DSI protocol and uses DPHY v1.1.
+### 6.1 Display
 
-- 2-lane x 1.5 Gbps, with input formats supporting RGB888, RGB666, RGB565, and YUV422.
+- **24-bit parallel LCD**: compatible with RGB parallel, MOTO6800, and i8080, with 8 / 16 / 24-bit output.
+- **MIPI DSI**: 2 lanes × 1.5 Gbps, covering high resolutions from 720p to 1080p.
+- Output formats: RGB888 / RGB666 / RGB565.
+- Can drive an LCD and a camera at the same time (supported by the Camera-LCD controller).
 
-- Output formats support RGB888, RGB666, and RGB565.
+### 6.2 Camera
 
-- Uses video mode to output video streams and supports outputting fixed image patterns.
+- See Section 4.
 
-### Audio Processing
+### 6.3 Voice
 
-- **I2S Controller**:
+- Multiple I2S ports support audio input and output.
+- External MEMS / analog microphone array interface.
+- Works with on-device or cloud algorithms for keyword spotting / wake word / ASR.
 
-- Three standard I2S interfaces support master and slave modes, as well as full-duplex or half-duplex modes.
+## 7. Peripheral Interfaces
 
-- Supports I2S serial 8-bit, 16-bit, 24-bit, and 32-bit data transmission and reception modes.
+### 7.1 Communication Interfaces
 
-- Supports BCK clocks with frequencies ranging from 10 kHz to 40 MHz.
+- **UART**: 5 interfaces, supporting RS232 / RS485 / IrDA; hardware and software flow control; up to 5 Mbps.
+- **SPI**: master / slave mode; 1-bit SPI / 2-bit Dual SPI / 4-bit Quad SPI / QPI / 8-bit Octal SPI / OPI.
+- **I2C**: 2 buses; standard 100 kbps / fast 400 kbps / high-speed 800 kbps.
+- **I3C**: 1 host plus 1 slave; SDR, dynamic address allocation, and In-Band interrupt.
+- **USB**: high-speed USB 2.0 OTG plus full-speed USB 2.0 OTG; CDC-ACM virtual serial port plus JTAG adapter.
+- **Ethernet MAC**: MII / RMII; IEEE 1588-2002 / IEEE 1588-2008; Energy-Efficient Ethernet (EEE); Magic Packet detection.
+- **TWAI® (Two-Wire Automotive Interface, CAN)**: compatible with ISO 11898-1; standard frame (11-bit ID) plus extended frame (29-bit ID); normal / listen-only / self-test modes.
+- **SD/MMC**: SD 3.0 / SDIO 3.0 / CE-ATA 1.1; clock up to 80 MHz; 1/4/8-bit bus.
 
-- Supports TDM PCM, TDM MSB alignment, TDM standard, and PDM interfaces.
+### 7.2 Sensor Interfaces
 
-- I2S0 supports PDM-to-PCM input and PCM-to-PDM output.
+- **Touch sensing**: up to 14 capacitive sensing GPIOs; waterproofing, frequency hopping detection, and digital filtering.
+- **Temperature sensing**: built in, from -40 °C to 125 °C, monitoring the chip junction temperature.
+- **SAR ADC**: two 12-bit SAR ADCs with 14 channels, for general analog signal acquisition.
+- **Analog voltage comparator**: two groups of two PADs each, which can compare against an internal reference voltage, for low-power detection.
 
-- **LP I2S Controller**:
+## 8. Security Features
 
-- Only supports slave mode and I2S serial 16-bit data reception mode.
+ESP32-P4 integrates several classes of security IP covering data, firmware, and key management.
 
-- Supports BCK clocks with frequencies ranging from 10 kHz to 5 MHz.
+- **Secure boot**: verifies the integrity and authenticity of the firmware.
+- **eFuse**: one-time programmable, storing keys / device ID.
+- **Encryption hardware accelerators**:
+    - AES-128 / 256 (FIPS PUB 197).
+    - SHA accelerator (FIPS PUB 180-4).
+    - RSA accelerator.
+    - **Elliptic curve (ECC)** accelerator.
+    - **ECDSA** elliptic curve digital signature.
+    - Digital signature plus HMAC.
+- **Key management**: uses a physical unclonable function (PUF) to generate a hardware-unique key (HUK); supports key storage and dynamic key switching.
+- **Access permission management**: DMA / APB permission levels and exception information logging.
 
-- Supports TDM PCM, TDM MSB alignment, TDM standard, and PDM RX interfaces.
+## 9. Power Management
 
-- **Audio PLL Clock**:
+ESP32-P4 offers multiple power modes, suited to battery-powered IoT products.
 
-- Provides a highly configurable, low-jitter, and accurate clock source, supporting frequency adjustment in the range of 6 - 125 MHz.
+- **Active mode**: CPUs run at full speed and all peripherals are available.
+- **Light sleep**: CPUs pause, and peripherals can be turned off to save power.
+- **Deep sleep**: the HP domain shuts down while the LP domain and some peripherals keep running, retaining RTC, touch, and capacitive sensing as wake sources.
+- **Power domains**: the HP, LP, and analog power domains are controlled independently, with undervoltage monitoring and power domain switching.
 
-## Human–Machine Interface Capabilities
+!!! warning "Production note"
+    Under volume production or harsh conditions (high and low temperature, damp heat, vibration, ESD), check the datasheet curves for this parameter; running outside the specified range will significantly shorten lifetime.
 
-ESP32-P4 supports multiple human-machine interaction methods, including displays, cameras, and voice recognition, making it suitable for various application scenarios such as smart homes, industrial automation, and healthcare.
+## 10. Suitable Application Scenarios
 
-### Display Support
+- **Smart home**: smart appliance control, smart lighting, and security panels.
+- **Industrial automation**: industrial equipment control, sensor data acquisition, and remote monitoring.
+- **Healthcare**: medical device monitoring, patient data acquisition, and telemedicine.
+- **Consumer electronics**: smart speakers, smart cameras, and smart watches.
+- **Smart agriculture**: environmental monitoring, crop monitoring, and smart irrigation.
+- **POS machines**: payment terminals plus data acquisition and transmission.
+- **Service robots**: navigation, obstacle avoidance, and human-machine interaction.
+- **Audio devices**: music players, voice assistants, and audio processing.
+- **Low-power IoT sensor hubs**: access to and aggregation of data from multiple sensors.
+- **Low-power IoT data loggers**: local data buffering and scheduled reporting.
 
-- **LCD Interface**:
+## 11. Conclusion
 
-- Supports a 24-bit LCD interface, suitable for various types of displays.
+ESP32-P4 is an MCU that balances **high performance, low power, and multimedia**. Its HP / LP heterogeneity together with JPEG / H.264 / ISP / PPA, a 24-bit LCD interface, MIPI DSI/CSI, and multiple I2S ports lets it deliver the full stack of display, camera, audio, and local processing on a single chip, which makes it a strong fit for screen-equipped HMI, access-control panels with a screen, consumer electronics, and medical and industrial panel designs.
 
-- Supports multiple LCD modes, including RGB, MOTO6800, and I8080.
+## 12. Frequently Asked Questions
 
-- Supports 8/16/24-bit parallel output modes, suitable for displays with different resolutions.
+??? question "Q1: What is the core difference between ESP32-P4 and ESP32-S3 in display capability?"
+    ESP32-S3 can only drive LCD interfaces (including 8-bit parallel / I8080 / I80 and MIPI DSI on some parts) and has **no ISP, H.264, PPA, or JPEG hardware codec**. ESP32-P4 turns all of these into dedicated IP, and its MIPI DSI / CSI lanes at 1.5 Gbps support higher resolutions (the first choice for HMI and small digital signage). The conclusion: **S3 suits mid- and low-end MCUs with a simple UI, while P4 suits a mid-size UI with a camera and multimedia**.
 
-- **MIPI DSI**:
+??? question "Q2: Can ESP32-P4 drive a 1024×600 display directly?"
+    Yes. MIPI DSI at 2 lanes × 1.5 Gbps gives roughly 3 Gbps of total bandwidth; at 24 bits per pixel (RGB888) that is enough for megapixel-class frames, so 1024 × 600 @ 60fps (≈ 36.86 M pixel/s) fits comfortably. However, **it also depends on whether the panel supports DSI and on panel ID programming / the initialization sequence**, which is software work.
 
-- Supports the MIPI DSI interface, suitable for high-speed data transmission.
+??? question "Q3: What are the memory and bitrate limits of the 1080p H.264 encoder?"
+    The encoder handles 1080p@30fps, with P slices, ROI, and CAVLC all available. Note that **the bitrate is typically 4–8 Mbps**, which needs PSRAM and high-speed SPI flash to back it; make sure the stream can be written continuously over long runs without overflow.
 
-- Supports 2-lane x 1.5 Gbps, suitable for high-resolution displays.
+??? question "Q4: Can the LP domain run a GUI?"
+    No. The LP domain is positioned for low-power always-on tasks (touch wake, external interrupts, GPIO monitoring, RTC), runs at 40 MHz, and has very little memory. **Graphical UI, H.264, and ISP all live in the HP domain.**
 
-- Supports output formats such as RGB888, RGB666, and RGB565.
+??? question "Q5: Is external PSRAM / flash required?"
+    The on-chip 768 KB L2MEM plus 128 KB HP ROM is not large enough, so **almost every HMI project adds at least 16 MB PSRAM plus 16 MB flash externally**. The flash stores fonts, images, and PSF assets.
 
-### Camera Support
-
-- **MIPI CSI**:
-
-- Supports the MIPI CSI interface, suitable for high-speed data transmission.
-
-- Supports 2-lane x 1.5 Gbps, suitable for high-resolution cameras.
-
-- Supports input formats such as RGB888, RGB666, RGB565, YUV422, YUV420, RAW8, RAW10, and RAW12.
-
-- **DVP Interface**:
-
-- Supports DVP image sensors, suitable for various types of cameras.
-
-- Supports 8/16-bit parallel input modes, suitable for cameras with different resolutions.
-
-### Voice and Audio Interaction
-
-- **I2S Interface**:
-
-- Supports multiple I2S interfaces, suitable for audio input and output.
-
-- Supports various audio formats and sampling rates, suitable for voice recognition and audio processing.
-
-- **Audio PLL Clock**:
-
-- Provides a low-jitter and accurate clock source, ensuring high-quality audio signal transmission.
-
-- **Microphone Interface**:
-
-- Supports external microphone connection, suitable for voice recognition and audio acquisition.
-
-## Peripheral Interfaces
-
-ESP32-P4 integrates a rich set of peripheral interfaces, supporting multiple communication protocols and sensor interfaces, making it suitable for various application scenarios.
-
-### Communication Interfaces
-
-- **UART**:
-
-- Five UART interfaces support asynchronous communication (RS232 and RS485) and IrDA.
-
-- Support hardware flow control and software flow control, with a communication rate of up to 5 Mbps.
-
-- **SPI**:
-
-- Multiple SPI interfaces support master and slave modes.
-
-- Support various SPI modes, including 1-bit SPI, 2-bit Dual SPI, 4-bit Quad SPI, QPI, 8-bit Octal SPI, and OPI.
-
-- Support various clock frequency and data length configurations.
-
-- **I2C**:
-
-- Two I2C bus interfaces support master and slave modes.
-
-- Support standard mode (100 Kbit/s), fast mode (400 Kbit/s), and high-speed mode (800 Kbit/s).
-
-- **I3C**:
-
-- One I3C host interface and one I3C slave interface.
-
-- Support SDR mode, dynamic address allocation, and In-Band interrupt.
-
-- **USB**:
-
-- High-speed USB 2.0 OTG supports high-speed and full-speed rates.
-
-- Full-speed USB 2.0 OTG supports full-speed and low-speed rates.
-
-- USB serial/JTAG controller supports CDC-ACM virtual serial port and JTAG adapter functions.
-
-- **Ethernet MAC**:
-
-- Supports data transmission through MII or RMII interfaces.
-
-- Supports IEEE1588-2002 and IEEE1588-2008.
-
-- Supports Energy-Efficient Ethernet (EEE) and Magic Packet detection.
-
-- **TWAI®**:
-
-- Supports the ISO 11898-1 protocol, suitable for automotive and industrial communication.
-
-- Supports standard frame format (11-bit ID) and extended frame format (29-bit ID).
-
-- Supports multiple operation modes, including normal mode, listen-only mode, and self-test mode.
-
-- **SD/MMC Host Controller**:
-
-- Supports SD card versions 3.0 and 3.01, SDIO version 3.0, and CE-ATA version 1.1.
-
-- Supports a clock output of up to 80 MHz and 1-bit, 4-bit, and 8-bit data bus modes.
-
-### Sensor Interfaces
-
-- **Touch Sensor**:
-
-- Supports up to 14 capacitive sensing GPIOs, suitable for touch panels and proximity sensing.
-
-- Supports waterproofing, frequency hopping detection, and digital filtering functions.
-
-- **Temperature Sensor**:
-
-- Built-in temperature sensor with a measurement range of -40 °C to 125 °C.
-
-- Suitable for monitoring the internal temperature of the chip.
-
-- **Analog-to-Digital Converter (ADC)**:
-
-- Two 12-bit SAR ADCs support measurement of 14 channels.
-
-- Suitable for collecting and processing various analog signals.
-
-- **Analog Voltage Comparator**:
-
-- Two groups of analog voltage comparators, each containing 2 PADs.
-
-- Suitable for comparing the voltage relationship between two PADs or with an internal stable voltage.
-
-## Security Architecture
-
-ESP32-P4 integrates multiple security features to ensure the security of data and operations.
-
-- **Secure Boot**:
-
-- Supports a secure boot mechanism to ensure the integrity and authenticity of the firmware.
-
-- **eFuse OTP**:
-
-- Provides one-time programmable security for storing keys or device IDs.
-
-- **Encryption Hardware Accelerator**:
-
-- Supports AES-128/256 encryption algorithms, complying with the FIPS PUB 197 standard.
-
-- Supports SHA accelerators, complying with the FIPS PUB 180-4 standard.
-
-- Supports RSA accelerators for asymmetric encryption.
-
-- Supports ECC accelerators for elliptic curve encryption.
-
-- Supports ECDSA elliptic curve digital signatures.
-
-- Supports digital signatures and HMAC.
-
-- **Key Manager**:
-
-- Generates a hardware-unique key (HUK) using the physical unclonable function (PUF).
-
-- Supports key storage and dynamic key switching.
-
-- **Access Permission Management**:
-
-- Supports DMA and APB access permission management.
-
-- Supports exception information logging.
-
-## Power and Thermal Design
-
-ESP32-P4 adopts advanced power management technology and supports multiple power consumption modes, making it suitable for low-power applications.
-
-- **Power Consumption Modes**:
-
-- **Active Mode**: The CPU is in operation, and all peripherals can work.
-
-- **Light-sleep Mode**: The CPU pauses operation, and some peripherals can be turned off to reduce power consumption.
-
-- **Deep-sleep Mode**: The CPU and most peripherals are powered off, while the low-power memory and some peripherals remain operational.
-
-- **Power Management Unit**:
-
-- Supports multiple power domains, including the HP power domain, LP power domain, and analog power domain.
-
-- Supports multiple power management functions, such as undervoltage monitoring and power switching.
-
-## Suitable Application Scenarios
-
-ESP32-P4 is suitable for a variety of application scenarios, including but not limited to:
-
-- **Smart Home**: Smart home appliance control, smart lighting, smart security, etc.
-
-- **Industrial Automation**: Industrial equipment control, sensor data acquisition, remote monitoring, etc.
-
-- **Healthcare**: Medical device monitoring, patient data acquisition, telemedicine, etc.
-
-- **Consumer Electronics**: Smart speakers, smart cameras, smart watches, etc.
-
-- **Smart Agriculture**: Environmental monitoring, crop growth monitoring, smart irrigation, etc.
-
-- **POS Machines**: Payment terminals, data acquisition, and transmission.
-
-- **Service Robots**: Navigation, obstacle avoidance, human-machine interaction, etc.
-
-- **Audio Devices**: Music players, voice assistants, audio processing, etc.
-
-- **General Low-power IoT Sensor Hubs**: Data acquisition and transmission from multiple sensors.
-
-- **General Low-power IoT Data Loggers**: Data recording and transmission.
-
-## Selection Summary
-
-ESP32-P4 is a high-performance, low-power microcontroller with powerful audio and video processing capabilities, a rich set of peripheral interfaces, and multiple human-machine interaction support capabilities. It is suitable for a variety of application scenarios, especially IoT devices that require audio and video processing and low-power design. With its high-performance processor, rich peripheral interfaces, and advanced power management technology, ESP32-P4 can meet the requirements of various complex applications, providing developers with a flexible, efficient, and reliable platform.
+??? question "Q6: How do I evaluate whether ESP32-P4 meets automotive or industrial-grade requirements?"
+    ESP32-P4 is industrial-grade (-40 °C – 125 °C junction temperature range), but **AEC-Q100 / Q104 certification is not mandatory**. Automotive vibration, high/low temperature cycling, and long-term aging tests have to be done on the product side. TWAI and CAN performance meet in-vehicle communication needs.
 
 ## Related reading
 
-- [PCB Construction and Manufacturing Process](pcb-construction-process.md)
-- [PCB Types and Material Selection](pcb-types-materials.md)
-- [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md)
-
-## Frequently Asked Questions
-
-??? question "Does ESP32-P4 include Wi-Fi or Bluetooth?"
-    No. A companion wireless device is required when the product needs Wi-Fi or Bluetooth connectivity.
-
-??? question "Can ESP32-P4 drive a MIPI DSI display?"
-    It provides display-oriented peripherals suitable for supported HMI designs, but lane configuration, timing, panel initialization, and ESP-IDF support must be checked for the selected panel.
-
-??? question "What limits the practical display resolution?"
-    Memory size and bandwidth, pixel format, number of frame buffers, refresh rate, graphics workload, interface timing, and software architecture all contribute.
-
-??? question "Does a multimedia HMI require external memory?"
-    Many high-resolution interfaces benefit from external memory, but the requirement depends on resolution, pixel format, buffering, assets, camera use, and application workload.
-
-??? question "What should be prototyped before hardware release?"
-    Prototype the target display timing, frame buffers, graphics workload, camera or audio path, wireless companion link, boot flow, and thermal behavior.
+- [I2C vs SPI vs UART: Communication and Selection Guide](i2c-spi-uart-protocols.md)
+- [MIPI Interfaces Explained: DSI, CSI-2, D-PHY, and C-PHY](mipi-interface-basics.md)
+- [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
+- [ESP32-S3 Smart Weather Dashboard Tutorial](ESP32_S3_Smart_Weather_Dashboard_Tutorial.md)
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

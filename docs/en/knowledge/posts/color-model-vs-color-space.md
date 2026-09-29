@@ -9,17 +9,64 @@ tags:
   - Engineering Applications
 authors:
   - viewe_expert
-keywords:
-  - color model
-  - color space
-  - RGB
-  - sRGB
-  - DCI-P3
-  - YCbCr
-  - color gamut
-  - display technology
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between a color model and a color space?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A color model only specifies which numbers are used to describe a color; it solves the encoding problem and does not guarantee consistency. A color space adds the white point, gamma curve, and gamut boundaries on top of that model, and answers what those numbers actually look like. The same RGB triplet interpreted in sRGB, Adobe RGB, or DCI-P3 produces different real colors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are RGB and sRGB the same thing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. RGB is a color model: it only says that a color is described by red, green, and blue channels. sRGB is a color space built on the RGB model that defines a specific white point, gamma curve, and gamut. The same RGB values mean different actual colors under sRGB and Adobe RGB, which is exactly why an image without an embedded color space tends to shift."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the same image look different on different monitors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three layers are usually involved: the monitor may interpret the same RGB values under a different color space; the panel white point and gamma curve vary from unit to unit; and gamut coverage differs, so a wide-gamut panel showing sRGB content without mapping will oversaturate. Consistency requires both ends of the chain to agree on a color space and to apply gamut mapping where needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which color space should an embedded display project use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most HMI, industrial, and instrument applications, sRGB is sufficient: the chain stays simple and compatibility is best. Consumer-facing photo playback or video may benefit from DCI-P3 coverage for a more vivid look, but only if the entire chain from camera and ISP to display supports it and is tagged correctly. The key rule is agreement across the chain, not maximum gamut at a single point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when a camera outputs YCbCr and the display is driven in RGB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The signal must pass through a color-model conversion (YCbCr to RGB) and possibly a color-space match. This is normally done by the ISP or the display controller and involves conversion matrices and white-point handling. If the matrix coefficients or the white point do not match, the whole picture shifts in color, which is one of the most common causes of color cast in embedded imaging pipelines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a wider gamut always better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A wider gamut means more saturated colors can be represented, but if the content was authored in sRGB and is shown on a wide-gamut panel without mapping, it will oversaturate and skin tones will look red. Wide gamut also usually demands more from the backlight and driver, raising both cost and power. Deciding on a gamut target should start from the content source and the capability of the whole chain."
+      }
+    }
+  ]
+}
+</script>
 
 # Image Format Basics: What Are Color Models and Color Spaces
 
@@ -58,7 +105,7 @@ These concepts get used interchangeably in everyday speech, but they carry very 
   <figcaption>The model describes; the space interprets.</figcaption>
 </figure>
 
-## 1. What color actually is
+## 1. What Color Actually Is
 
 Color in the real world is light at different wavelengths. When light hits a surface, some wavelengths are absorbed and others are reflected. The reflected light reaches our eyes and the brain produces the sensation of color.
 
@@ -70,25 +117,25 @@ The human eye contains three types of cone cells, each with a different peak sen
 
 That is why controlling the ratio of red, green, and blue light is enough to reproduce most visible colors. This is the foundation of the RGB primary theory.
 
-## 2. Why we need color models
+## 2. Why We Need Color Models
 
 A computer cannot understand a description like "a bit more red" or "a bit more blue." It only understands numbers.
 
 So we need a uniform way to convert colors into numbers. For example:
 
-```
+```text
 Red:   R = 255  G = 0    B = 0
 ```
 
 or:
 
-```
+```text
 Yellow: H = 60°  S = 100%  V = 100%
 ```
 
 Each of these representations is a color model. A color model answers the question: **which numbers should we use to describe a color?**
 
-## 3. Common color models
+## 3. Common Color Models
 
 Different scenarios call for different representations, which is why multiple color models exist.
 
@@ -141,7 +188,7 @@ HSV was introduced with three parameters:
 
 For example:
 
-```
+```text
 Yellow: H = 60°  S = 100%  V = 100%
 ```
 
@@ -157,7 +204,7 @@ HSL is very similar to HSV and contains:
 
 The key difference is the third parameter: HSV uses Value (brightness), while HSL uses Lightness. HSL feels more natural when adjusting the depth of a color, which is why many design tools and web front ends adopt it. For example, in CSS:
 
-```
+```css
 color: hsl(200, 80%, 50%);
 ```
 
@@ -255,13 +302,13 @@ Typical applications:
 - Color-space conversion
 - Display calibration
 
-## 4. Why a color model alone cannot fix a color
+## 4. Why a Color Model Alone Cannot Fix a Color
 
 This is the most common point of confusion.
 
 Suppose two displays are both asked to show:
 
-```
+```text
 R = 255  G = 0  B = 0
 ```
 
@@ -275,7 +322,7 @@ Why? Because RGB only tells the device to drive the red channel to maximum. It d
 
 So a color model by itself is not enough. We also need a standard. That is exactly what a color space is.
 
-## 5. What a color space is
+## 5. What a Color Space Is
 
 A color space is the standard specification that rides on top of a color model. It not only defines where red, green, and blue sit, but also defines:
 
@@ -285,7 +332,7 @@ A color space is the standard specification that rides on top of a color model. 
 
 So you can think of it like this:
 
-```
+```text
 RGB
 ├── sRGB
 ├── Adobe RGB
@@ -301,7 +348,7 @@ All of them share the RGB model, but the reproducible color range is different f
   <figcaption>On the CIE 1931 xy diagram, a gamut is just the area covered by its triangle.</figcaption>
 </figure>
 
-## 6. Common color spaces
+## 6. Common Color Spaces
 
 | Color space | Characteristic | Typical applications |
 |---|---|---|
@@ -313,7 +360,7 @@ All of them share the RGB model, but the reproducible color range is different f
 
 In short, a larger gamut means more reproducible colors.
 
-## 7. How color models and color spaces relate
+## 7. How Color Models and Color Spaces Relate
 
 It is easy to mix these two concepts up. Use a simple analogy: describing a city's location.
 
@@ -322,7 +369,7 @@ It is easy to mix these two concepts up. Use a simple analogy: describing a city
 
 Both are required.
 
-## 8. Color models and color spaces inside a camera pipeline
+## 8. Color Models and Color Spaces in a Camera Pipeline
 
 Inside the camera-to-display chain you can see two layers at work:
 
@@ -333,7 +380,7 @@ The ISP (Image Signal Processor) performs these conversions during processing so
 
 For an embedded display project, this has a direct consequence: if the camera outputs YCbCr 4:2:0 and the display is driven in RGB, a model and space conversion will happen at some point. Whether the conversion matrix and white points line up decides whether the final image looks faithful or shifts off color.
 
-## 9. Summary: one table to tell them apart
+## 9. Summary: One Table to Tell Them Apart
 
 | Comparison | Color Model | Color Space |
 |---|---|---|
@@ -346,27 +393,27 @@ For an embedded display project, this has a direct consequence: if the camera ou
 
 One sentence to wrap up: **the color model decides how to record a color; the color space decides how to interpret that record.** Together they keep the same image looking as close to identical as possible across different devices.
 
-## Frequently Asked Questions
+## 10. Frequently Asked Questions
 
-??? question "What is the difference between a color model and a color space?"
+??? question "Q1: What is the difference between a color model and a color space?"
     A color model only specifies which numbers are used to describe a color; it solves the encoding problem and does not guarantee consistency. A color space adds the white point, gamma curve, and gamut boundaries on top of that model, and answers what those numbers actually look like. The same RGB triplet interpreted in sRGB, Adobe RGB, or DCI-P3 produces different real colors.
 
-??? question "Are RGB and sRGB the same thing?"
+??? question "Q2: Are RGB and sRGB the same thing?"
     No. RGB is a color model: it only says that a color is described by red, green, and blue channels. sRGB is a color space built on the RGB model that defines a specific white point, gamma curve, and gamut. The same RGB values mean different actual colors under sRGB and Adobe RGB, which is exactly why an image without an embedded color space tends to shift.
 
-??? question "Why does the same image look different on different monitors?"
+??? question "Q3: Why does the same image look different on different monitors?"
     Three layers are usually involved: the monitor may interpret the same RGB values under a different color space; the panel white point and gamma curve vary from unit to unit; and gamut coverage differs, so a wide-gamut panel showing sRGB content without mapping will oversaturate. Consistency requires both ends of the chain to agree on a color space and to apply gamut mapping where needed.
 
-??? question "Which color space should an embedded display project use?"
+??? question "Q4: Which color space should an embedded display project use?"
     For most HMI, industrial, and instrument applications, sRGB is sufficient: the chain stays simple and compatibility is best. Consumer-facing photo playback or video may benefit from DCI-P3 coverage for a more vivid look, but only if the entire chain from camera and ISP to display supports it and is tagged correctly. The key rule is agreement across the chain, not maximum gamut at a single point.
 
-??? question "What happens when a camera outputs YCbCr and the display is driven in RGB?"
+??? question "Q5: What happens when a camera outputs YCbCr and the display is driven in RGB?"
     The signal must pass through a color-model conversion (YCbCr to RGB) and possibly a color-space match. This is normally done by the ISP or the display controller and involves conversion matrices and white-point handling. If the matrix coefficients or the white point do not match, the whole picture shifts in color, which is one of the most common causes of color cast in embedded imaging pipelines.
 
-??? question "Is a wider gamut always better?"
+??? question "Q6: Is a wider gamut always better?"
     No. A wider gamut means more saturated colors can be represented, but if the content was authored in sRGB and is shown on a wide-gamut panel without mapping, it will oversaturate and skin tones will look red. Wide gamut also usually demands more from the backlight and driver, raising both cost and power. Deciding on a gamut target should start from the content source and the capability of the whole chain.
 
-## Related Reading
+## Related reading
 
 - [How to Read Display Specifications](display-specifications.md)
 - [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, UART](display-interface-guide.md)

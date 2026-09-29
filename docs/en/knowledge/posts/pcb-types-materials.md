@@ -11,200 +11,355 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When should you choose a single-sided PCB versus a double-sided PCB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Single-sided boards are used **only for the simplest circuits** (toys, calculators, remote controls, the primary side of DC power supplies) because conductive paths cannot cross. Slightly more complex applications (appliance main controls, power boards, industrial-control boards) almost always start from a double-sided board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do high-speed PCBs always require PTFE materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily. **Below 5 Gbps**, high-Tg FR-4 with a mid-loss / low-loss grade is usually enough; for **5–10 Gbps** choose Mid-loss; only **above 10 Gbps / PCIe 4.0+ / DDR5** calls for the PTFE route (Rogers, Isola, Hitachi, and so on). Cost is always strongly coupled to speed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a higher Tg board always better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is an engineering trade-off: the higher the Tg, the better the heat resistance, but the more brittle and expensive the board. Standard FR-4 (Tg around 130 °C) is enough for ordinary lead-free reflow; high-Tg FR-4 (Tg around 150–170 °C) suits multi-layer builds, repeated reflow, and automotive use; ultra-high Tg (above 200 °C) is for aerospace and defense."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you choose between metal-core and ceramic substrates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For **LED lighting, power modules, and low-to-medium power**, prefer aluminum-core boards; for **high-power-density power electronics (SiC / GaN)**, prefer aluminum-nitride ceramic; for **extreme heat dissipation plus insulation**, consider boron nitride (BeO exists but carries health risks, so treat it and SiC with care)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a flex PCB fully replace a rigid PCB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. FPCs cost more, solder less reliably, cannot carry large currents or large components, and their copper traces fatigue after long-term vibration. **FPCs are for connection, routing, and signal interconnection, while rigid boards carry the components**; rigid-flex boards are the compromise that covers both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference in application between high-Dk and low-Dk materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Low Dk makes signals propagate faster and is common in high-speed designs; high Dk lets the traces be made narrower for the same impedance (Rogers RO4003 is a low-Dk example, RO4350B is slightly higher), which suits miniaturization or antennas."
+      }
+    }
+  ]
+}
+</script>
+
 # PCB Types and Material Selection
 
 !!! abstract "Quick answer"
-    PCB type and material should be selected from electrical loss, impedance, temperature, thermal conductivity, mechanical movement, thickness, reliability, volume, and fabrication capability—not board shape alone.
+    PCBs can be classified along four dimensions: layer count, substrate rigidity, speed and frequency, and application — single-, double-, and multi-layer boards; rigid, flex, and rigid-flex boards; ordinary digital, high-speed digital, and RF/microwave boards; LED metal-core boards and power ceramic substrates. Material selection centers on three groups of properties — thermal (Tg / Td / CTE / thermal conductivity), electrical (Dk / Df / dissipation factor), and mechanical (Young's modulus / flexural strength). These parameters must be tied to signal speed, power dissipation, and the thermal environment before an engineering trade-off can be made.
 
 ## Key Takeaways
 
-- Use rigid boards for general assemblies, flex or rigid-flex for constrained moving interconnects, and metal-core structures when heat spreading dominates.
-- Specify laminate properties such as glass-transition temperature, dielectric behavior, moisture absorption, and thermal expansion where relevant.
-- Confirm material availability, approved alternatives, stack-up, processing limits, and long-term supply with the fabricator.
+- By **layer count**, PCBs divide into single-sided, double-sided, and multi-layer boards.
+- By **substrate rigidity**, they divide into rigid, flex, and rigid-flex boards.
+- By **speed and frequency**, they divide into ordinary digital, high-speed digital (PCIe / DDR / USB 3.x / HDMI / MIPI), and RF/microwave (5G / radar / WiGig) boards.
+- By **application**, they divide into LED metal-core boards (aluminum and copper substrates), power-module ceramic substrates, automotive long-life boards, and more.
+- Material selection looks at three property groups: **thermal** (reliability under lead-free reflow and high-temperature environments), **electrical** (signal integrity and impedance stability), and **mechanical** (vibration / bending / drop lifetime).
 
+## 1. How PCBs Are Classified
 
-## PCB Types
+The industry usually classifies PCBs along the following four dimensions, each of which implies a different engineering trade-off:
 
-Generally, printed circuit boards (PCB) are categorized according to the number of layers, substrate type, and frequency. PCB are divided into single-sided PCB, double-sided PCB, and multi-layer PCB according to the material. At the same time, PCB can also be divided into rigid PCB, flexible PCB, and rigid-flex PCB based on the material.
+- **By layer count**: single-sided, double-sided, multi-layer.
+- **By substrate material**: rigid (FR-4 / high-Tg FR-4 / high-frequency / ceramic), flex (PI / PET), and rigid-flex.
+- **By frequency / speed**: ordinary digital, high-speed digital, RF and microwave.
+- **By application**: consumer LED metal-core boards, power-module ceramic substrates, automotive-grade boards, medical boards, aerospace boards.
 
-Single-sided PCB
+!!! warning "Production note"
+    Under volume production or harsh conditions (high and low temperature, damp heat, vibration, ESD), check the datasheet curves for this parameter; running outside the specified range will significantly shorten lifetime.
 
-The single-sided PCB is the simplest type of printed circuit board. The figure below shows the structure of a single-sided PCB. The blue, yellow, and green layers are the substrate, the conductive copper layer, and the solder mask respectively. In the single-sided PCB, only one side of the substrate is coated with a copper layer, and this side is where the components are electrically connected. The single-sided PCB is cost-effective and easy to manufacture. But it has many restrictions on the circuit design because conductive paths cannot cross or overlap. Therefore, the current single-sided PCB is only used for simple circuits such as electronic toys, calculators, etc.
+## 2. Classification by Layer Count
 
-<figure markdown="span" class="displaywiki-figure">
-  [![The Structure of the Single-Sided PCB](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The Structure of the Single-Sided PCB</figcaption>
-</figure>
+### 2.1 Single-Sided PCB
 
-Figure 1: The Structure of the Single-Sided PCB
-
-Double-Sided PCB
-
-Unlike the single-sided PCB, the double-sided PCB has copper layers on both sides of the substrate. Meanwhile, components can be attached on both sides. Both through-hole and surface-mount technologies are widely used to make circuit connections on both sides.
-
-<figure markdown="span" class="displaywiki-figure">
-  [![The Structure of the Double-Sided PCB](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The Structure of the Double-Sided PCB</figcaption>
-</figure>
-
-Figure 2: The Structure of the Double-Sided PCB
-
-The plated through holes(PTH) in the double-sided PCB act as a bridge. The walls of the plated through holes are generally plated with copper by an electrolysis process to electrically connect the circuits on one side to the other side. Due to the increased circuit density of the double-sided PCB, the double-sided PCB is suitable for more complex circuits. Compared with a single-sided PCB,  it is flexible and compact. Various applications such as power monitoring and amplifiers are using the double-sided PCB.
+The simplest type. Blue, yellow, and green correspond to the substrate, the conductive copper layer, and the solder mask. A single-sided board has copper on only one side of the substrate, which is the only path for electrical connection of components.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Plated Through Holes (PTH) on the Double-Sided PCB](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Plated Through Holes (PTH) on the Double-Sided PCB</figcaption>
+  [![The structure of the single-sided PCB](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-single-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure of a single-sided PCB: solder mask, copper layer, and substrate</figcaption>
 </figure>
 
-Figure 3: Plated Through Holes (PTH) on the Double-Sided PCB
+**Advantages**: lowest cost, simple manufacturing process.
 
-Multi-layer PCB
+**Disadvantages**: conductive paths cannot cross or overlap, so design freedom is extremely limited.
 
-The multi-layer PCB is composed of more than 2 conductive layers, two of which are on the outer surfaces and the remaining layers are integrated into insulating layers. Between each 2 layers is the prepreg, which is a dielectric layer and can be made very thin. The number of layers in the PCB represents the number of independent conductive copper layers. Generally, the top and bottom layers are single-sided PCB and inner layers are double-sided PCB, all of which are laminated together under high temperature and pressure to form a single board.  Compared with single-sided and double-sided PCB, the multi-layer PCB is good for high-speed circuits such as mobile phones and laptops, and is more flexible and compact. The figure below is an example of a 6-layer PCB.
+**Applications**: electronic toys, calculators, low-cost remote controls, simple power supplies, and similar circuits. The typical structure is shown above.
+
+### 2.2 Double-Sided PCB
+
+Both sides of the substrate carry copper layers, components can be mounted on both sides, and the two sides are connected through plated through holes (PTH).
+
+<figure markdown="span" class="displaywiki-figure">
+  [![The structure of the double-sided PCB](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-structure-of-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure of a double-sided PCB</figcaption>
+</figure>
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Plated through holes (PTH) on the double-sided PCB](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-plated-through-holes-pth-on-the-double-sided-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Plated through holes (PTH) on a double-sided PCB</figcaption>
+</figure>
+
+**Advantages**: routing can be distributed over two sides, so density improves noticeably; the combination of vias and surface-mount technology makes component placement more flexible.
+
+**Applications**: power monitoring, amplifiers, industrial control, consumer power supplies, and consumer-electronics main boards.
+
+### 2.3 Multi-Layer PCB
+
+A multi-layer PCB consists of more than two conductive copper layers; the two outermost layers are single-sided and **all inner layers are double-sided**. The dielectric between every pair of layers is prepreg, which can be as thin as 0.05 mm or less.
 
 <figure markdown="span" class="displaywiki-figure">
   [![The 6-layer PCB](pcb-types-materials-the-6-layer-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-6-layer-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The 6-layer PCB</figcaption>
+  <figcaption>A 6-layer PCB: outer layers are single-sided, inner layers are double-sided</figcaption>
 </figure>
 
-Figure 4: The 6-layer PCB
+All layers are laminated together in a single high-temperature, high-pressure press cycle. **Multi-layer PCBs** suit high-speed, high-density, complex interconnect scenarios:
 
-Regarding the electrical connection between different layers, it is usually achieved through vias: plated through holes(PTH), blind vias, and buried vias. Plated through holes(PTH) access all layers of the multi-layer PCB from top to bottom. Blind vias connect either of the outermost layers of the PCB with the adjacent inner layers. Buried vias that are not visible from the outside simply connect between the internal circuit layers.
+- **Phones / laptops**: typically 6–10 layers.
+- **Servers / switches**: 10–20 layers plus HDI.
+- **Core routers / AI accelerators**: 20+ layers plus multi-step HDI.
+
+Interconnection between different layers is done with three kinds of via — **plated through holes (PTH), blind vias, and buried vias**. PTHs run from the top to the bottom of the board and access every layer; blind vias connect an outer layer to the adjacent inner layers; buried vias connect only internal layers and are invisible from the outside. See [PCB Construction and Manufacturing Process](pcb-construction-process.md) and [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md).
 
 <figure markdown="span" class="displaywiki-figure">
   [![The vias](pcb-types-materials-the-vias.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-vias.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The vias</figcaption>
+  <figcaption>Through-hole vias, blind vias, and buried vias</figcaption>
 </figure>
 
-Figure 5: The vias
+## 3. Classification by Substrate Rigidity
 
-Rigid PCB
+### 3.1 Rigid PCB
 
-The substrate materials of the rigid PCB are solid materials such as fiberglass, which cannot be bent or folded. Rigid PCB may be any of the single-sided, double-sided, or multilayer PCB, depending on the needs. The main advantages include low electronic noise and vibration absorption. But rigid PCB cannot be modified or changed once they are made. The applications include laptops, temperature sensors, GPS equipment, etc.
+The substrate is a rigid material such as fiberglass, and **the finished board cannot be bent**. A rigid PCB may be single-sided, double-sided, or multi-layer.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![The Rigid PCB](pcb-types-materials-the-rigid-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-rigid-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The Rigid PCB</figcaption>
+  [![The rigid PCB](pcb-types-materials-the-rigid-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-rigid-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>A rigid PCB</figcaption>
 </figure>
 
-Figure 6: The Rigid PCB
+**Advantages**: low electronic noise, vibration resistance, high strength, mature fabrication.
 
-Flexible PCB
+**Disadvantages**: once made, the board cannot be modified.
 
-Unlike rigid PCB, flexible PCB is generally composed of rolled annealed (RA) copper foil and flexible plastic film. It allows the circuit board to adapt to a form in which the rigid PCB cannot be rotated or moved during use without damaging the circuit on the printed circuit board. Flexible PCB saves cost and a lot of space and greatly reduces the board weight and the size of the application product. In other words, it is an ideal choice for a variety of applications that require high signal trace density.  Flexible PCB can be any of the single-sided, double-sided, or multilayer PCB, depending on the needs. The applications of flexible PCB include complex electronics products, organic light-emitting diode (OLED) fabrication, LCD fabrication, etc.
+**Applications**: laptops, temperature sensors, GPS equipment, industrial controllers, consumer main boards.
+
+### 3.2 Flexible PCB (FPC)
+
+A flexible PCB is typically built from **rolled-annealed copper foil (RA copper)** together with **polyimide (PI)** or **polyester (PET)** film. It can bend without damaging the circuit on the copper layers.
 
 <figure markdown="span" class="displaywiki-figure">
   [![Flexible PCB](pcb-types-materials-flexible-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-flexible-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Flexible PCB</figcaption>
+  <figcaption>A flexible PCB (FPC)</figcaption>
 </figure>
 
-Figure 7: Flexible PCB
+**Advantages**: saves space, reduces weight, adapts to irregular shapes, and tolerates dynamic bending.
 
-Rigid-Flex PCB
+**Applications**: internal interconnects in OLED / LCD modules, phone camera modules, wearables, medical probes, and connector stiffener boards.
 
-Rigid-flex PCB is a combination of the rigid printed circuit board and the flexible printed circuit board after pressing and other processes. In rigid-flex PCB, interconnections between rigid circuit boards are the flexible parts of the board. Therefore, this type of board can be folded or continuously bent and is usually formed into a curved shape during the manufacturing process. Rigid-flex PCB can be used for products with special requirements since it has both rigid and flexible areas, which can save the internal space and volume of the product, and improve the performance of the product such as higher connection reliability. However, rigid-flex PCB requires multiple production processes, leading to a low yield rate, relatively long production cycle, and high price. The applications of rigid-flex PCB are mainly in the medical, consumer electronics, and aerospace fields.
+### 3.3 Rigid-Flex PCB
+
+Rigid and flex boards are combined by lamination; **the connection between rigid sections is made by the flexible portions**. The board can be pre-folded into a 3D shape during production.
 
 <figure markdown="span" class="displaywiki-figure">
   [![Rigid-flex PCB](pcb-types-materials-rigid-flex-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-rigid-flex-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Rigid-flex PCB</figcaption>
+  <figcaption>A rigid-flex PCB</figcaption>
 </figure>
 
-Figure 8: Rigid-flex PCB
+**Advantages**: saves internal space and connectors, improves connection reliability, lowers assembly defect rates.
 
-High-Frequency PCB
+**Disadvantages**: complex process, low yield, long production cycle, high price.
 
-As a special printed circuit board, high-frequency PCB offers a high-frequency range of 500MHz to 2GHz.  It provides faster signal flow rates, which is suitable for high-speed designs. It has very high requirements for various physical properties, accuracy, and technical parameters. Firstly, the substrate material of high-frequency PCB should have the features of heat resistance, chemical resistance and good impacting resistance. Secondly, the dissipation factor (Df) of the board must be small, which mainly affects the quality of signal transmission. The smaller the dissipation factor, the smaller the signal loss. Furthermore, the dielectric constant(Dk) of the board must be small and stable because the signal transmission rate is inversely proportional to the square root of the material’s dielectric constant. In other words, the high dielectric constant is likely to cause signal transmission delays.
+**Applications**: medical, consumer electronics, aerospace, and defense products where space is tight and reliability requirements are high.
 
-High-frequency PCB substrate should also have a low water absorption characteristic because high water absorption will cause loss of both dissipation factor and dielectric constant when the board gets damp. High-frequency PCB is often used in collision avoidance systems (CAS), satellite systems, radio systems, mobile applications, etc.
+## 4. Classification by Speed / Frequency
+
+### 4.1 High-Frequency PCB
+
+Purpose-built for applications in the 500 MHz – 2 GHz range (and beyond), where fast signal transmission, low loss, and good interference immunity are required.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![High-Frequency PCB](pcb-types-materials-high-frequency-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-high-frequency-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>High-Frequency PCB</figcaption>
+  [![High-frequency PCB](pcb-types-materials-high-frequency-pcb.jpeg){ width="760" loading="lazy" }](pcb-types-materials-high-frequency-pcb.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>A high-frequency PCB</figcaption>
 </figure>
 
-Figure 9: High-Frequency PCB
+**A high-frequency substrate must satisfy**:
 
-## How to Select PCB Materials
+- **Heat resistance**: withstand reflow soldering, wave soldering, and thermal shock testing.
+- **Chemical resistance**: withstand plating, etching, and electroplating chemistries.
+- **Impact resistance**: pass vibration and drop testing.
+- **Stable Dk**: the relative permittivity stays stable across a wide frequency range.
+- **Low Df**: the smaller the loss tangent (tan δ), the lower the signal loss.
+- **Low moisture absorption**: absorbed water shifts Dk / Df.
 
-When designing a PCB board, designers must define the required board material materials for PCB construction. Therefore, designers predominantly consider two fundamental thermal and electrical properties, followed by mechanical properties.
+**Applications**: collision avoidance radar (CAS), satellite communication, radio systems, 5G base stations, and RF front ends in mobile devices.
 
-PCB Material Thermal Properties
+### 4.2 High-Speed Digital PCB
 
-The thermal properties of a material determine its ability to withstand extreme temperature while maintaining its characteristics. The following are the thermal properties that need to be considered when selecting PCB materials.
+PCBs carrying PCIe, DDR, USB 3.x, HDMI, MIPI, SATA, and other high-speed digital interfaces. They require:
 
-Glass transition temperature (Tg)
+- **Impedance control** (50 Ω / 90 Ω / 100 Ω).
+- **Differential-pair length matching** (skew control).
+- **Solid reference planes** (avoid crossing plane splits).
+- **Low-loss materials** (Mid-loss / Low-loss grades).
 
-Glass transition temperature (Tg) is defined as the temperature range in which a pcb material properties experiences transition from a rigid (glassy) state to a deformable (flexible) state since polymer chains start to move. Figure 1 below demonstrates the melting and softening phenomenon of the substrate. Between the glass transition temperature(Tg) and the melting temperature(Tm), the substrate reaches a rubbery state. Once the temperature is lower than Tg, the materials for PCB construction will harden, and the performance of the substrate will back to its original state. If the temperature is higher than Tm, the substrate will rapidly lose its shape as well as its strength since the material transforms from solid to viscous liquid.
+### 4.3 Ordinary Digital / Consumer PCB
+
+Dk is typically 4.2–4.5 and Df around 0.02; standard FR-4 is sufficient.
+
+## 5. Classification by Application
+
+### 5.1 Metal-Core Boards (Aluminum and Copper Substrates)
+
+**Aluminum-core and copper-core boards** are dedicated to LED lighting and power modules. A metal layer on the bottom of the board carries away heat from high-power-density devices.
+
+### 5.2 Ceramic Substrates (Alumina, Aluminum Nitride, Beryllium Oxide)
+
+Dedicated to high-power modules (IGBT, SiC, GaN). Aluminum-nitride ceramic substrates reach a thermal conductivity of 170 W/(m·K), far above FR-4. Ceramic substrates also offer electrical insulation and mechanical strength well beyond ordinary substrates, but their cost is high, which makes them unsuitable for high-volume consumer products.
+
+### 5.3 Automotive-Grade PCB
+
+Must pass AEC-Q100 / Q104 / Q200 stress testing and deliver long life, wide temperature range, and vibration resistance. Substrates are mostly high-Tg FR-4 or PI; the stack-up needs higher symmetry, and ENIG is the preferred surface finish.
+
+## 6. Key Properties of PCB Materials
+
+When designing a PCB, **the board material must be defined first**, and three property groups matter: **thermal, electrical, and mechanical**.
+
+### 6.1 Thermal Properties
+
+Thermal properties decide whether a PCB keeps its mechanical and electrical stability under extreme temperatures.
+
+#### 6.1.1 Glass Transition Temperature (Tg)
+
+The glass transition temperature Tg is the temperature range in which a polymer changes from a glassy state to a rubbery state. **Between Tg and the melting temperature Tm**, the substrate is in its rubbery state; below Tg it is hard and brittle, and above Tg it becomes soft.
 
 <figure markdown="span" class="displaywiki-figure">
   [![The state of the substrate](pcb-types-materials-the-state-of-the-substrate.jpeg){ width="760" loading="lazy" }](pcb-types-materials-the-state-of-the-substrate.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The state of the substrate</figcaption>
+  <figcaption>States of the substrate: below Tg the material is glassy, between Tg and Tm it is rubbery, and beyond Td it decomposes</figcaption>
 </figure>
 
-Figure 1: The state of the substrate
+Practical rule: lead-free reflow peaks at 245–260 °C, so standard FR-4 needs Tg above 150 °C; multi-layer, high-density, and multi-reflow builds should use high-Tg FR-4 with Tg above 170 °C.
 
-Decomposition temperature (Td)
+#### 6.1.2 Decomposition Temperature (Td)
 
-Decomposition temperature (Td) refers to the temperature at which the substrate has a chemical decomposition, which causes the substrate to lose at least 5% of its mass. It is worth noting that if the temperature of the substrate reaches or exceeds Td, the subsequent changes in its properties are irreversible. Therefore, it is necessary to choose a material that can work well in a temperature range higher than Tg but much lower than Td. The Td of most PCB material properties is higher than 320, which is favorable as most soldering temperatures are in the range of 200-250°C.
+The decomposition temperature Td is the temperature at which the substrate material has lost **5% of its mass**. Once the temperature reaches or exceeds Td, the material decomposes irreversibly.
 
-Coefficient of thermal expansion (CTE)
+Practical requirement: boards with Td above 320 °C survive repeated reflow cycles and rework reliably.
 
-The expansion rate of material when it heats up is called the coefficient of thermal expansion (CTE). The unit of CTE is in ppm(parts per million)/°C. Generally, the CTE of the dielectric substrate is higher than that of copper, which leads to interconnections problems when the PCB is heated. As the temperature of the dielectric material rises above Tg, the CTE also goes up. Since the woven glass restricts the material in the X and Y directions, even if the temperature of the material is higher than Tg, the CTE along the X and Y axes will not change much. As a result, the material will expand in the Z direction, but the CTE along this axis should be as low as possible.
+#### 6.1.3 Coefficient of Thermal Expansion (CTE)
 
-Thermal conductivity
+The coefficient of thermal expansion CTE (in ppm/°C) describes how much the material expands as temperature changes.
 
-Thermal conductivity (k) is defined as the ability of a PCB material selection to conduct heat. In other words, the higher the thermal conductivity, the higher the heat transfer; while the lower the thermal conductivity, the lower the heat transfer. The expression of thermal conductivity is:
+- The X / Y direction CTE of the substrate is limited by the woven glass fiber and is usually low (10–20 ppm/°C).
+- **The Z-direction CTE of the substrate is higher** (50–70 ppm/°C): as temperature rises, Z-axis expansion can damage the plated hole copper, so low Z-CTE laminates should be chosen.
+- Copper's CTE is about 17 ppm/°C. A CTE mismatch between substrate and copper creates stress, fracture, and solder-joint cracking.
 
-K= (Q * d) / (A * ΔT)
+#### 6.1.4 Thermal Conductivity (k)
 
-Q, d, A, ΔT and  represent the amount of heat transferred, the distance between two isothermal planes, area of the surface, and temperature difference respectively. Compared with the thermal conductivity of copper (386W/M℃), the thermal conductivity of most dielectric materials is lower, ranging from 0.3 to 0.6W/M℃. This may explain why copper substrates will take away more heat than dielectric substrates.
+Thermal conductivity is defined as the heat power conducted through a unit thickness under a unit temperature difference. Materials with high k dissipate heat better:
 
-Electrical Properties
+```text
+Q = k · A · ΔT / d
+```
 
-Dielectric constant or relative permittivity (Er or Dk)
+Copper's k reaches 386 W/(m·°C), while ordinary FR-4 is only 0.3–0.6 W/(m·°C). **Metal-core and ceramic substrates** exist precisely to use high-k materials to carry heat away from power devices quickly.
 
-Dielectric constant or relative permittivity (Er or Dk) is defined as the ratio of material permittivity to vacuum permittivity. Most materials for PCB construction dielectric constants are between 2.5 to 4.5. The electric constant changes with frequency and is usually inversely proportional to frequency. Those materials that maintain a relatively stable dielectric constant over a wide frequency range are suitable for high-frequency applications
+### 6.2 Electrical Properties
 
-Dielectric loss tangent or dissipation factor (Tan or Df)
+#### 6.2.1 Dielectric Constant (Dk / εr)
 
-Dielectric loss refers to the inherent electromagnetic energy dissipation of dielectric materials. It can also be parameterized according to the corresponding loss tangent (Tan ) which is a phase angle between resistance and reactive current in the dielectric. The range of dissipation factor Df is from 0.001 to 0.030.
+The dielectric constant Dk is the ratio of a material's permittivity to the permittivity of vacuum. FR-4's Dk is typically between 4.2 and 4.5.
 
-PCB Material Mechanical Properties
+**Lower Dk**: signals propagate faster, but cost is usually higher; Dk tends to drop as frequency rises.
 
-Tensile (Young’s) modulus or elastic modulus
+#### 6.2.2 Dissipation Factor (Df / tan δ)
 
-Tensile modulus is a ratio of the stress to the strain along the same axis within the stress range applicable to Hooke’s law. The greater Young’s modulus value, the stiffer the substrate material. The expression is:
+The dissipation factor Df characterizes how much electromagnetic energy a material converts into heat.
 
-E = stress / strain = (F/A) / [(L – Lo) /L]
+- Ordinary FR-4: Df ≈ 0.02;
+- High-frequency laminates (Rogers RO4000 series): Df ≈ 0.0021;
+- Ultra-low-loss laminates: Df below 0.0015.
 
-F, A, L, and Lo are the force applied on the material, the cross-section area of the material, the original length of the material, and the length of the material after being stretched, respectively.
+A high Df attenuates high-speed signals noticeably in the dielectric and is the "killer" of GHz signals.
 
-Flexural strength
+### 6.3 Mechanical Properties
 
-Flexural strength also called bend strength or transverse rupture strength, is defined as the stress before the PCB material yields when loaded in the center or supported at the end. The unit of flexural strength is in kg/m2 or psi.
+#### 6.3.1 Young's Modulus
+
+Within the range where Hooke's law applies, Young's modulus is the ratio of stress to strain:
+
+```text
+E = σ / ε = (F / A) / [(L - L₀) / L₀]
+```
+
+The larger E is, the less the material deforms. A poor stiffness match in a multi-layer stack-up affects warpage and component stress after reflow.
+
+#### 6.3.2 Flexural Strength
+
+Flexural strength, also called transverse rupture strength, is the ultimate stress a material withstands before breaking in a three- or four-point bend test, in psi or N/mm².
+
+Practical meaning: **the bending life of a flex PCB** depends on bend radius, bend angle, static versus dynamic stress, material thickness, and copper-layer structure.
+
+## 7. Material Selection Table
+
+| Speed / frequency | Recommended material | Df | Typical scenarios |
+| --- | --- | --- | --- |
+| Ordinary digital ≤ 100 MHz | FR-4 (standard Tg) | ~ 0.02 | Toys, appliances, consumer main boards |
+| High-speed digital (PCIe / DDR / USB 3.x / HDMI / MIPI) | High-Tg FR-4 / Mid-loss | 0.005–0.012 | Motherboards, gateways, embedded SoC |
+| 5G / Wi-Fi 6 RF | High-frequency PTFE / modified resin | below 0.005 | Base stations, Wi-Fi front ends |
+| Radar / millimeter wave | Ultra-low-loss PTFE (Df below 0.002) | below 0.002 | Automotive millimeter-wave radar, satellites |
+| High-power LED | Aluminum-core / ceramic substrate | Not critical | Street lights, vehicle lamps, projection light sources |
+| Power modules (IGBT / SiC / GaN) | Aluminum-nitride / silicon-nitride ceramic | Not critical | Traction inverters, server power supplies |
+| Long-life / automotive | High-Tg FR-4 + PI reinforcement | 0.005–0.02 | ECU, ADAS, automotive TBOX |
+
+## 8. Frequently Asked Questions
+
+??? question "Q1: When should you choose a single-sided PCB versus a double-sided PCB?"
+    Single-sided boards are used **only for the simplest circuits** (toys, calculators, remote controls, the primary side of DC power supplies) because conductive paths cannot cross. Slightly more complex applications (appliance main controls, power boards, industrial-control boards) almost always start from a double-sided board.
+
+??? question "Q2: Do high-speed PCBs always require PTFE materials?"
+    Not necessarily. **Below 5 Gbps**, high-Tg FR-4 with a mid-loss / low-loss grade is usually enough; for **5–10 Gbps** choose Mid-loss; only **above 10 Gbps / PCIe 4.0+ / DDR5** calls for the PTFE route (Rogers, Isola, Hitachi, and so on). Cost is always strongly coupled to speed.
+
+??? question "Q3: Is a higher Tg board always better?"
+    It is an engineering trade-off: the higher the Tg, the better the heat resistance, but the more brittle and expensive the board. Standard FR-4 (Tg around 130 °C) is enough for ordinary lead-free reflow; high-Tg FR-4 (Tg around 150–170 °C) suits multi-layer builds, repeated reflow, and automotive use; ultra-high Tg (above 200 °C) is for aerospace and defense.
+
+??? question "Q4: How do you choose between metal-core and ceramic substrates?"
+    For **LED lighting, power modules, and low-to-medium power**, prefer aluminum-core boards; for **high-power-density power electronics (SiC / GaN)**, prefer aluminum-nitride ceramic; for **extreme heat dissipation plus insulation**, consider boron nitride (BeO exists but carries health risks, so treat it and SiC with care).
+
+??? question "Q5: Can a flex PCB fully replace a rigid PCB?"
+    No. FPCs cost more, solder less reliably, cannot carry large currents or large components, and their copper traces fatigue after long-term vibration. **FPCs are for connection, routing, and signal interconnection, while rigid boards carry the components**; rigid-flex boards are the compromise that covers both.
+
+??? question "Q6: What is the difference in application between high-Dk and low-Dk materials?"
+    Low Dk makes signals propagate faster and is common in high-speed designs; high Dk lets the traces be made narrower for the same impedance (Rogers RO4003 is a low-Dk example, RO4350B is slightly higher), which suits miniaturization or antennas.
 
 ## Related reading
 
 - [PCB Construction and Manufacturing Process](pcb-construction-process.md)
 - [PCB Design, Fabrication, and Interconnection Selection](pcb-design-interconnections.md)
 - [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
-
-## Frequently Asked Questions
-
-??? question "What is the difference between flex and rigid-flex PCB?"
-    A flex PCB is primarily flexible circuitry; rigid-flex combines rigid board sections and integrated flexible interconnections in one manufactured assembly.
-
-??? question "When should a metal-core PCB be considered?"
-    It is useful when spreading heat from LEDs or power devices is a primary requirement, but electrical isolation and multilayer routing options must be reviewed.
-
-??? question "Is a higher Tg laminate always better?"
-    Not automatically. It may improve thermal margin, but cost, processing, electrical performance, availability, and the actual assembly profile also matter.
-
-??? question "When is controlled impedance required?"
-    It is generally required for interfaces whose edge rate, length, topology, or transceiver specification makes transmission-line behavior significant.
-
-??? question "What should be approved when a laminate substitution is proposed?"
-    Review dielectric properties, loss, Tg, thermal expansion, moisture behavior, thickness, copper profile, process compatibility, reliability, and qualification impact.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

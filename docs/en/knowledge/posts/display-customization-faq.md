@@ -10,72 +10,141 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the minimum order quantity for a custom display?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The MOQ for a standard product is 1 piece, so it can be bought directly. The MOQ for a custom project is usually between 500 and 3000 pieces, depending on the customization and process difficulty. If the project is still in the validation stage, a small trial batch can be arranged first, and a project with annual demand above 3000 pieces can also be split into several delivery batches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does custom sampling take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sample production typically takes 7 to 25 working days. The length depends mainly on the degree of customization, material availability, and factory scheduling, and projects with new tooling or special processes tend toward the upper end. The figure is for reference only; before ordering, confirm the current schedule with your contact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the unit price higher for small-batch customization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because a custom order has to absorb one-time setup costs, including tooling, fixture making, and first-article approval, and these costs do not scale with quantity. When the order is below 500 pieces, that fixed cost spread over each unit pushes the unit price up noticeably. The larger the batch, the smaller the fixed-cost share and the closer the unit price comes to the standard version."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get the product datasheets and sample code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All product information, datasheets, operating instructions, and sample code are available from the official GitHub repository (https://github.com/VIEWESMART/). For the full datasheet of a specific part number or evaluation material for a custom project, contact technical support directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is long-term supply of the display guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We commit to long-term continuous supply. If a key driver IC goes end-of-life, we look first for a fully compatible replacement; if the original tooling is no longer usable, we open new tooling and substitute the closest IC. That way stable supply is maintained even over a very long product life cycle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which payment methods are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bulk orders are paid by T/T (wire transfer); samples and small orders can be paid by PayPal or credit card. The shipping cost is calculated from the delivery address and order quantity, and the goods are dispatched once the payment information is confirmed."
+      }
+    }
+  ]
+}
+</script>
+
 # Display Customization, MOQ, Lead Time, and Ordering FAQ
 
 !!! abstract "Quick answer"
-    Display customization can range from cable, backlight, touch, and cover-lens changes to a fully custom module. MOQ, cost, and lead time depend on how much of the optical, electrical, and mechanical stack changes.
+    The usual thresholds for a custom display come down to three numbers: sampling takes about 7–25 working days, the MOQ for a custom project is typically 500–3000 pieces, and volume production ships in about 30–40 working days. The MOQ for standard products is 1 piece, and custom orders below 500 pieces usually carry a one-time setup cost. The scope of customization covers touch screen shape and size, FPC routing, printed logos, and interface positions. On long-term supply, even if a key driver IC goes end-of-life, continuous supply is maintained through a compatible IC replacement or new tooling.
 
 ## Key Takeaways
 
-- Prepare target size, resolution, interface, brightness, touch, environment, annual volume, and schedule before requesting a quotation.
-- Semi-custom changes usually require less tooling and risk than a fully custom LCD or OLED panel.
-- Treat MOQ, lead time, certification, and continuity as project-specific commercial requirements that must be confirmed in writing.
+- What can be customized: touch screen shape and size, FPC, printed logos, and interface positions; anything beyond the standard product is open to discussion.
+- Sampling takes about 7–25 working days and volume production about 30–40 working days; both are reference values that move with project complexity.
+- The MOQ for standard products is 1 piece; the MOQ for a custom project is usually 500–3000 pieces, and delivery can be split into batches to match annual demand.
+- Orders below 500 pieces usually include a one-time setup cost, so the unit price is higher than the standard version; payment methods differ by order size.
 
+## 1. How Far Display Customization Can Go
 
-## Q1: Is it difficult to customize LCD?
+The scope of customization includes touch screen shape and size, the routing and length of the FPC (flexible printed circuit), printed logos, and interface positions. These changes let the display fit the existing enclosure structure and appearance, instead of forcing the mechanical parts to be redesigned around it.
 
-A1: We can customize touchscreen shape/size, FPC, adding logos, or adjusting interface positions, etc., sample production typically takes between 7 to 25 working days (time is for reference only, and specific projects may vary).
+**Sampling lead time**: sample production typically takes 7 to 25 working days. This is for reference only; the actual project depends on the degree of customization, material availability, and factory scheduling.
 
-## Q2: Would the MOQ for custom display projects be very high?
+## 2. MOQ and Batch Delivery
 
-A2: For standard display, MOQ 1pc is available. For customized projects, the MOQ is typically between 500 to 3000 pieces. There are different MOQs according to your specific customization requirements. Usually we can provide a small batch trial production. If your project's annual demand is over 3,000 units, you can place orders in multiple batches for delivery. There's no need to worry about MOQ limitations.
+| Type | MOQ | Notes |
+|---|---|---|
+| Standard product | 1 piece | No customization, select and buy directly |
+| Custom project | Typically 500 – 3000 pieces | Depends on the specific requirements, negotiable |
+| Small-batch trial | Supported | Used to validate the design and market feedback |
 
-## Q3: Compared to ready-made products, would the cost of semi-custom LCD products be higher?
+If a project's annual demand exceeds 3000 pieces, the order can be split into several delivery batches, which lowers the capital and inventory pressure of a single build.
 
-A3: The cost depends on your required quantity. For orders below 500 pieces, there may be some initial setup costs, making the cost generally higher than the standard version. However, for orders of 500 pieces or more, the cost usually does not change significantly.
+## 3. Cost Structure and Lead Time
 
-## Q4: What is the delivery time?
+**Cost**: depends on the order quantity. For orders below 500 pieces there is usually an initial setup cost (tooling, fixtures, and first-article approval), which makes the unit cost higher than the standard version.
 
-A4: Once you have confirmed sample testing and submitted bulk orders, we will immediately start production. The delivery time is between 30 and 40 working days. (time is for reference only, and specific projects may vary), and a dedicated customer service representative will keep you updated on the production progress.
+**Lead time**: production is scheduled once sample testing is confirmed and the bulk order is placed, with delivery usually between 30 and 40 working days. This is also for reference only and varies by project. A dedicated contact keeps you updated on progress during production.
 
-## Q5: How to use your smart screen?
+## 4. Ordering, Payment, and Logistics
 
-A5: You can get all product information/datasheet, operating instructions and sample code from our Github(https://github.com/VIEWESMART/).
+**Getting the documents**: all product information, datasheets, operating instructions, and sample code are available from the official GitHub repository: https://github.com/VIEWESMART/
 
-## Q6: What is the shipping cost?
+**How to order**: get in touch by email or by leaving your contact details and describe the details of your order; once the payment information is confirmed, the goods are dispatched.
 
-A6: We will calculate the shipping cost based on the address you provide and the quantity of products you need. You can choose FedEx, DHL or other international express according to your needs.
+**Payment terms**:
 
-## Q7: What are the payment terms?
+- Bulk orders: payment by T/T (wire transfer)
+- Samples and small orders: payment by PayPal or credit card
 
-A7: For bulk order, payment via TT. For sample/small order, you can pay via Paypal/Credit card.
+**Shipping cost**: quoted after the delivery address and order quantity are taken into account.
 
-## Q8: How is long-term supply continuity managed?
+## 5. Long-Term Supply Assurance
 
-A8: We understand you probably worry whether we still offer the display after your long development time. We promise the long terms continuity supply and would never end supply.
+The main concern on a long project is whether the original display will still be available once the development cycle stretches out. Our commitment is long-term continuous supply: we will not stop supply midway.
 
-Some controller IC may stop the production, we'll try our efforts to find the completely compatible ones. If the equivalent is unavailable, we'll make the new tooling and use the most similar IC as replacement. So you don't have to worry even your research time is very long.
+In practice, if certain driver ICs go end-of-life, we make every effort to find a fully compatible replacement; if the corresponding tooling no longer exists, we open new tooling and substitute the closest-performing IC. So even a very long development cycle need not raise the risk of a supply break.
 
-## Q9: How to order?
+## 6. Frequently Asked Questions
 
-A9: Please send email/left your contact method or chat with us via WHATSAPP, and let us know your Requirements on order details. We will reply you with proforma invoice  or payment link based on your order request. Kindly check the payment information, and if everything is OK, the goods will be delivered to you asap after we got your payment.
+??? question "Q1: What is the minimum order quantity for a custom display?"
+    The MOQ for a standard product is 1 piece, so it can be bought directly. The MOQ for a custom project is usually between 500 and 3000 pieces, depending on the customization and process difficulty. If the project is still in the validation stage, a small trial batch can be arranged first, and a project with annual demand above 3000 pieces can also be split into several delivery batches.
 
-## Frequently Asked Questions
+??? question "Q2: How long does custom sampling take?"
+    Sample production typically takes 7 to 25 working days. The length depends mainly on the degree of customization, material availability, and factory scheduling, and projects with new tooling or special processes tend toward the upper end. The figure is for reference only; before ordering, confirm the current schedule with your contact.
 
-??? question "What information is needed for a display quotation?"
-    Provide the target size, resolution, interface, outline, brightness, viewing environment, touch requirements, expected volume, compliance needs, and project schedule.
+??? question "Q3: Why is the unit price higher for small-batch customization?"
+    Because a custom order has to absorb one-time setup costs, including tooling, fixture making, and first-article approval, and these costs do not scale with quantity. When the order is below 500 pieces, that fixed cost spread over each unit pushes the unit price up noticeably. The larger the batch, the smaller the fixed-cost share and the closer the unit price comes to the standard version.
 
-??? question "What usually determines the MOQ?"
-    MOQ depends on panel availability, custom tooling, material batch sizes, printing, touch and bonding processes, and whether the design is standard, semi-custom, or fully custom.
+??? question "Q4: How do I get the product datasheets and sample code?"
+    All product information, datasheets, operating instructions, and sample code are available from the official GitHub repository (https://github.com/VIEWESMART/). For the full datasheet of a specific part number or evaluation material for a custom project, contact technical support directly.
 
-??? question "How can customization lead time be reduced?"
-    Start from an existing platform, freeze requirements early, provide complete drawings and artwork, and agree on validation criteria before the first sample build.
+??? question "Q5: How is long-term supply of the display guaranteed?"
+    We commit to long-term continuous supply. If a key driver IC goes end-of-life, we look first for a fully compatible replacement; if the original tooling is no longer usable, we open new tooling and substitute the closest IC. That way stable supply is maintained even over a very long product life cycle.
 
-??? question "Can an existing display be used as the starting point?"
-    Yes. A semi-custom platform can reduce tooling, lead time, qualification effort, and supply risk when its core panel meets the application.
+??? question "Q6: Which payment methods are supported?"
+    Bulk orders are paid by T/T (wire transfer); samples and small orders can be paid by PayPal or credit card. The shipping cost is calculated from the delivery address and order quantity, and the goods are dispatched once the payment information is confirmed.
 
-??? question "When should specifications be frozen?"
-    Freeze requirements after feasibility and sample review but before production tooling and qualification. Later changes can affect cost, schedule, and validation.
+## Related reading
+
+- [Custom and Sunlight-Readable Display Solutions](custom-sunlight-readable-displays.md)
+- [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
+- [How to Read Display Specifications: An Engineering Guide](display-specifications.md)
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

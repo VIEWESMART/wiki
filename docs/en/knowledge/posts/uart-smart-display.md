@@ -11,198 +11,225 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does a UART smart display differ from an SPI or RGB parallel display?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SPI and RGB parallel displays are usually driven directly by the host, which must handle initialization, screen refreshing, and frame buffer management. A UART smart display moves display driving, font libraries, and layer compositing down to the panel-side controller, so the host only sends commands, keeping host load and development effort minimal. The trade-off is that refresh capability is limited by serial bandwidth, so full-screen animation and high-frame-rate content fall behind host-driven solutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much processing power and frame buffer does the host MCU need for a serial display?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Almost no frame buffer is needed. The host only runs the UART peripheral and business logic; a common Cortex-M0/M3 class MCU is enough, and ESP32 or STM32 devices can drive one easily. What really needs evaluating is serial bandwidth: the more complex the UI and the more frequent the updates, the higher the demands on baud rate and the controller's buffering capability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a UART smart display handle Chinese characters and custom font libraries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The panel-side controller usually has built-in font and image storage, supports common Chinese font libraries and imported custom fonts, and can also hold icons, boot logos, and other assets. During selection, confirm the font storage capacity, the supported character set range, and whether users are allowed to flash their own assets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are touch events sent back to the host?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After the panel-side controller samples the capacitive touch screen, it actively reports events or coordinate packets to the host over the serial link, so the host never handles touch scanning itself. Some controllers even carry touch and display data over the same serial link, eliminating a separate touch interface. During selection, confirm the report format, multi-touch support, and response latency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which UART baud rate should I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For simple UIs and low-frequency data updates, 115200 is enough; with many UI elements, frequent refreshes, or a need for fast responses, move up to 230400, 460800, or higher, provided both the controller and the host support it with an acceptable error rate. Blindly raising the baud rate adds interference risk, especially over long cables."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to rewrite the host firmware when changing the screen or the UI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. The UI resources and logic of a UART smart display mostly live in the panel-side controller; changing the screen only requires adapting to the new panel's command set and variable table, and the host's communication logic can often be reused. This is the main reason serial displays are popular in fast-iteration and small-batch custom projects."
+      }
+    }
+  ]
+}
+</script>
+
 # UART Smart Display Solutions
 
 !!! abstract "Quick answer"
-    A UART smart display combines a screen, controller, and UI runtime so the host sends commands and application data instead of raw pixels. This simplifies host development but requires a well-defined and maintainable protocol.
+    A UART smart display (also known as a serial display) hands display driving, font libraries, layer compositing, and timing control entirely to the panel-side controller, so the host MCU only sends commands over a serial link to refresh the UI. Its value is freeing the host from refresh workload: no frame buffer, no display driver to write, and no host firmware rewrite when the screen or UI changes. The trade-off is that refresh rate and animation capability are limited by serial bandwidth, making it best suited to scenarios centered on data presentation and status indication.
 
 ## Key Takeaways
 
-- Define messages, framing, addressing, acknowledgements, timeouts, retries, versioning, and error recovery before implementation.
-- Check baud rate and update frequency against realistic widgets, logs, images, and firmware-update traffic.
-- Evaluate isolation, ESD, grounding, cable length, security, boot behavior, and field-update recovery for the final system.
+- The panel-side controller integrates the TFT driver, font and image libraries, and layer compositing; the host MCU only handles business logic and serial communication.
+- Selection starts with three things: the widgets and command set the controller supports, the UART baud rate and refresh capability, and the panel size, resolution, and brightness.
+- Resolutions typically range from 128×128 to 800×1280, sizes from 0.96 to 23.8 inch, and brightness from 300 nits indoors to 1000 nits outdoors.
+- The host side requires almost zero display-driver development, and the UI can be built by drag-and-drop on a PC; the bottleneck is serial bandwidth, so full-screen animation and video content are not a good fit.
 
+## 1. What Is a UART Smart Display
 
-## UART Smart-Display Architecture
+UART (Universal Asynchronous Receiver/Transmitter) is one of the most classic and widely used serial communication protocols in embedded systems. A UART smart display splits the traditional "host directly drives the panel" architecture into two stages: the host MCU and the panel-side controller exchange only a stream of commands, and the controller completes all display work independently.
 
-### How the Architecture Works
+<figure markdown="span" class="displaywiki-figure">
+  [![UART smart display system architecture](uart-smart-display-architecture-en.png){ width="760" loading="lazy" }](uart-smart-display-architecture-en.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>The host MCU only sends commands; the panel-side controller handles fonts, layers, and timing, while the display module performs electro-optical conversion</figcaption>
+</figure>
 
-UART (Universal Asynchronous Receiver/Transmitter) is a classic and widely-used serial communication protocol, commonly employed in embedded systems and Smart devices. The demand for various Smart display devices in different application areas has increased significantly. The UART-based Smart Display, with its simple and stable communication method, fits well into various application scenarios. Below are the main application backgrounds:
+The direct result of this division of labor: the host no longer needs a frame buffer, refresh computing power, or even knowledge of the panel timing parameters. The communication method is simple and stable, which is exactly why it has replaced traditional parallel displays in so many scenarios.
 
-1.1. Industrial Control
+## 2. Typical Application Scenarios
 
-In the field of industrial automation, equipment needs real-time monitoring and data display. UART-based Smart Display can show sensor data, equipment status, and control commands. This application scenario requires the display device to have high reliability and real-time performance to ensure the smooth progress of the production process.
+UART smart displays fit projects that "need a UI, but the host has limited computing power or development resources". Common scenarios include:
 
-1.2. Medical Devices
+### 2.1 Industrial Control
 
-Medical devices require the display of patient monitoring data (such as heart rate, blood oxygen, blood pressure, etc.) and operational instructions. UART-based Smart Display can achieve low power consumption and high-precision data display, ensuring that medical staff can obtain patient information in real-time, thereby improving the quality of medical services.
+Industrial automation equipment needs real-time monitoring and data display. A serial display can show sensor readings, equipment status, and control commands. These scenarios demand high reliability and real-time performance, and the stability of the panel-side controller directly determines whether the production line can keep running.
 
-1.3. Smart Home
+### 2.2 Medical Devices
 
-In Smart home systems, various sensors (such as temperature and humidity sensors, air quality sensors, etc.) need to display environmental data in real-time. UART-based Smart Display can be integrated into Smart home control systems, providing convenient home environment information display and device control interfaces, enhancing the living experience of users.
+Medical devices need to display patient monitoring data (such as heart rate, blood oxygen saturation, and blood pressure) and operating instructions. A serial display achieves low-power, high-precision data display so medical staff can obtain patient information in real time.
 
-1.4. Consumer Electronics
+### 2.3 Smart Home
 
-In consumer electronics products, such as Smartwatches and fitness trackers, UART-based Smart Display can show device information and user interaction interfaces. Its low power consumption and high efficiency make these devices capable of running for extended periods, meeting users' daily needs.
+Temperature and humidity sensors, air quality monitors, and similar devices need to present environmental data. A serial display can be integrated into a smart home control system, providing environmental information display and a device control entry point.
 
-1.5. Public Displays
+### 2.4 Consumer Electronics
 
-Public display screens are used to show advertising information, announcements, and real-time data. UART-based Smart Display can provide high-quality visual effects in public places, attracting the attention of the audience and enhancing the effectiveness of information dissemination.
+Smartwatches, fitness trackers, and similar products need an interactive interface within a tight power budget. The low power consumption of a serial display lets these devices run for a long time on a single charge.
 
-## Benefits and Trade-offs
+### 2.5 Public Information Displays
 
-UART-based Smart Display demonstrates unique advantages in various application scenarios, mainly including the following aspects:
+Public display screens are used to publish advertisements, announcements, and real-time data, with high requirements for visual quality and remote updates. A serial display can have its content pushed centrally by the host.
 
-2.1. Communication Stability
+## 3. Solution Advantages
 
-UART is known for its simplicity and stability as a mature serial communication protocol. It can achieve reliable data transmission in various environments, ensuring the accuracy and real-time nature of display content.
+| Advantage | Description |
+|---|---|
+| Stable communication | UART is a mature serial protocol that achieves reliable transmission in all kinds of industrial environments |
+| Simple implementation | The protocol is easy to implement and integrates quickly with all kinds of embedded systems and microcontrollers, shortening development cycles |
+| Low power consumption | The panel-side controller is usually designed for low power, suitable for battery-powered devices |
+| Efficient data transfer | For scenarios that need real-time updates, serial commands refresh the UI with a very small amount of data |
+| Strong compatibility | A universal protocol that works with all kinds of sensors and peripherals, providing a unified data display interface |
+| Flexible expansion | Touch sensors, cameras, microphones, and other peripherals can be attached to extend functionality |
+| Controlled cost | Compared with SPI or I2C direct-drive solutions, it requires fewer hardware resources and a friendlier overall solution cost |
+| Reliable and durable | The panel and controller are usually built to industrial-grade requirements and tolerate harsh operating environments |
 
-2.2. Easy Implementation
+## 4. Requirements Analysis
 
-The implementation of the UART protocol is relatively simple, suitable for various embedded systems and microcontrollers. Developers can quickly integrate UART communication functions, reducing development costs and complexity, and accelerating the time to market for products.
+Before committing to a solution, split the requirements into "what the user side needs" and "what the technical side must deliver".
 
-2.3. Low Power Consumption Design
+**User-side requirements**
 
-UART-based Smart Display generally adopts a low power consumption design, suitable for battery-powered devices. This is particularly advantageous in mobile devices and wearable devices, extending the battery life of the equipment.
+| Scenario | UI Requirement |
+|---|---|
+| Industrial control | Display sensor data and equipment status in real time |
+| Medical devices | Display patient monitoring data and operating instructions |
+| Smart home | Display environmental information and control status |
+| Consumer electronics | Display device information and provide an interaction entry point |
 
-2.4. Efficient Data Transmission
+**Technical-side requirements**
 
-UART supports various baud rate configurations, allowing adjustment of data transmission speed according to specific application requirements. For scenarios requiring real-time data updates, UART can provide efficient data transmission, ensuring users receive the latest information promptly.
+- Communication stability: data must be transmitted reliably even on sites with complex electromagnetic environments.
+- Display quality: resolution, brightness, and viewing angle must match the operating environment.
+- Low power consumption: battery-powered devices need a power budget covering the controller and backlight.
+- Real-time performance: user operations and data updates must get a fast enough response.
 
-2.5. Strong Compatibility
+## 5. Design and Development Essentials
 
-UART is a universal communication protocol widely compatible with various sensors and peripherals. Whether it is industrial sensors, medical devices, or Smart home equipment, UART-based Smart Display can be easily integrated, providing a unified data display and control interface.
+### 5.1 Hardware Design
 
-2.6. Flexible Expansion
+**Display panel**
 
-UART interfaces support the connection of various peripherals, such as touch sensors, cameras, and microphones. By expanding peripherals, UART-based Smart Display can achieve more functions to meet the needs of different application scenarios.
+- Resolution: 128×128 to 800×1280
+- Size: 0.96 to 23.8 inch
+- Brightness: 300 nits indoors, 1000 nits outdoors
 
-2.7. Cost-Effective
+**Controller**
 
-Compared to other communication protocols like SPI and I2C, UART has lower implementation costs and requires fewer hardware resources. For cost-sensitive application fields, UART-based Smart Display offers a strong cost efficiency solution.
+- Processor: ARM Cortex-M / RISC-V series or other low-power MCUs (STM32, ESP32, etc.)
+- UART module: integrated UART interface supporting multiple baud rates
+- Expansion interfaces: RS-232 / RS-485 / CAN
 
-2.8. Reliability and Durability
+**Power management**
 
-UART communication has high interference resistance, suitable for harsh industrial environments. UART-based Smart Display devices are typically designed to be robust, with long service life and high reliability, adapting to various demanding application environments.
+- Supports a wide supply voltage range
+- The whole unit is designed around a low-power target
 
-Through the introduction of the background and advantages, it is evident that UART-based Smart Display has broad applicability and significant benefits in various application scenarios. With the continuous development of technology and the increasing demand for applications, this solution will continue to play an important role, providing efficient and reliable Smart display solutions for various industries.
+### 5.2 Software Design
 
-## Requirements Analysis
+**Runtime environment**
 
-Before designing a UART-based Smart Display, a detailed requirements analysis is necessary. The analysis covers the following aspects:
+- Bare-metal GUI: graphics applications without an operating system
+- RTOS: FreeRTOS and other real-time operating systems
 
-User Requirements
+**Firmware**
 
-Industrial Control: Real-time display of sensor data and equipment status.
+- UART driver: implements stable serial communication
+- Display driver: panel initialization and image rendering
+- Data parsing: parses and dispatches commands received over the serial link
 
-Medical Devices: Display of patient monitoring data and operational instructions.
+**Application layer**
 
-Smart Home: Display of home environment information and control status.
+- User interface: a clean, intuitive graphical interface
+- Data updates: keep information timely and accurate
+- Error handling: reliable status detection and exception handling mechanisms
 
-Consumer Electronics: Display of device information and user interaction interface.
+### 5.3 Testing and Validation
 
-Technical Requirements
+**Hardware testing**: fully test the display panel, controller, and power management components, and verify stability and reliability under different environments.
 
-Communication Stability: Ensure reliable and stable data transmission.
+**Software testing**: run functional tests to confirm that serial communication, the display driver, and the UI work correctly; run performance tests under high load to verify responsiveness.
 
-Display Quality: High resolution and clear display.
+**User experience testing**: invite target users to try the device, collect feedback, and iterate, making sure the interface and interaction match their habits.
 
-Low Power Consumption: Suitable for battery-powered applications.
+## 6. Selection Considerations
 
-Real-time Performance: Quick response to user commands and data updates.
+- **Widgets and command set**: check whether common widgets such as text, values, progress bars, icons, and curves are supported, and whether the command set is easy to integrate.
+- **Baud rate and refresh capability**: 115200 is a common starting point; complex UIs or frequent data refreshes call for higher baud rates and panel-side buffering.
+- **Panel specifications**: size, resolution, brightness, and viewing angle must match the application environment; outdoor scenarios should favor high-brightness or transflective options.
+- **Expansion interfaces**: when industrial buses such as RS-485 or CAN are needed, confirm the controller supports them natively or leaves expansion headroom.
+- **Development workflow**: PC-based visual editing shortens UI development significantly; also confirm support for custom font libraries and image assets.
+- **Supply and consistency**: in volume projects, panel batch consistency, long-term supply, and technical support matter just as much.
 
-## Implementation Design
+## 7. Frequently Asked Questions
 
-### Hardware Design
+??? question "Q1: How does a UART smart display differ from an SPI or RGB parallel display?"
+    SPI and RGB parallel displays are usually driven directly by the host, which must handle initialization, screen refreshing, and frame buffer management. A UART smart display moves display driving, font libraries, and layer compositing down to the panel-side controller, so the host only sends commands, keeping host load and development effort minimal. The trade-off is that refresh capability is limited by serial bandwidth, so full-screen animation and high-frame-rate content fall behind host-driven solutions.
 
-Display Panel
+??? question "Q2: How much processing power and frame buffer does the host MCU need for a serial display?"
+    Almost no frame buffer is needed. The host only runs the UART peripheral and business logic; a common Cortex-M0/M3 class MCU is enough, and ESP32 or STM32 devices can drive one easily. What really needs evaluating is serial bandwidth: the more complex the UI and the more frequent the updates, the higher the demands on baud rate and the controller's buffering capability.
 
-Resolution: 128*128 QQVGA ~ 800*1280 HD
+??? question "Q3: Can a UART smart display handle Chinese characters and custom font libraries?"
+    Yes. The panel-side controller usually has built-in font and image storage, supports common Chinese font libraries and imported custom fonts, and can also hold icons, boot logos, and other assets. During selection, confirm the font storage capacity, the supported character set range, and whether users are allowed to flash their own assets.
 
-Size: Various options from 0.96 to 23.8 inch
+??? question "Q4: How are touch events sent back to the host?"
+    After the panel-side controller samples the capacitive touch screen, it actively reports events or coordinate packets to the host over the serial link, so the host never handles touch scanning itself. Some controllers even carry touch and display data over the same serial link, eliminating a separate touch interface. During selection, confirm the report format, multi-touch support, and response latency.
 
-Brightness: 300/1000 nits, suitable for indoor and outdoor environments
+??? question "Q5: Which UART baud rate should I choose?"
+    For simple UIs and low-frequency data updates, 115200 is enough; with many UI elements, frequent refreshes, or a need for fast responses, move up to 230400, 460800, or higher, provided both the controller and the host support it with an acceptable error rate. Blindly raising the baud rate adds interference risk, especially over long cables.
 
-Controller
-
-Processor: ARM Cortex-M/ Risc-V series or other low-power MCUs (STM32/ESP32 …)
-
-UART Module: Integrated UART interface supporting various baud rates
-
-More Interface: RS232/RS485/CAN
-
-Power Management
-
-Power Supply: Supports wide range power supply
-
-Power Consumption: Low power design
-
-### Software and Protocol Design
-
-Operating System:
-
-GUI: GUI application without OS
-
-RTOS: Free Rtos or others
-
-Firmware Design
-
-UART Driver: Implement stable UART communication protocol
-
-Display Driver: Support for display panel initialization and image rendering
-
-Data Parsing: Receive and parse data commands transmitted via UART
-
-Application Layer Design
-
-User Interface: Simple and intuitive graphical user interface (GUI)
-
-Data Refresh: Real-time data refresh to ensure timely and accurate information
-
-Error Handling: Robust error detection and handling mechanisms to ensure system
-
-3.3. Testing and Validation
-
-Hardware Testing
-
-Conduct comprehensive testing of display panels, controllers, and power management components.
-
-Ensure the stability and reliability of all components under different environments.
-
-Software Testing
-
-Perform functional testing to ensure proper operation of UART communication, display drivers, and user interfaces.
-
-Conduct performance testing to ensure system responsiveness and stability under high load conditions.
-
-User Experience Testing
-
-Invite target users for experience testing, collect feedback, and make improvements.
-
-Ensure the user interface and interaction methods meet user needs and habits.
+??? question "Q6: Do I need to rewrite the host firmware when changing the screen or the UI?"
+    Usually not. The UI resources and logic of a UART smart display mostly live in the panel-side controller; changing the screen only requires adapting to the new panel's command set and variable table, and the host's communication logic can often be reused. This is the main reason serial displays are popular in fast-iteration and small-batch custom projects.
 
 ## Related reading
 
 - [Custom and Sunlight-Readable Display Solutions](custom-sunlight-readable-displays.md)
 - [High-Reliability Display Solutions](high-reliability-displays.md)
 - [IoT and AIoT Smart Display Solutions](iot-aiot-display.md)
-
-## Frequently Asked Questions
-
-??? question "Does a UART smart display transmit every pixel over UART?"
-    Usually no. The display controller renders local pages and widgets while the host sends commands, values, events, or assets.
-
-??? question "How fast should the UART baud rate be?"
-    Choose it from message size, update frequency, latency, cable quality, electrical interface, error handling, and host capability rather than using the highest value by default.
-
-??? question "When should RS-485 be used instead of logic-level UART?"
-    RS-485 is useful for longer cables, differential noise immunity, or multidrop networks. UART defines the data framing, while RS-485 defines the electrical signaling.
-
-??? question "How should protocol versions be managed?"
-    Include an explicit version or capability query, maintain backward compatibility where required, and define behavior for unsupported commands and fields.
-
-??? question "Can firmware updates be sent over UART?"
-    Yes if the bootloader and protocol support authenticated, restartable transfer with integrity checking, recovery, and protection against incomplete updates.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

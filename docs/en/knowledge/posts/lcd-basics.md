@@ -11,137 +11,217 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I choose between LCD and OLED?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An LCD forms its image with a backlight plus a liquid-crystal light valve, whereas OLED lets every pixel emit its own light. LCD lasts longer, costs less, scales to large sizes more easily, and has no burn-in; OLED offers higher contrast, a wider viewing angle, and flexible form factors. In industrial scenarios where a fixed image is shown for long periods, prefer LCD, and consider OLED only when extreme black level or a flexible form is required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose among the TN, IPS, and VA liquid-crystal modes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TN is the fastest and cheapest but has a narrow viewing angle and mediocre color, suiting cost-driven and competitive gaming scenarios; IPS has the widest viewing angle and the most accurate color, suiting multi-viewer or color-critical settings; VA has the highest contrast and the deepest blacks but slower response, suiting applications that value static image quality and black level. Outdoor or industrial displays also need the lighting method factored in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why must an LCD have a backlight, while a reflective display does not?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liquid crystal only changes the polarization state of light; it emits nothing itself. A transmissive display relies on the backlight as its light source, so it is readable only in a dark environment with the backlight on; a reflective display forms its image from ambient light and needs no backlight, but cannot be read in the dark. The transflective type combines the two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is a transflective display better suited to outdoor use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A transflective display both transmits backlight and reflects ambient light. In strong outdoor light the ambient light dominates, so the brighter the surroundings, the clearer the picture; at night or indoors the backlight takes over. It combines the strengths of the transmissive and reflective types and is a common choice for outdoor industrial control and handheld devices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the relationship between TFT and LCD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TFT is one way of driving an LCD. LCD is the broad category; TFT means a thin-film transistor serves as an independent switch for every pixel, which makes it an active matrix — as opposed to a passive-matrix LCD that is scanned one line at a time. In other words, a TFT LCD is simply an active-matrix liquid-crystal display."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an LCD respond more slowly at low temperature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The viscosity of the liquid crystal rises as temperature falls, so the molecules turn more slowly and gray-to-gray switching times lengthen — severe cases show smearing. For low-temperature applications, check the low-temperature response curve in the datasheet of the specific model, and add a heater film where necessary."
+      }
+    }
+  ]
+}
+</script>
+
 # LCD Basics: How Liquid Crystal Displays Work
 
 !!! abstract "Quick answer"
-    An LCD controls light rather than emitting it directly. Electric fields change liquid-crystal orientation, which alters how light passes through polarizers and color filters to create each pixel.
+    An LCD does not emit light itself; it is an electrically controlled light valve. Two polarizers with orthogonal transmission axes sandwich a layer of liquid crystal, and an electric field changes how the liquid-crystal molecules are aligned, which controls the brightness of every pixel. Most selection decisions come down to three layers: the **driving method** (passive matrix / active matrix), the **liquid-crystal mode** (TN / IPS / VA / AFFS), and the **lighting method** (transmissive / reflective / transflective).
 
 ## Key Takeaways
 
-- Most color LCDs require a backlight, liquid-crystal cell, polarizers, electrodes, and color filters.
-- Panel mode influences viewing angle, contrast, response, and color behavior but does not define the complete module.
-- Backlight, driver IC, interface, touch panel, cover lens, and environment must be considered alongside the LCD cell.
+- **Image formation**: two orthogonal polarizers plus a field-controlled, twisted liquid-crystal layer together decide the brightness of every pixel; color comes from color filters.
+- **Driving method**: a passive matrix is simple and suits calculators, meters, and other low-end uses; an active matrix (TFT) gives every pixel its own switching transistor and is today's mainstream.
+- **Liquid-crystal mode**: TN is fast and cheap, IPS has the best viewing angle and color, VA has the highest contrast, and AFFS targets high-end applications.
+- **Lighting method**: transmissive suits indoors, reflective suits bright outdoor light, and transflective combines both — the key fork in the road for outdoor industrial selection.
 
+## 1. What an LCD Is
 
-## LCD Structure and Operating Principle
+A liquid-crystal display (LCD) is a flat panel display technology. Early on it was used mainly in TVs and desktop monitors, and today it also appears widely in laptops, tablets, and smartphones.
 
-LCD is a flat panel display technology commonly used in TVs and computer monitors. It is also used in screens for mobile devices, such as laptops, tablets, and smartphones.
+Its difference from a CRT (cathode ray tube) monitor is more than skin deep. A CRT fires an electron beam at phosphors to make them glow; an LCD emits no electrons. Instead, it uses a backlight as the light source and switches that light on and off through pixels arranged in a rectangular grid.
 
-LCD displays don’t just look different from bulky CRT (Cathode Ray Tube) monitors, the way they operate is significantly different as well. Instead of firing electrons at a glass screen, an LCD has a backlight that provides light source to individual pixels arranged in a rectangular grid. Each pixel has a RGB (Red, Green, and Blue) sub-pixel that can be turned on or off. When all of a pixel’s sub-pixels are turned off, it appears black.
+Each pixel consists of three sub-pixels — R, G, and B — each of which can be turned on or off. When all three sub-pixels of a pixel are off, it appears black; when all three are fully on, it appears white. Adjusting the intensity ratio of the three produces millions of colors.
 
-When all the sub-pixels are turned on 100%, it appears white. By adjusting the individual levels of red, green, and blue light, millions of color combinations are obtained.
+## 2. Structure of an LCD Screen
 
-How LCDs are Constructed
+The core of an LCD screen is a very thin layer of liquid-crystal material sandwiched between electrodes on upper and lower glass substrates. On the outer side of each glass sits a polarizer, and together the two form a polarizer pair.
 
-An LCD screen includes a thin layer of liquid crystal material sandwiched between two electrodes on glass substrates, with two polarizers on each side. A polarizer is an optical filter that lets light waves of a specific polarization pass through while blocking light waves of other polarizations. The electrodes need to be transparent, so the most popular material is ITO (Indium Tin Oxide).
+A polarizer is an optical filter that lets light waves of one specific polarization direction pass while blocking light waves of all other polarizations.
 
-As LCD can’t emit light itself, normally a backlight is placed behind an LCD screen in order to be seen during the dark environment. The light sources for backlight can be LED (Light Emitting Diode) or CCFL (Cold Cathode Fluorescent Lamps). The LED backlight is most popular.  Of course, if you like to have a color display, a layer of color filter can be made into an LCD panel. The color filter consists of RGB color. You can also add a touch panel in front of an LCD.
+The electrodes must be transparent, so the most common material is ITO (indium tin oxide).
 
-### Advantages
+Because liquid crystal emits no light itself, a backlight is usually placed behind the panel so the image remains visible in a dark environment. The backlight source can be an LED or a CCFL (cold cathode fluorescent lamp); LED backlights are now the absolute mainstream.
+
+For color display, a color filter is added on top of the liquid-crystal cell.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![LCD Display Structure](lcd-basics-lcd-display-structure.png){ width="760" loading="lazy" }](lcd-basics-lcd-display-structure.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>LCD Display Structure</figcaption>
+  [![LCD panel cross-section structure](lcd-basics-lcd-display-structure.png){ width="760" loading="lazy" }](lcd-basics-lcd-display-structure.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Figure 1 Cross-section of an LCD panel: the liquid-crystal layer sits between upper and lower glass substrates, with a polarizer on each side.</figcaption>
 </figure>
 
-- Fig. 1 LCD Display Structure
+## 3. How an LCD Screen Works
 
-- How LCDs Work?
+The first liquid-crystal panel technology to reach mass production was TN (twisted nematic). Its principle can be summed up in one sentence: **use an electric field to control whether the liquid crystal twists the polarization of light**.
 
-The first LCD panel technology in mass production is called TN (Twisted Nematic). The principle behind the LCDs is that when an electrical field is not applied to the liquid crystal molecules, the molecules twist 90 degrees in the LCD panel. When the light either from ambient light or from the backlight passes through the first polarizer, the light is polarized and twisted with the liquid crystal molecular layer. When it reaches the second polarizer, it is blocked. The viewer sees the display is black.
+The transmission axes of the upper and lower polarizers are orthogonal. With no voltage applied, the liquid-crystal molecules naturally twist by 90 degrees from top to bottom. Linearly polarized light that passes the first polarizer is rotated by the same 90 degrees, so its polarization direction ends up aligned with the transmission axis of the second polarizer — the light passes through, and the pixel is bright.
 
-When an electric field is applied to the liquid crystal molecules, they are untwisted.  When the polarized light reaches the layer of liquid crystal molecules, the light passes straight through without being twisted. When it reaches the second polarizer, it will also pass through, the viewer sees the display is bright.
+When a voltage is applied, the liquid-crystal molecules stand up along the field and no longer rotate the polarization. By the time the light reaches the second polarizer, its polarization is perpendicular to the transmission axis and is completely blocked, so the pixel turns dark.
 
-- Because LCD technology uses electric fields instead of electric current (electron passes through), it has low power consumption.
+This is how an electrically controlled light valve works: **voltage changes the alignment of the molecules, the alignment decides whether light passes, and that decides whether the pixel is bright or dark.**
+
+In addition, an LCD is driven by electric fields rather than current — no electrons travel through the material — so its power consumption is very low.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![How LCDs work](lcd-basics-how-lcds-work.png){ width="760" loading="lazy" }](lcd-basics-how-lcds-work.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>How LCDs work</figcaption>
+  [![Electrically controlled light-valve principle of TN liquid crystal](lcd-basics-how-lcds-work.png){ width="760" loading="lazy" }](lcd-basics-how-lcds-work.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Figure 2 The light-valve principle of TN liquid crystal: with no voltage the molecules twist the polarization of the light; with a voltage applied they stand up and block it.</figcaption>
 </figure>
 
-- Fig. 2 How LCDs work
+## 4. Passive Matrix and Active Matrix
 
-- The Basics of LCD Displays
+The most basic structure described above is called a **passive matrix** LCD. It appears mostly in low-end or simple applications such as calculators, utility meters, early digital watches, and alarm clocks.
 
-The most basic LCD introduced above is called passive matrix LCDs which can be found mostly in low end or simple applications like, calculators, utility meters, early time digital watches, alarm clocks etc.  Passive matrix LCDs have a lot of limitations, like the narrow viewing angle, slow response speed, dim, but it is great for power consumption.
+The limitations of a passive matrix are obvious: narrow viewing angle, slow response, and low contrast.
 
-In order to improve upon the drawbacks, scientists and engineers developed active matrix LCD technology.  The most widely used is TFT (Thin Film Transistor) LCD technology.  Based on TFT LCD, even more modern LCD technologies are developed. The best known is IPS (In Plane Switching) LCD.  It has super wide viewing angle, superior image picture quality, fast response, great contrast, less burn-in defects etc.
+To overcome these drawbacks, engineers developed **active matrix** technology, the most widely used form of which is TFT (thin-film transistor) LCD.
 
-IPS LCDs are widely used in LCD monitors, LCD TVs, Iphone, pads etc. Samsung even revolutionized the LED backlighting to be QLED (quantum dot) to switch off LEDs wherever light is not needed to produce deeper blacks.
+On the foundation of TFT LCD, more modern liquid-crystal technologies followed, the best known being IPS (in-plane switching): ultra-wide viewing angle, good image quality, fast response, high contrast, and little susceptibility to burn-in.
+
+LCD monitors, LCD TVs, the iPhone, and the iPad all use IPS liquid-crystal panels. Samsung also reworked the LED backlight with QLED (quantum dot), switching off the backlight wherever light is not needed to obtain deeper blacks.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Active TFT Color Display](lcd-basics-active-tft-color-display.png){ width="760" loading="lazy" }](lcd-basics-active-tft-color-display.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Active TFT Color Display</figcaption>
+  [![Active TFT color display structure](lcd-basics-active-tft-color-display.png){ width="760" loading="lazy" }](lcd-basics-active-tft-color-display.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Figure 3 Structure of an active-matrix TFT color panel: every pixel has its own thin-film transistor and storage capacitor, with a color filter stacked above.</figcaption>
 </figure>
 
-- Fig. 3 Active TFT Color Display
+## 5. LCD Classification
 
-- Different Types of LCD
+### 5.1 By driving method: passive matrix and active matrix
 
-- Classify by drive mode:
+A **passive matrix** addresses pixels with a simple electrode grid. One glass layer provides the column electrodes and the other the row electrodes, made of a transparent conductor such as ITO; the liquid crystal is charged by the voltage at each row–column crossing. Its drawbacks are slow response and imprecise voltage control, which easily produces cross-talk.
 
-– Passive and Active Matrix Displays: The Passive-matrix type LCDs works with a simple grid so that charge can be supplied to a specific pixel on the LCD. One glass layer gives columns whereas the other one gives rows that are designed by using a clear conductive material like indium-tin-oxide. The passive-matrix system has major drawbacks particularly response time is slow & inaccurate voltage control. The response time of the display mainly refers to the capability of the display to refresh the displayed image.
+An **active matrix** gives every pixel a TFT switch and a storage capacitor, laid out as a matrix on the glass substrate. When a given row is selected, charge can travel down the corresponding column to the intended pixel while all other rows stay off. Every pixel is therefore controlled independently and stably — the fundamental reason a TFT LCD can deliver high resolution and high contrast.
 
-– Active-matrix type LCDs mainly depend on TFT (thin-film transistors). These transistors are small switching transistors as well as capacitors which are placed within a matrix over a glass substrate. When the proper row is activated then a charge can be transmitted down the exact column so that a specific pixel can be addressed, because all of the additional rows that the column intersects are switched OFF, simply the capacitor next to the designated pixel gets a charge.
+### 5.2 By liquid-crystal mode: TN, IPS, VA, and AFFS
 
-- Classify by liquid crystal mode:
+**TN (twisted nematic)**: the highest production volume and the lowest cost, with fast response — a common choice for gamers. Its main weakness is mediocre image quality: contrast, viewing angle, and color reproduction are all weak, though it is perfectly adequate for everyday use. STN, CSTN, FSTN, and DSTN all belong to the TN family.
 
-Twisted Nematic Display (TN):  The TN (Twisted Nematic) LCDs production can be done most frequently and used different kinds of displays all over the industries. These displays are most frequently used by gamers as they are cheap & have quick response time as compared with other displays. The main disadvantage of these displays is that they have low quality as well as partial contrast ratios, viewing angles & reproduction of color. But, these devices are sufficient for daily operations. And STN/CSTN/FSTN/DSTN are types of TN.
+**IPS (in-plane switching)**: the best all-around image quality of the group, with a wide viewing angle and accurate color; common in graphic design and other color-critical scenarios. Reaching that color accuracy usually demands a stronger backlight, so cost is higher too.
 
-In-Plane Switching Display(IPS):  IPS displays are considered to be the best LCD because they provide good image quality, higher viewing angles, vibrant color precision & difference. These displays are mostly used by graphic designers & in some other applications, LCDs need the maximum potential standards for the reproduction of image & color.
+**VA / MVA (vertical alignment)**: positioned between TN and IPS. Contrast is high, blacks are deeper, color reproduction beats TN, and the viewing angle is better than TN's, but response time is slower and refresh rate lower; the price is usually below IPS.
 
-Vertical Alignment Panel(VA/MVA): The vertical alignment (VA) panels drop anywhere in the center among Twisted Nematic and in-plane switching panel technology. These panels have the best viewing angles as well as color reproduction with higher quality features as compared with TN type displays. These panels have a low response time. But, these are much more reasonable and appropriate for daily use.
+**AFFS (advanced fringe field switching)**: beats IPS on viewing angle and color reproduction, and is used where requirements are demanding.
 
-The structure of this panel generates deeper blacks as well as better colors as compared with the twisted nematic display. And several crystal alignments can permit for better viewing angles as compared with TN type displays. These displays arrive with a tradeoff because they are expensive as compared with other displays. And also they have slow response times & low refresh rates.
+### 5.3 By lighting method: transmissive, reflective, and transflective
 
-Advanced Fringe Field Switching (AFFS):  AFFS LCDs offer the best performance & a wide range of color reproduction as compared with IPS displays. The applications of AFFS are very advanced because they can reduce the distortion of color without compromising on the broad viewing angle. Usually, this display is used in highly advanced as well as professional surroundings like in the viable airplane cockpits.
-
-- Classify by lighting method:
-
-Liquid Crystal Displays (LCDs) are widely used in electronic devices for all kinds of industries. They are typically divided into three display types based on their light transmission modes. The three main types of LCD modes are transmissive, reflective, and transflective. The main difference is how they use light to illuminate the pixels in the display.
-
-Transmissive : Transmissive displays rely on a backlight to be visible. For this kind of display, light emitting from the back of the display glass must pass through the LCD towards the front to light the pixels. Transmissive LCDs are suitable in low-light environments since they rely on a backlight to be visible. These displays are also used in applications where high-resolution images, videos, and high quality are important, which is why you will commonly find TFT displays with a transmissive display mode.
-
-Reflective: Reflective displays rely on bright ambient light to be visible. There is no backlight source inside this kind of display; instead, light is reflected from the surrounding environment for the pixels to be visible.
-
-Transflective: Transflective displays combine backlighting and ambient light reflection to illuminate the pixels, resulting in a display with both transmissive and reflective properties.
+LCDs divide into three types by how the pixels are illuminated. The differences are most obvious in strong light and in dim light:
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Advantages](lcd-basics-advantages.png){ width="760" loading="lazy" }](lcd-basics-advantages.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Advantages</figcaption>
+  [![The three lighting methods in strong light](lcd-basics-advantages.png){ width="760" loading="lazy" }](lcd-basics-advantages.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Figure 4 How transmissive, reflective, and transflective displays differ in strong ambient light.</figcaption>
 </figure>
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Advantages](lcd-basics-advantages-2.png){ width="760" loading="lazy" }](lcd-basics-advantages-2.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Advantages</figcaption>
+  [![The three lighting methods in weak light](lcd-basics-advantages-2.png){ width="760" loading="lazy" }](lcd-basics-advantages-2.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Figure 5 How transmissive, reflective, and transflective displays differ in weak ambient light.</figcaption>
 </figure>
 
-LCD technologies have great advantages of light, thin, low power consumption which made wall TVs, laptops, smartphones, pad possible. On its way to progress, it wiped out the competition of many display technologies. We don’t see CRT monitors on our desks and plasma displays TV at our home anymore. LCD Technologies dominant the display market now. But any technology has the limitations.
+**Transmissive**: relies entirely on the backlight. Light from behind the panel passes through the liquid-crystal layer to illuminate the pixels. It suits dim or indoor environments as well as image-quality applications such as high-resolution pictures and video; most TFT displays on the market are transmissive.
 
-LCD technologies have slow response times especially at low temperature, limited viewing angles, backlighting is needed. Focus on LCD drawbacks, OLED (Organic Light Emitting Diodes) technology was developed. Some high-end TV and mobile phones start to use AMOLED (Active Matrix Organic Light Emitting Diodes) displays.
+**Reflective**: has no backlight and forms the image from reflected ambient light. The brighter the surroundings, the clearer the picture — but it cannot be read in the dark.
+
+**Transflective**: combines the two, passing backlight while also reflecting ambient light. It uses the backlight indoors and ambient light in strong sunshine, making it a common solution for outdoor industrial control and handheld devices.
+
+## 6. Benefits and Limitations
+
+The three great advantages of LCD are that it is light, thin, and low in power consumption. These made wall-mounted TVs, laptops, smartphones, and tablets possible, and along the way LCD outcompeted most rival technologies — CRT monitors have all but vanished from our desks.
+
+But every technology has limits. LCD response time is on the slow side, especially at low temperature; the viewing angle is limited; and a backlight is indispensable.
+
+To break through these limits, OLED (organic light-emitting diode) technology was developed, and high-end TVs and phones have begun adopting AMOLED.
+
+!!! warning "Mass-production note"
+    In mass production or harsh conditions (high/low temperature, humidity, vibration, ESD), check the datasheet curves of the relevant parameters; exceeding the specified range significantly shortens lifetime.
+
+## 7. Selection Checklist
+
+Tie the three layers above together and selection can proceed in this order:
+
+1. **Fix the lighting method first**: transmissive for fixed indoor installations; reflective or transflective for bright outdoor light. This step affects readability the most and is the easiest to overlook.
+2. **Then fix the liquid-crystal mode**: TN for response speed and cost, IPS for viewing angle and color, VA for contrast and black level, and AFFS for high-end designs.
+3. **Confirm the driving method**: high resolution and high image quality require an active matrix (TFT); consider a passive matrix only for character-type, low-resolution, extremely cost-sensitive scenarios.
+4. **Finally check the operating conditions**: low-temperature response, backlight lifetime, humidity, and vibration must all be confirmed against the datasheet curves of the specific model.
+
+## 8. Frequently Asked Questions
+
+??? question "Q1: How do I choose between LCD and OLED?"
+    An LCD forms its image with a backlight plus a liquid-crystal light valve, whereas OLED lets every pixel emit its own light. LCD lasts longer, costs less, scales to large sizes more easily, and has no burn-in; OLED offers higher contrast, a wider viewing angle, and flexible form factors. In industrial scenarios where a fixed image is shown for long periods, prefer LCD, and consider OLED only when extreme black level or a flexible form is required.
+
+??? question "Q2: How do I choose among the TN, IPS, and VA liquid-crystal modes?"
+    TN is the fastest and cheapest but has a narrow viewing angle and mediocre color, suiting cost-driven and competitive gaming scenarios; IPS has the widest viewing angle and the most accurate color, suiting multi-viewer or color-critical settings; VA has the highest contrast and the deepest blacks but slower response, suiting applications that value static image quality and black level. Outdoor or industrial displays also need the lighting method factored in.
+
+??? question "Q3: Why must an LCD have a backlight, while a reflective display does not?"
+    Liquid crystal only changes the polarization state of light; it emits nothing itself. A transmissive display relies on the backlight as its light source, so it is readable only in a dark environment with the backlight on; a reflective display forms its image from ambient light and needs no backlight, but cannot be read in the dark. The transflective type combines the two.
+
+??? question "Q4: Why is a transflective display better suited to outdoor use?"
+    A transflective display both transmits backlight and reflects ambient light. In strong outdoor light the ambient light dominates, so the brighter the surroundings, the clearer the picture; at night or indoors the backlight takes over. It combines the strengths of the transmissive and reflective types and is a common choice for outdoor industrial control and handheld devices.
+
+??? question "Q5: What is the relationship between TFT and LCD?"
+    TFT is one way of driving an LCD. LCD is the broad category; TFT means a thin-film transistor serves as an independent switch for every pixel, which makes it an active matrix — as opposed to a passive-matrix LCD that is scanned one line at a time. In other words, a TFT LCD is simply an active-matrix liquid-crystal display.
+
+??? question "Q6: Why does an LCD respond more slowly at low temperature?"
+    The viscosity of the liquid crystal rises as temperature falls, so the molecules turn more slowly and gray-to-gray switching times lengthen — severe cases show smearing. For low-temperature applications, check the low-temperature response curve in the datasheet of the specific model, and add a heater film where necessary.
 
 ## Related reading
 
 - [TFT LCD Basics: Structure, Operation, and Benefits](tft-lcd-basics.md)
 - [TFT LCD Module Components and Construction](tft-lcd-module.md)
 - [How to Read Display Specifications](display-specifications.md)
-
-## Frequently Asked Questions
-
-??? question "Does an LCD produce its own light?"
-    Most common transmissive LCDs do not. They modulate light from a backlight; reflective LCDs use ambient light, and transflective LCDs can use both.
-
-??? question "What role do polarizers play in an LCD?"
-    The liquid crystal changes the polarization state of light, and the polarizers convert that change into controlled transmission or blocking at each pixel.
-
-??? question "What is the difference between an LCD panel and an LCD module?"
-    A panel is the image-forming cell, while a module may add a backlight, driver IC, flexible cable, PCB, touch panel, cover lens, and mechanical frame.
-
-??? question "Why do LCD response times change with temperature?"
-    Liquid-crystal viscosity changes with temperature, so transitions generally slow at low temperature and may behave differently at high temperature.
-
-??? question "What determines an LCD viewing angle?"
-    Liquid-crystal mode, cell design, compensation films, polarizers, contrast criterion, and viewing direction all contribute.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:

@@ -12,233 +12,235 @@ authors:
   - viewe_expert
 ---
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between the cell and the LCM of a TFT LCD module?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cell is the liquid-crystal cell itself, a package of liquid crystal held between two glass substrates, and it only dims and colors the light. An LCM (LCD module) is the complete module built on top of the cell with a backlight unit, polarizers, driver IC, FPC, and mechanical parts, and it can be connected straight to a mainboard. When people talk about a module in purchasing, they usually mean the LCM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why must a polarizer be laminated on both the top and the bottom, with their directions orthogonal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The light-modulation mechanism of liquid crystal depends on polarization. The lower polarizer first turns natural light into linearly polarized light, the liquid-crystal molecules then rotate its polarization direction according to the applied voltage, and the upper polarizer decides whether to let it through or block it based on the rotated direction. When the two transmission axes are orthogonal, the difference between the unlit transmitting state and the lit blocking state is largest, which is what makes a high contrast ratio possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does module brightness depend on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brightness is decided mainly by the backlight unit: the number of LEDs in the strip and their drive current, the efficiency of the light guide plate and optical films, and the overall light utilization. The same LCD panel with a different backlight can differ in brightness by several times. During selection, confirm that power consumption and heat dissipation are acceptable at the target brightness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do the scan and data channels of the driver IC do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The scan driver IC (gate driver) issues the select signal row by row and decides which row is being written; the data driver IC (source driver) writes the gray-level voltage each subpixel needs into the corresponding TFT at the instant that row is selected. Together they carry out imaging by scanning row by row and writing pixel by pixel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What role does the FPC play in a module?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The FPC is a flexible printed circuit. One end connects to the electrode routing of the LCD panel and the other brings out an interface that matches the mainboard, carrying power and signals. Its routing direction, length, and connector choice directly affect how the module is assembled and how the mechanical design of the whole device is laid out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an LCD need an alignment layer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The micro-grooves on the surface of the alignment layer give the liquid-crystal molecules a defined directional constraint, so that with no electric field the molecules keep a consistent arrangement (such as a 90° twist). Without an alignment layer the liquid crystal would arrange itself at random, no stable transmitting or blocking state could form, and no stable, controllable gray level could be obtained."
+      }
+    }
+  ]
+}
+</script>
+
 # TFT LCD Module Components and Construction
 
 !!! abstract "Quick answer"
-    A TFT LCD module combines the image-forming panel with optical, electrical, mechanical, and sometimes touch components. Module compatibility depends on the entire assembly rather than resolution and size alone.
+    A TFT LCD module (LCM) is made up of five parts: the backlight unit, the polarizer, the driver IC, the FPC, and the LCD panel. Understanding what each part does and how they work together is the prerequisite for judging brightness, contrast, interface, and mechanical feasibility. This article first breaks down the construction of the module, then follows the path from polarized light through liquid-crystal dimming to color-filter coloring to explain how an image is generated.
 
 ## Key Takeaways
 
-- Confirm active area, outline, viewing direction, interface, timing, voltage, backlight, connector, and mounting dimensions.
-- Treat touch, cover lens, bonding, frame, FPC, driver IC, and initialization code as module-level dependencies.
-- Review environmental ratings, optical specifications, lifetime, tolerances, and supply status for the exact part number.
+- A TFT LCD module is mainly made up of five parts: the backlight unit, the polarizer, the driver IC, the FPC, and the LCD panel; the LCD panel itself is liquid crystal held between a TFT array substrate and a color-filter substrate.
+- Liquid crystal does not emit light; it only adjusts transmittance according to voltage. Brightness comes from the backlight unit, and color comes from the color filter.
+- The transmission axes of the upper and lower polarizers are orthogonal, and the twist of the liquid-crystal molecules rotates the polarization direction by 90°, which decides whether light can pass.
+- During selection, check optical (brightness, uniformity, color gamut), electrical (driver IC, interface), mechanical (thickness, FPC routing), and environmental requirements separately.
 
+## 1. What Five Parts Make Up a TFT LCD Module
 
-## TFT LCD Module Architecture
-
-TFT LCM(LCD module) Structure:
-
-LCM is mainly composed of 5 units:
-
-BLU（Backlight Unit)
-
-POL (Polarizer)
-
-LCD (Liquid Crystal Display) Panel
-
-IC（Integrated Circuit)
-
-FPC (Flexible Printed Circuit)
-
-The below figure is the structure diagram of the TFT-LCD Module. We will briefly introduce the main functions of each on display.
+A TFT LCD module (LCM, LCD module) does not mean only that piece of glass screen; it is the whole assembly that packages all the materials and circuits a display needs. It is mainly made up of five parts:
 
 <figure markdown="span" class="displaywiki-figure">
-  [![The structure of TFT-LCD module](tft-lcd-module-the-structure-of-tft-lcd-module.jpeg){ width="760" loading="lazy" }](tft-lcd-module-the-structure-of-tft-lcd-module.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The structure of TFT-LCD module</figcaption>
+  [![Exploded view of the stacked structure of a TFT LCD module, with the backlight unit and the dozen or so layers of the LCD panel on the left and FPC and IC labeled on the right](tft-lcd-module-the-structure-of-tft-lcd-module.jpeg){ width="760" loading="lazy" }](tft-lcd-module-the-structure-of-tft-lcd-module.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Structure of a TFT LCD module: the lower half is the backlight unit (bottom chassis, reflector sheet, light guide plate, LED strip, diffuser sheet, prism sheet) and the upper half is the LCD panel (upper and lower polarizers, glass substrates, TFT array, liquid crystal, common electrode, color filter, and top chassis), with the FPC and driver IC brought out at the side.</figcaption>
 </figure>
 
-BLU（Backlight Unit）
+| Part | English / Abbreviation | Main function |
+|---|---|---|
+| LCD panel | LCD Panel / Cell | Dims and colors each pixel according to voltage; the core unit that forms the image |
+| Backlight unit | Backlight Unit (BLU) | Provides brightness and spreads it evenly across the display area; liquid crystal emits no light itself |
+| Polarizer | Polarizer (POL) | Converts natural light into linearly polarized light and selects the polarization state after the liquid crystal |
+| Driver IC | Driver IC | Generates scan and data signals and controls the switching and writing voltage of every TFT |
+| FPC and mechanical parts | FPC / Mechanical | Connects the panel to the mainboard for electrical interconnection and holds the stack with the frame |
 
-The backlight unit is one of the key components of the LCD. It consists of multiple layers of optical sheets and the light source.
+## 2. Roles of Each Part
 
-The role of the backlight unit is to supply sufficient brightness and evenly distribute the light source to the LCD panel given the liquid crystal molecules cannot emit light themselves.
+### 2.1 Backlight Unit (BLU)
 
-Normally, the light source is the LED strips, so it is also called LED-Backlit.
+The backlight unit is the thickest part of the module, built from multiple layers of optical sheets and a light source: the LED strip emits light, the light guide plate spreads that point source into a surface source, the diffuser sheet evens it out further, the prism sheet collects the light toward the normal viewing direction, and the reflector sheet recycles light that leaks toward the back.
 
-The quality of the backlight determines some important features of the display, such as the brightness, uniformity of the outgoing light, and color level of the LCD screen. In general, the BLU largely determines the luminous effect of the LCD screen.
+Its role is to provide sufficient and even brightness. Because liquid-crystal molecules emit no light themselves, the brightness of the picture is decided entirely by the backlight. The light source is usually an LED, so it is also called an LED backlight. The quality of the backlight directly affects brightness, the uniformity of the outgoing light, and color performance.
 
-POL (Polarizer)
+### 2.2 Polarizer (POL)
 
-A polarizer is to convert natural light without polarization into polarized light and control which light patterns can pass through the LCD panel.
+A polarizer converts natural light, which carries no polarization, into linearly polarized light, and is the precondition for the liquid-crystal light-modulation mechanism. One sheet is laminated under the liquid-crystal cell (next to the backlight) and one above it (next to the viewer), with their transmission axes orthogonal to each other.
 
-Without these filters, visual images generated by the LCD panel have poor performance in contrast ratio.
+Without a polarizer, the picture produced by the liquid-crystal cell would lose its contrast and no usable image could be formed.
 
-IC (Integrated circuit)
+### 2.3 Driver IC
 
-An integrated circuit (IC) is a chip device that consists of a set of integrated circuits.
+A driver IC is a set of circuits integrated on a chip. It adjusts the phase, amplitude, frequency, and other parameters of the voltage signal applied to the transparent electrodes, thereby establishing the driving electric field and finally showing the corresponding information on the screen.
 
-It is used to adjust and control the phase, peak value, frequency, and other parameters of Potentiometric signals on the transparent electrode, to establish the driving electric field, and finally realize the information displayed on the screen.
+By function it divides into two kinds: the scan driver IC (gate driver) selects rows one by one, and the data driver IC (source driver) writes the gray-level voltage into the row that has been selected.
 
-FPC (Flexible Printed Circuit Board)
+### 2.4 FPC and Mechanical Parts
 
-FPC is the abbreviation of a flexible printed circuit board.
+FPC is short for flexible printed circuit. One end connects to the electrodes of the LCD panel and the other brings out an interface that matches the mainboard, providing electrical connection and signal transmission. The mechanical parts hold the backlight, panel, FPC, and frame into a single assembly that can be mounted directly.
 
-By connecting the LCD panel, FPC can realize the working principle of the circuit, and output the interface that the motherboard needs to match, so that the LCD can work from an electrical point of view.
+### 2.5 LCD Panel (Cell)
 
-LCD (Liquid crystal display) panel / Cell layer
+The LCD panel is a package of liquid crystal held between two glass substrates: the upper substrate carries the color filter (CF) and the lower one carries the thin-film transistor array (TFT array). It is the core unit that determines color performance.
 
-The cell layer is a packaging of liquid crystals embedded between two glass substrates, a top glass substrate with the color filter (CF) and a down glass substrate with the Thin Film Transistor array (TFT-Array).
+On the TFT substrate side, the voltage of each pixel can be controlled precisely; on the CF substrate side, one pixel is divided into three subpixels: red (R), green (G), and blue (B). The liquid crystal acts as a light valve, adjusting the proportion of the RGB light that passes through the CF to mix the target color. To generate a complete image, all the layers above have to work together like an orchestra.
 
-It is also called the LCD panel and is an essential unit of the color display.
+## 3. Liquid Crystal and the Alignment Layer: the Physical Basis of the Light Valve
 
-On the TFT substrate, it can control the pixel voltage on this side precisely.  And it is the pixel voltage applied to the liquid crystal that controls the twist of the liquid crystal.
-
-On the CF substrate, a pixel is divided into three sub-pixels: red (R), green (G), and blue (B).
-
-The liquid crystal (LC) that acts as a light valve adjusts the amount of light of the three primary colors of RGB passing through the CF substrate, and the desired color display can be obtained.
-
-To create an image, all the above layers should collaborate like an orchestra.
-
-Working of the LCD
-
-LCD is a product of optoelectronics.
-
-We can get a general understanding of how LCD works from both optical and electrical perspectives.
-
-Optoelectronic working principle of the LCD
-
-Optical perspective
-
-Light can be divided into different polarization directions.
-
-Lights with different polarization directions pass through the liquid crystal, and there will be different optical paths.
-
-After the light is recombined through this optical path difference, it will change the form of its polarization.
-
-With the polarizer blocking the light in a certain polarization direction, the transmittance of the light can be determined.
-
-Electrical perspective
-
-Under different voltages, the liquid crystal will have different arrangements.
-
-Different liquid crystal arrangements cause different optical path differences, thus making the transmittance change.
-
-So that the video signal (electricity) can be converted into a bright and dark display (light)
-
-Working Process of the LCD
-
-Underneath, let’s see how each layer collaborates inside to make the color display.
-
-Liquid crystal molecules
-
-(1) The liquid crystal used in TFT-LCD is TN (Twist Nematic) type liquid crystal.
-
-(2) The liquid crystal molecules are elliptical; TN-type liquid crystals are generally connected in series along the long axis direction, and the long axes are arranged in parallel to each other.
+Liquid crystal has both the flow of a liquid and the anisotropy of a crystal. The commonly used TN liquid-crystal molecules are rod-shaped, and neighboring molecules line up roughly parallel along their long axis.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![The liquid crystal molecules](tft-lcd-module-the-liquid-crystal-molecules.jpeg){ width="760" loading="lazy" }](tft-lcd-module-the-liquid-crystal-molecules.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>The liquid crystal molecules</figcaption>
+  [![Rod-shaped liquid-crystal molecules and a typical molecular structure, with C≡N and C4H9 terminal groups and a rigid benzene-ring core](tft-lcd-module-the-liquid-crystal-molecules.jpeg){ width="760" loading="lazy" }](tft-lcd-module-the-liquid-crystal-molecules.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Liquid-crystal molecules: on the left, the arrangement of the rod-shaped molecules; on the right, a typical molecular structure whose two ends are terminal groups (such as C≡N and C4H9) and whose middle is a rigid core built from benzene rings. This mix of rigid and flexible parts lets the molecule both flow and keep its orientation.</figcaption>
 </figure>
 
-(3) When touching the grooved surface, the liquid crystal molecules line up parallelly along the grooves.
+The inner side of each glass substrate in the cell carries an alignment layer whose surface has a consistent set of micro-grooves. When the liquid-crystal molecules touch the grooves they line up parallel to the groove direction.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Molecules on the lower surface: along the ‘b’ direction](tft-lcd-module-molecules-on-the-lower-surface-along-the-b-direction.jpeg){ width="760" loading="lazy" }](tft-lcd-module-molecules-on-the-lower-surface-along-the-b-direction.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Molecules on the lower surface: along the ‘b’ direction</figcaption>
+  [![Liquid-crystal molecules lined up parallel to the groove direction on a grooved alignment-layer surface](tft-lcd-module-molecules-on-the-lower-surface-along-the-b-direction.jpeg){ width="760" loading="lazy" }](tft-lcd-module-molecules-on-the-lower-surface-along-the-b-direction.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Liquid-crystal molecules line up parallel to the grooves on the alignment layer, forming a defined orientation on the lower surface (the b direction in the figure).</figcaption>
 </figure>
 
-(4) When the liquid crystal is contained in the middle of the two grooved surfaces, and the groove directions are perpendicular to each other, the arrangement of the liquid crystal molecules will be:
-
-Molecules on the lower surface: along the ‘b’  direction
-
-Molecules on the upper surface: along the ‘a’ direction
-
-Molecules in between: the effect of rotation is generated, so the liquid crystal molecules are rotated by 90° between the two grooved surfaces.
+When the groove directions of the upper and lower alignment layers are perpendicular to each other, the liquid crystal in between twists gradually and forms a 90° helical arrangement. This structure is the basis of the twisted nematic (TN) mode.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Effects of light and liquid crystal molecules](tft-lcd-module-effects-of-light-and-liquid-crystal-molecules.png){ width="760" loading="lazy" }](tft-lcd-module-effects-of-light-and-liquid-crystal-molecules.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Effects of light and liquid crystal molecules</figcaption>
+  [![Upper and lower alignment-layer grooves perpendicular to each other, with liquid-crystal molecules twisted 90 degrees between them](tft-lcd-module-effects-of-light-and-liquid-crystal-molecules.png){ width="760" loading="lazy" }](tft-lcd-module-effects-of-light-and-liquid-crystal-molecules.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>The groove directions of the upper and lower alignment layers are perpendicular to each other (the a and b directions), and the liquid-crystal molecules twist continuously by 90° between them to form a helical arrangement.</figcaption>
 </figure>
 
-(1) When the linearly polarized light enters the upper grooved surface, the light also rotates along with the rotation of the liquid crystal molecules, so that the light can pass through.
+## 4. How the Polarizer Filters Polarized Light
 
-(2) When linearly polarized light exits the underlying grooved surface, the light has already rotated 90°.
+Light can be resolved into polarization components in different directions. Natural light contains vibrations in all directions; after passing through one polarizer only the component parallel to the transmission axis remains, and it becomes linearly polarized light.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Working of Polarizer](tft-lcd-module-working-of-polarizer.png){ width="760" loading="lazy" }](tft-lcd-module-working-of-polarizer.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Working of Polarizer</figcaption>
+  [![Filtering of linearly polarized light by a polarizer, where only the component parallel to the transmission axis a passes through](tft-lcd-module-optical-effect-in-the-combination-of-polarizers-grooved-surfaces-and-l.jpeg){ width="760" loading="lazy" }](tft-lcd-module-optical-effect-in-the-combination-of-polarizers-grooved-surfaces-and-l.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Filtering by a polarizer: a polarizer lets through only the polarization component parallel to its transmission axis (the a direction) and absorbs the perpendicular component, so a single polarizer behaves like a sieve for light.</figcaption>
 </figure>
 
-(1) Filter unpolarized light (general light) into linearly polarized light;
+Two key conclusions follow from this. When the light continues through the next polarizer along the same direction (a), it passes; when it meets a polarizer whose transmission axis points the other way (b), it is blocked completely. The job of the liquid crystal is exactly to rotate the polarization direction so as to decide which of the two cases the light falls into.
 
-(2) When the non-polarized light passes through the ‘a’ direction polarizer, the light is filtered into linearly polarized light parallel to the ‘a’ direction;
+## 5. How a Pixel Is Lit
 
-(3) The linear polarized light continues to move forward, and
-
-if it passes through the polarizer in the same direction (a), the light passes through;
-
-if the light passes through the polarizer in the b direction, the light is completely blocked.
+Combine the polarizer with the liquid-crystal cell and you get an electrically controlled light valve. Here is an overview that compares the two states, with and without voltage.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Optical effect in the combination of polarizers, grooved surfaces, and liquid crystal](tft-lcd-module-optical-effect-in-the-combination-of-polarizers-grooved-surfaces-and-l.jpeg){ width="760" loading="lazy" }](tft-lcd-module-optical-effect-in-the-combination-of-polarizers-grooved-surfaces-and-l.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Optical effect in the combination of polarizers, grooved surfaces, and liquid crystal</figcaption>
+  [![Comparison of liquid-crystal alignment and light path with and without voltage, where light passes on the left with no voltage and is blocked on the right once voltage makes the molecules stand up](tft-lcd-module-working-of-polarizer.png){ width="760" loading="lazy" }](tft-lcd-module-working-of-polarizer.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>How voltage switching affects the light path: on the left, with no voltage applied, the liquid-crystal molecules twist between the alignment films and the polarized light is rotated and passes; on the right, once voltage is applied the molecules stand up along the field, stop rotating the polarization, and the light is blocked by the upper polarizer.</figcaption>
 </figure>
 
-When the upper and lower polarizers are perpendicular to each other：
-
-(1) if power voltage is not applied, the light can pass through;
+**With no voltage applied, light can pass.** The liquid-crystal molecules keep a 90° twisted arrangement, the linearly polarized light from the lower polarizer rotates 90° layer by layer along the molecular helix, and it can leave through the upper polarizer, whose transmission axis is orthogonal.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![(1) if power voltage is not applied, the light can pass through;](tft-lcd-module-1-if-power-voltage-is-not-applied-the-light-can-pass-through.jpeg){ width="760" loading="lazy" }](tft-lcd-module-1-if-power-voltage-is-not-applied-the-light-can-pass-through.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>(1) if power voltage is not applied, the light can pass through;</figcaption>
+  [![Light path with no voltage applied, where the polarized light rotates 90 degrees through the cell and passes the upper polarizer](tft-lcd-module-1-if-power-voltage-is-not-applied-the-light-can-pass-through.jpeg){ width="760" loading="lazy" }](tft-lcd-module-1-if-power-voltage-is-not-applied-the-light-can-pass-through.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>No voltage applied: held by the grooves of the alignment layer, the liquid-crystal molecules keep a 90° twist, the polarized light is rotated layer by layer along the molecular helix, and it finally passes the upper polarizer, so the pixel is bright.</figcaption>
 </figure>
 
-(2) if power voltage is applied, the light is completely blocked. Because the liquid crystal molecules straighten out of their helix pattern and stop redirecting the angle of the light, thereby the light can not pass through the lower filter.
+**With voltage applied, light is blocked completely.** The liquid-crystal molecules stand up along the field, leave the helical arrangement, and stop rotating the polarization, so light cannot pass the upper polarizer and the pixel turns dark. The applied voltage sets how far the molecules stand up, and therefore the transmittance - which is exactly where gray levels come from.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Creating images through TFT-LCD](tft-lcd-module-creating-images-through-tft-lcd.jpeg){ width="760" loading="lazy" }](tft-lcd-module-creating-images-through-tft-lcd.jpeg){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Creating images through TFT-LCD</figcaption>
+  [![Light path with voltage applied, where the molecules stand up along the field, the polarization is no longer rotated, and the light is blocked by the upper polarizer](tft-lcd-module-creating-images-through-tft-lcd.jpeg){ width="760" loading="lazy" }](tft-lcd-module-creating-images-through-tft-lcd.jpeg){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Voltage applied: under the field the liquid-crystal molecules stand up along the field direction, no longer rotate the polarization, and the light is blocked by the upper polarizer, so the pixel turns dark. The voltage-source symbol and the vertically aligned molecules show this state.</figcaption>
 </figure>
 
-(1) Scan driver IC (also known as Gate driver IC) transmits scan signals and completes image signal input;
+## 6. From Voltage to a Color Image
 
-(2) Data driver IC (also known as Source driver IC) transmits imaging control signals and controls TFT switches:
-
-if a sub-pixel is turned on, the sub-pixel appears black because it cannot transmit light.
-
-if the sub-pixel is turned off, the color is displayed because the light passes through the color filter (CF).
-
-(3) After passing through the CF, red, green, and blue light is generated, and finally passes through the upper polarizer.
-
-(4)  With the synthesis effect of light, different colors are formed and displayed.
+On the TFT substrate, the scan driver IC sends scan signals row by row and completes row selection, while the data driver IC writes the imaging control signal into the corresponding TFT at the instant that row is selected, turning its subpixels on or off. A subpixel with voltage applied cannot transmit light, and one with no voltage applied lets light through the color filter.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![Now, we have finished our journey on how an LCD works and how the display creates a color image](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ.png){ width="760" loading="lazy" }](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Now, we have finished our journey on how an LCD works and how the display creates a color image</figcaption>
+  [![Correspondence between the color-filter array and the TFT array, with the data driver IC along the top and the scan driver IC down the left](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ.png){ width="760" loading="lazy" }](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Correspondence between the color filter (CF) array and the TFT array: the scan driver IC selects rows one by one and the data driver IC writes voltages along the columns, so each TFT controls the light and dark of the subpixel it sits in.</figcaption>
 </figure>
 
-<figure markdown="span" class="displaywiki-figure">
-  [![Now, we have finished our journey on how an LCD works and how the display creates a color image](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ-2.png){ width="760" loading="lazy" }](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ-2.png){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>Now, we have finished our journey on how an LCD works and how the display creates a color image</figcaption>
-</figure>
+After passing the color filter, light splits into red, green, and blue. By controlling how much light each subpixel transmits, the three colors add in different proportions and can mix almost any color.
 
 <figure markdown="span" class="displaywiki-figure">
-  [![how does LCD work to create a color image](tft-lcd-module-how-does-lcd-work-to-create-a-color-image.gif){ width="760" loading="lazy" }](tft-lcd-module-how-does-lcd-work-to-create-a-color-image.gif){ .displaywiki-image-link title="Open full-size image" }
-  <figcaption>how does LCD work to create a color image</figcaption>
+  [![Diagram of RGB primary-color addition, where two of the three colors mix to yellow, magenta, and cyan and all three mix to white](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ-2.png){ width="760" loading="lazy" }](tft-lcd-module-now-we-have-finished-our-journey-on-how-an-lcd-works-and-how-the-displ-2.png){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Adding the RGB primaries: red, green, and blue mix in pairs to give yellow, magenta, and cyan, and all three in equal amounts give white; a continuous change in the brightness ratio of the subpixels is enough to mix every color.</figcaption>
 </figure>
+
+At this point the complete path is closed: light starts from the backlight, is polarized by the polarizer, dimmed by the liquid crystal, colored by the color filter, and leaves through the upper polarizer - and this process happens simultaneously in countless pixels across a whole screen, forming the picture we see.
+
+<figure markdown="span" class="displaywiki-figure">
+  [![Animation of the stacked structure inside a TFT LCD module, showing the path of light from the backlight through the dimming and coloring of each layer](tft-lcd-module-how-does-lcd-work-to-create-a-color-image.gif){ width="760" loading="lazy" }](tft-lcd-module-how-does-lcd-work-to-create-a-color-image.gif){ .displaywiki-image-link title="Open full-size image" }
+  <figcaption>Reviewing the whole path: the backlight unit provides the light source, the lower polarizer polarizes it, the liquid-crystal layer dims it pixel by pixel according to voltage, the color filter gives it color, and the upper polarizer finally outputs the image.</figcaption>
+</figure>
+
+## 7. Selection Checklist
+
+- **Optical**: confirm that brightness (cd/m²), brightness uniformity, contrast, and color gamut cover the lighting conditions of the target environment.
+- **Electrical**: clarify the driver IC and interface type (RGB, MIPI DSI, LVDS, SPI, and so on), the supply voltage, and the power budget.
+- **Mechanical**: check the module outline dimensions, overall thickness, the difference between the viewing area and the outline, the FPC routing direction, and the connector specification.
+- **Environmental**: confirm the operating temperature range, storage temperature, vibration resistance, and anti-glare requirements; outdoor applications also need the lighting method evaluated.
+- **Volume production**: confirm supply stability, batch consistency, certification requirements, and minimum order quantity.
+
+## 8. Frequently Asked Questions
+
+??? question "Q1: What is the difference between the cell and the LCM of a TFT LCD module?"
+    The cell is the liquid-crystal cell itself, a package of liquid crystal held between two glass substrates, and it only dims and colors the light. An LCM (LCD module) is the complete module built on top of the cell with a backlight unit, polarizers, driver IC, FPC, and mechanical parts, and it can be connected straight to a mainboard. When people talk about a module in purchasing, they usually mean the LCM.
+
+??? question "Q2: Why must a polarizer be laminated on both the top and the bottom, with their directions orthogonal?"
+    The light-modulation mechanism of liquid crystal depends on polarization. The lower polarizer first turns natural light into linearly polarized light, the liquid-crystal molecules then rotate its polarization direction according to the applied voltage, and the upper polarizer decides whether to let it through or block it based on the rotated direction. When the two transmission axes are orthogonal, the difference between the unlit transmitting state and the lit blocking state is largest, which is what makes a high contrast ratio possible.
+
+??? question "Q3: What does module brightness depend on?"
+    Brightness is decided mainly by the backlight unit: the number of LEDs in the strip and their drive current, the efficiency of the light guide plate and optical films, and the overall light utilization. The same LCD panel with a different backlight can differ in brightness by several times. During selection, confirm that power consumption and heat dissipation are acceptable at the target brightness.
+
+??? question "Q4: What do the scan and data channels of the driver IC do?"
+    The scan driver IC (gate driver) issues the select signal row by row and decides which row is being written; the data driver IC (source driver) writes the gray-level voltage each subpixel needs into the corresponding TFT at the instant that row is selected. Together they carry out imaging by scanning row by row and writing pixel by pixel.
+
+??? question "Q5: What role does the FPC play in a module?"
+    The FPC is a flexible printed circuit. One end connects to the electrode routing of the LCD panel and the other brings out an interface that matches the mainboard, carrying power and signals. Its routing direction, length, and connector choice directly affect how the module is assembled and how the mechanical design of the whole device is laid out.
+
+??? question "Q6: Why does an LCD need an alignment layer?"
+    The micro-grooves on the surface of the alignment layer give the liquid-crystal molecules a defined directional constraint, so that with no electric field the molecules keep a consistent arrangement (such as a 90° twist). Without an alignment layer the liquid crystal would arrange itself at random, no stable transmitting or blocking state could form, and no stable, controllable gray level could be obtained.
 
 ## Related reading
 
 - [LCD Basics: How Liquid Crystal Displays Work](lcd-basics.md)
 - [TFT LCD Basics: Structure, Operation, and Benefits](tft-lcd-basics.md)
 - [How to Read Display Specifications](display-specifications.md)
-
-## Frequently Asked Questions
-
-??? question "What is normally included in a TFT LCD module?"
-    At minimum it includes the LCD panel and electrical connection; many modules also include drivers, a backlight, frame, PCB, touch panel, or cover lens.
-
-??? question "Can two displays with the same size and resolution be interchangeable?"
-    Not necessarily. Outline, active area, interface, timing, voltage, initialization, connector, backlight, viewing direction, and touch construction may differ.
-
-??? question "Why is the initialization sequence important?"
-    The controller registers configure timing, pixel format, orientation, power, gamma, and other behavior required for the panel to operate correctly.
-
-??? question "What information is needed to replace a discontinued module?"
-    Compare active area, outline, interface, timing, voltage, initialization, optical values, backlight, connector, mounting, touch stack, environment, and qualification status.
-
-??? question "Can the backlight be driven directly from a logic supply?"
-    Usually a dedicated current-controlled LED driver is required. Use the backlight voltage, current, string arrangement, dimming, and protection specifications.
 
 !!! info "Can't find what you need?"
     If you need more products, resources or support, please contact our team:
