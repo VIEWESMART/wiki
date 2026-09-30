@@ -9,6 +9,7 @@ tags:
   - MIPI DSI
 authors:
   - viewe_expert
+canonical: https://viewedisplay.com/mipi-dsi-display/
 ---
 
 <script type="application/ld+json">
