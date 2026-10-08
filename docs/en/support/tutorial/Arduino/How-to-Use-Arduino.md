@@ -219,7 +219,7 @@ For configuring LVGL (v8.3.x), please refer to [here](#configuring-lvgl) for mor
 
 ## PlatformIO
 
-- [PlatformIO](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/platformio/lvgl_v8_port/): This example demonstrates how to use ESP32_Display_Panel in PlatformIO. By default, it is suitable for the **ESP32-S3-LCD-EV-Board** and **ESP32-S3-LCD-EV-Board-2** development boards. Users need to modify the [boards/ESP-LCD.json](https://github.com/esp-arduino-libs/ESP32_Display_Panel/blob/master/examples/platformio/lvgl_v8_port/boards/BOARD_CUSTOM.json) file according to the actual situation.
+- [PlatformIO](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/platformio/lvgl_v8_port/): This example demonstrates how to use ESP32_Display_Panel in PlatformIO. By default, it is suitable for the **ESP32-S3-LCD-EV-Board** and **ESP32-S3-LCD-EV-Board-2** development boards. Users need to modify the [boards/BOARD_CUSTOM.json](https://github.com/esp-arduino-libs/ESP32_Display_Panel/blob/master/examples/platformio/lvgl_v8_port/boards/BOARD_CUSTOM.json) file according to the actual situation.
 
 
 !!! info "Can't find what you need?"

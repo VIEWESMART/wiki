@@ -50,7 +50,7 @@ hide:
         <div style="margin-top: 8px;">
             [:arrow_right: 7.0" 详情](../esp32-s3-7inch-800x480-touch-uart-display-hmi/)
             &nbsp;
-            [:arrow_right: 5.0" 详情](../esp32-s3-5inch-800x480/)
+            [:arrow_right: 5.0" 详情](../esp32-s3-5inch-800x480-touch-uart-display-hmi/)
         </div>
 
     -   **4.3" / 4.0" IPS 屏**
@@ -59,9 +59,9 @@ hide:
         * **分辨率**: 800x480 / 480x480
         * **芯片**: ESP32-S3 (8MB / 16MB)
         <div style="margin-top: 8px;">
-            [:arrow_right: 4.3" 详情](../esp32-s3-4.3inch-800x480/)
+            [:arrow_right: 4.3" 详情](../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/)
             &nbsp;
-            [:arrow_right: 4.0" 详情](../esp32-s3-4.0inch-480x480/)
+            [:arrow_right: 4.0" 详情](../esp32-s3-4inch-480x480-touch-uart-display-hmi/)
         </div>
 
     </div>
@@ -75,11 +75,11 @@ hide:
         * **接口**: UART / USB
         * **芯片**: ESP32-S3 (8MB / 16MB)
         <div style="margin-top: 8px;">
-            [:arrow_right: 3.5"](../esp32-s3-3.5inch-320x480/)
+            [:arrow_right: 3.5"](../esp32-s3-3.5inch-320x480-touch-uart-display-hmi/)
             &nbsp;
-            [:arrow_right: 2.8"](../esp32-s3-2.8inch-240x320/)
+            [:arrow_right: 2.8"](../esp32-s3-2.8inch-240x320-touch-uart-display-hmi/)
             &nbsp;
-            [:arrow_right: 2.4"](../esp32-s3-2.4inch-240x320/)
+            [:arrow_right: 2.4"](../esp32-s3-2.4inch-240x320-touch-uart-display-hmi/)
         </div>
 
     -   **1.9" IPS 长条屏**
@@ -88,7 +88,7 @@ hide:
         * **分辨率**: 170x320
         * **尺寸**: 1.9 英寸长条形
         <div style="margin-top: 8px;">
-            [:arrow_right: 查看详情](../esp32-s3-1.9inch-170x320/)
+            [:arrow_right: 查看详情](../esp32-s3-1.9inch-170x320-touch-uart-display-hmi/)
         </div>
 
     </div>
@@ -98,15 +98,17 @@ hide:
 
     <div class="grid cards" markdown>
 
-    -   **1.75" / 1.5" AMOLED**
+    -   **1.75" / 1.5" AMOLED · 1.85" TFT**
         <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
         * **型号**: Aurai Ring / UEDX4646...
-        * **分辨率**: 466x466 
+        * **分辨率**: 466x466 (AMOLED) / 360x360 (TFT)
         * **亮度**: 700-1000 nits
         <div style="margin-top: 8px;">
-            [:arrow_right: 1.75"](../esp32-s3-1.75inch/)
+            [:arrow_right: 1.75"](../esp32-s3-1.75inch-466x466-touch-uart-display-hmi/)
             &nbsp;
-            [:arrow_right: 1.5"](../esp32-s3-1.5inch/)
+            [:arrow_right: 1.5"](../esp32-s3-1.5inch-466x466-touch-uart-display-hmi/)
+            &nbsp;
+            [:arrow_right: 1.85"](../esp32-s3-1.85inch-360x360-touch-uart-display-hmi/)
         </div>
 
     -   **1.5" AMOLED 旋钮屏**
@@ -115,7 +117,7 @@ hide:
         * **分辨率**: 466x466
         * **输入**: 旋钮 + 触摸
         <div style="margin-top: 8px;">
-            [:arrow_right: 旋钮详情](../esp32-s3-1.5-knob/)
+            [:arrow_right: 旋钮详情](../esp32-UEDX46466015-MD50ET/)
         </div>
 
     </div>
@@ -131,7 +133,7 @@ hide:
         * **分辨率**: 480x480 IPS
         * **输入**: 旋钮 (可选触摸)
         <div style="margin-top: 8px;">
-            [:arrow_right: 查看详情](../esp32-s3-2.1-knob/)
+            [:arrow_right: 查看详情](../esp32-s3-2.1-touch-knob/)
         </div>
 
     -   **1.28" C3 旋钮屏**
@@ -153,21 +155,22 @@ hide:
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [**UEP4S070H1024V600C**](../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/) | 7.0" | 1024x600 | IPS | **P4** (400M) | 16M/32M | RS485/UART | 电容触控 | 350 nit |
 | [**UEDX80480070E-WB-A**](../esp32-s3-7inch-800x480-touch-uart-display-hmi/) | 7.0" | 800x480 | TN | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
-| [**UEDX80480050E-WB-A**](../esp32-s3-5inch-800x480/) | 5.0" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
-| [**UEDX80480043E-WB-A**](../esp32-s3-4.3inch-800x480/) | 4.3" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
-| [**UEDX48270043E-WB-A**](../esp32-s3-4.3inch-480x272/) | 4.3" | 480x272 | TN | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
-| [**UEDX48480040E-WB-A**](../esp32-s3-4.0inch-480x480/) | 4.0" | 480x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
-| [**UEDX32480035E-WB-A**](../esp32-s3-3.5inch-320x480/) | 3.5" | 320x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 250 nit |
-| [**UEDX24320035E-WB-A**](../esp32-s3-3.5inch-240x320/) | 3.5" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 340 nit |
-| [**UEDX24320028E-WB-A**](../esp32-s3-2.8inch-240x320/) | 2.8" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 340 nit |
-| [**UEDX24320024E-WB-A**](../esp32-s3-2.4inch-240x320/) | 2.4" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 300 nit |
-| [**UEDX48480021-MD80ET**](../esp32-s3-2.1-knob/) | 2.1" | 480x480 | IPS | S3 (240M) | 16M/8M | UART | **旋钮+触摸**| 300 nit |
-| [**UEDX17320019E-WB-A**](../esp32-s3-1.9inch-170x320/) | 1.9" | 170x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 500 nit |
+| [**UEDX80480050E-WB-A**](../esp32-s3-5inch-800x480-touch-uart-display-hmi/) | 5.0" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
+| [**UEDX80480043E-WB-A**](../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/) | 4.3" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
+| [**UEDX48270043E-WB-A**](../esp32-s3-4.3inch-480x272-touch-uart-display-hmi/) | 4.3" | 480x272 | TN | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
+| [**UEDX48480040E-WB-A**](../esp32-s3-4inch-480x480-touch-uart-display-hmi/) | 4.0" | 480x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
+| [**UEDX32480035E-WB-A**](../esp32-s3-3.5inch-320x480-touch-uart-display-hmi/) | 3.5" | 320x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 250 nit |
+| [**UEDX24320035E-WB-A**](../esp32-s3-3.5inch-240x320-touch-uart-display-hmi/) | 3.5" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 340 nit |
+| [**UEDX24320028E-WB-A**](../esp32-s3-2.8inch-240x320-touch-uart-display-hmi/) | 2.8" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 340 nit |
+| [**UEDX24320024E-WB-A**](../esp32-s3-2.4inch-240x320-touch-uart-display-hmi/) | 2.4" | 240x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 300 nit |
+| [**UEDX48480021-MD80ET**](../esp32-s3-2.1-touch-knob/) | 2.1" | 480x480 | IPS | S3 (240M) | 16M/8M | UART | **旋钮+触摸**| 300 nit |
+| [**UEDX17320019E-WB-A**](../esp32-s3-1.9inch-170x320-touch-uart-display-hmi/) | 1.9" | 170x320 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 500 nit |
 | **Aurai Smart Ring 1P8** | 1.8" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | USB | 电容触控 | **700 nit** |
 | **EchoEar Plus** | 1.8" | 360x360 | IPS | S3 (240M) | 16M/8M | USB | 电容触控 | 300 nit |
-| [**UEDX46466018E-WB-A**](../esp32-s3-1.75inch/) | 1.75"| 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | 电容触控 | **700 nit** |
-| [**UEDX46460015-MD50E**](../esp32-s3-1.5-knob/) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | **旋钮+触摸**| **1000 nit**|
-| [**UEDX46466015E-WB-A**](../esp32-s3-1.5inch/) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | 电容触控 | 450 nit |
+| [**UEDX46466018E-WB-A**](../esp32-s3-1.75inch-466x466-touch-uart-display-hmi/) | 1.75"| 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | 电容触控 | **700 nit** |
+| [**UEDX46460015-MD50E**](../esp32-UEDX46466015-MD50ET/) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | **旋钮+触摸**| **1000 nit**|
+| [**UEDX46466015E-WB-A**](../esp32-s3-1.5inch-466x466-touch-uart-display-hmi/) | 1.5" | 466x466 | **AMOLED**| S3 (240M) | 16M/8M | UART/USB | 电容触控 | 450 nit |
+| **ESP32-S3 Round 1.85"** | 1.85"| 360x360 | TFT | S3 (240M) | 16M/8M | USB/QSPI | 电容触控 | 400 nit |
 | [**UEDX24240013-MD50E**](../esp32-c3-1.3-knob/) | 1.28"| 240x240 | IPS | **C3** (160M)| 4M/400K | UART | **旋钮** | 300 nit |
 
 > **注**: 所有型号工作电压均为 5V。接口通常支持 UART/USB，方便调试开发。
@@ -194,7 +197,7 @@ hide:
 -   :material-tools: **技术支持 (Technical Support)** --- 获取规格书、SDK 及故障排查指南。
     <div style="margin-top: 0.5em;">
         [:material-file-document: 资料下载](../../support/resource.md) ·
-        [:material-github: GitHub 仓库](https://github.com/VIEWESMART) ·
+        [:simple-gitee: Gitee 仓库](https://gitee.com/VIEWESMART) ·
         [:material-message-question: 常见问题](../../support/faq.md)
     </div>
 

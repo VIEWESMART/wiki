@@ -9,7 +9,7 @@ hide:
 快速查找关于硬件、软件和订单的常见问题解答。
 
 !!! tip "快速搜索"
-    使用页面顶部的 **搜索栏 (Ctrl+F)** 查找特定错误，或查看我们的 [GitHub Issues](https://github.com/VIEWESMART/VIEWE-FAQ/issues) 获取社区解决方案。
+    使用页面顶部的 **搜索栏 (Ctrl+F)** 查找特定错误，或查看我们的 [Gitee Issues](https://gitee.com/VIEWESMART/VIEWE-FAQ/issues) 获取社区解决方案。
 
 ---
 
@@ -80,19 +80,19 @@ hide:
     ---
     最适合快速原型开发。
 
-    [:octicons-link-external-16: **Arduino FAQ**](FAQ-Arduino-ESP32.md)
+    [:octicons-link-external-16: **Arduino 常见问题**](./FAQ-Arduino-ESP32.md)
 
 -   :simple-espressif: __ESP-IDF__
     ---
     专业的原生开发环境。
 
-    [:octicons-link-external-16: **ESP-IDF FAQ**](../software/esp-idf/index.md)
+    [:octicons-link-external-16: **ESP-IDF 常见问题**](./faq-esp-idf.md)
 
 -   :simple-platformio: __PlatformIO__
     ---
     适合团队协作的现代 IDE。
 
-    [:octicons-link-external-16: **PlatformIO FAQ**](../software/platformio/index.md)
+    [:octicons-link-external-16: **PlatformIO 常见问题**](./faq-platformio.md)
 
 </div>
 
@@ -134,6 +134,6 @@ hide:
 
 ## :material-lifebuoy: 支持中心
 
-[ :material-github: 提交 GitHub Issue](https://github.com/VIEWESMART/VIEWE-FAQ/issues){ .md-button }
+[ :simple-gitee: 提交 Gitee Issue](https://gitee.com/VIEWESMART/VIEWE-FAQ/issues){ .md-button }
 [ :material-email: 联系技术支持](mailto:support@chinasunyee.com){ .md-button }
 [ :material-file-download: 下载中心](../support/resource.md){ .md-button }

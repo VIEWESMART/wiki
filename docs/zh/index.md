@@ -82,10 +82,10 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-github: **开源基因**
+-   :simple-gitee: **开源基因**
     ---
     我们坚信社区的力量。
-    我们提供**完整源代码** (Arduino/IDF)，并为每个产品系列维护活跃的 GitHub 仓库。
+    我们提供**完整源代码** (Arduino/IDF)，并为每个产品系列维护活跃的 Gitee 仓库。
 
 -   :material-tools: **软件就绪**
     ---
@@ -102,6 +102,6 @@ hide:
 <div style="text-align: center; margin-top: 2rem;" markdown="1">
 
 [:material-web: 访问官网](https://www.chinasunyee.com/){ .md-button .md-button--primary }
-[:material-github: 访问 GitHub](https://github.com/VIEWESMART){ .md-button }
+[:simple-gitee: 访问 Gitee](https://gitee.com/VIEWESMART){ .md-button }
 
 </div>

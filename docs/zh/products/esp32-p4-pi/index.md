@@ -1,3 +1,8 @@
+---
+title: 优奕视界 ESP32-P4-Pi 开发套件
+description: ESP32-P4-Pi 是一款基于 ESP32-P4-Core 模组（ESP32-P4 + ESP32-C6）的树莓派外形开发套件，配备 7 英寸 1024x600 MIPI DSI 触控显示屏，支持 Wi-Fi 6 与 H.264 硬件编码。
+---
+
 # ESP32-P4-Pi 开发套件
 
 
@@ -9,8 +14,8 @@
     配备 7 英寸 **1024x600** DSI 显示屏，支持 Wi-Fi 6、H.264 硬件编码及丰富的工业接口。
 
     [:material-arrow-left: 返回系列列表](../esp32/){ .md-button }
-    [:material-cart: 官方商城](https://viewedisplay.com/product/7-inch-1024x600-esp32-p4-wifi6-touch-smart-hmi-uart-display/){ .md-button .md-button--primary }
-    [:material-github: GitHub 仓库](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main){ .md-button }
+    [:material-cart: 官方旗舰店](https://shop277726935.taobao.com/){ .md-button .md-button--primary }
+    [:simple-gitee: Gitee 仓库](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main){ .md-button }
 
 </div>
 
@@ -123,7 +128,7 @@ P4 和 C6 GPIO 的详细功能列表：
 
 1.  **克隆代码仓库**
     ```bash
-    git clone [https://github.com/VIEWESMART/ESP32-P4-Pi.git](https://github.com/VIEWESMART/ESP32-P4-Pi.git)
+    git clone [https://gitee.com/VIEWESMART/ESP32-P4-Pi.git](https://gitee.com/VIEWESMART/ESP32-P4-Pi.git)
     ```
 
 2.  **设置目标芯片**
@@ -144,23 +149,23 @@ P4 和 C6 GPIO 的详细功能列表：
     ```
 
 ### 3.2 软件示例
-在 [`https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf`](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf) 目录下提供了 **13 个可运行的示例**。
+示例代码分布在 [**ESP32-P4-Pi**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf) 与 [**ESP32-P4-SmartDisplay**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf) 两个仓库的 `examples/esp-idf` 目录下，下表列出了 13 个可运行示例，其中 4 个目前仅托管在 GitHub。
 
 | 序号 | 示例名称 | 说明 | 关键技术 / 特性 |
 | :-: | :--- | :--- | :--- |
-| **01** | [**HowToCreateProject**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/01_HowToCreateProject) | **工程模板** | 最小化 CMake 设置指南。 |
-| **02** | [**HelloWorld**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/02_HelloWorld) | **基础测试** | 基础 UART 日志输出。 |
+| **01** | [**HowToCreateProject**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/01_HowToCreateProject) | **工程模板** | 最小化 CMake 设置指南。 |
+| **02** | [**HelloWorld**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/02_HelloWorld) | **基础测试** | 基础 UART 日志输出。 |
 | **03** | [**attitude**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/03-attitude) | **姿态传感器** | 收集传感器数据并打印 |
-| **04** | [**i2c_tools**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/03_i2c_tools) | **总线扫描** | 检测触摸 (GT911) 及音频芯片地址。 |
-| **05** | [**sdmmc**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/06_sdmmc) | **SD 卡** | 使用 SDMMC Host 读写文件。 |
-| **06** | [**wifistation**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/07_wifistation) | **Wi-Fi 6** | 通过 ESP32-C6 (SDIO) 联网。 |
-| **07** | [**audio_es7210**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/07-audio_es7210)| **ES7210音频采集** | 通过麦克风采集音频存储到SD卡（录音） |
-| **08** | [**audio_es8311**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/08-audio_es8311)| **ES8311音频播放** | 驱动音频编解码芯片播放音频 |
+| **04** | [**i2c_tools**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/03_i2c_tools) | **总线扫描** | 检测触摸 (GT911) 及音频芯片地址。 |
+| **05** | [**sdmmc**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/06_sdmmc) | **SD 卡** | 使用 SDMMC Host 读写文件。 |
+| **06** | [**wifistation**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/07_wifistation) | **Wi-Fi 6** | 通过 ESP32-C6 (SDIO) 联网。 |
+| **07** | [**audio_es7210**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/06-audio_es7210)| **ES7210音频采集** | 通过麦克风采集音频存储到SD卡（录音） |
+| **08** | [**audio_es8311**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/07-audio_es8311)| **ES8311音频播放** | 驱动音频编解码芯片播放音频 |
 | **09** | [**ethernetbasic**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/09_ethernetbasic)| **以太网** | 插上网线获取网络 |
 | **10** | [**color_panel_jd9165**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/10_color_panel_jd9165) | **LCD 测试** | 简单的 RGB 刷屏测试。 |
 | **11** | [**mipi_lcd_camera**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/11_mipi_lcd_camera) | **摄像头预览** | MIPI-CSI 输入 -> MIPI-DSI 输出。 |
-| **12** | [**7inch_lvgl_demo_v9**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/12_7inch_lvgl_demo_v9) | **出厂 UI** | **LVGL 9** 跑分与触摸演示。 |
-| **13** | [**esp_brookesia_phone**](https://github.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/13_esp_brookesia_phone) | **综合演示** | 类似于手机系统示例。 |
+| **12** | [**7inch_lvgl_demo_v9**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/09_lvgl_demo_v9) | **出厂 UI** | **LVGL 9** 跑分与触摸演示。 |
+| **13** | [**esp_brookesia_phone**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/tree/main/examples/esp-idf/10_esp_brookesia_phone) | **综合演示** | 类似于手机系统示例。 |
 
 > [!TIP]
 > **Arduino 支持**: 我们正在积极开发 P4 的 Arduino BSP。敬请期待！
@@ -173,8 +178,8 @@ P4 和 C6 GPIO 的详细功能列表：
 ### 📄 板载文档
 | 文档标题 | 类型 | 说明 |
 | :--- | :--- | :--- |
-| **[ESP32-P4-Pi 规格书](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/ESP32-P4-Pi-VIEWE_SPEC_V1.1.pdf)** | PDF | 产品规格书 |
-| **[原理图](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Schematic/SCH_ESP32-ESP32-P4-Pi-VIEWE-V1.1_2025-10-23.pdf)** | PDF | 电路设计原理图 |
+| **[ESP32-P4-Pi 规格书](https://gitee.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/ESP32-P4-Pi-VIEWE_SPEC_V1.1.pdf)** | PDF | 产品规格书 |
+| **[原理图](https://gitee.com/VIEWESMART/ESP32-P4-Pi/blob/main/Schematic/SCH_ESP32-ESP32-P4-Pi-VIEWE-V1.1_2025-10-23.pdf)** | PDF | 电路设计原理图 |
 | **[显示屏规格书](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/display/ALL-UE070WS-RB30-A106A_SPEC_V1.0.pdf)** | PDF | 7.0" 1024x600 显示屏规格书 |
 | **[显示驱动芯片手册](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/display/JD9165BA_DS_V0.0.3-0418(1).pdf)** | PDF | EK79007AD3 驱动手册 |
 | **[摄像头规格书](../../../assets/datasheet/peripheral/camera_datasheet.pdf)** | PDF | MIPI-CSI 摄像头模组规格 |
@@ -188,8 +193,8 @@ P4 和 C6 GPIO 的详细功能列表：
 | **ESP32-P4**| [技术参考手册](../../../assets/datasheet/chip/Esp32-p4_technical_reference_manual_cn.pdf) | 中文 |
 | **ESP32-C6** | [数据手册](../../../assets/datasheet/chip/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf) | 英文 |
 | **ESP32-C6** | [数据手册](../../../assets/datasheet/chip/esp32-c6-wroom-1_wroom-1u_datasheet_cn.pdf) | 中文 |
-| **ESP32-P4-Core** | [数据手册](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/P4-Core%20Datasheet/ESP32-P4-Core-VIEWE_SPEC_V1.0.pdf) | 英文 |
-| **ESP32-P4-Core** | [原理图](https://github.com/VIEWESMART/ESP32-P4-Pi/blob/main/Schematic/SCH_ESP32-P4-Core_2025-11-24.pdf) | |
+| **ESP32-P4-Core** | [数据手册](https://gitee.com/VIEWESMART/ESP32-P4-Pi/blob/main/Datasheet/P4-Core%20Datasheet/ESP32-P4-Core-VIEWE_SPEC_V1.0.pdf) | 英文 |
+| **ESP32-P4-Core** | [原理图](https://gitee.com/VIEWESMART/ESP32-P4-Pi/blob/main/Schematic/SCH_ESP32-P4-Core_2025-11-24.pdf) | |
 
 ### 🛠️ 工具
 * **[Flash 下载工具](../../../assets/software/flash_download_tool.zip)**: 用于手动烧录固件的工具。
@@ -203,7 +208,7 @@ P4 和 C6 GPIO 的详细功能列表：
 
 <div class="grid cards" markdown>
 
--   [**:material-github: GitHub Issues**](https://github.com/VIEWESMART/ESP32-P4-Pi/issues)
+-   [**:simple-gitee: Gitee Issues**](https://gitee.com/VIEWESMART/ESP32-P4-Pi/issues)
     ---
     提交 Bug 或请求新功能。跟踪开发进度。
 

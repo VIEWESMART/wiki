@@ -82,7 +82,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Interface**: UART / USB / WIFI
         <div style="margin-top: 12px; display: flex; gap: 8px;">
             <a href="../esp32-s3-7inch-800x480-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">7.0" Details →</a>
-            <a href="../esp32-s3-5inch/" class="md-button" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">5.0" Details →</a>
+            <a href="../esp32-s3-5inch-800x480-touch-uart-display-hmi/" class="md-button" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">5.0" Details →</a>
         </div>
 
     -   **4.3" / 4.0" IPS Series**
@@ -93,7 +93,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         <div style="margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap;">
             <a href="../esp32-s3-4.3inch-800x480-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 8px; margin: 0;">4.3" 800x480</a>
             <a href="../esp32-s3-4.3inch-480x272-touch-uart-display-hmi/" class="md-button" style="font-size: 0.75rem; padding: 2px 8px; margin: 0;">4.3" 480x272</a>
-            <a href="../esp32-s3-4.0inch/" class="md-button" style="font-size: 0.75rem; padding: 2px 8px; margin: 0;">4.0" Details</a>
+            <a href="../esp32-s3-4inch-480x480-touch-uart-display-hmi/" class="md-button" style="font-size: 0.75rem; padding: 2px 8px; margin: 0;">4.0" 480x480</a>
         </div>
 
     </div>
@@ -118,7 +118,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Res**: 170x320
         * **Size**: 1.9 Inch Strip
         <div style="margin-top: 12px;">
-            <a href="../esp32-s3-1.9inch/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">View Details →</a>
+            <a href="../esp32-s3-1.9inch-170x320-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">View Details →</a>
         </div>
 
     </div>
@@ -128,14 +128,15 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 
     <div class="grid cards" markdown>
 
-    -   **1.75" / 1.5" AMOLED**
+    -   **1.75" / 1.5" AMOLED · 1.85" TFT**
         <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
-        * **Model**: Aurai Ring / UEDX4646...
-        * **Res**: 466x466 
-        * **Brightness**: 700-1000 nits
+        * **Model**: UEDX46466018E / UEDX46466015E-WB-A
+        * **Res**: 466x466 (AMOLED) / 360x360 (TFT)
+        * **Brightness**: 400-700 nits
         <div style="margin-top: 12px; display: flex; gap: 8px;">
-            <a href="../esp32-s3-1.75inch-amoled/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">1.75"</a>
-            <a href="../esp32-s3-1.5inch-amoled/" class="md-button" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">1.5"</a>
+            <a href="../esp32-s3-1.75inch-466x466-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">1.75"</a>
+            <a href="../esp32-s3-1.5inch-466x466-touch-uart-display-hmi/" class="md-button" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">1.5"</a>
+            <a href="../esp32-s3-1.85inch-360x360-touch-uart-display-hmi/" class="md-button" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">1.85"</a>
         </div>
 
     -   **1.5" AMOLED Knob**
@@ -174,6 +175,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 | [**UEDX46466018E-WB-A**](../esp32-s3-1.75inch-466x466-touch-uart-display-hmi/) | 1.75"| 466x466 | <span style="color:#be185d; background:#fce7f3; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">AMOLED</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | UART/USB | Cap | <strong style="color:#d97706;">700 nit</strong> |
 | [**UEDX46460015-MD50E**](../esp32-UEDX46466015-MD50ET/index.md) | 1.5" | 466x466 | <span style="color:#be185d; background:#fce7f3; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">AMOLED</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | UART/USB | **Knob+Touch** | <strong style="color:#d97706;">1000 nit</strong> |
 | [**UEDX46466015E-WB-A**](../esp32-s3-1.5inch-466x466-touch-uart-display-hmi/) | 1.5" | 466x466 | <span style="color:#be185d; background:#fce7f3; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">AMOLED</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | UART/USB | Cap | 450 nit |
+| [**ESP32-S3 Round 1.85"**](../esp32-s3-1.85inch-360x360-touch-uart-display-hmi/) | 1.85" | 360x360 | <span style="color:#64748b; background:#f8fafc; padding:2px 6px; border-radius:4px; font-size:0.75rem;">TFT</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | USB/QSPI | Cap | 400 nit |
 | [**UEDX24240013-MD50E**](../esp32-c3-1.3-knob/) | 1.28"| 240x240 | <span style="color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:4px; font-size:0.75rem;">IPS</span> | <span style="color:#475569; background:#f1f5f9; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">C3 (160M)</span> | 4M/400K | UART | **Knob** | 300 nit |
 
 > **Note**: Operating Voltage is 5V for all models. Interfaces typically support UART/USB for easy debugging.

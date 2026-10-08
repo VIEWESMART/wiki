@@ -1,3 +1,8 @@
+---
+title: 优奕视界 7 英寸 1024x600 ESP32-P4 WiFi6 触控智能屏
+description: UEP4S070H1024V600C-WBA 是一款 7 英寸 1024x600 的 ESP32-P4 + ESP32-C6 智能触控显示模组，采用 MIPI DSI 接口与电容触摸，支持 Wi-Fi 6 与 H.264 硬件编码，并提供 Arduino / ESP-IDF / PlatformIO 完整支持。
+---
+
 # 7" 1024x600 ESP32-P4 WiFi6 触控智能屏
 
 
@@ -9,8 +14,8 @@
     配备 7 英寸 **1024x600** IPS 显示屏，支持 Wi-Fi 6、H.264 硬件编码及丰富的工业接口。
 
     [:material-arrow-left: 返回系列列表](../esp32/){ .md-button }
-    [:material-cart: 官方商城](https://viewedisplay.com/product/7-inch-1024x600-esp32-p4-wifi6-touch-smart-hmi-uart-display/){ .md-button .md-button--primary }
-    [:material-github: GitHub 仓库](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay){ .md-button }
+    [:material-cart: 官方旗舰店](https://shop277726935.taobao.com/){ .md-button .md-button--primary }
+    [:simple-gitee: Gitee 仓库](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay){ .md-button }
 
 </div>
 
@@ -125,7 +130,7 @@ P4 和 C6 GPIO 的详细功能列表：
 
 1.  **克隆代码仓库**
     ```bash
-    git clone [https://github.com/VIEWESMART/ESP32-P4-SmartDisplay.git](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay.git)
+    git clone [https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay.git](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay.git)
     ```
 
 2.  **设置目标芯片**
@@ -146,21 +151,21 @@ P4 和 C6 GPIO 的详细功能列表：
     ```
 
 ### 3.2 软件示例
-在 [`https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/`](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/) 目录下提供了 **11 个可运行的示例**。
+在 [`https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/`](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/) 目录下提供了 **11 个可运行的示例**。
 
 | 序号 | 示例名称 | 说明 | 关键技术 / 特性 |
 | :-: | :--- | :--- | :--- |
-| **01** | [**HowToCreateProject**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/01_HowToCreateProject) | **工程模板** | 最小化 CMake 设置指南。 |
-| **02** | [**HelloWorld**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/02_HelloWorld) | **基础测试** | 基础 UART 日志输出。 |
-| **03** | [**i2c_tools**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/03_i2c_tools) | **总线扫描** | 检测触摸 (GT911) 及音频芯片地址。 |
-| **04** | [**mic_msm261d**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/04-mic_msm261d) | **麦克风** | 通过 PDM/I2S 录制音频。 |
-| **05** | [**I2SCodec_ns4168**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/05_I2SCodec_ns4168) | **扬声器** | 通过 I2S 功放播放音频。 |
-| **06** | [**sdmmc**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/06_sdmmc) | **SD 卡** | 使用 SDMMC Host 读写文件。 |
-| **07** | [**wifistation**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/07_wifistation) | **Wi-Fi 6** | 通过 ESP32-C6 (SDIO) 联网。 |
-| **08** | [**color_panel**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/08_color_panel) | **LCD 测试** | 简单的 RGB 刷屏测试。 |
-| **09** | [**camera_dsi**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/09_camera_dsi) | **摄像头预览** | MIPI-CSI 输入 -> MIPI-DSI 输出。 |
-| **10** | [**lvgl_demo_v9**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/10_7inch_lvgl_demo_v9) | **出厂 UI** | **LVGL 9** 跑分与触摸演示。 |
-| **11** | [**RS485_Test**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/11_RS485_Test) | **工业接口** | UART RS485 通信测试。 |
+| **01** | [**HowToCreateProject**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/01_HowToCreateProject) | **工程模板** | 最小化 CMake 设置指南。 |
+| **02** | [**HelloWorld**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/02_HelloWorld) | **基础测试** | 基础 UART 日志输出。 |
+| **03** | [**i2c_tools**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/03_i2c_tools) | **总线扫描** | 检测触摸 (GT911) 及音频芯片地址。 |
+| **04** | [**mic_msm261d**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/04-mic_msm261d) | **麦克风** | 通过 PDM/I2S 录制音频。 |
+| **05** | [**I2SCodec_ns4168**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/05_I2SCodec_ns4168) | **扬声器** | 通过 I2S 功放播放音频。 |
+| **06** | [**sdmmc**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/06_sdmmc) | **SD 卡** | 使用 SDMMC Host 读写文件。 |
+| **07** | [**wifistation**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/07_wifistation) | **Wi-Fi 6** | 通过 ESP32-C6 (SDIO) 联网。 |
+| **08** | [**color_panel**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/08_color_panel) | **LCD 测试** | 简单的 RGB 刷屏测试。 |
+| **09** | [**camera_dsi**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/09_camera_dsi) | **摄像头预览** | MIPI-CSI 输入 -> MIPI-DSI 输出。 |
+| **10** | [**lvgl_demo_v9**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/10_7inch_lvgl_demo_v9) | **出厂 UI** | **LVGL 9** 跑分与触摸演示。 |
+| **11** | [**RS485_Test**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/tree/main/examples/esp-idf/11_RS485_Test) | **工业接口** | UART RS485 通信测试。 |
 
 > [!TIP]
 > **Arduino 支持**: 我们正在积极开发 P4 的 Arduino BSP。敬请期待！
@@ -200,7 +205,7 @@ P4 和 C6 GPIO 的详细功能列表：
 
 <div class="grid cards" markdown>
 
--   [**:material-github: GitHub Issues**](https://github.com/VIEWESMART/ESP32-P4-SmartDisplay/issues)
+-   [**:simple-gitee: Gitee Issues**](https://gitee.com/VIEWESMART/ESP32-P4-SmartDisplay/issues)
     ---
     提交 Bug 或请求新功能。跟踪开发进度。
 

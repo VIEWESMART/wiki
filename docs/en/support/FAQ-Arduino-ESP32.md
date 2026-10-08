@@ -70,7 +70,7 @@ When encountering screen drift issues, follow these steps to resolve them:
 
 ### How to Use ESP32\_Display\_Panel on PlatformIO?
 
-Refer to the [PlatformIO example](https://github.com/VIEWESMART/VIEWE-FAQ/blob/main/Arduino-FAQ/examples/PlatformIO). It is configured for **ESP32 Smart Display** and **ESP32 Dev Boards** by default. Modify the `boards/ESP-LCD.json` file as needed for your specific hardware.
+Refer to the [PlatformIO example](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/platformio/lvgl_v8_port/) provided by ESP32_Display_Panel. It uses the **ESP32-S3-LCD-EV-Board** by default; switch to your own board in the `default_envs` section of `platformio.ini`, and modify the [boards/BOARD_CUSTOM.json](https://github.com/esp-arduino-libs/ESP32_Display_Panel/blob/master/examples/platformio/lvgl_v8_port/boards/BOARD_CUSTOM.json) file for custom hardware. A ready-to-run project that already includes a VIEWE board definition is available in our [repository](https://github.com/VIEWESMART/UEDX48480040ESP32-4inch-Touch-Display/tree/main/examples/platformio/lvgl_v8_port).
 
 -----
 

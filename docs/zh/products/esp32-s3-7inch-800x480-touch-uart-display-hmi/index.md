@@ -1,3 +1,8 @@
+---
+title: 优奕视界 7 英寸 800x480 ESP32-S3 触控智能屏
+description: UEDX80480070E-WB-A 是一款 7 英寸 800x480 的 ESP32-S3 智能触控显示模组，采用 RGB 接口与 GT911 电容触摸，支持 Wi-Fi 与蓝牙 5 (LE)，并提供 Arduino / ESP-IDF / PlatformIO 完整支持。
+---
+
 # 7" 800x480 ESP32-S3 智能屏
 
 <div class="grid cards" markdown>
@@ -8,8 +13,8 @@
     配备 7 英寸 **800x480** TFT 显示屏 (RGB 接口)，支持 Wi-Fi & 蓝牙 5 (LE)，拥有丰富的扩展接口。
 
     [:material-arrow-left: 返回系列列表](../esp32/){ .md-button }
-    [:material-cart: 官方商城](https://viewedisplay.com/product/esp32-7-inch-800x480-rgb-ips-tft-display-touch-screen-arduino-lvgl-uart/){ .md-button .md-button--primary }
-    [:material-github: GitHub 仓库](https://github.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display){ .md-button }
+    [:material-cart: 官方旗舰店](https://shop277726935.taobao.com/){ .md-button .md-button--primary }
+    [:simple-gitee: Gitee 仓库](https://gitee.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display){ .md-button }
 
 </div>
 
@@ -136,7 +141,7 @@
     * 安装 `lvgl` (推荐 v8.3.x 版本).
 
 ### 3.2 软件示例
-所有示例代码均可在 [GitHub 仓库](https://github.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display/tree/main/examples) 中找到。
+所有示例代码均可在 [Gitee 仓库](https://gitee.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display/tree/main/examples) 中找到。
 
 | 框架 | 示例路径 | 说明 |
 | :--- | :--- | :--- |
@@ -173,7 +178,7 @@
 
 <div class="grid cards" markdown>
 
--   [**:material-github: GitHub Issues**](https://github.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display/issues)
+-   [**:simple-gitee: Gitee Issues**](https://gitee.com/VIEWESMART/UEDX80480070ESP32-7inch-Touch-Display/issues)
     ---
     提交 Bug 或功能需求。跟踪开发进度。
 

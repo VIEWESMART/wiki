@@ -9,7 +9,6 @@ tags:
   - MIPI DSI
 authors:
   - viewe_expert
-canonical: https://viewedisplay.com/mipi-dsi-display/
 ---
 
 <script type="application/ld+json">
@@ -132,7 +131,7 @@ On the display side, DSI can not only carry pixels but also control the screen w
 
 Command Mode suits panels with their own graphics memory (GRAM): once the processor has written a frame into the panel's memory it can let go, and the panel keeps refreshing itself, updating only when the picture changes — very power-efficient, ideal for small screens and mostly static content (smart watches, standby screens). Video Mode suits panels without memory: the processor must push every frame of the pixel stream continuously, as if playing a video, with demanding real-time requirements — ideal for large screens and dynamic video. Which mode to choose mainly depends on the panel's characteristics and the power target.
 
-The mechanics behind the two modes — how GRAM decides who owns the refresh, how to choose between burst and sync-pulse timing, what TE and BTA actually do, and how to configure them in the device tree — are covered in a dedicated article: [DSI Video Mode vs Command Mode: From GRAM and TE to Panel Bring-up](dsi-video-mode-vs-command-mode.md).
+The mechanics behind the two modes — how GRAM decides who owns the refresh, how to choose between burst and sync-pulse timing, what TE and BTA actually do, and how to configure them in the device tree — are covered in a dedicated article: [DSI Video Mode vs Command Mode: From GRAM and TE to Panel Bring-up](https://viewedisplay.com/dsi-video-mode-vs-command-mode-from-gram-and-te-to-panel-bring-up/).
 
 ## 6. D-PHY vs C-PHY: Two Physical Layers
 

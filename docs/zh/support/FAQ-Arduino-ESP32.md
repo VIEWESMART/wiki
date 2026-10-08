@@ -2,7 +2,7 @@
 
 ## 📂 库与目录设置
 
-### Arduino 库目录在哪里？
+### Arduino 库目录在哪里？ { #where-is-the-directory-for-arduino-libraries }
 
 您可以通过 Arduino IDE 菜单栏选择 **文件 (File)** > **首选项 (Preferences)** > **设置 (Settings)** > **项目文件夹位置 (Sketchbook location)** 来查找和修改 Arduino 库的目录路径。
 
@@ -23,7 +23,7 @@
 
 ## 📥 安装指南
 
-### 如何在 Arduino IDE 中安装 ESP32_Display_Panel？
+### 如何在 Arduino IDE 中安装 ESP32_Display_Panel？ { #how-to-install-esp32_display_panel-in-arduino-ide }
 
 您可以选择以下方法之一安装该库：
 
@@ -86,7 +86,7 @@
 
 ### 如何在 PlatformIO 上使用 ESP32_Display_Panel？
 
-请参考 [PlatformIO 示例](https://github.com/VIEWESMART/VIEWE-FAQ/blob/main/Arduino-FAQ/examples/PlatformIO)。该示例默认配置适用于 **ESP32 智能显示屏** 和 **ESP32 开发板**。请根据您的具体硬件修改 `boards/ESP-LCD.json` 文件。
+请参考 ESP32_Display_Panel 提供的 [PlatformIO 示例](https://github.com/esp-arduino-libs/ESP32_Display_Panel/tree/master/examples/platformio/lvgl_v8_port/)。该示例默认使用 **ESP32-S3-LCD-EV-Board**，可在 `platformio.ini` 的 `default_envs` 中切换为自己的开发板；自定义硬件请修改 [boards/BOARD_CUSTOM.json](https://github.com/esp-arduino-libs/ESP32_Display_Panel/blob/master/examples/platformio/lvgl_v8_port/boards/BOARD_CUSTOM.json) 文件。我们的[示例仓库](https://gitee.com/VIEWESMART/UEDX48480040ESP32-4inch-Touch-Display/tree/main/examples/platformio/lvgl_v8_port)中另有一份已配好优奕视界板级定义的现成工程。
 
 ---
 

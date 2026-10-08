@@ -312,7 +312,7 @@ Once you can split that chain, measure it stage by stage and confirm it stage by
 ## Related reading
 
 - [MIPI Interfaces Explained: DSI, CSI-2, D-PHY, and C-PHY](mipi-interface-basics.md)
-- [DSI Video Mode vs Command Mode: From GRAM and TE to Panel Bring-up](dsi-video-mode-vs-command-mode.md)
+- [DSI Video Mode vs Command Mode: From GRAM and TE to Panel Bring-up](https://viewedisplay.com/dsi-video-mode-vs-command-mode-from-gram-and-te-to-panel-bring-up/)
 - [LCD Panel Timing Parameters and MIPI DSI Bandwidth](lcd-panel-timing-parameters.md)
 - [Display Interfaces Explained: MCU, RGB, LVDS, MIPI, SPI, and More](display-interface-guide.md)
 
