@@ -10,6 +10,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 
 !!! tip "Quick Selection Guide"
     * **ESP32-P4 (Flagship)**: High-Performance (400MHz Dual-Core). Best for **1280x800+** HD screens, **MIPI-DSI/CSI**, and H.264 Video.
+    * **ESP32-S31 (Next-Gen)**: 320MHz Dual-Core RISC-V with **Wi-Fi 6**, **USB 2.0 HS OTG**, and **RS485 / CAN**. Ideal for connected industrial HMI with RGB panels.
     * **ESP32-S3 (Mainstream)**: The AIoT Standard (240MHz). Perfectly balances performance & cost. Supports **RGB/8080/SPI** interfaces.
     * **ESP32-C3 (Entry-Level)**: Compact & Efficient (160MHz). Designed for small size screens.
     * **AMOLED Series**: Premium Visuals. Self-emissive technology offering **True Black**, vivid colors, and always-on capability.
@@ -65,6 +66,23 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
         * **Chip**: ESP32-P4 (Dual-Core 400MHz)
         <div style="margin-top: 12px;">
             <a href="../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">View Details →</a>
+        </div>
+
+    </div>
+
+=== "🔥 ESP32-S31 (Next-Gen Flagship)"
+    **Wi-Fi 6 + USB 2.0 HS OTG + Industrial Interfaces**
+
+    <div class="grid cards" markdown>
+
+    -   **4.3" S31 High-Performance**
+        <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
+        * **Model**: UES31S043H800V480C-U
+        * **Spec**: 800x480 | IPS | 16MB Flash / 16MB PSRAM
+        * **Feature**: RS485 / CAN / USB 2.0 HS OTG / Audio
+        * **Chip**: ESP32-S31 (Dual-Core RISC-V 320MHz)
+        <div style="margin-top: 12px;">
+            <a href="../esp32-s31-4.3inch-800x480-touch-uart-display-hmi/" class="md-button md-button--primary" style="font-size: 0.75rem; padding: 2px 10px; margin: 0;">View Details →</a>
         </div>
 
     </div>
@@ -158,6 +176,7 @@ Full-Stack ESP32 (S3/C3/P4) HMI Solutions, spanning 1.28" Knobs to 11" HD Displa
 
 | Model (SKU) | Size | Res | Panel | Chip | Flash/RAM | Interface | Touch/Input | Brightness |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [**UES31S043H800V480C-U**](../esp32-s31-4.3inch-800x480-touch-uart-display-hmi/) | 4.3" | 800x480 | <span style="color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:4px; font-size:0.75rem;">IPS</span> | <span style="color:#7c3aed; background:#f5f3ff; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S31 (320M)</span> | 16M/16M | UART/RS485/CAN/USB | Cap | 400 nit |
 | [**UEP4S070H1024V600C**](../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/) | 7.0" | 1024x600 | <span style="color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:4px; font-size:0.75rem;">IPS</span> | <span style="color:#d97706; background:#fef3c7; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">P4 (400M)</span> | 16M/32M | RS485/UART | Cap | 350 nit |
 | [**UEDX80480070E-WB-A**](../esp32-s3-7inch-800x480-touch-uart-display-hmi/) | 7.0" | 800x480 | <span style="color:#64748b; background:#f8fafc; padding:2px 6px; border-radius:4px; font-size:0.75rem;">TN</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | UART/USB | Cap | 350 nit |
 | [**UEDX80480050E-WB-A**](../esp32-s3-5inch-800x480-touch-uart-display-hmi/) | 5.0" | 800x480 | <span style="color:#047857; background:#ecfdf5; padding:2px 6px; border-radius:4px; font-size:0.75rem;">IPS</span> | <span style="color:#0284c7; background:#e0f2fe; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:bold;">S3 (240M)</span> | 16M/8M | UART/USB | Cap | 350 nit |

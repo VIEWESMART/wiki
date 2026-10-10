@@ -6,10 +6,11 @@ hide:
 
 # ESP32 智能屏系列
 
-从 1.28" 旋钮到 11" 高清大屏全栈式 ESP32 (S3/C3/P4) HMI 解决方案
+从 1.28" 旋钮到 11" 高清大屏全栈式 ESP32 (S3/C3/P4/S31) HMI 解决方案
 
 !!! tip "快速选型指南"
     * **ESP32-P4 (旗舰版)**: 高性能双核 (400MHz)。专为 **1280x800+** 高清屏、**MIPI-DSI/CSI** 接口及 H.264 视频应用设计。
+    * **ESP32-S31 (下一代)**: 320MHz 双核 RISC-V，集成 **Wi-Fi 6**、**USB 2.0 高速 OTG** 与 **RS485 / CAN**。适合 RGB 屏的联网工业 HMI。
     * **ESP32-S3 (主流版)**: AIoT 行业标准 (240MHz)。完美平衡性能与成本，支持 **RGB/8080/SPI** 接口。
     * **ESP32-C3 (入门版)**: 紧凑高效 (160MHz)。专为小尺寸屏幕及旋钮控制设计。
     * **AMOLED 系列**: 极致视觉体验。自发光技术提供**纯黑背景**、鲜艳色彩及息屏显示 (AOD) 能力。
@@ -32,6 +33,23 @@ hide:
         * **芯片**: ESP32-P4 (双核 400MHz)
         <div style="margin-top: 8px;">
             [:arrow_right: 查看详情](../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/)
+        </div>
+
+    </div>
+
+=== "🔥 ESP32-S31 (下一代旗舰)"
+    **Wi-Fi 6 + USB 2.0 高速 OTG + 工业接口**
+
+    <div class="grid cards" markdown>
+
+    -   **4.3" S31 高性能屏**
+        <hr style="margin: 0.4em 0; border-bottom: 1px solid #eee;">
+        * **型号**: UES31S043H800V480C-U
+        * **规格**: 800x480 | IPS | 16MB Flash / 16MB PSRAM
+        * **特性**: RS485 / CAN / USB 2.0 高速 OTG / 音频
+        * **芯片**: ESP32-S31 (双核 RISC-V 320MHz)
+        <div style="margin-top: 8px;">
+            [:arrow_right: 查看详情](../esp32-s31-4.3inch-800x480-touch-uart-display-hmi/)
         </div>
 
     </div>
@@ -153,6 +171,7 @@ hide:
 
 | 型号 (SKU) | 尺寸 | 分辨率 | 面板 | 芯片 | Flash/RAM | 接口 | 触摸/输入 | 亮度 |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [**UES31S043H800V480C-U**](../esp32-s31-4.3inch-800x480-touch-uart-display-hmi/) | 4.3" | 800x480 | IPS | **S31** (320M) | 16M/16M | UART/RS485/CAN/USB | 电容触控 | 400 nit |
 | [**UEP4S070H1024V600C**](../esp32-p4-wifi6-7inch-1024x600-touch-uart-display-hmi/) | 7.0" | 1024x600 | IPS | **P4** (400M) | 16M/32M | RS485/UART | 电容触控 | 350 nit |
 | [**UEDX80480070E-WB-A**](../esp32-s3-7inch-800x480-touch-uart-display-hmi/) | 7.0" | 800x480 | TN | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
 | [**UEDX80480050E-WB-A**](../esp32-s3-5inch-800x480-touch-uart-display-hmi/) | 5.0" | 800x480 | IPS | S3 (240M) | 16M/8M | UART/USB | 电容触控 | 350 nit |
