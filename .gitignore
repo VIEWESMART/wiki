@@ -1,6 +1,7 @@
 # MkDocs 构建输出
 site/
 scripts/
+outputs/
 
 # 批处理预览文件
 preview.bat
