@@ -123,7 +123,7 @@ HMI 开发常用工具。
 
 | 工具名称 | 平台 | 说明 | 下载 |
 | :--- | :--- | :--- | :--- |
-| **显示时序与配置生成器** | Web | 计算 RGB / MIPI-DSI 时序，并生成 RTOS、Linux、Android 配置模板。 | [:material-open-in-new: 打开工具](./display-timing-generator/) |
+| **显示时序与配置生成器** | Web | 计算 RGB / MIPI-DSI 时序，并生成 RTOS、Linux、Android 配置模板。 | [:material-open-in-new: 打开工具](../display-timing-generator/) |
 | **SquareLine Studio** | Win / Mac | LVGL 可视化 UI 编辑器（推荐）。 | [:material-link: 官网](https://squareline.io/) |
 | **LVGL Pro** | Win / Mac | LVGL 官方 UI 编辑器（强烈推荐）。 | [:material-link: 官网](https://pro.lvgl.io/) |
 | **Image Converter** | Win / Mac | LVGL 线上图片转 C 数组工具。 | [:material-link: 官网](https://lvgl.io/tools/imageconverter) |
