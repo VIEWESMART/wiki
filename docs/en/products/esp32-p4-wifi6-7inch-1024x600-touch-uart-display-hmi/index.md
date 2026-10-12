@@ -177,10 +177,9 @@ There are **11 ready-to-run examples** located in the [`https://github.com/VIEWE
 ### 📄 Product Documents
 | Document Title | Type | Description |
 | :--- | :--- | :--- |
-| **[Smart Display Specification](../../../assets/datasheet/ESP32-P4-SmartDisplay_V1.1_SPEC.pdf)** | PDF | Product Specification  |
+| **[Smart Display Specification](../../../assets/datasheet/UEP4S070H1024V600C-WBA.pdf)** | PDF | Product Specification  |
 | **[Schematic Diagram](../../../assets/schematic/ESP32-P4-SmartDisplay.sch.pdf)** | PDF | Circuit Design & PCB Connections |
-| **[Display Specification](../../../assets/datasheet/display/HT070IBC-27N7EK-HD%2030PTT3558%20MiPi%2030%E7%9B%B4.pdf)** | PDF | 7.0" 1024x600 IPS Panel Spec |
-| **[Display Driver IC](../../../assets/datasheet/display/EK79007AD3_DS_REV1.0(1).pdf)** | PDF | EK79007AD3 Driver Manual |
+| **[Display Driver IC](../../../assets/datasheet/display/EK79007AD3.pdf)** | PDF | EK79007AD3 Driver Manual |
 | **[Camera Specification](../../../assets/datasheet/peripheral/camera_datasheet.pdf)** | PDF | MIPI-CSI Camera Module Spec |
 
 ### 🧠 Chip Datasheets

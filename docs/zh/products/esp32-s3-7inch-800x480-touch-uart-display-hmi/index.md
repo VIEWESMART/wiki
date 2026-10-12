@@ -160,7 +160,7 @@ description: UEDX80480070E-WB-A 是一款 7 英寸 800x480 的 ESP32-S3 智能�
 ### 📄 开发板文档
 | 文档标题 | 类型 | 说明 |
 | :--- | :--- | :--- |
-| **[产品规格书](../../../assets/datasheet/UEDX80480070E-WB-A V2.0 SPEC.pdf)** | PDF | UEDX80480070E 完整硬件规格书 |
+| **[产品规格书](../../../assets/datasheet/UEDX80480070E-WB-A.pdf)** | PDF | UEDX80480070E 完整硬件规格书 |
 | **[原理图](../../../assets/schematic/UEDX80480070E-WB-A%20V1.1%20sch.png)** | PNG | 电路设计原理图 |
 | **[显示屏规格书](../../../assets/datasheet/display/ALL-UE070WV-RB40-A092A.pdf)** | PDF | 液晶面板规格说明 |
 | **[触摸驱动手册](../../../assets/datasheet/touch/GT911_EN_Datasheet.pdf)** | PDF | Goodix GT911 触摸芯片数据手册 |

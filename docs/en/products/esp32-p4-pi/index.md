@@ -317,7 +317,7 @@ Examples are available in the [GitHub Repository](examples).
 | :--- | :--- | :--- |
 | **[Product Datasheet](../../../assets/datasheet/ESP32-P4-Pi-VIEWE.pdf)** | PDF | Product Specification  |
 | **[Schematic Diagram](../../../assets/schematic/SCH-ESP32-ESP32-P4-Pi-VIEWE-V1.1.pdf)** | PDF | Circuit Design & PCB Connections |
-| **[Display Driver IC](../../../assets/datasheet/display/EK79007AD3_DS_REV1.0(1).pdf)** | PDF | EK79007AD3 Driver Manual |
+| **[Display Driver IC](../../../assets/datasheet/display/EK79007AD3.pdf)** | PDF | EK79007AD3 Driver Manual |
 | **[Camera Specification](../../../assets/datasheet/peripheral/camera_datasheet.pdf)** | PDF | MIPI-CSI Camera Module Spec |
 
 

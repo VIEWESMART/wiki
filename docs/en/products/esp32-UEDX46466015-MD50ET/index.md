@@ -281,9 +281,9 @@ If you need to flash a pre‑compiled binary manually:
 
 | Document | Type | Description |
 | :--- | :--- | :--- |
-| **Product Specification** | PDF | [UEDX46460015‑MD50ET Datasheet](../../../assets/datasheet/product/UEDX46460015-MD50ET.pdf) |
+| **Product Specification** | PDF | [UEDX46460015‑MD50ET Datasheet](../../../assets/datasheet/UEDX46460015-MD50ET.pdf) |
 | **Display Datasheet** | PDF | [ALL-UE015WV-RB24-A021A.pdf](../../../assets/datasheet/display/ALL-UE015WV-RB24-A021A%20V1.0%20SPEC.pdf) |
-|**Touch IC Datasheet**|PDF|[CST820_DataSheet.pdf](../../../assets/datasheet/touch/CST820_DataSheet-En_V1.0.pdf)|
+|**Touch IC Datasheet**|PDF|[CST820.pdf](../../../assets/datasheet/touch/CST820.pdf)|
 
 
 ### 🛠️ Tools

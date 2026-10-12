@@ -177,10 +177,9 @@ P4 和 C6 GPIO 的详细功能列表：
 ### 📄 板载文档
 | 文档标题 | 类型 | 说明 |
 | :--- | :--- | :--- |
-| **[Smart Display 规格书](../../../assets/datasheet/ESP32-P4-SmartDisplay_V1.1_SPEC.pdf)** | PDF | 产品规格书 |
+| **[Smart Display 规格书](../../../assets/datasheet/UEP4S070H1024V600C-WBA.pdf)** | PDF | 产品规格书 |
 | **[原理图](../../../assets/schematic/ESP32-P4-SmartDisplay.sch.pdf)** | PDF | 电路设计原理图 |
-| **[显示屏规格书](../../../assets/datasheet/display/HT070IBC-27N7EK-HD%2030PTT3558%20MiPi%2030%E7%9B%B4.pdf)** | PDF | 7.0" 1024x600 显示屏规格书 |
-| **[显示驱动芯片手册](../../../assets/datasheet/display/EK79007AD3_DS_REV1.0(1).pdf)** | PDF | EK79007AD3 驱动手册 |
+| **[显示驱动芯片手册](../../../assets/datasheet/display/EK79007AD3.pdf)** | PDF | EK79007AD3 驱动手册 |
 | **[摄像头规格书](../../../assets/datasheet/peripheral/camera_datasheet.pdf)** | PDF | MIPI-CSI 摄像头模组规格 |
 
 ### 🧠 芯片数据手册
