@@ -445,7 +445,6 @@ There are **18 ready-to-run examples** located in the [`examples/esp-idf`](https
 | :--- | :--- |
 | Smart Display Specification V1.0 | [UES31S043H800V480C-U.pdf](../../../assets/datasheet/UES31S043H800V480C-U.pdf) |
 | Schematic Diagram | [SCH_UES31S043H800V480C-U.pdf](../../../assets/schematic/SCH_UES31S043H800V480C-U.pdf) |
-| Display Specification (UE043WV-RB40-A070A) | [UE043WV-RB40-A070A_V1.0.pdf](../../../assets/datasheet/display/UE043WV-RB40-A070A_V1.0.pdf) |
 
 ### 🧠 Chip Datasheets
 | Chip | Document | Language |

@@ -445,7 +445,6 @@ ESP32-S31 在单颗模组上集成了显示（RGB）、触摸（I2C）、音频�
 | :--- | :--- |
 | 智能显示规格书 V1.0 | [UES31S043H800V480C-U.pdf](../../../assets/datasheet/UES31S043H800V480C-U.pdf) |
 | 原理图 | [SCH_UES31S043H800V480C-U.pdf](../../../assets/schematic/SCH_UES31S043H800V480C-U.pdf) |
-| 屏规格书（UE043WV-RB40-A070A） | [UE043WV-RB40-A070A_V1.0.pdf](../../../assets/datasheet/display/UE043WV-RB40-A070A_V1.0.pdf) |
 
 ### 🧠 芯片数据手册
 | 芯片 | 文档 | 语言 |
